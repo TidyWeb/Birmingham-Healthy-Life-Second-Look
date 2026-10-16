@@ -46,11 +46,11 @@ CONTENT = SITE / "content"
 # The site is built from the assessment repository, so it always shows exactly what is marked.
 PROJECT = Path(os.environ.get(
     "HLE_PROJECT",
-    "/home/Phil/C_C/Git/Code-Institute-DA-with-AI-Unit-2-Assessment",
+    str(SITE.parent / "Code-Institute-DA-with-AI-Unit-3-Assessment"),
 ))
 NOTEBOOK_DIR = PROJECT / "notebooks"
 CLEANED = PROJECT / "data" / "cleaned"
-GITHUB_REPO = "https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-2-Assessment"
+GITHUB_REPO = "https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment"
 TABLEAU_URL = "https://public.tableau.com/views/BirminghamHLEFinal/Dashboard1"
 
 # The notebooks, in order. Folder names match the assessment repo.
@@ -82,7 +82,7 @@ FONTS = ("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wg
 def external_links_in_new_tab(document: str) -> str:
     """Add safe new-tab attributes to external links in generated pages."""
     own_host = "tidyweb.github.io"
-    own_path = "/Birmingham-Healthy-Life"
+    own_path = "/Birmingham-Healthy-Life-Second-Look"
 
     def update_anchor(match: re.Match[str]) -> str:
         tag = match.group(0)
@@ -161,11 +161,21 @@ def load_chapters() -> list[dict]:
             continue
         meta["body"] = body
         meta["num"] = meta.get("num", "0").strip()   # "10" or "10A"; a letter makes an in-between chapter
+        meta["part"] = meta.get("part", "original").strip()
+        if meta["part"] not in {"second-look", "original"}:
+            raise ValueError(f"Unknown chapter part in {path.name}: {meta['part']}")
         meta["href"] = f"story/{meta['slug']}.html"
         chapters.append(meta)
     def order(chapter):
-        number, letter = re.match(r"(\d+)([A-Za-z]*)", chapter["num"]).groups()
-        return int(number), letter.upper()
+        if chapter["part"] == "second-look":
+            match = re.fullmatch(r"S(\d+)", chapter["num"], flags=re.IGNORECASE)
+            if not match:
+                raise ValueError(f"Second-look chapter number must use S followed by a number: {chapter['num']}")
+            return 0, int(match.group(1)), ""
+        match = re.fullmatch(r"(\d+)([A-Za-z]*)", chapter["num"])
+        if not match:
+            raise ValueError(f"Original chapter number is not recognised: {chapter['num']}")
+        return 1, int(match.group(1)), match.group(2).upper()
 
     return sorted(chapters, key=order)
 
@@ -248,13 +258,28 @@ def render_block(kind: str, args: list[str], lines: list[str], root: str) -> str
         if kind == "figure":
             rel, (w, h) = story_figure(args[0])
         else:
-            rel = f"assets/img/{args[0]}"
-            if (SITE / rel).exists():
-                with Image.open(SITE / rel) as im:
-                    w, h = im.size
+            if not fields.get("alt") or not fields.get("caption"):
+                raise ValueError("Image blocks require both alt: and caption: lines")
+            asset_root = (SITE / "assets" / "img").resolve()
+            image_path = (asset_root / args[0]).resolve()
+            try:
+                image_rel = image_path.relative_to(asset_root)
+            except ValueError as exc:
+                raise ValueError(f"Image must be inside assets/img: {args[0]}") from exc
+            rel = (Path("assets") / "img" / image_rel).as_posix()
+            if not image_path.is_file():
+                raise FileNotFoundError(f"Image not found: {image_path}")
+            if image_path.suffix.lower() == ".svg":
+                if not image_rel.parts or image_rel.parts[0] != "second-look":
+                    raise ValueError("SVG image blocks must be stored in assets/img/second-look/")
+                svg = image_path.read_text(encoding="utf-8")
+                view_box = re.search(r"\bviewBox=[\"']\s*[-\d.]+\s+[-\d.]+\s+([\d.]+)\s+([\d.]+)[\"']", svg)
+                if not view_box:
+                    raise ValueError(f"SVG needs a numeric viewBox: {image_path}")
+                w, h = round(float(view_box.group(1))), round(float(view_box.group(2)))
             else:
-                print(f"  missing screenshot: {rel}")
-                w, h = 1600, 900
+                with Image.open(image_path) as im:
+                    w, h = im.size
         refs = [a for a in args[1:] if a.startswith("nb")]
         src_html = ""
         if refs:
@@ -330,7 +355,15 @@ def sidebar(chapters: list[dict], active: str, root: str) -> str:
         ext = ""
         return f'<li><a href="{root}{href}"{current}><span class="n">{num}</span><span>{html.escape(title)}</span>{ext}</a></li>'
 
-    story = "".join(item(c["href"], str(c["num"]), c["title"]) for c in chapters)
+    story = "".join(
+        f'<div class="nav-group"><h2>{label}</h2><ol>'
+        + "".join(item(c["href"], str(c["num"]), c["title"]) for c in chapters if c["part"] == part)
+        + "</ol></div>"
+        for label, part in (
+            ("A second look (Unit 3)", "second-look"),
+            ("The original project (Unit 2)", "original"),
+        )
+    )
     tools = (item("dashboard/", "", "My dashboard", True)
              + '<li><span class="soon"><span class="n"></span><span>3D hotspots, in progress</span></span></li>')
     nbs = "".join(item(NB_PAGES[num], num, title) for num, title, _, _ in NOTEBOOKS)
@@ -340,7 +373,7 @@ def sidebar(chapters: list[dict], active: str, root: str) -> str:
   <a class="site-name" href="{root}index.html">Birmingham Healthy Life<small>Years in good health, area by area</small></a>
   <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Contents</button>
   <nav class="nav" id="site-nav" aria-label="Site contents">
-    <div class="nav-group"><h2>The story</h2><ol>{story}</ol></div>
+    {story}
     <div class="nav-group"><h2>Tools</h2><ul>{tools}</ul></div>
     <div class="nav-group"><h2>The notebooks</h2><ol>{nbs}</ol></div>
   </nav>
@@ -413,9 +446,19 @@ def build_home(chapters: list[dict]) -> None:
     root = ""
     hero, _, rest = body.partition("<!-- contents -->")
     toc = "".join(
-        f'<li><a href="{c["href"]}"><span class="n">{c["num"]}</span><strong>{html.escape(c["title"])}</strong>'
-        f'<span class="d">{html.escape(c.get("summary", ""))}</span></a></li>' for c in chapters)
-    contents = render_story(rest, root).replace("<!-- toc -->", f'<ol class="toc">{toc}</ol>').replace("<p>&lt;!-- toc --&gt;</p>", f'<ol class="toc">{toc}</ol>')
+        f'<section class="toc-part"><h2>{label}</h2><ol class="toc">'
+        + "".join(
+            f'<li><a href="{c["href"]}"><span class="n">{c["num"]}</span><strong>{html.escape(c["title"])}</strong>'
+            f'<span class="d">{html.escape(c.get("summary", ""))}</span></a></li>'
+            for c in chapters if c["part"] == part
+        )
+        + "</ol></section>"
+        for label, part in (
+            ("A second look (Unit 3)", "second-look"),
+            ("The original project (Unit 2)", "original"),
+        )
+    )
+    contents = render_story(rest, root).replace("<!-- toc -->", toc).replace("<p>&lt;!-- toc --&gt;</p>", toc)
     html_body = f"""<!doctype html>
 <html lang="en-GB">
 <head>
