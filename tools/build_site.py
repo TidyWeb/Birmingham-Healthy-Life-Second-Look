@@ -255,6 +255,7 @@ def render_block(kind: str, args: list[str], lines: list[str], root: str) -> str
 
     if kind in ("figure", "image"):
         wide = "wide" in args
+        is_vector_diagram = False
         if kind == "figure":
             rel, (w, h) = story_figure(args[0])
         else:
@@ -277,6 +278,7 @@ def render_block(kind: str, args: list[str], lines: list[str], root: str) -> str
                 if not view_box:
                     raise ValueError(f"SVG needs a numeric viewBox: {image_path}")
                 w, h = round(float(view_box.group(1))), round(float(view_box.group(2)))
+                is_vector_diagram = True
             else:
                 with Image.open(image_path) as im:
                     w, h = im.size
@@ -286,7 +288,8 @@ def render_block(kind: str, args: list[str], lines: list[str], root: str) -> str
             href, label = source_link(refs[0], root)
             src_html = f' <span class="src">From <a href="{href}">{label}</a>.</span>'
         caption = inline(fields.get("caption", ""))
-        classes = "plate" + (" wide" if wide else "") + (" photo" if kind == "image" else "")
+        image_class = " diagram" if is_vector_diagram else (" photo" if kind == "image" else "")
+        classes = "plate" + (" wide" if wide else "") + image_class
         return (f'<figure class="{classes}"><div class="sheet"><img src="{root}{rel}" width="{w}" height="{h}" '
                 f'alt="{html.escape(fields.get("alt", ""))}" loading="lazy"></div>'
                 f'<figcaption>{caption}{src_html}</figcaption></figure>')
@@ -401,6 +404,7 @@ def page(title: str, body: str, active: str, root: str, chapters: list[dict], de
 <link rel="stylesheet" href="{root}assets/site.css?v={asset_version()}">
 </head>
 <body>
+<div class="mobile-notice" role="alert">This website was not designed to be viewed on a mobile phone. Use a desktop or laptop.</div>
 <a class="skip" href="#main">Skip to the text</a>
 <div class="shell">
 {sidebar(chapters, active, root)}
@@ -473,6 +477,7 @@ def build_home(chapters: list[dict]) -> None:
 <link rel="stylesheet" href="assets/site.css?v={asset_version()}">
 </head>
 <body>
+<div class="mobile-notice" role="alert">This website was not designed to be viewed on a mobile phone. Use a desktop or laptop.</div>
 <a class="skip" href="#contents">Skip to the contents</a>
 <header class="home-hero">
   <div class="hero-card">{render_story(hero, root)}</div>
@@ -598,6 +603,21 @@ def build_notebook(num: str, title: str, folder: str, file: str, chapters: list[
 
 # ---------- The dashboard's way back ----------
 
+MOBILE_NOTICE = '<div class="mobile-notice" role="alert">This website was not designed to be viewed on a mobile phone. Use a desktop or laptop.</div>'
+DASHBOARD_MOBILE_STYLE = """<style>
+.mobile-notice { display: none; }
+@media screen and (max-width: 600px) {
+  body > :not(.mobile-notice) { display: none !important; }
+  body > .mobile-notice {
+    box-sizing: border-box; position: fixed; inset: 0; z-index: 2147483647;
+    display: grid !important; place-items: center; margin: 0; padding: 2rem;
+    background: #f2f0e8; color: #102a36;
+    font: 600 1.25rem/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-align: center;
+  }
+}
+</style>"""
+
 BACK_LINK = (
     '<a href="../story/my-dashboard.html" id="back-to-story" '
     # Go back to the exact page the reader came from; if they arrived directly, go to the dashboard chapter
@@ -616,6 +636,11 @@ def dashboard_back_link() -> None:
         return
     text = page_path.read_text(encoding="utf-8")
     text = re.sub(r'<a [^>]*id="back-to-story"[^>]*>.*?</a>\n?', "", text, flags=re.S)
+    if 'class="mobile-notice"' not in text:
+        assert text.count("</head>") == 1 and text.count("<body") == 1
+        text = text.replace("</head>", DASHBOARD_MOBILE_STYLE + "\n</head>", 1)
+        text = re.sub(r'(<body\b[^>]*>)', r'\1\n' + MOBILE_NOTICE, text, count=1, flags=re.I)
+    assert text.count("class=\"mobile-notice\"") == 1
     assert text.count("</body>") == 1
     page_path.write_text(text.replace("</body>", BACK_LINK + "\n</body>"), encoding="utf-8")
 

@@ -172,6 +172,7 @@ th { font-weight: 700; border-bottom: 2px solid var(--ink); }
 .plate figcaption .src { color: var(--ink-muted); }
 .plate figcaption .src a { color: var(--teal); }
 .plate.photo .sheet { padding: 0; overflow: hidden; background: var(--slate); }
+.plate.diagram .sheet img { width: 100%; }
 
 /* Buttons */
 .btn {
@@ -321,4 +322,16 @@ th { font-weight: 700; border-bottom: 2px solid var(--ink); }
 @media (prefers-reduced-motion: reduce) {
   .hero-card { animation: none; }
   html { scroll-behavior: auto; }
+}
+
+/* Phone notice: the project is designed for desktop and laptop screens. */
+.mobile-notice { display: none; }
+@media screen and (max-width: 600px) {
+  body > :not(.mobile-notice) { display: none !important; }
+  body > .mobile-notice {
+    box-sizing: border-box; position: fixed; inset: 0; z-index: 2147483647;
+    display: grid !important; place-items: center; margin: 0; padding: 2rem;
+    background: var(--paper); color: var(--ink);
+    font: 600 1.25rem/1.5 var(--sans); text-align: center;
+  }
 }
