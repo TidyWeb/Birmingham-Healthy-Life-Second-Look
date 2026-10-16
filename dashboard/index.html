@@ -770,8 +770,22 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		}
 	}
 
-</style></head>
-<body><p id="desktop-notice">This dashboard is designed for laptops and desktops. It is not suitable for phones.</p><div id="app"><div id="map-stage"><a class="skip" href="#area-picker">Skip to area list</a><div id="map" role="application" aria-label="Map of healthy life expectancy and area measures"></div>
+</style><style>
+.mobile-notice { display: none; }
+@media screen and (max-width: 600px) {
+  body > :not(.mobile-notice) { display: none !important; }
+  body > .mobile-notice {
+    box-sizing: border-box; position: fixed; inset: 0; z-index: 2147483647;
+    display: grid !important; place-items: center; margin: 0; padding: 2rem;
+    background: #f2f0e8; color: #102a36;
+    font: 600 1.25rem/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-align: center;
+  }
+}
+</style>
+</head>
+<body>
+<div class="mobile-notice" role="alert">This website was not designed to be viewed on a mobile phone. Use a desktop or laptop.</div><p id="desktop-notice">This dashboard is designed for laptops and desktops. It is not suitable for phones.</p><div id="app"><div id="map-stage"><a class="skip" href="#area-picker">Skip to area list</a><div id="map" role="application" aria-label="Map of healthy life expectancy and area measures"></div>
 <aside id="left-column" aria-label="Map controls and legend"><header class="top-left"><div class="brand panel"><div class="eyebrow explorer-label">Healthy Life Expectancy Explorer</div><h1><span>Birmingham and its </span><span>surrounding areas. </span><span class="title-accent">Years in good health.</span></h1><p class="outcome-rule">Darker shades show poorer outcomes. Lighter shades show better outcomes.</p><p id="subtitle">Mean male and female HLE · 2019–2023 · MSOA 2021</p><p class="note">HLE average is a project-derived mean, not an ONS statistic.</p><label class="field metric-field"><span>ACTIVE MEASURE</span><select id="metric-select"></select></label><div class="sex" role="group" aria-label="HLE sex"><button id="sex-average" aria-pressed="true">Average</button><button id="sex-male" aria-pressed="false">Male</button><button id="sex-female" aria-pressed="false">Female</button></div><details id="find-area" open><summary>Find an area</summary><div class="search"><input id="search" type="search" placeholder="Search a familiar place…" aria-label="Search areas by name or alias" autocomplete="off"><select id="area-picker" aria-label="Choose an area"><option value="">Choose an area…</option></select></div></details></div></header><section class="legend panel" aria-label="Map legend and summary"><h3 id="legend-title">HLE average · years</h3><p id="legend-period" class="legend-sub">2019–2023 · project-derived mean</p><div id="swatches" class="swatches"></div><div id="bandlabels" class="bandlabels"></div><p class="pattern-key"><span class="missing-chip"></span>Striped: unavailable · <span class="pinned-chip"></span> Pinned area</p><details id="legend-details" open><summary>Show details</summary><p id="group-selection-count" class="hint" aria-live="polite" hidden></p><p id="measure-note" class="hint" hidden></p><div class="stats"><div><strong id="count">660</strong><br><span>included areas</span></div><div><strong id="median">—</strong><br><span>unweighted median</span></div></div><p id="summary-note" class="hint">Area values; not population estimates.</p></details></section></aside>
 <nav class="actions-top" aria-label="Dashboard controls"><button id="controls-toggle" aria-expanded="false" aria-controls="controls">Explore &amp; layers</button><button id="about-open">Sources &amp; method</button><button id="map-only" aria-pressed="false">Map only</button></nav>
 <aside id="controls" class="panel collapsed" aria-label="Map and data controls"><div class="control-head"><h2>Explore &amp; layers</h2><button id="controls-close" aria-label="Close controls">×</button></div>
