@@ -9,6 +9,7 @@ sys.dont_write_bytecode = True
 import base64
 import csv
 import json
+import math
 import re
 from pathlib import Path
 from typing import Any
@@ -31,6 +32,7 @@ GEOMETRY_FILE = PROJECT_ROOT / "data/raw/2026-10-01/ons_msoa21_boundaries_explor
 PAIRS_FILE = PROJECT_ROOT / "data/cleaned/Neighbours/neighbour_pairs.csv"
 BIG_GAPS_FILE = PROJECT_ROOT / "data/cleaned/Neighbours/big_gap_pairs.csv"
 PAIR_DICTIONARY = PROJECT_ROOT / "data/cleaned/Neighbours/neighbour_data_dictionary.csv"
+RANK_STABILITY_FILE = PROJECT_ROOT / "data/cleaned/Uncertainty/rank_stability.csv"
 SMOKING_CONTEXT_FILE = HERE / "smoking-context.json"
 AUTHORITY_LOOKUP = PROJECT_ROOT / "data/prepared/Geography/ons_lsoa21_to_msoa21_lad22_exploratory_west_midlands.csv"
 
@@ -75,6 +77,48 @@ POOR_END_BY_FIELD = {
 }
 HLE_BAND_COLORS = ("#46327e", "#365c8d", "#21918c", "#5ec962", "#d7e75b")
 SEQUENTIAL_BAND_COLORS = ("#fff7bc", "#fec44f", "#fe9929", "#ec7014", "#cc4c02")
+PROBABILITY_BAND_COLORS = (
+    SEQUENTIAL_BAND_COLORS[0], SEQUENTIAL_BAND_COLORS[1],
+    SEQUENTIAL_BAND_COLORS[3], SEQUENTIAL_BAND_COLORS[4],
+)
+PROBABILITY_BAND_LABELS = (
+    "not · <5%", "possibly · 5–<50%", "likely · 50–<95%",
+    "confidently in the lowest tenth · ≥95%",
+)
+ETHNICITY_CAVEAT = "Area shares describe who lives in an area. They are not explanations of anyone's health."
+CRIME_CAVEAT = (
+    "Recorded crime counts what is reported and recorded, which varies with policing, reporting and footfall. "
+    "Removing it from the model barely changes accuracy (Notebook 07)."
+)
+BOTTOM_TENTH_NOTE = (
+    "Colour shows the simulated probability of an area ranking in the bottom tenth; "
+    "it is not a map of certain outcomes."
+)
+ETHNICITY_GROUP_SOURCES = {
+    "white_british_pct": ("white_british_pct",),
+    "other_white_pct": ("white_irish_pct", "white_gypsy_irish_traveller_pct", "white_roma_pct", "white_other_pct"),
+    "asian_pct": ("asian_bangladeshi_pct", "asian_chinese_pct", "asian_indian_pct", "asian_pakistani_pct", "asian_other_pct"),
+    "black_pct": ("black_african_pct", "black_caribbean_pct", "black_other_pct"),
+    "mixed_pct": ("mixed_white_asian_pct", "mixed_white_black_african_pct", "mixed_white_black_caribbean_pct", "mixed_other_pct"),
+    "other_pct": ("other_arab_pct", "other_ethnic_group_pct"),
+}
+ETHNICITY_GROUP_LABELS = {
+    "white_british_pct": "White British",
+    "other_white_pct": "Other White",
+    "asian_pct": "Asian",
+    "black_pct": "Black",
+    "mixed_pct": "Mixed",
+    "other_pct": "Other",
+}
+RANK_STABILITY_FIELDS = (
+    "median_simulated_rank", "rank_5th_percentile", "rank_95th_percentile",
+    "rank_interval_width_places", "p_bottom_10_percent", "bottom_10_confidence",
+    "p_top_10_percent", "top_10_confidence",
+)
+RANK_NUMERIC_FIELDS = {
+    "median_simulated_rank", "rank_5th_percentile", "rank_95th_percentile",
+    "rank_interval_width_places", "p_bottom_10_percent", "p_top_10_percent",
+}
 WEB_AREA_FIELDS = (
     "area_code", "local_area_name",
     "hle_male", "hle_male_lci", "hle_male_uci", "hle_male_le_imputed",
@@ -230,7 +274,25 @@ def smoking_context(areas: list[dict[str, Any]]) -> dict[str, Any]:
 
 def metric_metadata(dictionary: dict[str, dict[str, str]]) -> dict[str, dict[str, Any]]:
     metrics: dict[str, dict[str, Any]] = {}
-    for field in DISPLAY_MEASURE_FIELDS:
+    ordered_fields = (*DISPLAY_MEASURE_FIELDS[:3], "p_bottom_10_percent", *DISPLAY_MEASURE_FIELDS[3:])
+    for field in ordered_fields:
+        if field == "p_bottom_10_percent":
+            metrics[field] = {
+                "label": "Chance of being in the lowest tenth (HLE)",
+                "short_label": "Chance of being in the lowest tenth (HLE)",
+                "family": "uncertainty",
+                "format": "probability",
+                "display_decimals": 1,
+                "unit": "%",
+                "period": "Notebook 08 · 10,000 simulated draws",
+                "definition": "Share of simulated draws in which an area's average HLE ranks in the lowest tenth; the stored probability is between 0 and 1.",
+                "poor_end": "low",
+                "band_colors": list(PROBABILITY_BAND_COLORS),
+                "band_breaks": [0.05, 0.50, 0.95],
+                "band_labels": list(PROBABILITY_BAND_LABELS),
+                "note": BOTTOM_TENTH_NOTE,
+            }
+            continue
         if field not in dictionary:
             raise KeyError(f"Metric missing from wide data dictionary: {field}")
         if field not in POOR_END_BY_FIELD:
@@ -255,6 +317,21 @@ def metric_metadata(dictionary: dict[str, dict[str, str]]) -> dict[str, dict[str
             "poor_end": POOR_END_BY_FIELD[field],
             "band_colors": list(band_colors),
         }
+    for field, label in ETHNICITY_GROUP_LABELS.items():
+        metrics[field] = {
+            "label": label,
+            "short_label": label,
+            "family": "ethnicity",
+            "format": "percentage",
+            "display_decimals": 1,
+            "unit": "%",
+            "period": "2021",
+            "definition": "Share of all usual residents in the 2021 Census broad ethnic group.",
+            "poor_end": "high",
+            "band_colors": list(SEQUENTIAL_BAND_COLORS),
+            "note": ETHNICITY_CAVEAT,
+        }
+    metrics["crime_for_analysis"]["note"] = CRIME_CAVEAT
     return metrics
 
 
@@ -312,6 +389,20 @@ def data_payload() -> tuple[dict[str, Any], int, int]:
     if source_fields != dict_fields:
         raise ValueError("Wide CSV columns do not exactly match data_dictionary.csv order")
 
+    rank_fields, rank_rows = read_csv(RANK_STABILITY_FILE)
+    required_rank_fields = {"area_code", "published_hle", *RANK_STABILITY_FIELDS}
+    if not required_rank_fields.issubset(rank_fields):
+        raise ValueError(f"Rank-stability CSV is missing fields: {sorted(required_rank_fields - set(rank_fields))}")
+    rank_by_code: dict[str, dict[str, str]] = {}
+    for rank_row in rank_rows:
+        code = rank_row["area_code"]
+        if code in rank_by_code:
+            raise ValueError(f"Rank-stability CSV has duplicate area code: {code}")
+        rank_by_code[code] = rank_row
+    source_codes = {row["area_code"] for row in source_rows}
+    if set(rank_by_code) != source_codes:
+        raise ValueError("Rank-stability CSV does not cover exactly the 660 dashboard areas")
+
     names = json.loads(NAMES_FILE.read_text(encoding="utf-8"))
     geojson = json.loads(GEOMETRY_FILE.read_text(encoding="utf-8"))
     rounded_coordinates_by_code, geometry_precision_exception_count = prepare_geometry(geojson["features"])
@@ -343,6 +434,26 @@ def data_payload() -> tuple[dict[str, Any], int, int]:
             field: parse_by_dtype(row[field], dictionary[field]["dtype"])
             for field in WEB_AREA_FIELDS
         }
+        for group, source_columns in ETHNICITY_GROUP_SOURCES.items():
+            components = [parse_by_dtype(row[column], dictionary[column]["dtype"]) for column in source_columns]
+            if any(value is None for value in components):
+                raise ValueError(f"Ethnicity group {group} has a missing source value for {code}")
+            values[group] = sum(components)
+        if not math.isclose(sum(values[group] for group in ETHNICITY_GROUP_SOURCES), 100.0, rel_tol=0, abs_tol=0.1):
+            raise ValueError(f"Six broad ethnicity groups do not sum to 100% for {code}")
+
+        rank_record = rank_by_code[code]
+        if not math.isclose(float(rank_record["published_hle"]), float(values["hle_average"]), rel_tol=0, abs_tol=1e-8):
+            raise ValueError(f"Rank-stability HLE value does not match the wide table for {code}")
+        for field in RANK_STABILITY_FIELDS:
+            if field in RANK_NUMERIC_FIELDS:
+                values[field] = float(rank_record[field])
+            else:
+                values[field] = rank_record[field]
+        if not 0 <= values["p_bottom_10_percent"] <= 1 or not 0 <= values["p_top_10_percent"] <= 1:
+            raise ValueError(f"Rank-stability probability is outside 0–1 for {code}")
+        if not (1 <= values["rank_5th_percentile"] <= values["rank_95th_percentile"] <= len(source_rows)):
+            raise ValueError(f"Rank-stability interval is invalid for {code}")
         # The composed display name comes only from the shared locality-name file.
         values["local_area_name"] = composed_name
         areas.append({
@@ -386,7 +497,7 @@ def data_payload() -> tuple[dict[str, Any], int, int]:
             "area_count": len(areas),
             "median_hle_average": 64.1,
             "source_fields": source_fields,
-            "mapped_fields": list(WEB_AREA_FIELDS),
+            "mapped_fields": list(WEB_AREA_FIELDS) + list(ETHNICITY_GROUP_SOURCES) + list(RANK_STABILITY_FIELDS),
             "pair_source_fields": pair_fields,
             "pair_fields": PAIR_FIELDS,
             "pair_flag_fields": PAIR_FLAG_FIELDS,
