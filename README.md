@@ -1,46 +1,38 @@
 # Birmingham Healthy Life: A Second Look
 
-### [Visit the live Unit 3 site ↗](https://tidyweb.github.io/Birmingham-Healthy-Life-Second-Look/)
+This repository contains the static Unit 3 project site. It tells the story of my ethical revision of the Unit 2 analysis, including the methods, results, limitations and lifecycle. The analysis code, notebooks and data are in the [Unit 3 analysis repository](https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment), whose README is the submission front door.
 
-This is the project site for my Code Institute Unit 3 assessment: a second look at the Birmingham Healthy Life analysis through an ethical lens. It is served by GitHub Pages at https://tidyweb.github.io/Birmingham-Healthy-Life-Second-Look/.
+The deployed site is [Birmingham Healthy Life: A Second Look](https://tidyweb.github.io/Birmingham-Healthy-Life-Second-Look/). The original [Unit 2 site](https://tidyweb.github.io/Birmingham-Healthy-Life/) remains available.
 
-The [original Unit 2 project site](https://tidyweb.github.io/Birmingham-Healthy-Life/) remains available.
+## Sources and generated pages
 
-The notebooks and data are in the assessment repository: https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment
+- `content/` holds the Markdown for the home page and story chapters. Edit these source files.
+- `tools/dashboard/template.html` and `tools/dashboard/build.py` build the Leaflet dashboard from the template and the analysis repository's saved outputs.
+- `tools/build_site.py` builds the home page, story pages and notebook pages from `content/` and the executed notebooks. It also adds the dashboard's Back link and desktop-only notice.
+- `assets/site.css`, `assets/site.js` and `assets/img/` hold the site presentation and hand-maintained images.
+- `index.html`, `story/`, `notebooks/`, `assets/figures/`, `assets/nb/` and `assets/files/` are generated. Do not edit them by hand.
 
-## What's where
+## Rebuild and check
 
-- `content/`: the text for the home page and each chapter, in Markdown. Edit these.
-- `tools/build_site.py`: turns `content/` and the executed notebooks into the HTML pages.
-- `tools/ethics_register.py`: reads the ethics-screen CSV and writes the figures and text summary used by the second-look chapters.
-- `assets/site.css`, `assets/site.js`: the look and the small page behaviours.
-- `assets/img/`: screenshots and the second-look SVG figures, kept by hand.
-- `dashboard/`: the dashboard, with a "Back" button added by the build.
-- `index.html`, `story/`, `notebooks/`, `assets/figures/`, `assets/nb/`: built by the script. Don't edit these; they're rewritten on every build.
+Use the site and analysis clones as sibling folders, with the Unit 3 environment at `REPOS/.venv-unit3`. From the site repository root, activate that environment, then install the analysis packages and the extra Markdown dependency used by `build_site.py`:
 
-## Rebuild after editing
-
-From the site clone inside the Unit 3 `REPOS` folder, with the analysis clone beside it, run:
-
-```
-HLE_PROJECT="../Code-Institute-DA-with-AI-Unit-3-Assessment" "../.venv-unit3/bin/python" tools/build_site.py
+```bash
+source ../.venv-unit3/bin/activate
+python -m pip install -r ../Code-Institute-DA-with-AI-Unit-3-Assessment/requirements.txt
+python -m pip install Markdown
 ```
 
-To check every link and image afterwards, run `tools/check_links.py` with the same Python. Add `--web` to check the external sites too. GitHub sometimes refuses scripted checks with a 503 even when the page exists.
+Run the notebooks in order first. From the site repository root, build the dashboard, then the site, then check its internal links:
 
-To look at it locally, run `python3 -m http.server 8765` in this folder and open http://localhost:8765/.
+```bash
+HLE_PROJECT="../Code-Institute-DA-with-AI-Unit-3-Assessment" \
+  python tools/dashboard/build.py
 
-## Block markers in the content files
+HLE_PROJECT="../Code-Institute-DA-with-AI-Unit-3-Assessment" \
+  python tools/build_site.py
 
-Use these alongside ordinary Markdown:
+HLE_PROJECT="../Code-Institute-DA-with-AI-Unit-3-Assessment" \
+  python tools/check_links.py
+```
 
-- `::: keypoints`: the "In short" box at the top of a chapter.
-- `::: stats nb04#cellid`: a slate panel of numbers. Each line is `value | label`.
-- `::: figure folder/name [wide] nb05#cellid`: a saved notebook figure on a plate. The folder is one of `wide`, `neighbours`, `ml` or `hotspots`. Add `alt:` and `caption:` lines.
-- `::: image file.webp [wide]`: an image from `assets/img`; `.svg` figures are supported under `assets/img/second-look/`. Add both `alt:` and `caption:` lines.
-- `::: callout`: one plain sentence set large.
-- `::: tableau`: the Tableau embed with its screenshot.
-- `:::`: closes a block.
-- `^ nb04#cellid | note`: a margin note for the paragraph after it. It links to that cell on the notebook page.
-
-The cell ids come from the notebooks themselves, so every note points at the cell that produced the number.
+`build_site.py` removes and recreates only its generated output folders before building. Add `--web` to `check_links.py` to check external addresses as well; some sites refuse automated requests even when the page has been verified manually.

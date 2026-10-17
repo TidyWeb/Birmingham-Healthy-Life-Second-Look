@@ -54,3 +54,7 @@ I kept each original Unit 2 lamp beside the Unit 3 status. “Investigated and r
 - **Q21 — Tested only in a demo.** This stays open because Phil is the only person who has checked the site so far. Phil can close it after the same user-testing sessions are completed and their results are recorded.
 
 These are open findings, not promises that user testing will clear them. If testing reveals a new problem, I will record that and decide what to change before closing either item.
+
+## User testing
+
+<!-- Phil: add the user-testing results here after the sessions. -->
