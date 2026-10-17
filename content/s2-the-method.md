@@ -9,9 +9,11 @@ standfirst: I used the questions from my own AI-ethics guide as a first-pass scr
 I applied a 27-question screen from my own AI-ethics guide to the published analysis and what readers might do with it. A yes is a concern to investigate; a grey lamp means no concern was raised, not that the project is safe.
 :::
 
-## Where the screen comes from
+## Where the screen comes from {#where-the-screen-comes-from}
 
-The questions come from my [AI Ethics: a practical overview](https://tidyweb.github.io/ethical-considerations-in-ai/) guide. The report records the evidence and action for each answer, then links concerns to the Unit 3 stages where they need attention.
+I built this 27-question screen as part of my independent [AI Ethics: a practical overview](https://tidyweb.github.io/ethical-considerations-in-ai/) study guide. I drew on the Code Institute LMS lesson “Ethical considerations in AI” and my wider research. The guide’s “Sources and boundaries” section separates the LMS capture, independent research and invented examples. Its main sources include UNESCO’s Recommendation on the Ethics of Artificial Intelligence, the OECD AI Principles, NIST’s AI Risk Management Framework, UK GDPR changes under the Data (Use and Access) Act 2025, ICO guidance, and the EU AI Act. The guide records its legal checks as of 14 October 2026.
+
+I wanted a practical checklist that turns ethical principles into specific questions. The screen was not part of Unit 2; Unit 3 is the first time I have applied it to a real data project. The report records the evidence and action for each answer, then links concerns to the Unit 3 stages where they need attention.
 
 ::: image second-look/checkpoint-flow.svg
 alt: Six checkpoints run from A through F. The concern counts beneath them are 4, 4, 1, 3, 4 and 1. The flow ends with an owner decision: proceed, narrow, redesign or stop.

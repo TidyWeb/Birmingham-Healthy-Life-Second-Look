@@ -9,6 +9,8 @@ standfirst: The screen raised concerns about interpretation, certainty and accou
 My first pass raised 17 concerns and 10 no-flags. All four legal-trigger questions had no flag. These are issues for me to investigate, not findings of harm.
 :::
 
+The 27-question screen is my own work, separate from Unit 2; Unit 3 is the first real data project to which I have applied it ([where it comes from](s2-the-method.html#where-the-screen-comes-from)).
+
 ## The count
 
 ::: stats
