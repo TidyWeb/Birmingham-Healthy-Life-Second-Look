@@ -9,7 +9,7 @@ standfirst: An MSOA mean does not show all the variation among its component LSO
 Across the 3,205 LSOA fuel-poverty percentages, 30.3% of the total variance is within MSOAs and 69.7% is between LSOA-count-weighted MSOA means. A separate like-for-like range rule flags 255 of 660 MSOAs (38.6%).
 :::
 
-## What I compared
+## What I compared {#aggregation}
 
 The 2024 [fuel-poverty data from DESNZ](https://www.gov.uk/government/statistics/sub-regional-fuel-poverty-data-2026-2024-data) give a percentage for each LSOA. I map those records to MSOAs using the saved [ONS geography lookup](https://geoportal.statistics.gov.uk/datasets/ons::output-area-2021-to-lsoa-to-msoa-to-lad-december-2021-exact-fit-lookup-in-ew-v3/about).
 

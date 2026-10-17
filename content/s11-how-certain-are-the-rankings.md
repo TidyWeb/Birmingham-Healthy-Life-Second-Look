@@ -47,6 +47,6 @@ alt: Map showing each area's simulated probability of being in the bottom tenth.
 caption: The map shows an estimated probability for each area, not a certain label for its residents.
 :::
 
-## What it means
+## What it means {#uncertainty-response}
 
 I present rankings as ranges and confidence bands wherever a single order would look more certain than the estimates allow. This is the accuracy test in practice: the intervals separate areas that can be described as confidently low from those that cannot. A real HLE difference should remain visible, but a rank should not be firmer than the evidence.

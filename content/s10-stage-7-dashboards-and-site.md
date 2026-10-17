@@ -18,7 +18,7 @@ alt: The original dashboard showing a selected area and its healthy life expecta
 caption: The dashboard presents named area estimates and comparisons. The number shown is an estimate, not a precise ranking of residents.
 :::
 
-## What the screen asked
+## What the screen asked {#screen-findings}
 
 **Q1 — Could the work shape a decision that matters to someone? Concern.** No individual decision is made, but named maps are public and can inform how professionals and others compare places.
 
@@ -51,6 +51,6 @@ caption: Orange filled lamps mark concerns and hollow grey lamps mark no flags.
 
 The screen found a clear gap between publishing a dashboard and having evidence that people can interpret, question or correct it. I have not treated a creator-only check as user testing.
 
-## What changes
+## What changes {#recorded-responses}
 
 The site now states the use limits and carries uncertainty and association caveats. A public question route, user testing, and the correction and retirement policy are covered later in this second look.

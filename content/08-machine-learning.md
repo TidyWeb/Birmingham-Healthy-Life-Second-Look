@@ -10,7 +10,7 @@ standfirst: If I know seven things about a place, how much of its healthy life e
 - Income does most of the work. And what the model misses still clusters on the map.
 :::
 
-## Why these two methods
+## Why these two methods {#why-ml}
 
 ^ nb05#5f9797c5 | Why k-means and a plain linear regression.
 I came at it two ways. First I used **clustering**, to sort the areas into groups using only the seven measures. I kept HLE out of it, so the groups can't just be HLE in disguise. Then I brought HLE back to see whether the groups differ. Second, I used **regression**, to fit one straight-line model that predicts HLE from the same seven measures.

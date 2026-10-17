@@ -8,7 +8,7 @@
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
     <dc:title>Ethics screen lamps for Stage 3</dc:title>
-    <dc:date>2026-10-17T14:47:39.913864</dc:date>
+    <dc:date>2026-10-17T19:34:12.021491</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -42,7 +42,7 @@ C 23.978657 29.487132 22.431126 33.223203 22.431126 37.118283
 C 22.431126 41.013363 23.978657 44.749434 26.732895 47.503671 
 C 29.487132 50.257908 33.223203 51.80544 37.118283 51.80544 
 z
-" clip-path="url(#pae1d4e9b81)" style="fill: #b94f13; stroke: #b94f13; stroke-width: 1.8; stroke-linejoin: miter"/>
+" clip-path="url(#pe50417685e)" style="fill: #b94f13; stroke: #b94f13; stroke-width: 1.8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 91.515161 51.80544 
@@ -55,7 +55,7 @@ C 78.375535 29.487132 76.828004 33.223203 76.828004 37.118283
 C 76.828004 41.013363 78.375535 44.749434 81.129773 47.503671 
 C 83.88401 50.257908 87.620081 51.80544 91.515161 51.80544 
 z
-" clip-path="url(#pae1d4e9b81)" style="fill: #b94f13; stroke: #b94f13; stroke-width: 1.8; stroke-linejoin: miter"/>
+" clip-path="url(#pe50417685e)" style="fill: #b94f13; stroke: #b94f13; stroke-width: 1.8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 145.912039 51.80544 
@@ -68,7 +68,7 @@ C 132.772413 29.487132 131.224882 33.223203 131.224882 37.118283
 C 131.224882 41.013363 132.772413 44.749434 135.526651 47.503671 
 C 138.280888 50.257908 142.016959 51.80544 145.912039 51.80544 
 z
-" clip-path="url(#pae1d4e9b81)" style="fill: #b94f13; stroke: #b94f13; stroke-width: 1.8; stroke-linejoin: miter"/>
+" clip-path="url(#pe50417685e)" style="fill: #b94f13; stroke: #b94f13; stroke-width: 1.8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
     <path d="M 200.308917 51.80544 
@@ -81,7 +81,7 @@ C 187.169292 29.487132 185.62176 33.223203 185.62176 37.118283
 C 185.62176 41.013363 187.169292 44.749434 189.923529 47.503671 
 C 192.677766 50.257908 196.413837 51.80544 200.308917 51.80544 
 z
-" clip-path="url(#pae1d4e9b81)" style="fill: #b94f13; stroke: #b94f13; stroke-width: 1.8; stroke-linejoin: miter"/>
+" clip-path="url(#pe50417685e)" style="fill: #b94f13; stroke: #b94f13; stroke-width: 1.8; stroke-linejoin: miter"/>
    </g>
    <g id="text_1">
     <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #eceee8" x="37.118283" y="39.326291" transform="rotate(-0 37.118283 39.326291)">7</text>
@@ -98,7 +98,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pae1d4e9b81">
+  <clipPath id="pe50417685e">
    <rect x="7.2" y="7.2" width="223.0272" height="59.836566"/>
   </clipPath>
  </defs>

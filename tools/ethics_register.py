@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 import csv
+import math
 import os
 from pathlib import Path
+from urllib.parse import urlsplit
 
 import matplotlib.pyplot as plt
-from matplotlib.patches import Circle, FancyBboxPatch
+from matplotlib.patches import Circle, FancyBboxPatch, RegularPolygon
 
 
 SITE = Path(__file__).resolve().parent.parent
@@ -16,6 +18,7 @@ PROJECT = Path(os.environ.get(
     str(SITE.parent / "Code-Institute-DA-with-AI-Unit-3-Assessment"),
 ))
 SCREEN_CSV = PROJECT / "data" / "ethics" / "unit2_screen_results.csv"
+AFTER_SCREEN_CSV = PROJECT / "data" / "ethics" / "unit3_screen_results.csv"
 OUT = SITE / "assets" / "img" / "second-look"
 
 FIELDS = [
@@ -57,6 +60,7 @@ MUTED = "#4b5b62"
 RULE = "#c9cfc6"
 TEAL = "#1d5c63"
 ORANGE = "#b94f13"
+YELLOW = "#e3a32b"  # --gold from Phil's ethics guide
 NO_FLAG = "#7a878c"
 
 plt.rcParams.update({
@@ -101,6 +105,56 @@ def load_records(path: Path = SCREEN_CSV) -> list[dict[str, str]]:
     assert len(legal) == 4, f"Expected 4 legal triggers, found {len(legal)}"
     assert {record["q"] for record in legal} == LEGAL_QUESTIONS
     assert all(record["lamp"] == "no_flag" for record in legal)
+    return records
+
+
+def load_after_records(path: Path = AFTER_SCREEN_CSV) -> list[dict[str, str]]:
+    """Read the Unit 3 re-screen and verify the before/after status counts."""
+    expected_fields = FIELDS + ["after_status", "evidence_url"]
+    with path.open(encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        if reader.fieldnames != expected_fields:
+            raise ValueError(f"Unexpected Unit 3 screen columns: {reader.fieldnames}")
+        records = list(reader)
+
+    if len(records) != 27:
+        raise ValueError(f"Expected 27 Unit 3 questions, found {len(records)}")
+    records.sort(key=lambda record: int(record["q"]))
+    if [int(record["q"]) for record in records] != list(range(1, 28)):
+        raise ValueError("Unit 3 question numbers must be unique and run from 1 to 27")
+
+    allowed = {"investigated_and_recorded", "open", "no_flag"}
+    for record in records:
+        record["q"] = int(record["q"])
+        if record["after_status"] not in allowed:
+            raise ValueError(f"Unexpected Unit 3 status for Q{record['q']}")
+        parsed = urlsplit(record["evidence_url"])
+        if not parsed.path or not parsed.fragment:
+            raise ValueError(f"Q{record['q']} evidence URL needs a page path and anchor")
+        if not record["evidence"].strip():
+            raise ValueError(f"Q{record['q']} has no evidence text")
+
+    counts = {
+        status: sum(record["after_status"] == status for record in records)
+        for status in sorted(allowed)
+    }
+    assert len(records) == 27
+    assert counts == {
+        "investigated_and_recorded": 15,
+        "no_flag": 10,
+        "open": 2,
+    }, f"Unexpected Unit 3 status counts: {counts}"
+    assert all(
+        record["after_status"] == "no_flag"
+        for record in records if record["lamp"] == "no_flag"
+    ), "The ten Unit 2 no-flag questions must remain no-flag"
+    assert {
+        record["q"] for record in records if record["after_status"] == "open"
+    } == {18, 21}, "Only the two user-testing questions remain open"
+    assert all(
+        "open because" in record["evidence"].lower()
+        for record in records if record["after_status"] == "open"
+    ), "Every open result needs its reason in the evidence column"
     return records
 
 
@@ -180,6 +234,155 @@ def save_lamp_board(records: list[dict[str, str]]) -> Path:
                 metadata={"Title": "Ethics screen lamps by checkpoint"})
     plt.close(fig)
     return path
+
+
+def _draw_after_marker(
+    ax, status: str, x: float, y: float, radius: float,
+    question: int | str = "", text_scale: float = 1.0,
+) -> None:
+    """Draw one Unit 3 marker using both shape and colour for status."""
+    if status == "investigated_and_recorded":
+        marker = RegularPolygon(
+            (x, y), 4, radius=radius, orientation=0,
+            edgecolor=YELLOW, facecolor=YELLOW, linewidth=1.7, zorder=2,
+        )
+        text_color = INK
+    elif status == "open":
+        marker = RegularPolygon(
+            (x, y), 3, radius=radius, orientation=math.pi / 2,
+            edgecolor=ORANGE, facecolor=ORANGE, linewidth=1.7, zorder=2,
+        )
+        text_color = PAPER
+    elif status == "no_flag":
+        marker = Circle(
+            (x, y), radius=radius * .9,
+            edgecolor=NO_FLAG, facecolor=PAPER, linewidth=1.7, zorder=2,
+        )
+        text_color = INK
+    else:
+        raise ValueError(f"Unknown marker status: {status}")
+    ax.add_patch(marker)
+    ax.text(
+        x, y, str(question), ha="center", va="center",
+        fontsize=(7.4 if radius < .2 else 8.2) * text_scale,
+        weight="bold", color=text_color,
+        zorder=3,
+    )
+
+
+def _draw_after_board(
+    ax, records: list[dict[str, str]], title: str, text_scale: float = 1.0,
+) -> None:
+    grouped = {
+        checkpoint: [record for record in records if record["checkpoint"] == checkpoint]
+        for checkpoint in CHECKPOINTS
+    }
+    ax.set_xlim(0, 10)
+    ax.set_ylim(0, 7)
+    ax.axis("off")
+    ax.set_aspect("equal", adjustable="box")
+    ax.text(.25, 6.72, title, fontsize=16 * text_scale, weight="bold", va="top")
+    ax.text(
+        .25, 6.3,
+        "Question numbers repeat; marker shape and fill show the status.",
+        fontsize=9.2 * text_scale, color=MUTED, va="top",
+    )
+    y_positions = [5.65, 4.8, 3.95, 3.1, 2.25, 1.4]
+    for (checkpoint, name), y in zip(CHECKPOINTS.items(), y_positions):
+        short_name = name.replace(" and ", " & ")
+        if checkpoint == "F":
+            short_name = "Responsibility & law"
+        ax.text(.28, y, f"{checkpoint} · {short_name}", fontsize=10.2 * text_scale,
+                weight="bold", va="center")
+        ax.plot([.28, 9.55], [y - .39, y - .39], color=RULE, linewidth=.8)
+        for index, row in enumerate(grouped[checkpoint]):
+            x = 4.65 + index * .78
+            _draw_after_marker(ax, row["after_status"], x, y, .24, row["q"], text_scale)
+            if row["legal_trigger"] == "true":
+                ax.text(x + .18, y + .21, "⚖", color=TEAL, fontsize=9 * text_scale,
+                        ha="left", va="bottom")
+
+    legend_y = .56
+    for x, status, label in (
+        (.52, "investigated_and_recorded", "Investigated and recorded"),
+        (4.15, "open", "Open"),
+        (6.15, "no_flag", "No flag"),
+    ):
+        _draw_after_marker(ax, status, x, legend_y, .14, text_scale=text_scale)
+        ax.text(x + .26, legend_y, label, va="center", fontsize=8.1 * text_scale)
+
+
+def save_lamp_board_after(records: list[dict[str, str]]) -> Path:
+    fig, ax = plt.subplots(figsize=(7, 6.5), dpi=96)
+    fig.patch.set_facecolor(PAPER)
+    ax.set_facecolor(PAPER)
+    _draw_after_board(ax, records, "Unit 3 re-screen by checkpoint")
+    path = OUT / "lamp-board-after.svg"
+    fig.savefig(path, format="svg", bbox_inches="tight", facecolor=PAPER,
+                metadata={"Title": "Unit 3 ethics re-screen by checkpoint"})
+    plt.close(fig)
+    return path
+
+
+def save_lamp_board_before_after(
+    before: list[dict[str, str]], after: list[dict[str, str]],
+) -> Path:
+    fig, axes = plt.subplots(1, 2, figsize=(20, 7), dpi=96)
+    fig.patch.set_facecolor(PAPER)
+    for ax in axes:
+        ax.set_facecolor(PAPER)
+    _draw_before_board(axes[0], before, "Unit 2", text_scale=1.6)
+    _draw_after_board(axes[1], after, "Unit 3", text_scale=1.6)
+    fig.subplots_adjust(left=.015, right=.985, top=.99, bottom=.01, wspace=.015)
+    path = OUT / "lamp-board-before-after.svg"
+    fig.savefig(path, format="svg", bbox_inches="tight", facecolor=PAPER,
+                metadata={"Title": "Unit 2 and Unit 3 ethics screen boards"})
+    plt.close(fig)
+    return path
+
+
+def _draw_before_board(
+    ax, records: list[dict[str, str]], title: str, text_scale: float = 1.0,
+) -> None:
+    grouped = {
+        checkpoint: [record for record in records if record["checkpoint"] == checkpoint]
+        for checkpoint in CHECKPOINTS
+    }
+    ax.set_xlim(0, 10)
+    ax.set_ylim(0, 7)
+    ax.axis("off")
+    ax.set_aspect("equal", adjustable="box")
+    ax.text(.25, 6.72, title, fontsize=16 * text_scale, weight="bold", va="top")
+    ax.text(.25, 6.3, "Orange: concern · hollow grey: no flag", fontsize=9.2 * text_scale,
+            color=MUTED, va="top")
+    y_positions = [5.65, 4.8, 3.95, 3.1, 2.25, 1.4]
+    for (checkpoint, name), y in zip(CHECKPOINTS.items(), y_positions):
+        short_name = name.replace(" and ", " & ")
+        if checkpoint == "F":
+            short_name = "Responsibility & law"
+        ax.text(.28, y, f"{checkpoint} · {short_name}", fontsize=10.2 * text_scale,
+                weight="bold", va="center")
+        ax.plot([.28, 9.55], [y - .39, y - .39], color=RULE, linewidth=.8)
+        for index, row in enumerate(grouped[checkpoint]):
+            x = 4.65 + index * .78
+            concern = row["lamp"] == "concern"
+            edge = ORANGE if concern else NO_FLAG
+            face = ORANGE if concern else PAPER
+            ax.add_patch(Circle((x, y), .24, edgecolor=edge, facecolor=face,
+                                linewidth=1.8))
+            ax.text(x, y, str(row["q"]), ha="center", va="center", fontsize=8.2 * text_scale,
+                    weight="bold", color=PAPER if concern else INK)
+            if row["legal_trigger"] == "true":
+                ax.text(x + .18, y + .21, "⚖", color=TEAL, fontsize=9 * text_scale,
+                        ha="left", va="bottom")
+    ax.add_patch(Circle((.52, .56), .14, edgecolor=ORANGE, facecolor=ORANGE,
+                        linewidth=1.5))
+    ax.text(.8, .56, "Concern", va="center", fontsize=8.8 * text_scale)
+    ax.add_patch(Circle((2.35, .56), .14, edgecolor=NO_FLAG, facecolor=PAPER,
+                        linewidth=1.5))
+    ax.text(2.63, .56, "No flag", va="center", fontsize=8.8 * text_scale)
+    ax.text(4.15, .56, "⚖  Legal-trigger question", va="center", fontsize=8.8 * text_scale,
+            color=TEAL)
 
 
 def save_stage_grid(records: list[dict[str, str]]) -> Path:
@@ -316,15 +519,27 @@ def save_checkpoint_flow(records: list[dict[str, str]]) -> Path:
 
 def main() -> None:
     records = load_records()
+    after_records = load_after_records()
     OUT.mkdir(parents=True, exist_ok=True)
     outputs = [
         save_lamp_board(records),
+        save_lamp_board_after(after_records),
+        save_lamp_board_before_after(records, after_records),
         save_stage_grid(records),
         save_checkpoint_flow(records),
         write_screen_summary(records),
         *save_stage_lamp_strips(records),
     ]
     print("Loaded 27 questions: 17 concerns, 10 no-flags, 4 legal triggers (all no-flag).")
+    after_counts = {
+        status: sum(row["after_status"] == status for row in after_records)
+        for status in ("investigated_and_recorded", "open", "no_flag")
+    }
+    print(
+        "Unit 3 re-screen: "
+        f"{after_counts['investigated_and_recorded']} investigated and recorded, "
+        f"{after_counts['open']} open, {after_counts['no_flag']} no-flags."
+    )
     for path in outputs:
         print(f"Wrote {path.relative_to(SITE)}")
 

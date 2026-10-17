@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"/><title>Birmingham and its surrounding areas. Years in good health.</title>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"/><title>Birmingham and its surrounding areas. Years in good health.</title>
 <style>
 :root{color-scheme:dark;--bg:#101f28;--panel:#172b35f2;--line:#ffffff25;--ink:#f3f4eb;--muted:#b2c2c7;--accent:#d7e75b;--hle1:#46327e;--hle2:#365c8d;--hle3:#21918c;--hle4:#5ec962;--hle5:#d7e75b}
 *{box-sizing:border-box}html,body,#app{margin:0;width:100%;height:100%;min-height:320px;overflow:hidden;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button,select,input[type=search]{color:var(--ink);background:#233944;border:1px solid var(--line);border-radius:7px;padding:8px 10px}button{cursor:pointer}button:hover,select:hover{background:#344c55}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid #fff;outline-offset:3px}button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#152c33}input[type=checkbox]{accent-color:var(--accent)}input[type=range]{width:100%;accent-color:var(--accent)}h1,h2,h3,p{margin:0}h1{font-size:22px;line-height:1.12;letter-spacing:-.035em}h2{font-size:18px}h3{font-size:14px}.muted,.hint{color:var(--muted)}.hint{font-size:12px;margin-top:5px}.eyebrow{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px #0005;backdrop-filter:blur(12px)}
@@ -1494,5 +1494,21 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&state.drawe
 function loadProviderSettings(){init();syncPanels()}
 function startDesktop(){if(innerWidth>=1000&&!map&&!desktopStarting){desktopStarting=true;loadProviderSettings()}}var desktopStarting=false;startDesktop();window.addEventListener('resize',startDesktop);if(new URLSearchParams(location.search).get('debug')==='1')window.conceptB3Debug={get map(){return map},get state(){return{metric:state.metric,sex:state.sex,coverage:state.coverage,selectedAuthorities:Array.from(state.authorities),pinned:state.pinned}},get minZoom(){return MIN_ZOOM},maxZoom:MAX_ZOOM,get startZoom(){return START_ZOOM},get bounds(){return baseBounds},get featureLayer(){return areasLayer},get flagLayer(){return flagLayer},get groupLayer(){return groupLayer},get groupCodes(){return Array.from(groupSelectionCodes())},get selection(){return {lift:selectionLift,fallback:selectionFallback(),duration:selectionDuration,depth:selectionDepth,hold:selectionHold,maxLift:selectionMaxLift,box:selectionBox,started:selectionStarted,animations:selectionAnimationCount,animating:selectionAnimating,wallStep:selectionWallStep}},selectionAt:function(ms){cancelAnimationFrame(selectionFrame);selectionFrame=0;drawSelection(performance.now(),Math.max(0,Number(ms)||0));return selectionLift},get tooltip(){return areaTooltip},get palette(){return mapPalette()},get quantiles(){return quantiles},get histogramBins(){return Array.from(state.histogramBins)},get legendBands(){return Array.from(state.legendBands)}};
 })();
-</script><a href="../story/my-dashboard.html" id="back-to-story" onclick="if(document.referrer&&document.referrer.indexOf(location.origin)===0&&history.length>1){history.back();return false;}" style="position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:2000;background:#f5f6f0;color:#36557e;font:600 14px/1 system-ui,-apple-system,Segoe UI,sans-serif;padding:10px 14px;border-radius:8px;border:1px solid #ffffff25;text-decoration:none;box-shadow:none">Back</a>
+</script>
+<script>
+(() => {
+  const map = document.getElementById("map");
+  if (!map) return;
+  const labelMapTiles = () => {
+    map.querySelectorAll("img.leaflet-tile").forEach((tile) => {
+      if (!tile.alt.trim()) tile.alt = "OpenStreetMap base map tile";
+    });
+  };
+  labelMapTiles();
+  new MutationObserver(labelMapTiles).observe(map, {
+    childList: true, subtree: true, attributes: true, attributeFilter: ["class", "alt"]
+  });
+})();
+</script>
+<a href="../story/my-dashboard.html" id="back-to-story" onclick="if(document.referrer&&document.referrer.indexOf(location.origin)===0&&history.length>1){history.back();return false;}" style="position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:2000;background:#f5f6f0;color:#36557e;font:600 14px/1 system-ui,-apple-system,Segoe UI,sans-serif;padding:10px 14px;border-radius:8px;border:1px solid #ffffff25;text-decoration:none;box-shadow:none">Back</a>
 </body></html>

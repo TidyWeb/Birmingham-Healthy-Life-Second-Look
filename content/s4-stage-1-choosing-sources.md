@@ -34,6 +34,6 @@ caption: Filled orange lamps mark concerns; hollow grey lamps mark no flags. The
 
 The source register now distinguishes modelled inputs from other sources and gives every source a plain-language limit and a revision-risk note. The modelled values remain estimates; the new notes make that status visible instead of suggesting they can be recreated exactly.
 
-## What changes
+## What changes {#modelled-inputs}
 
 I added `modelled`, `known_limits` and `revision_risk` to the source register. I kept the source files and their existing uses unchanged.

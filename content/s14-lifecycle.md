@@ -42,11 +42,11 @@ I start by checking the source and updating the source register. Notebook 01 is 
 
 If only local area names change, I review the labels and rebuild the dashboard and site; I do not rerun an analytical notebook. I keep the project periods explicit rather than silently replacing a fixed snapshot with the latest available data.
 
-## Questions and corrections
+## Questions and corrections {#correction-route}
 
 Readers can question a page using [Question this work](https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml). I review the question and evidence. If it shows an error, I correct the data, analysis or explanation that caused it and enter the date, page, change and reason in the correction log. If it does not show an error, I explain the evidence and leave the result as it is. Readers can question the work; I make and record corrections.
 
-## Retirement
+## Retirement {#retirement}
 
 When ONS publishes a newer HLE release that supersedes 2019–23, I will keep this version identifiable as an archive and add a banner linking to the newer data. I will not silently replace its results with a different period.
 

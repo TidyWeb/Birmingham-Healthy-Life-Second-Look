@@ -41,6 +41,6 @@ caption: Each filled orange lamp carries its screen question number.
 ^ nb07#8d87af50 | Cross-validated proxy R-squared values.
 The seven model features predict the six area-level ethnic-composition measures with R² values from 0.277 to 0.743, and predict the deprivation measure with R² 0.898. That is measurable overlap. It is a finding about area-level information, not a cause or a reason to remove a feature.
 
-## What changes
+## What changes {#six-groups-and-crime-caveat}
 
 The joined table remains unchanged so the existing notebooks retain the Census detail they use; the Census publishes those figures openly. Public-facing comparisons use the six broad groups already defined in Notebook 07. Crime stays, with the reporting, policing and footfall caveat; takeaways stay as outlet density, not diet. No measure is removed because of the proxy result.

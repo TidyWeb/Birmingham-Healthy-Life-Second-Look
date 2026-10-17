@@ -9,7 +9,7 @@ standfirst: I tested the seven-feature model instead of treating its original ex
 The model does not use ethnicity or deprivation directly, but its measures overlap with them. Its absolute error is similar across deprivation groups while its bias points in opposite directions at the two ends.
 :::
 
-## Proxy overlap
+## Proxy overlap {#proxy-overlap}
 
 I predicted the area-level ethnic-composition measures and household deprivation from the seven model features, holding out whole local authorities in cross-validation. **The model doesn't use ethnicity or deprivation directly, but its measures overlap with them this much.** I report the overlap as a finding and remove no feature.
 
@@ -29,7 +29,7 @@ alt: A paired bar chart comparing cross-validated R-squared for seven-feature pr
 caption: The features carry varying amounts of information about area-level ethnic composition and deprivation. This is overlap, not evidence that a feature causes either measure.
 :::
 
-## Error parity
+## Error parity {#error-parity}
 
 For the ethnic-composition split, non-White share is Asian + Black + Mixed + Other; Other White remains in the White grouping. I compared out-of-fold prediction errors across deprivation thirds and four-group non-White-share thirds. Bias is actual HLE minus prediction: positive values mean under-prediction; negative values mean over-prediction. Each third contains 218 areas.
 
@@ -57,7 +57,7 @@ alt: Bias and absolute-error comparisons across deprivation and four-group non-W
 caption: Bias changes direction across deprivation thirds, while absolute error is similar in size. Intervals show the uncertainty in each group estimate.
 :::
 
-## Crime sensitivity
+## Crime sensitivity {#crime-sensitivity}
 
 I refitted the grouped cross-validation after removing recorded crime, keeping the same areas, folds, scaling and seed.
 

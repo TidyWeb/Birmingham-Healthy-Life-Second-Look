@@ -11,7 +11,7 @@ Questions are welcome. Readers can raise an issue about a page or result. I revi
 
 ## How to ask
 
-Use the [Question this work form on GitHub](https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml). Tell me which page or area you mean and what you are questioning. Evidence or reasoning is useful but optional. Please keep the conversation on the issue; do not include personal information.
+Use the [Question this work form on GitHub](https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml). Tell me which page or area you mean and what you are questioning. Evidence or reasoning is useful but optional. Please keep the conversation on the issue; do not include personal information. GitHub asks you to sign in with a free account before you can open a question.
 
 This is my work. Questions are welcome, and I make and log corrections when an error is shown. Readers can question it; they do not edit the analysis or site.
 
