@@ -6,12 +6,12 @@ summary: How the Unit 2 concerns were re-screened against the Unit 3 site.
 standfirst: I checked each original screen result against the evidence now on the site.
 ---
 ::: keypoints
-I checked all 27 questions again against the Unit 3 site: 15 have a recorded response, 2 remain open for user testing, and 10 remain no-flags.
+I checked all 27 questions again against the Unit 3 site: 15 have a recorded response, 2 remain open by decision, and 10 remain no-flags.
 :::
 
 ::: image second-look/lamp-board-before-after.svg wide
 alt: Two ethics-screen boards show Unit 2 and Unit 3. Unit 2 has 17 filled orange circles for concerns and 10 hollow grey circles for no-flags. Unit 3 has 15 yellow diamonds for investigated and recorded concerns, two orange triangles for open concerns Q18 and Q21, and 10 hollow grey circles for no-flags. Each marker contains its question number; shapes and the legend identify status without relying on colour alone.
-caption: The first board is the Unit 2 screen. The second shows the Unit 3 re-screen: a recorded response does not mean a concern has disappeared, and the two open concerns depend on Phil's user testing.
+caption: The first board is the Unit 2 screen. The second shows the Unit 3 re-screen: a recorded response does not mean a concern has disappeared, and Q18 and Q21 remain open by decision because independent testing was out of scope for this submission.
 :::
 
 ## The re-screen
@@ -37,10 +37,10 @@ I kept each original Unit 2 lamp beside the Unit 3 status. “Investigated and r
 | Q15 — Errors fall more on some groups? | 🟠 Concern | Investigated and recorded | Notebook 07 compares errors across area groups. | [S12](proxies-fairness-and-crime.html#error-parity) |
 | Q16 — Affected without knowing AI was involved? | ⚪ No flag | No flag | AI use remains disclosed. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
 | Q17 — Can't understand, correct or challenge the result? | 🟠 Concern | Investigated and recorded | I provide a question form and correction route. | [S10](stage-7-dashboards-and-site.html#recorded-responses) |
-| Q18 — Affected people left out of design and testing? | 🟠 Concern | Open | Open until affected people take part in user testing. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
+| Q18 — Affected people left out of design and testing? | 🟠 Concern | Open | Open by decision: independent user testing was out of scope for this submission. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
 | Q19 — Changes jobs, pace or monitoring? | ⚪ No flag | No flag | The project does not change jobs or monitoring. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
 | Q20 — Could failure cause physical or psychological harm? | 🟠 Concern | Investigated and recorded | I state the risk of overreading maps and give caveats. | [S10](stage-7-dashboards-and-site.html#recorded-responses) |
-| Q21 — Tested only in a demo, not real use? | 🟠 Concern | Open | Open until other people test the site. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
+| Q21 — Tested only in a demo, not real use? | 🟠 Concern | Open | Open by decision: independent user testing was out of scope for this submission. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
 | Q22 — No tested way to pause, override or fall back? | 🟠 Concern | Investigated and recorded | I record correction and retirement steps. | [S14](lifecycle.html#correction-route) |
 | Q23 — Could it be misused or used out of purpose? | 🟠 Concern | Investigated and recorded | I state excluded uses and keep findings descriptive. | [S13](law-and-governance.html#excluded-uses) |
 | Q24 — No named owner, monitor or stop authority? | ⚪ No flag | No flag | I am named as owner. | [S13](law-and-governance.html#accountability) |
@@ -50,11 +50,11 @@ I kept each original Unit 2 lamp beside the Unit 3 status. “Investigated and r
 
 ## Still open {#still-open}
 
-- **Q18 — Affected people left out of design and testing.** This stays open because no affected readers have taken part. Phil can close it after running the planned sessions with 2–3 people, including a non-technical reader, and recording what confused them and what changed.
-- **Q21 — Tested only in a demo.** This stays open because Phil is the only person who has checked the site so far. Phil can close it after the same user-testing sessions are completed and their results are recorded.
+- **Q18 — Affected people left out of design and testing.** This remains open by decision; independent user testing was out of scope for this submission. Testing is planned for the evaluation stage in S14.
+- **Q21 — Tested only in a demo.** This remains open by decision; independent user testing was out of scope for this submission. Testing is planned for the evaluation stage in S14.
 
 These are open findings, not promises that user testing will clear them. If testing reveals a new problem, I will record that and decide what to change before closing either item.
 
 ## User testing
 
-<!-- Phil: add the user-testing results here after the sessions. -->
+Independent user testing was not run for this submission. On 17 October 2026, I reviewed the dashboard and site myself. That review led to fixes for the dashboard search bug; the HLE, rank and band labels; the six-groups note in the active-measure panel; the visibility of the “Question this work” link; and the plain-English wording in S11. Q18 and Q21 remain open by decision. Independent user testing is planned as part of the evaluation stage in [S14 — Lifecycle](https://tidyweb.github.io/Birmingham-Healthy-Life-Second-Look/story/lifecycle.html).
