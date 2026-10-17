@@ -61,6 +61,8 @@ NOTEBOOKS = [
     ("04", "Hypothesis and neighbour gaps", "D — Hypothesis and Neighbour Gaps", "04_Hypothesis_and_Neighbour_Gaps.ipynb"),
     ("05", "Machine learning", "E — Machine Learning", "05_Machine_Learning.ipynb"),
     ("06", "Hotspots", "F — Hotspots", "06_Hotspots.ipynb"),
+    ("07", "Proxy and fairness audit", "G — Proxy and Fairness Audit", "07_Proxy_and_Fairness_Audit.ipynb"),
+    ("08", "Uncertainty and ranking", "H — Uncertainty and Ranking", "08_Uncertainty_and_Ranking.ipynb"),
 ]
 
 # Short keys for the saved figure folders
@@ -69,6 +71,8 @@ FIGURE_FOLDERS = {
     "neighbours": "Neighbours",
     "ml": "Machine Learning",
     "hotspots": "Hotspots",
+    "uncertainty": "Uncertainty",
+    "fairness": "Fairness",
 }
 
 CODE_FOLD_LINES = 6     # code cells longer than this start folded
@@ -435,8 +439,13 @@ def pager(chapters: list[dict], index: int, root: str) -> str:
 def build_chapters(chapters: list[dict]) -> None:
     root = "../"
     for index, chapter in enumerate(chapters):
+        origin_note = (
+            '<p class="chapter-num">From the original Unit 2 project.</p>'
+            if chapter["part"] == "original" else ""
+        )
         head = (f'<header class="chapter-head"><p class="chapter-num">Chapter {chapter["num"]}</p>'
                 f'<h1>{html.escape(chapter["title"])}</h1>'
+                + origin_note
                 + (f'<p class="standfirst">{html.escape(chapter["standfirst"])}</p>' if chapter.get("standfirst") else "")
                 + "</header>")
         body = f'<article class="page">{head}{render_story(chapter["body"], root)}{pager(chapters, index, root)}</article>'
