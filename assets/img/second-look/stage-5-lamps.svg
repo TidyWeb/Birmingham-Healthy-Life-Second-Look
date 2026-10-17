@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="237.4272pt" height="74.236566pt" viewBox="0 0 237.4272 74.236566" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>Ethics screen lamps for Stage 5</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Ethics screen lamps for Stage 5</dc:title>
+    <dc:date>2026-10-17T14:47:40.026767</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 74.236566 
+L 237.4272 74.236566 
+L 237.4272 0 
+L 0 0 
+z
+" style="fill: #eceee8"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 37.118283 51.80544 
+C 41.013363 51.80544 44.749434 50.257908 47.503671 47.503671 
+C 50.257908 44.749434 51.80544 41.013363 51.80544 37.118283 
+C 51.80544 33.223203 50.257908 29.487132 47.503671 26.732895 
+C 44.749434 23.978657 41.013363 22.431126 37.118283 22.431126 
+C 33.223203 22.431126 29.487132 23.978657 26.732895 26.732895 
+C 23.978657 29.487132 22.431126 33.223203 22.431126 37.118283 
+C 22.431126 41.013363 23.978657 44.749434 26.732895 47.503671 
+C 29.487132 50.257908 33.223203 51.80544 37.118283 51.80544 
+z
+" clip-path="url(#p213d00411f)" style="fill: #b94f13; stroke: #b94f13; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 91.515161 51.80544 
+C 95.410241 51.80544 99.146312 50.257908 101.900549 47.503671 
+C 104.654787 44.749434 106.202318 41.013363 106.202318 37.118283 
+C 106.202318 33.223203 104.654787 29.487132 101.900549 26.732895 
+C 99.146312 23.978657 95.410241 22.431126 91.515161 22.431126 
+C 87.620081 22.431126 83.88401 23.978657 81.129773 26.732895 
+C 78.375535 29.487132 76.828004 33.223203 76.828004 37.118283 
+C 76.828004 41.013363 78.375535 44.749434 81.129773 47.503671 
+C 83.88401 50.257908 87.620081 51.80544 91.515161 51.80544 
+z
+" clip-path="url(#p213d00411f)" style="fill: #b94f13; stroke: #b94f13; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 145.912039 51.80544 
+C 149.807119 51.80544 153.54319 50.257908 156.297427 47.503671 
+C 159.051665 44.749434 160.599196 41.013363 160.599196 37.118283 
+C 160.599196 33.223203 159.051665 29.487132 156.297427 26.732895 
+C 153.54319 23.978657 149.807119 22.431126 145.912039 22.431126 
+C 142.016959 22.431126 138.280888 23.978657 135.526651 26.732895 
+C 132.772413 29.487132 131.224882 33.223203 131.224882 37.118283 
+C 131.224882 41.013363 132.772413 44.749434 135.526651 47.503671 
+C 138.280888 50.257908 142.016959 51.80544 145.912039 51.80544 
+z
+" clip-path="url(#p213d00411f)" style="fill: #b94f13; stroke: #b94f13; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 200.308917 51.80544 
+C 204.203997 51.80544 207.940068 50.257908 210.694305 47.503671 
+C 213.448543 44.749434 214.996074 41.013363 214.996074 37.118283 
+C 214.996074 33.223203 213.448543 29.487132 210.694305 26.732895 
+C 207.940068 23.978657 204.203997 22.431126 200.308917 22.431126 
+C 196.413837 22.431126 192.677766 23.978657 189.923529 26.732895 
+C 187.169292 29.487132 185.62176 33.223203 185.62176 37.118283 
+C 185.62176 41.013363 187.169292 44.749434 189.923529 47.503671 
+C 192.677766 50.257908 196.413837 51.80544 200.308917 51.80544 
+z
+" clip-path="url(#p213d00411f)" style="fill: #b94f13; stroke: #b94f13; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #eceee8" x="37.118283" y="39.326291" transform="rotate(-0 37.118283 39.326291)">2</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #eceee8" x="91.515161" y="39.326291" transform="rotate(-0 91.515161 39.326291)">7</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #eceee8" x="145.912039" y="39.326291" transform="rotate(-0 145.912039 39.326291)">11</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #eceee8" x="200.308917" y="39.326291" transform="rotate(-0 200.308917 39.326291)">15</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p213d00411f">
+   <rect x="7.2" y="7.2" width="223.0272" height="59.836566"/>
+  </clipPath>
+ </defs>
+</svg>

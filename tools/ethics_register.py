@@ -39,6 +39,14 @@ STAGE_NAMES = {
     "S6": "Hotspots",
     "S7": "Dashboards and site",
 }
+# No-flag questions still belong to a stage. These placements follow where the
+# screen evidence naturally appears in the project: provenance in source choice,
+# aggregation and area-level outputs in preparation, and use/oversight in the site.
+STAGE_CLEAR_QUESTIONS = {
+    "S1": {9},
+    "S2": {5, 6},
+    "S7": {12, 13, 16, 19, 24, 26, 27},
+}
 LEGAL_QUESTIONS = {5, 6, 12, 26}
 
 # The neutral colours follow assets/site.css. Orange and grey distinguish the
@@ -109,8 +117,13 @@ def write_screen_summary(records: list[dict[str, str]]) -> Path:
         lamp = "🟠 concern" if row["lamp"] == "concern" else "⚪ no flag"
         question = row["question_short"].replace("|", "\\|")
         checkpoint = f"{row['checkpoint']} · {row['checkpoint_name']}"
+        stages = row["stages"].split(";")
+        stage_label = "; ".join(
+            f"Stage {stage[1:]}" if stage in STAGE_NAMES else stage
+            for stage in stages
+        )
         lines.append(
-            f"| Q{row['q']} | {checkpoint} | {question} | {lamp} | {row['stages']} |"
+            f"| Q{row['q']} | {checkpoint} | {question} | {lamp} | {stage_label} |"
         )
     path = OUT / "screen-summary.md"
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -128,6 +141,7 @@ def save_lamp_board(records: list[dict[str, str]]) -> Path:
     ax.set_xlim(0, 10)
     ax.set_ylim(0, 7)
     ax.axis("off")
+    ax.set_aspect("equal", adjustable="box")
     ax.text(0.25, 6.72, "Screen lamps by checkpoint", fontsize=16, weight="bold", va="top")
     ax.text(
         0.25, 6.3,
@@ -171,7 +185,7 @@ def save_lamp_board(records: list[dict[str, str]]) -> Path:
 def save_stage_grid(records: list[dict[str, str]]) -> Path:
     concerns = [record for record in records if record["lamp"] == "concern"]
     stage_ids = list(STAGE_NAMES)
-    fig, ax = plt.subplots(figsize=(11.2, 5.8), dpi=96)
+    fig, ax = plt.subplots(figsize=(15.8, 6.3), dpi=96)
     fig.patch.set_facecolor(PAPER)
     ax.set_facecolor(PAPER)
     ax.set_xlim(-0.8, len(concerns) + 1.65)
@@ -184,8 +198,9 @@ def save_stage_grid(records: list[dict[str, str]]) -> Path:
     ax.xaxis.tick_top()
     ax.tick_params(axis="x", length=0, pad=5)
     ax.set_yticks(range(len(stage_ids)))
-    ax.set_yticklabels(stage_ids, fontsize=9.5, weight="bold")
-    ax.tick_params(axis="y", length=0, pad=7)
+    stage_labels = [f"Stage {stage[1:]} · {STAGE_NAMES[stage]}" for stage in stage_ids]
+    ax.set_yticklabels(stage_labels, fontsize=9.2, weight="bold")
+    ax.tick_params(axis="y", length=0, pad=10)
     ax.grid(axis="y", color=RULE, linewidth=0.8)
     ax.spines[:].set_visible(False)
     ax.set_title("Concern links across the seven stages", loc="left", fontsize=13, weight="bold", pad=18)
@@ -201,11 +216,56 @@ def save_stage_grid(records: list[dict[str, str]]) -> Path:
         ax.text(len(concerns) + 0.4, y, str(total), va="center", ha="center", fontsize=9.5, weight="bold")
 
     ax.text(len(concerns) + 0.4, -0.62, "Total", va="center", ha="center", fontsize=8, color=MUTED)
+    fig.subplots_adjust(left=0.36, right=0.97, top=0.84, bottom=0.08)
     path = OUT / "stage-grid.svg"
     fig.savefig(path, format="svg", bbox_inches="tight", facecolor=PAPER,
                 metadata={"Title": "Ethics concerns by project stage"})
     plt.close(fig)
     return path
+
+
+def save_stage_lamp_strips(records: list[dict[str, str]]) -> list[Path]:
+    """Write one numbered lamp strip per project stage, including cleared questions."""
+    outputs = []
+    for stage in STAGE_NAMES:
+        questions = [
+            row for row in records
+            if row["lamp"] == "concern" and stage in row["stages"].split(";")
+        ]
+        questions.extend(
+            row for row in records
+            if row["q"] in STAGE_CLEAR_QUESTIONS.get(stage, set())
+        )
+        questions.sort(key=lambda row: row["q"])
+        columns = min(9, len(questions))
+        rows = (len(questions) + columns - 1) // columns
+        fig, ax = plt.subplots(
+            figsize=(max(2.5, columns * 0.88), max(1.2, rows * 0.92)), dpi=96
+        )
+        fig.patch.set_facecolor(PAPER)
+        ax.set_facecolor(PAPER)
+        ax.set_xlim(-0.55, columns - 0.45)
+        ax.set_ylim(-0.55, rows - 0.45)
+        ax.set_aspect("equal", adjustable="box")
+        ax.axis("off")
+        for index, row in enumerate(questions):
+            x = index % columns
+            y = rows - 1 - index // columns
+            concern = row["lamp"] == "concern"
+            edge = ORANGE if concern else NO_FLAG
+            face = ORANGE if concern else PAPER
+            ax.add_patch(Circle((x, y), 0.27, edgecolor=edge, facecolor=face, linewidth=1.8))
+            ax.text(
+                x, y, str(row["q"]), ha="center", va="center", fontsize=8.5,
+                weight="bold", color=PAPER if concern else INK,
+            )
+        fig.subplots_adjust(left=0.06, right=0.94, top=0.92, bottom=0.08)
+        path = OUT / f"stage-{stage[1:]}-lamps.svg"
+        fig.savefig(path, format="svg", bbox_inches="tight", facecolor=PAPER,
+                    metadata={"Title": f"Ethics screen lamps for Stage {stage[1:]}"})
+        plt.close(fig)
+        outputs.append(path)
+    return outputs
 
 
 def save_checkpoint_flow(records: list[dict[str, str]]) -> Path:
@@ -262,6 +322,7 @@ def main() -> None:
         save_stage_grid(records),
         save_checkpoint_flow(records),
         write_screen_summary(records),
+        *save_stage_lamp_strips(records),
     ]
     print("Loaded 27 questions: 17 concerns, 10 no-flags, 4 legal triggers (all no-flag).")
     for path in outputs:
