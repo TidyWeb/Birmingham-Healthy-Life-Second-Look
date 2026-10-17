@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"/><title>Birmingham and its surrounding areas. Years in good health.</title>
+<style>
+:root{color-scheme:dark;--bg:#101f28;--panel:#172b35f2;--line:#ffffff25;--ink:#f3f4eb;--muted:#b2c2c7;--accent:#d7e75b;--hle1:#46327e;--hle2:#365c8d;--hle3:#21918c;--hle4:#5ec962;--hle5:#d7e75b}
+*{box-sizing:border-box}html,body,#app{margin:0;width:100%;height:100%;min-height:320px;overflow:hidden;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button,select,input[type=search]{color:var(--ink);background:#233944;border:1px solid var(--line);border-radius:7px;padding:8px 10px}button{cursor:pointer}button:hover,select:hover{background:#344c55}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid #fff;outline-offset:3px}button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#152c33}input[type=checkbox]{accent-color:var(--accent)}input[type=range]{width:100%;accent-color:var(--accent)}h1,h2,h3,p{margin:0}h1{font-size:22px;line-height:1.12;letter-spacing:-.035em}h2{font-size:18px}h3{font-size:14px}.muted,.hint{color:var(--muted)}.hint{font-size:12px;margin-top:5px}.eyebrow{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px #0005;backdrop-filter:blur(12px)}
+#map{position:absolute;inset:0;width:100%;height:100%;background:#101f28;z-index:1}.leaflet-container{background:#101f28}.leaflet-control-attribution{display:none!important}.leaflet-tile-pane img{filter:invert(var(--tile-invert,0)) brightness(var(--tile-brightness,1)) saturate(var(--tile-saturation,1))}
+.top-left{position:absolute;left:18px;top:16px;width:300px;z-index:500}.brand{padding:14px 16px}.brand p{font-size:12px;color:var(--muted);margin-top:6px}.sex{display:flex;gap:5px;margin-top:11px}.sex button{flex:1}.search{display:grid;gap:6px;margin-top:8px}.search input,.search select{width:100%;font-size:12px}.actions-top{position:absolute;top:16px;right:18px;z-index:500;display:flex;gap:6px}
+#controls{position:absolute;z-index:520;right:18px;top:66px;width:320px;max-height:calc(100dvh - 140px);overflow:auto;padding:14px}.control-head,.drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.group{border-top:1px solid var(--line);padding-top:11px;margin-top:11px}.field{display:block;margin:10px 0}.field>span:first-child{display:block;color:var(--muted);font-size:12px;font-weight:650;margin-bottom:5px}.field select{width:100%}.check{display:flex;align-items:flex-start;gap:8px;margin:8px 0;font-size:12px}.check input{margin-top:3px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.authority-box{max-height:130px;overflow:auto;border:1px solid var(--line);border-radius:7px;padding:5px 9px}.authority-box .check{font-size:11px;margin:5px 0}.collapsed,[hidden]{display:none!important}
+.legend{position:absolute;left:18px;bottom:38px;width:310px;z-index:500;padding:12px 15px}.legend h3{font-size:13px}.legend .legend-sub{font-size:12px;color:var(--muted);margin-top:3px}.swatches{display:grid;grid-template-columns:repeat(5,1fr);height:12px;border-radius:3px;overflow:hidden;margin-top:10px}.bandlabels{display:grid;grid-template-columns:repeat(5,1fr);font-size:12px;margin-top:4px}.bandlabels span{text-align:center}.legend .stats{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:8px;padding-top:8px}.legend .stats strong{font-size:17px}.legend .stats span{font-size:12px;color:var(--muted)}.pattern-key{font-size:12px;margin-top:7px}.missing-chip{display:inline-block;width:13px;height:13px;vertical-align:-2px;margin-right:5px;background:repeating-linear-gradient(45deg,#657a83 0 2px,#233944 2px 4px)}
+.attribution{position:absolute;z-index:510;bottom:0;left:0;right:0;display:flex;justify-content:space-between;gap:10px;color:#f3f4eb;background:#172b35f2;padding:7px 18px;font-size:11px;pointer-events:none}.attribution a{pointer-events:auto;color:#d7e75b}.corner-note{position:absolute;z-index:510;bottom:94px;right:72px;left:auto;max-width:300px;background:#172b35ed;color:var(--ink);padding:7px 10px;border-radius:7px;font-size:12px}
+.zoom{position:absolute;right:18px;bottom:110px;z-index:500;display:grid;gap:5px}.zoom button{width:40px;height:40px;padding:0;font-size:20px}.bottom-actions{position:absolute;z-index:500;right:18px;bottom:38px;display:flex;gap:6px}
+#detail{position:absolute;z-index:530;right:18px;top:66px;width:365px;max-height:calc(100dvh - 170px);overflow:auto;padding:16px}#detail .close,#drawer .close{padding:1px 8px;font-size:18px}.big-value{font-size:38px;font-weight:750;line-height:1.2;margin-top:10px;letter-spacing:-.04em}.big-value small{font-size:13px;letter-spacing:0}.metric-compare{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0;padding:8px 0;border-block:1px solid var(--line)}.metric-compare div{font-size:12px;color:var(--muted)}.metric-compare strong{display:block;color:var(--ink);font-size:18px}.data-row{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #ffffff18;padding:6px 0;font-size:12px}.data-row dt{color:var(--muted)}.data-row dd{margin:0;text-align:right}.note{font-size:12px;color:var(--muted);margin-top:8px}.neighbours{max-height:190px;overflow:auto}.neighbour{display:flex;width:100%;justify-content:space-between;text-align:left;padding:6px;margin:3px 0;font-size:11px}.flags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}.tag{border:1px solid #ffffff2b;border-radius:20px;padding:3px 7px;font-size:11px;color:#d8e1df}
+#drawer{position:absolute;z-index:535;left:calc(50% - 255px);bottom:38px;width:510px;max-height:min(430px,calc(100dvh - 160px));overflow:auto;padding:15px}.chart{width:100%;height:180px;display:block;margin-top:8px}.bar{pointer-events:none}.table-scroll{overflow:auto;max-height:55dvh;margin-top:8px}table{border-collapse:collapse;width:100%;font-size:12px}th,td{border-bottom:1px solid var(--line);padding:7px;text-align:left;white-space:nowrap}th button{padding:3px 5px;font-size:11px}.sort-on{color:var(--accent)}.authority-plots{display:grid;gap:3px;margin-top:10px}.plot-row{display:grid;grid-template-columns:145px 1fr;gap:8px;align-items:center;min-height:25px}.plot-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right;background:none;border:0;padding:3px;color:var(--ink);font-size:11px}.plot-track{position:relative;height:22px;border-bottom:1px solid #ffffff28}.whisker{position:absolute;top:10px;height:2px;background:#aab8bc}.box{position:absolute;top:6px;height:10px;background:#21918c99;border:1px solid #a8ded5}.median-line{position:absolute;top:3px;height:16px;width:2px;background:var(--accent)}.dot{position:absolute;top:9px;width:5px;height:5px;border-radius:50%;background:#f3f4eb}
+dialog{color:var(--ink);background:#172b35;border:1px solid var(--line);border-radius:14px;padding:20px;max-width:800px;width:min(800px,calc(100% - 24px));max-height:86dvh;overflow:auto}dialog::backdrop{background:#08151ccc}dialog p{color:#d3dede;margin:10px 0;font-size:13px}.skip{position:absolute;left:-999px;top:5px;z-index:1000;background:white;color:#132e37;padding:10px}.skip:focus{left:10px}#status{position:absolute;left:-9999px}
+
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto;transition:none!important}}
+.attribution{align-items:center;flex-wrap:wrap;gap:2px 14px}.attribution #corner-note{position:static;max-width:none;width:auto;font-size:11px;color:#d7e75b;background:none;padding:0}.legend{bottom:60px}.bottom-actions{bottom:60px}.map-clean .brand>*:not(.metric-field){display:none}.map-clean .brand{padding:8px}.map-clean .metric-field{margin:0}.legend.quantile .swatches{display:none}.legend.quantile .bandlabels{display:grid;grid-template-columns:1fr;gap:3px;margin-top:8px}.legend.quantile .bandlabels span{text-align:left;display:flex;align-items:center;gap:8px}.legend.quantile .bandlabels span:before{content:"";display:inline-block;flex:0 0 18px;height:12px;background:var(--band-color)}.plot-label{font-size:12px}.plot-axis{display:flex;justify-content:space-between;margin-left:153px;font-size:12px;color:var(--muted)}
+
+#find-area>summary{display:none}
+h1>span{display:block}h1 .title-accent{color:var(--accent)}.brand .outcome-rule{font-size:12px;color:var(--muted)}#selection-canvas{position:absolute;inset:0;z-index:610;pointer-events:none}.pinned-chip{display:inline-block;width:14px;height:14px;background:#21918c;border:1.3px solid #fff;outline:1.5px solid #0b1c24;box-shadow:0 3px 0 #145954,1px 5px 3px #0005;transform:translateY(-2px);vertical-align:-1px;margin-right:3px}.leaflet-tooltip.area-tooltip{background:#172b35;color:#f3f4eb;border:1px solid #ffffff40;border-radius:12px;box-shadow:0 12px 32px #0005;font:12px/1.5 system-ui,sans-serif;white-space:normal;min-width:180px;max-width:300px}.tooltip-chip{display:inline-block;width:12px;height:12px;border:1px solid #ffffff80;vertical-align:-2px;margin-right:6px}.tooltip-outside{color:#b2c2c7}.area-label{color:#2a3a42;font-size:12px;white-space:nowrap;-webkit-text-stroke:1.5px rgba(246,241,228,.9);paint-order:stroke fill;text-shadow:0 0 1.5px rgba(246,241,228,.9)}@media(pointer:coarse),(prefers-reduced-motion:reduce){.pinned-chip{transform:none;box-shadow:none;background:transparent;border:2.2px solid #0b1c24;outline:1.65px solid #fff}}
+
+.legend-band-swatch,.legend-band-label{min-width:0;margin:0;padding:0;border:0;border-radius:0}.legend-band-swatch{height:12px}.legend-band-label{background:transparent;font-size:12px;text-align:center;color:var(--ink)}.legend-band-swatch[aria-pressed=true],.legend-band-label[aria-pressed=true]{outline:2px solid #ff2d95;outline-offset:-2px}.legend-band-label[aria-pressed=true]{background:transparent;color:var(--ink)}.legend.quantile .bandlabels button{text-align:left;display:flex;align-items:center;gap:8px}.legend.quantile .bandlabels button:before{content:"";display:inline-block;flex:0 0 18px;height:12px;background:var(--band-color)}#chart .histogram-hit{cursor:crosshair;pointer-events:all;touch-action:none}#chart .histogram-hit:focus{outline:none;stroke:#fff;stroke-width:1}
+.chart-name-tooltip{position:absolute;top:4px;left:8px;max-width:calc(100% - 16px);padding:6px 9px;font-size:12px;background:#172b35;color:#f3f4eb;border:1px solid #ffffff40;border-radius:7px;z-index:2;pointer-events:none;white-space:normal}
+
+.explorer-label{text-transform:none;overflow-wrap:break-word}
+#detail .close{float:right;margin-left:8px}.card-chip{display:inline-block;width:12px;height:12px;border:1px solid #ffffff80;vertical-align:-1px;margin-right:6px}.context-notation{display:flex;align-items:flex-start;gap:7px;font-size:12px;margin-top:8px;color:var(--ink)}.context-tag{width:10px;height:10px;flex:0 0 10px;margin-top:4px;border:1px solid #ffffff60}.position-endpoints{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:12px 0 6px}#position-track{height:7px;position:relative;border-radius:2px;margin:0 4px 10px}#position-marker{position:absolute;top:-4px;width:3px;height:15px;background:#fff;box-shadow:0 0 0 1px #0b1c24;transform:translateX(-50%)}.card-small-print{margin-top:12px;border-top:1px solid var(--line);padding-top:2px}.big-gap-badge{display:inline-block;border:1px solid #ffffff50;border-radius:3px;font-size:10px;padding:0 3px;margin-left:5px;color:var(--accent)}.pair-noise{margin:12px 0;padding:7px 9px;background:#101f28;border-left:3px solid #b2c2c7;border-radius:5px;font-size:12px}.pair-hle{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pair-hle>div{padding:9px;background:#101f28;border-radius:7px}.pair-hle .big-value{font-size:30px;margin-top:3px}.pair-gap{text-align:center;color:var(--accent);font-size:20px;font-weight:700;margin:14px 0}.pair-gap small{color:var(--ink);font-size:12px;font-weight:400}.pair-table{table-layout:fixed;width:100%;font-size:12px}.pair-table th,.pair-table td{white-space:normal;overflow-wrap:anywhere;padding:6px 4px}.pair-table th{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.pair-table th:first-child{width:48%}.pair-table th:not(:first-child),.pair-table td:not(:first-child){text-align:right}.pair-table .active-row{background:#29434e}.pair-return{display:grid;gap:6px;margin-top:12px}.pair-return button{white-space:normal;text-align:left}#active-measure-block .big-value{font-size:25px;letter-spacing:0}.neighbour>span:first-child{min-width:0}.neighbour>span:last-child{flex-shrink:0;margin-left:6px}
+
+#drawer .drawer-head{gap:8px;align-items:flex-start}#drawer .drawer-head h3{flex:1;min-width:0;font-size:14px}#drawer-back,#drawer-close{font-size:12px}.view-menu-item{display:block;width:100%;text-align:left;margin:8px 0;padding:10px;font-size:12px}.view-menu-item strong,.view-menu-item span{display:block}.view-menu-item span{color:var(--muted);margin-top:3px}.view-menu-item:disabled{cursor:default;color:var(--muted);background:#172b35}.chart-row{width:100%;font-size:12px;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:10px 4px;min-width:0}.chart-row small{display:block;font-size:12px;color:var(--muted);margin-top:4px}.neighbour-dot-row,.authority-row{display:grid;grid-template-columns:minmax(130px,1.3fr) minmax(80px,1fr) minmax(75px,.8fr);gap:12px;align-items:center}.dot-track{display:block;position:relative;height:20px;border-bottom:1px solid #ffffff35;margin:0 5px}.chart-dot{position:absolute;top:4px;width:12px;height:12px;border-radius:50%;transform:translateX(-50%);border:1px solid #ffffff80}.selected-dot{outline:1.3px solid #fff;box-shadow:0 0 0 3px #0b1c24}.outside{color:var(--muted)}.outside .dot-track{opacity:.35}.profile-row{display:grid;grid-template-columns:minmax(135px,1fr) minmax(150px,1.2fr);gap:16px;align-items:center}.profile-endpoints{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);gap:8px}.profile-track{display:block;position:relative;height:7px;margin:10px 4px}.profile-marker{position:absolute;top:-4px;height:15px;width:3px;background:white;box-shadow:0 0 0 1px #0b1c24;transform:translateX(-50%)}.profile-median{position:absolute;top:-3px;height:13px;width:1px;background:#f3f4eb;opacity:.45}.current-measure{background:#29434e}.authority-range{position:absolute;top:9px;height:2px;background:#b2c2c7}.authority-plots{gap:0}.scatter-chart{display:block;width:100%;height:280px}.scatter-dot{cursor:pointer}.scatter-dot:focus{outline:none;stroke:#fff;stroke-width:2}.chart-row .big-gap-badge{font-size:12px}.scatter-tip{min-height:36px;font-size:12px}#drawer[data-mode="menu"]{width:510px;max-height:min(560px,calc(100dvh - 160px))}#drawer th button{font-size:12px}
+
+
+/* All view windows share the existing Distribution width and bottom position. */
+#drawer{top:auto;right:auto;left:var(--view-left,calc(50% - 255px));bottom:38px;width:var(--view-width,510px);height:auto;max-height:60dvh}
+#drawer[data-mode="distribution"]{max-height:min(430px,60dvh)}
+#drawer[data-mode="menu"]{left:auto;right:18px;top:auto;bottom:var(--menu-bottom,108px);width:min(320px,calc(100vw - 32px));height:auto;max-height:60dvh}
+#drawer[data-mode="menu"] .drawer-head{margin-bottom:6px}
+#drawer[data-mode="menu"] .view-menu-item{margin:6px 0;padding:8px}
+#drawer[data-mode="menu"] .view-menu-item:last-child{margin-bottom:0}
+#drawer-subtitle:empty,#drawer-note:empty{display:none}
+#drawer select{max-width:100%;min-width:0;font-size:12px}
+.neighbour-axis{display:grid;grid-template-columns:minmax(130px,1.3fr) minmax(80px,1fr) minmax(75px,.8fr);gap:12px;padding:0 4px;margin-top:8px;font-size:12px;color:var(--muted)}
+.neighbour-ticks{position:relative;height:20px;margin:0 5px}.neighbour-ticks span{position:absolute;transform:translateX(-50%)}
+
+#drawer[data-mode="scatter"]{padding:10px}
+#drawer[data-mode="scatter"] .drawer-head{margin-bottom:4px}
+#drawer[data-mode="scatter"] .drawer-head button{padding:4px 8px}
+#drawer[data-mode="scatter"] .hint{line-height:1.2;margin-top:3px}
+#drawer[data-mode="scatter"] .field{display:flex;align-items:center;gap:8px;margin:5px 0}
+#drawer[data-mode="scatter"] .field>span:first-child{flex-shrink:0;margin:0}
+#drawer[data-mode="scatter"] .field select{flex:1;padding:5px 6px}
+#drawer[data-mode="scatter"] .scatter-chart{height:260px}
+#drawer[data-mode="scatter"] #view-content{position:relative}
+#drawer[data-mode="scatter"] .scatter-tip{position:absolute;left:52px;right:8px;top:42px;z-index:1;min-height:0;background:var(--panel);padding:4px;pointer-events:none}
+#drawer[data-mode="scatter"] .scatter-tip:empty{display:none}
+.authority-modes{display:flex;gap:6px;margin-bottom:6px}.authority-modes button{font-size:12px}
+.smoking-row{display:grid;grid-template-columns:minmax(110px,1fr) minmax(85px,1fr) minmax(105px,1fr);gap:8px;align-items:center}.smoking-row .dot-track{height:100%;min-height:42px;border-bottom:0}.smoking-row .authority-range{top:50%}.smoking-dot{top:calc(50% - 6px);background:var(--ink)}.england-reference{position:absolute;top:0;bottom:0;width:1px;background:#f3f4eb;opacity:.3;pointer-events:none}.smoking-chart{position:relative;overflow:hidden}.smoking-row small{line-height:1.4}.smoking-row.outside .smoking-dot,.smoking-row.outside .authority-range{opacity:.4}#smoking-unmatched{font-size:12px;margin-top:12px}#smoking-unmatched ul{padding-left:20px;columns:2}#smoking-unmatched li{break-inside:avoid}
+
+
+/* Stage 6: footer in flow, one scrollable left column, height-aware panels. */
+#app{display:grid;grid-template-rows:minmax(0,1fr) auto}
+#map-stage{position:relative;min-height:0;overflow:hidden}
+.attribution{position:relative;inset:auto;grid-row:2;width:100%}
+#left-column{position:absolute;z-index:500;left:18px;top:16px;width:300px;display:flex;flex-direction:column;gap:24px;overflow:hidden;overscroll-behavior:contain;scrollbar-width:thin;padding-bottom:2px}
+#left-column .top-left{position:static;inset:auto;width:100%;flex:0 1 auto;min-height:0;overflow:auto;scrollbar-width:thin}
+#left-column .legend{position:static;inset:auto;width:100%;flex:none;margin-top:auto;max-height:55%;overflow:auto;scrollbar-width:thin}
+#legend-details>summary{display:none;font-size:12px;cursor:pointer;margin-top:8px}
+.compact-legend #legend-details>summary{display:block}
+.compact-legend .legend.quantile .swatches{display:grid}
+#find-area>summary{display:none!important}
+body:not(.map-clean) #subtitle{display:block}
+.actions-top{max-width:calc(100% - 36px);flex-direction:row;flex-wrap:wrap;justify-content:flex-end}
+.actions-top button{min-width:0}
+#controls,#detail{bottom:auto;height:auto;overflow:auto}
+#drawer,#drawer[data-mode="menu"],#drawer[data-mode="distribution"]{bottom:var(--window-bottom,8px);max-height:min(60dvh,var(--panel-available,60dvh))}
+#drawer[data-mode="distribution"]{max-height:min(430px,60dvh,var(--panel-available,60dvh))}
+#drawer[data-mode="menu"]{bottom:var(--menu-bottom,108px)}
+
+@media(max-height:740px){#left-column{gap:24px}}
+@media(min-width:761px){#drawer[data-mode="menu"]{left:auto;right:var(--menu-right,18px);transform:none;width:320px;bottom:var(--menu-bottom,108px)}}
+#desktop-notice{display:none}.authority-modes{align-items:center}.authority-modes #show-all-chart-authorities{margin-left:auto;padding:5px 7px;font-size:11px}
+@media(width < 1000px){#app,dialog{display:none!important}#desktop-notice{display:flex;position:fixed;inset:0;align-items:center;justify-content:center;padding:24px;text-align:center;background:var(--bg);color:var(--ink)}}
+
+/* Stage 8b: scrolling card body and pinned approved view tiles stay visible. */
+#detail.area-detail{display:flex;flex-direction:column;overflow:hidden}
+#detail.area-detail>.close{position:absolute;right:16px;top:12px;z-index:1}
+#area-card{display:flex;flex-direction:column;min-height:0;flex:1}
+#area-card-scroll{min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;flex:1 1 auto;padding-right:2px}
+#detail-name{padding-right:28px}
+#hle-summary .big-value{white-space:nowrap;font-size:38px}#hle-summary .big-value small{font-size:13px;letter-spacing:0;font-weight:500;color:var(--muted)}
+#hle-position-block .position-endpoints{margin:6px 0 5px}#hle-position-track{height:7px;position:relative;border-radius:2px;margin:0 4px 10px}#hle-position-marker{position:absolute;top:-4px;width:3px;height:15px;background:#fff;box-shadow:0 0 0 1px #0b1c24;transform:translateX(-50%)}
+#biggest-neighbour-gap{display:block;width:100%;text-align:left;margin:12px 0 4px;padding:8px 10px;border-radius:8px;background:#ffffff0d;border:1px solid var(--line);font-size:12.5px}#biggest-neighbour-gap>span{display:block;color:var(--muted)}#biggest-neighbour-gap>b{color:var(--accent)}
+#measure-about{font-size:12px;margin-top:10px;color:var(--muted)}#measure-about summary{cursor:pointer}#measure-about p{margin-top:6px}
+#card-views{flex:none}.card-view-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:14px 0 7px;font-weight:600}.card-view-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.card-view-tile{display:flex;flex-direction:column;gap:7px;align-items:flex-start;text-align:left;padding:11px 11px 10px;border-radius:10px;border:1px solid var(--line);background:linear-gradient(160deg,#2a4551,#1f3540);color:var(--ink);box-shadow:0 1px 0 #ffffff12 inset,0 2px 6px #0006;transition:.15s;font-size:13px;font-weight:600;line-height:1.2;min-width:0}
+.card-view-tile svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:0 0 22px;color:var(--accent)}
+.card-view-tile:hover{background:linear-gradient(160deg,#2a4551,#1f3540);transform:translateY(-2px);border-color:var(--accent);box-shadow:0 1px 0 #ffffff18 inset,0 8px 16px #0009,0 0 0 1px #d7e75b55}#card-views .card-view-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.smoking-view #drawer-subtitle{font-size:11px;line-height:1.3}.smoking-view .smoking-key,.smoking-overlap{font-size:11px;line-height:1.3;margin:3px 0}.smoking-view .authority-plots{gap:3px}.smoking-view .smoking-row{grid-template-columns:minmax(110px,1fr) minmax(85px,.8fr) minmax(185px,1.5fr);gap:8px;padding:4px;line-height:1.4}.smoking-view .smoking-row .dot-track{height:20px;min-height:20px}.smoking-summary{white-space:nowrap;font-size:11px}.smoking-summary b{font-size:12px;font-weight:500}
+@media(max-height:719px){#card-views{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding-top:12px}.card-view-group,.card-view-grid{display:contents}.card-view-label{display:none}.card-view-tile{min-height:72px;align-items:center;justify-content:center;gap:6px;text-align:center;padding:5px;border-radius:12px;background:radial-gradient(circle at 50% 0,#33505d,#1f3540);font-size:11px;line-height:1.15}.card-view-tile svg{width:28px;height:28px;flex-basis:28px}.card-view-tile:hover{background:radial-gradient(circle at 50% 0,#33505d,#1f3540)}}
+@media(prefers-reduced-motion:reduce){.card-view-tile{transition:none}.card-view-tile:hover{transform:none}}
+
+/* Active view uses the established selected-state accent in both card layouts. */
+#card-views .card-view-tile[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#152c33}
+#card-views .card-view-tile[aria-pressed=true] svg{color:inherit}
+/* The view's content can contract to 360px; the data table retains its own scroll. */
+#drawer .neighbour-dot-row,#drawer .authority-row,#drawer .neighbour-axis{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,.8fr)}
+#drawer .profile-row{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+#drawer .chart-row>span{min-width:0;overflow-wrap:anywhere}
+#drawer .authority-modes{flex-wrap:wrap}
+#drawer .smoking-row{grid-template-columns:minmax(0,1fr) minmax(0,.8fr) minmax(0,1.5fr)}
+#drawer .smoking-summary{white-space:normal}
+#table-wrap{min-width:0;max-width:100%}
+</style><style>__LEAFLET_CSS__
+</style><style id="field-notes-theme">
+/* Hackathon Field Notes: quiet paper surfaces around the data map. */
+:root {
+  color-scheme: light;
+  --bg: #e9e9e2;
+  --panel: #f5f6f0;
+  --line: #ccd2c6;
+  --ink: #20271f;
+  --muted: #596154;
+  --accent: #36557e;
+}
+html, body, #app { background: var(--bg); color: var(--ink); }
+h1, h2, h3 { color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: -.01em; }
+h1 { font-size: 1.55rem; line-height: 1.2; }
+h2 { font-size: 1.3rem; line-height: 1.25; }
+h3 { font-size: 1.08rem; line-height: 1.3; }
+.eyebrow { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: .08em; }
+.panel { color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 10px; box-shadow: none; backdrop-filter: none; }
+button, select, input[type="search"] { color: var(--ink); background: #f5f6f0; border: 1px solid var(--line); border-radius: 6px; }
+button:hover, select:hover { color: var(--ink); background: #dde2d6; }
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+button[aria-pressed="true"] { color: #fff; background: var(--accent); border-color: var(--accent); }
+input[type="checkbox"], input[type="range"] { accent-color: var(--accent); }
+#map, .leaflet-container { background: var(--bg); }
+.brand p, .muted, .hint, .field > span:first-child { color: var(--muted); }
+.group, .metric-compare, .plot-track, .dot-track, .data-row { border-color: var(--line); }
+.attribution { color: var(--ink); background: var(--panel); border-top: 1px solid var(--line); }
+.attribution a, .attribution #corner-note { color: var(--accent); }
+.corner-note, dialog { color: var(--ink); background: #f5f6f0; border: 1px solid var(--line); border-radius: 10px; box-shadow: none; }
+dialog::backdrop { background: rgba(32, 39, 31, .32); }
+dialog p { color: var(--muted); }
+.tag, .big-gap-badge { color: var(--ink); background: #dde2d6; border: 1px solid var(--line); border-radius: 5px; }
+.leaflet-tooltip.area-tooltip, .chart-name-tooltip { color: var(--ink); background: #f5f6f0; border: 1px solid var(--line); border-radius: 8px; box-shadow: none; }
+.tooltip-outside { color: var(--muted); }
+.area-label { color: #20271f; -webkit-text-stroke-color: rgba(245, 246, 240, .96); text-shadow: 0 0 1.5px rgba(245, 246, 240, .96); }
+.data-row { border-bottom-color: var(--line); }
+.plot-track, .dot-track { border-bottom-color: var(--line); }
+.whisker, .authority-range { background: #8b9487; }
+.pinned-chip { box-shadow: none; border-color: #f5f6f0; outline-color: #20271f; }
+.selected-dot { outline-color: #f5f6f0; box-shadow: 0 0 0 2px var(--accent); }
+.profile-marker, #position-marker, #hle-position-marker { background: var(--accent); box-shadow: 0 0 0 1px #f5f6f0; }
+.profile-median { background: #20271f; opacity: .65; }
+.pair-noise, .pair-hle > div, .pair-table .active-row, .current-measure, .view-menu-item:disabled { color: var(--ink); background: #dde2d6; }
+#biggest-neighbour-gap { color: var(--ink); background: #f5f6f0; border-color: var(--line); box-shadow: none; }
+#biggest-neighbour-gap > span { color: var(--muted); }
+.card-view-tile, .card-view-tile:hover { color: var(--ink); background: #f5f6f0; border-color: var(--line); border-radius: 8px; box-shadow: none; transform: none; }
+.card-view-tile[aria-pressed="true"], #card-views .card[aria-pressed="true"] { color: #fff; background: var(--accent); border-color: var(--accent); }
+#card-views .card-view-tile:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.legend-band-swatch[aria-pressed="true"], .legend-band-label[aria-pressed="true"] { outline: 3px solid var(--accent); outline-offset: -2px; }
+#chart .histogram-hit:focus { stroke: var(--accent); }
+#desktop-notice { color: var(--ink); background: var(--bg); }
+#back-to-story { color: var(--accent) !important; background: #f5f6f0 !important; border-color: var(--line) !important; box-shadow: none !important; }
+</style>
+</head>
+<body><p id="desktop-notice">This dashboard is designed for laptops and desktops. It is not suitable for phones.</p><div id="app"><div id="map-stage"><a class="skip" href="#area-picker">Skip to area list</a><div id="map" role="application" aria-label="Map of healthy life expectancy and area measures"></div>
+<aside id="left-column" aria-label="Map controls and legend"><header class="top-left"><div class="brand panel"><div class="eyebrow explorer-label">Healthy Life Expectancy Explorer</div><h1><span>Birmingham and its </span><span>surrounding areas. </span><span class="title-accent">Years in good health.</span></h1><p class="outcome-rule">Darker shades show poorer outcomes. Lighter shades show better outcomes.</p><p id="subtitle">Mean male and female HLE · 2019–2023 · MSOA 2021</p><p class="note">HLE average is a project-derived mean, not an ONS statistic.</p><label class="field metric-field"><span>ACTIVE MEASURE</span><select id="metric-select"></select></label><div class="sex" role="group" aria-label="HLE sex"><button id="sex-average" aria-pressed="true">Average</button><button id="sex-male" aria-pressed="false">Male</button><button id="sex-female" aria-pressed="false">Female</button></div><details id="find-area" open><summary>Find an area</summary><div class="search"><input id="search" type="search" placeholder="Search a familiar place…" aria-label="Search areas by name or alias" autocomplete="off"><select id="area-picker" aria-label="Choose an area"><option value="">Choose an area…</option></select></div></details></div></header><section class="legend panel" aria-label="Map legend and summary"><h3 id="legend-title">HLE average · years</h3><p id="legend-period" class="legend-sub">2019–2023 · project-derived mean</p><div id="swatches" class="swatches"></div><div id="bandlabels" class="bandlabels"></div><p class="pattern-key"><span class="missing-chip"></span>Striped: unavailable · <span class="pinned-chip"></span> Pinned area</p><details id="legend-details" open><summary>Show details</summary><p id="group-selection-count" class="hint" aria-live="polite" hidden></p><p id="measure-note" class="hint" hidden></p><div class="stats"><div><strong id="count">660</strong><br><span>included areas</span></div><div><strong id="median">—</strong><br><span>unweighted median</span></div></div><p id="summary-note" class="hint">Area values; not population estimates.</p></details></section></aside>
+<nav class="actions-top" aria-label="Dashboard controls"><button id="controls-toggle" aria-expanded="false" aria-controls="controls">Explore &amp; layers</button><button id="about-open">Sources &amp; method</button><button id="map-only" aria-pressed="false">Map only</button></nav>
+<aside id="controls" class="panel collapsed" aria-label="Map and data controls"><div class="control-head"><h2>Explore &amp; layers</h2><button id="controls-close" aria-label="Close controls">×</button></div>
+<label class="field"><span>AREA COVERAGE</span><select id="coverage"><option value="all">All 660 areas</option><option value="birmingham">Birmingham only · 132 areas</option></select></label><div class="grid2"><button id="fit" style="width:100%">Fit to study area</button><span class="hint">Study area shown at open</span></div>
+<label class="field"><span>BASEMAP</span><select id="basemap"><option value="osm" selected>OpenStreetMap</option><option value="dark">OpenStreetMap, dark</option></select></label>
+<div class="grid2"><label class="field"><span>AREA FILL · <b id="opacity-label">60%</b></span><input id="opacity" type="range" min="20" max="100" value="60"></label><label class="field"><span>BRIGHTNESS · <b id="brightness-label">80%</b></span><input id="brightness" type="range" min="50" max="150" value="80"></label></div><label class="field"><span>SATURATION · <b id="saturation-label">85%</b></span><input id="saturation" type="range" min="0" max="160" value="85"></label><div class="grid2"><label class="check" style="display:none"><input id="labels" type="checkbox" checked>Show basemap labels</label><label class="check"><input id="map-labels" type="checkbox">Show area labels</label></div>
+<div class="group"><h3>Local authority filter</h3><div class="hint" id="authority-count"></div><div class="grid2"><button id="select-all-authorities">Select all</button><button id="clear-authorities">Clear</button></div><div id="authorities" class="authority-box"></div></div>
+<details class="group"><summary>Keyboard area list</summary><p class="hint">Use Tab to reach an area, then Enter or Space to select it.</p><div id="keyboard-areas" class="authority-box" style="max-height:180px"></div></details>
+<div class="group"><h3>Flags and comparisons</h3><label class="check"><input id="student-layer" type="checkbox">Outline student-dominated areas</label><label class="check"><input id="visitor-layer" type="checkbox">Outline visitor hubs</label><label class="check"><input id="imputed-layer" type="checkbox">Mark imputed HLE estimates</label><label class="check"><input id="gaps-layer" type="checkbox">Outline the 95 big-gap pairs</label><label class="check"><input id="boundaries" type="checkbox" checked>Show area boundaries</label><p class="hint">The 95 pairs were selected as the most extreme. Their pattern applies to those pairs only, not to all neighbours.</p></div>
+<p class="hint group">No clusters or model residuals are available.</p></aside>
+
+<div class="zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button></div><div class="bottom-actions"><button id="charts-open" aria-controls="drawer" aria-expanded="false">Charts and Data</button></div>
+<aside id="detail" class="panel collapsed" aria-label="Selected area details" tabindex="-1">
+<button class="close" id="detail-close" aria-label="Close area details">×</button>
+<div id="area-card"><div id="area-card-scroll"><div class="eyebrow">Area in focus</div><h2 id="detail-name"></h2><p id="detail-location" class="hint"></p><div id="context-notations"></div>
+<div id="hle-summary"></div><div class="metric-compare"><div>Male HLE<strong id="male-val"></strong></div><div>Female HLE<strong id="female-val"></strong></div></div>
+<div id="hle-position-block"><div class="position-endpoints"><span>Lowest</span><span>Highest</span></div><div id="hle-position-track"><span id="hle-position-marker"></span></div></div>
+<section id="active-measure-block" class="group"><h3 id="active-measure-name"></h3><div class="big-value" id="active-value"></div><p class="hint" id="authority-median"></p><div id="position-block"><div class="position-endpoints"><span>Lowest</span><span>Highest</span></div><div id="position-track"><span id="position-marker"></span></div><p id="active-rank" class="hint"></p></div><details id="measure-about"><summary>About this measure</summary><p id="measure-about-text"></p></details></section>
+<button id="biggest-neighbour-gap" hidden><span>Biggest neighbour gap</span><b></b></button>
+<div class="card-small-print"><p id="comparison-sentence" class="note"></p><p id="health-overlap" class="note" hidden>Household deprivation includes a health and disability dimension that overlaps HLE. Use it as context only.</p><p id="area-notes" class="note"></p></div></div><div id="card-views" aria-label="Area views"></div></div>
+<div id="pair-card" hidden></div></aside>
+<section id="drawer" tabindex="-1" class="panel collapsed" aria-label="Linked chart or data table"><div class="drawer-head"><button id="drawer-back">Charts and Data</button><h3 id="drawer-title">Charts and Data</h3><button id="drawer-close" aria-label="Close drawer">×</button></div><p class="hint" id="drawer-subtitle"></p><div id="view-content"></div><div id="chart-wrap"><svg class="chart" id="chart" role="img" aria-label="Distribution of active measure"></svg></div><div id="table-wrap" class="table-scroll" hidden><p class="hint">The CSV download also includes the area code.</p><button id="export-csv">Export shown rows as CSV</button><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div><div id="authority-wrap" class="authority-plots" hidden></div><p id="drawer-note" class="hint"></p></section>
+</div><div class="attribution"><span id="corner-note" hidden></span><span id="credits">© OpenStreetMap contributors · Contains OS data © Crown copyright and database right 2021 · Source: Office for National Statistics licensed under the Open Government Licence v.3.0</span><span>Exploratory area comparisons</span></div><div id="status" role="status" aria-live="polite"></div>
+<dialog id="about"><button id="about-close" style="float:right">Close</button><h2>Actual data. An exploratory surface.</h2><p>Healthy life expectancy (HLE) is the estimated years lived in good health. HLE average here is the mean of male and female estimates, calculated for this project; it is not an ONS statistic. Its approximate 95% range assumes independent errors for men and women and is probably too narrow.</p><p>Measures describe areas and use their own definitions, units, denominators and periods. They are linked with HLE in these data; a map cannot establish that one measure is responsible for another. Household deprivation includes a health and disability dimension that overlaps HLE, so it is context only. No model outputs or new datasets are included.</p><p>The basemap is OpenStreetMap and needs an internet connection. If you open this page as a local file, the tiles may not load, because the OpenStreetMap tile service needs to know which website is asking.</p><p>Adult smoking: OHID Fingertips, Annual Population Survey (indicator 92443), 2022–24 pooled. County and unitary-authority estimates are available for 11 of these 37 authorities; district and neighbourhood estimates are not supplied here.</p></dialog></div>
+<script>__LEAFLET_JS__</script><script>
+const D=__WEB_DATA__;
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id)},CFG={},areas=D.areas||[],metrics=D.metrics||{},features=D.geometry&&D.geometry.features||[];
+var pairFieldIndex=Object.fromEntries((D.meta&&D.meta.pair_fields||[]).map(function(k,i){return[k,i]})),pairFlagFields=D.meta&&D.meta.pair_flag_fields||[];
+function normalizePair(p){if(!Array.isArray(p))return p;var o={};Object.keys(pairFieldIndex).forEach(function(k){o[k]=p[pairFieldIndex[k]]});if(Array.isArray(o.flags)){var f={};pairFlagFields.forEach(function(k,i){f[k]=o.flags[i]});o.flags=f}return o}
+var pairs=(D.pairs||[]).map(normalizePair),pairLookup=new Map(pairs.map(function(p){return[p.area_code_a+'|'+p.area_code_b,p]})),bigPairs=(D.big_gap_pairs||[]).map(function(p){return Array.isArray(p)?(pairLookup.get(p[0]+'|'+p[1])||pairLookup.get(p[1]+'|'+p[0])):normalizePair(p)}).filter(Boolean);
+bigPairs.forEach(function(p,i){p.hue=D.meta.big_gap_hues[i];p.index=i});
+var bigByArea=new Map();bigPairs.forEach(function(p){[p.area_code_a,p.area_code_b].forEach(function(c){if(!bigByArea.has(c))bigByArea.set(c,[]);bigByArea.get(c).push(p)})});
+var byCode=new Map(areas.map(function(a){return[a.code,a]})),featureByCode=new Map(features.map(function(f){return[f.properties&&f.properties.area_code,f]}));
+var hleFields={avg:'hle_average',male:'hle_male',female:'hle_female'},colors=['#46327e','#365c8d','#21918c','#5ec962','#d7e75b'],seq=['#fff7bc','#fec44f','#fe9929','#ec7014','#cc4c02'];
+var state={metric:'hle_average',sex:'avg',coverage:'all',authorities:new Set(),pinned:null,detailOpen:false,pair:null,pairReturn:null,sort:'area_name',direction:1,drawer:'',fill:.60,histogramBins:new Set(),legendBands:new Set()};
+var MAX_ZOOM=19,MIN_ZOOM=5,START_ZOOM=null,BOUNDS_PADDING=.10,MAX_BOUNDS_PADDING=.10;
+const STUDY_BOUNDS=L.geoJSON(D.geometry).getBounds(),MAX_PAN_BOUNDS=STUDY_BOUNDS.pad(MAX_BOUNDS_PADDING),START_VIEW_BOUNDS=STUDY_BOUNDS.pad(BOUNDS_PADDING);
+var groupLayer;
+var map,areasLayer,gapLayer,flagLayer,labelLayer,tiles,quantiles=[],baseBounds=null,missingPattern=null;
+function nm(a){return a.name||a.local_area_name||a.code}function auth(a){return a.local_authority||a.localAuthority||'Unknown authority'}function raw(a,k){return a&&a.values?a.values[k]:a&&a[k]}function num(v){if(v===null||v===''||v===undefined||!Number.isFinite(Number(v)))return null;return Number(v)}function fmt(v,d){return num(v)===null?'not available':Number(v).toLocaleString(undefined,{maximumFractionDigits:d===undefined?1:d})}function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function meta(k){return Object.assign({},metrics[k],{label:(metrics[k]&&(metrics[k].short_label||metrics[k].label))||k})||{label:k,unit:'',period:'',definition:''}}function activeField(){return state.metric==='hle_average'?hleFields[state.sex]:state.metric}function val(a){return raw(a,activeField())}function metricValueFor(a,k){return raw(a,k)}function inScope(a){return(state.coverage==='all'||auth(a)==='Birmingham')&&state.authorities.has(auth(a))}function visibleAreas(){return areas.filter(inScope)}
+function calcQuantiles(){var xs=areas.map(function(a){return num(val(a))}).filter(function(v){return v!==null}).sort(function(a,b){return a-b});quantiles=[.2,.4,.6,.8].map(function(p){if(!xs.length)return null;var ix=(xs.length-1)*p,lo=Math.floor(ix),hi=Math.ceil(ix);return xs[lo]+(xs[hi]-xs[lo])*(ix-lo)})}
+function mapPalette(){return (metrics[activeField()]&&metrics[activeField()].band_colors)|| (state.metric==='hle_average'?colors:(meta(state.metric).poor_end==='low'?seq.slice().reverse():seq))}function colorAt(v){return color(v)}
+function color(v){if(num(v)===null)return missingPattern||'#263b44';if(state.metric==='hle_average'){v=Number(v);return v<55?colors[0]:v<60?colors[1]:v<65?colors[2]:v<70?colors[3]:colors[4]}var i=quantiles.findIndex(function(q){return Number(v)<=q});return mapPalette()[i<0?4:i]}
+function makeMissingPattern(){var c=document.createElement('canvas');c.width=8;c.height=8;var x=c.getContext('2d');x.fillStyle='#263b44';x.fillRect(0,0,8,8);x.strokeStyle='#aab8bc';x.lineWidth=1;x.beginPath();x.moveTo(-2,2);x.lineTo(2,-2);x.moveTo(0,8);x.lineTo(8,0);x.moveTo(6,10);x.lineTo(10,6);x.stroke();missingPattern=x.createPattern(c,'repeat')}
+function buildMetrics(){var s=$('metric-select');s.replaceChildren();[['hle_average','HLE average']].concat(Object.keys(metrics).filter(function(k){return k!=='hle_average'&&k!=='hle_male'&&k!=='hle_female'}).map(function(k){return[k,meta(k).label]})).forEach(function(x){var o=document.createElement('option');o.value=x[0];o.textContent=x[1];s.append(o)});s.value=state.metric}
+function buildAuthorities(){var names=Array.from(new Set(areas.map(auth))).sort();state.authorities=new Set(names);var root=$('authorities');root.replaceChildren();names.forEach(function(n){var l=document.createElement('label'),i=document.createElement('input'),s=document.createElement('span');l.className='check';i.type='checkbox';i.checked=true;i.value=n;i.onchange=function(){i.checked?state.authorities.add(n):state.authorities.delete(n);authorityCount();update()};s.textContent=n;l.append(i,s);root.append(l)});authorityCount();var list=$('keyboard-areas');areas.slice().sort(function(a,b){return nm(a).localeCompare(nm(b))}).forEach(function(a){var b=document.createElement('button');b.type='button';b.className='neighbour';b.textContent=nm(a)+' · '+a.code;b.onclick=function(){select(a.code)};list.append(b)})}
+function authorityCount(){$('authority-count').textContent=state.authorities.size+' of '+new Set(areas.map(auth)).size+' local authorities selected'}
+function fillPicker(){var q=$('search').value.trim().toLowerCase(),rows=areas.filter(function(a){return[nm(a),a.code,auth(a)].concat(Array.isArray(a.aliases)?a.aliases:[]).join(' ').toLowerCase().includes(q)}).sort(function(a,b){return nm(a).localeCompare(nm(b))});var s=$('area-picker');s.replaceChildren();var o=document.createElement('option');o.value='';o.textContent=q?rows.length+' matching areas…':'Choose an area…';s.append(o);rows.forEach(function(a){var x=document.createElement('option');x.value=a.code;x.textContent=nm(a)+' · '+a.code;s.append(x)});if(state.pinned)s.value=state.pinned}
+function selectedStyle(f){var a=byCode.get(f.properties.area_code),v=a?val(a):null,inside=a&&inScope(a);return{color:$('boundaries').checked?'#142b34':'#142b3400',weight:map.getZoom()>12?1.2:.55,opacity:inside?1:.35,fillColor:color(v),fillOpacity:a&&a.code===state.pinned&&!selectionFallback()?0:inside?state.fill:.12}}
+function initMap(){map=L.map('map',{renderer:L.canvas({padding:.4}),zoomControl:false,attributionControl:false,minZoom:MIN_ZOOM,maxZoom:MAX_ZOOM,zoomSnap:1,zoomDelta:1,maxBoundsViscosity:1});[['bigGapPane',410],['contextPane',420],['groupPane',430]].forEach(function(p){var pane=map.createPane(p[0]);pane.style.zIndex=p[1];pane.style.pointerEvents='none'});areasLayer=L.geoJSON(D.geometry,{bubblingMouseEvents:false,style:selectedStyle,onEachFeature:function(f,l){var a=byCode.get(f.properties.area_code);if(!a)return;l.on({click:function(e){select(a.code);if(matchMedia('(pointer:coarse)').matches||navigator.maxTouchPoints>0){showAreaTooltip(a,e.latlng,true);if(e.originalEvent)L.DomEvent.stopPropagation(e.originalEvent)}},mouseover:function(e){if(!touchInput()&&!touchTooltip)showAreaTooltip(a,e.latlng,false)},mousemove:function(e){if(!touchInput()&&!touchTooltip){if(areaTooltip)areaTooltip.setLatLng(e.latlng);else showAreaTooltip(a,e.latlng,false);constrainAreaTooltip()}},mouseout:function(){if(!touchTooltip)closeAreaTooltip()}})}}).addTo(map);baseBounds=STUDY_BOUNDS;map.setMaxBounds(MAX_PAN_BOUNDS);MIN_ZOOM=map.getBoundsZoom(baseBounds.pad(BOUNDS_PADDING));map.setMinZoom(MIN_ZOOM);map.fitBounds(START_VIEW_BOUNDS,{animate:false});START_ZOOM=map.getZoom();initSelection();map.on('click',closeAreaTooltip);map.on('zoomend',function(){areasLayer.setStyle(selectedStyle)});map.on('move zoom resize moveend zoomend',requestLabels);groupLayer=L.layerGroup().addTo(map);gapLayer=L.layerGroup().addTo(map);flagLayer=L.layerGroup().addTo(map);labelLayer=L.layerGroup().addTo(map);window.addEventListener('resize',function(){var wasOverview=map.getZoom()<=MIN_ZOOM+.05;map.invalidateSize();map.setMinZoom(0);MIN_ZOOM=map.getBoundsZoom(baseBounds.pad(BOUNDS_PADDING));map.setMinZoom(MIN_ZOOM);if(wasOverview)map.fitBounds(baseBounds.pad(BOUNDS_PADDING),{animate:false})})}
+var providers={osm:{url:'https://tile.openstreetmap.org/{z}/{x}/{y}.png',attr:'© OpenStreetMap contributors'}};
+function setBase(n,starting){var fallback=true;state.base='osm';state.baseStyle=n;var p=providers.osm;if(tiles){map.removeLayer(tiles);tiles=null}$('labels').disabled=fallback;$('map').style.setProperty('--tile-invert',fallback&&n==='dark'?1:0);$('brightness').value=starting?80:fallback&&n==='dark'?75:n==='pale'?105:100;$('saturation').value=starting?85:n==='streets'||n==='osm'?100:0;tileFilters();if(location.protocol==='file:'){$('corner-note').hidden=false;$('corner-note').textContent='Local file: area data work here. Serve over HTTP for the no-key OSM background.';$('credits').textContent='Contains OS data © Crown copyright and database right 2021 · Source: Office for National Statistics licensed under the Open Government Licence v.3.0';return}$('corner-note').hidden=true;tiles=L.tileLayer(tileUrl(),{attribution:p.attr,maxZoom:MAX_ZOOM});tiles.on('tileerror',function(){$('corner-note').hidden=false;$('corner-note').textContent='Background tiles unavailable. Area data and controls still work.'});tiles.addTo(map);$('credits').innerHTML='<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a>'+' · Contains OS data © Crown copyright and database right 2021 · Source: Office for National Statistics licensed under the Open Government Licence v.3.0'}
+function tileUrl(){return providers.osm.url}
+function tileFilters(){$('map').style.setProperty('--tile-brightness',Number($('brightness').value)/100);$('map').style.setProperty('--tile-saturation',Number($('saturation').value)/100);$('brightness-label').textContent=$('brightness').value+'%';$('saturation-label').textContent=$('saturation').value+'%'}
+function legend(){calcQuantiles();var is=state.metric==='hle_average',colorsNow=mapPalette(),labels=is?['<55','55–<60','60–<65','65–<70','≥70']:['≤'+fmt(quantiles[0],2),'>'+fmt(quantiles[0],2)+' to ≤'+fmt(quantiles[1],2),'>'+fmt(quantiles[1],2)+' to ≤'+fmt(quantiles[2],2),'>'+fmt(quantiles[2],2)+' to ≤'+fmt(quantiles[3],2),'>'+fmt(quantiles[3],2)];makeLegendBandButtons(colorsNow,labels);document.querySelector('.legend').classList.toggle('quantile',!is);Array.from($('bandlabels').children).forEach(function(x,i){x.style.setProperty('--band-color',colorsNow[i])});var m=meta(state.metric);$('legend-title').textContent=(is?'HLE '+(state.sex==='avg'?'average':state.sex):m.label)+' · '+(m.unit||'years');$('legend-period').textContent=(m.period||'Period not supplied')+(is?(state.sex==='avg'?' · project-derived mean':' · ONS sex-specific estimate'):' · five quantile bands');var note=state.metric==='employed_residents_16plus_pct'?'includes full-time students':(state.metric==='crime_for_analysis'||state.metric==='asb_rows_per_1000_residents')?'rates can be distorted by visitor footfall':'';$('measure-note').textContent=note;$('measure-note').hidden=!note;$('subtitle').textContent=(is?'HLE '+(state.sex==='avg'?'average':state.sex):m.label)+' · '+(m.period||'period not supplied')+' · MSOA 2021'}
+function summary(){var rows=visibleAreas(),xs=rows.map(function(a){return num(val(a))}).filter(function(x){return x!==null}).sort(function(a,b){return a-b}),med=xs.length?(xs[(xs.length-1)>>1]+xs[xs.length>>1])/2:null;$('count').textContent=rows.length;$('median').textContent=fmt(med,2);$('summary-note').textContent=xs.length+' valid · '+(rows.length-xs.length)+' unavailable. Unweighted area median.'}
+function center(a){return a&&a.centre?L.latLng(a.centre[1],a.centre[0]):null}
+var labelMarkers=new Map(),labelFrame=0,labelMeasure=document.createElement('canvas').getContext('2d');
+function requestLabels(){if(!labelFrame)labelFrame=requestAnimationFrame(drawLabels)}
+function drawLabels(){
+ labelFrame=0;if(!labelLayer||!map)return;
+ var chosen=new Set(),boxes=[],limit=map.getZoom()<9?18:map.getZoom()<12?40:120,root=$('map').getBoundingClientRect();
+ function overlaps(a,b){return a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top}
+ var obstacles=Array.from(document.querySelectorAll('.panel,.actions-top,.zoom,.bottom-actions,.attribution,dialog[open]')).filter(function(el){var st=getComputedStyle(el),r=el.getBoundingClientRect();return st.display!=='none'&&st.visibility!=='hidden'&&r.width&&r.height}).map(function(el){var r=el.getBoundingClientRect();return{left:r.left-root.left,top:r.top-root.top,right:r.right-root.left,bottom:r.bottom-root.top}});
+ labelMeasure.font='12px '+getComputedStyle($('map')).fontFamily;
+ var candidates=$('map-labels').checked?visibleAreas().map(function(a){var c=center(a),layer=areasLayer.getLayers().find(function(l){return l.feature.properties.area_code===a.code});if(!c||!map.getBounds().contains(c)||!layer)return null;var bounds=layer.getBounds(),nw=map.latLngToContainerPoint(bounds.getNorthWest()),se=map.latLngToContainerPoint(bounds.getSouthEast()),size=map.getSize();return{a:a,c:c,priority:Math.max(0,Math.min(size.x,se.x)-Math.max(0,nw.x))*Math.max(0,Math.min(size.y,se.y)-Math.max(0,nw.y))}}).filter(Boolean).sort(function(a,b){return b.priority-a.priority||a.a.code.localeCompare(b.a.code)}):[];
+ candidates.forEach(function(item){if(chosen.size>=limit)return;var a=item.a,p=map.latLngToContainerPoint(item.c),w=Math.ceil(labelMeasure.measureText(nm(a)).width),h=18,box={left:p.x-w/2-4,right:p.x+w/2+4,top:p.y-h/2-4,bottom:p.y+h/2+4};if(box.left<0||box.top<0||box.right>root.width||box.bottom>root.height||boxes.some(function(b){return overlaps(box,b)})||obstacles.some(function(b){return overlaps(box,b)}))return;boxes.push(box);chosen.add(a.code);var marker=labelMarkers.get(a.code);if(!marker){marker=L.marker(item.c,{interactive:false,icon:L.divIcon({className:'',iconSize:[w,h],iconAnchor:[w/2,h/2],html:'<span class="area-label" style="display:block;line-height:18px;width:'+w+'px">'+esc(nm(a))+'</span>'})});labelMarkers.set(a.code,marker);labelLayer.addLayer(marker)}else marker.setLatLng(item.c)});
+ labelMarkers.forEach(function(marker,code){if(!chosen.has(code)){labelLayer.removeLayer(marker);labelMarkers.delete(code)}})
+}
+function drawFlags(){flagLayer.clearLayers();var warm=state.metric==='hle_average',palette=warm?['#e08a1e','#b5421a','#e9d8a6']:['#0f7f8a','#3a2f8f','#6fb7e8'],casing=warm?'#0b1c24':'#f6f1e4';areas.forEach(function(a){if(!inScope(a))return;var f=featureByCode.get(a.code);if(!f)return;var imputed=state.sex==='male'?raw(a,'hle_male_imputed'):state.sex==='female'?raw(a,'hle_female_imputed'):(raw(a,'hle_male_imputed')||raw(a,'hle_female_imputed'));var marks=[[$('student-layer').checked&&raw(a,'student_dominated'),null],[$('visitor-layer').checked&&raw(a,'visitor_hub'),'7 4'],[$('imputed-layer').checked&&imputed,'2 3']];marks.forEach(function(m,i){if(!m[0])return;[ [casing,3.84],[palette[i],1.6] ].forEach(function(style){flagLayer.addLayer(L.geoJSON(f,{pane:'contextPane',interactive:false,style:{color:style[0],weight:style[1],dashArray:m[1],fillOpacity:0,interactive:false}}))})})})}
+function drawPairs(){
+ gapLayer.clearLayers();if(!$('gaps-layer').checked)return;
+ var eligible=new Set(bigPairs.filter(function(p){return inScope(byCode.get(p.area_code_a))&&inScope(byCode.get(p.area_code_b))}).map(function(p){return p.index}));
+ areas.forEach(function(a){var i=a.big_gap_pair;if(i===undefined||!eligible.has(i)||!inScope(a))return;var p=bigPairs[i],f=featureByCode.get(a.code);[['#0b1c24',4.6],[D.meta.big_gap_palette[p.hue],2.4]].forEach(function(st){gapLayer.addLayer(L.geoJSON(f,{pane:'bigGapPane',interactive:false,style:{color:st[0],weight:st[1],opacity:1,fill:false,fillOpacity:0}}))})});
+}
+function quantile(xs,p){xs=xs.slice().sort(function(a,b){return a-b});if(!xs.length)return null;var i=(xs.length-1)*p,l=Math.floor(i),h=Math.ceil(i);return xs[l]+(xs[h]-xs[l])*(i-l)}function median(xs){xs=xs.filter(Number.isFinite).sort(function(a,b){return a-b});return xs.length?(xs[(xs.length-1)>>1]+xs[xs.length>>1])/2:null}
+function rankInfo(a,k){var own=num(raw(a,k)),xs=areas.map(function(z){return num(raw(z,k))}).filter(function(v){return v!==null}),low=meta(k).poor_end==='low';return{rank:own===null?null:1+xs.filter(function(v){return low?v>own:v<own}).length,n:xs.length}}
+function rank(a,k){return rankInfo(a,k).rank}
+function hleChip(v){return num(v)===null?'#263b44':v<55?colors[0]:v<60?colors[1]:v<65?colors[2]:v<70?colors[3]:colors[4]}
+function chip(c){return '<span class="card-chip" style="background:'+c+'"></span>'}
+function unitValue(a,k){return formatValue(raw(a,k),k)}
+function contextNotations(a,named){
+ var out=[],warm=state.metric==='hle_average',pal=warm?['#e08a1e','#b5421a','#e9d8a6']:['#0f7f8a','#3a2f8f','#6fb7e8'],prefix=named?nm(a)+': ':'';
+ if($('student-layer').checked&&raw(a,'student_dominated'))out.push([pal[0],'Student-dominated area: full-time students are more than half of residents.']);
+ if($('visitor-layer').checked&&raw(a,'visitor_hub'))out.push([pal[1],'Visitor hub: recorded crime rate is far above the typical range, so its crime figure is left out of the crime analysis.']);
+ var male=raw(a,'hle_male_imputed'),female=raw(a,'hle_female_imputed');if($('imputed-layer').checked&&(male||female))out.push([pal[2],"ONS estimated part of the source data for this area's "+(male&&female?'male and female':male?'male':'female')+' HLE.']);
+ var ps=bigByArea.get(a.code)||[];if($('gaps-layer').checked&&ps.length)out.push([D.meta.big_gap_palette[bigPairs[a.big_gap_pair].hue],'In '+ps.length+' big-gap '+(ps.length===1?'pair':'pairs')+'. Largest gap: '+gapText(Math.max(...ps.map(function(p){return Math.abs(p.gap)})))+' years.']);
+ return out.map(function(x){return '<div class="context-notation"><span class="context-tag" style="background:'+x[0]+'"></span><span>'+esc(prefix+x[1])+'</span></div>'}).join('');
+}
+function detail(){
+ var cardScroll=$('area-card-scroll').scrollTop;
+ if(state.pair){renderPair();return}var a=byCode.get(state.pinned);if(!a){$('detail').classList.add('collapsed');return}
+ $('detail').classList.remove('collapsed');$('detail').classList.add('area-detail');$('area-card').hidden=false;$('pair-card').hidden=true;$('detail').setAttribute('aria-label','Selected area details');$('detail-close').setAttribute('aria-label','Close area details');
+ $('detail-name').textContent=nm(a);$('detail-location').textContent=auth(a)+' · '+a.code+' · MSOA 2021';$('context-notations').innerHTML=contextNotations(a,false);
+ $('male-val').textContent=fmt(raw(a,'hle_male'))+' years';$('female-val').textContent=fmt(raw(a,'hle_female'))+' years';
+ var field=hleFields[state.sex],h=num(raw(a,field)),lo=num(raw(a,field+'_lci')),hi=num(raw(a,field+'_uci')),label=meta(field).label,hr=rankInfo(a,field);
+ $('hle-summary').innerHTML='<div class="big-value">'+chip(hleChip(h))+fmt(h)+' <small>years · 95% range '+fmt(lo)+' to '+fmt(hi)+'</small></div><p class="hint" id="hle-rank">Rank '+hr.rank+' of '+hr.n+' · best to poorest outcomes</p>';
+ $('hle-position-block').hidden=h===null;$('hle-position-track').style.background=outcomeGradient(field);$('hle-position-marker').style.left=valuePosition(h,field)+'%';
+
+ var m=meta(activeField()),v=num(val(a)),r=rankInfo(a,activeField()),locals=areas.filter(function(x){return auth(x)===auth(a)}).map(function(x){return num(val(x))}).filter(function(x){return x!==null}),med=median(locals),diff=v===null||med===null?null:v-med;
+ $('active-measure-block').hidden=state.metric==='hle_average';$('active-measure-name').innerHTML=(v===null?'':chip(color(v)))+esc(m.label);$('active-value').textContent=unitValue(a,activeField());$('authority-median').textContent='Local-authority median: '+(med===null?'not available':formatValue(med,activeField()));
+ $('position-block').hidden=v===null;$('active-rank').textContent=v===null?'not available':'Rank '+r.rank+' of '+r.n;
+ var pal=mapPalette();$('position-track').style.background='linear-gradient(to right,'+pal.join(',')+')';$('position-marker').style.left=valuePosition(v,activeField())+'%';
+ $('comparison-sentence').textContent=diff!==null?nm(a)+' is '+formatValue(Math.abs(diff),activeField(),true)+' '+(diff>=0?'above':'below')+' its local-authority median for '+String(m.label||'this measure')+'. This is descriptive.':'A local-authority comparison is unavailable because the value or median is missing.';
+ $('measure-about-text').textContent=(m.definition||'Definition not supplied.')+' Unit: '+(m.unit||'not supplied')+'. Period: '+(m.period||'not supplied')+'.';$('health-overlap').hidden=!(/depriv/i.test(m.label||state.metric));$('area-notes').textContent=raw(a,'city_centre_caveat')?'The saved Birmingham city-centre caveat is not a whole-area exclusion.':'';
+ var button=$('biggest-neighbour-gap'),best=null;
+ if(h!==null)pairs.filter(function(p){return p.area_code_a===a.code||p.area_code_b===a.code}).forEach(function(p){var code=p.area_code_a===a.code?p.area_code_b:p.area_code_a,o=byCode.get(code),v=o?num(raw(o,field)):null;if(v===null)return;var gap=Math.abs(v-h);if(!best||gap>best.gap||(gap===best.gap&&code<best.area.code))best={area:o,pair:p,value:v,gap:gap}});
+ button.hidden=!best;if(best){button.dataset.code=best.area.code;button.dataset.bigGap=String(!!best.pair.big_gap);button.dataset.gap=best.gap;button.querySelector('b').textContent=nm(best.area)+' is '+gapText(best.gap)+' years '+(best.value>=h?'higher':'lower');button.setAttribute('aria-label','Biggest neighbour gap between '+nm(a)+' and '+nm(best.area)+': '+gapText(best.gap)+' years '+(best.value>=h?'higher':'lower')+' than '+nm(a));button.onclick=function(){if(best.pair.big_gap)showPair(best.pair,button,true);else select(best.area.code)}}else button.onclick=null;
+ buildCardViews();syncCardViews();$('area-card-scroll').scrollTop=cardScroll;
+
+}
+
+function renderPair(){var p=state.pair,field=hleFields[state.sex],sides=[byCode.get(p.area_code_a),byCode.get(p.area_code_b)].sort(function(a,b){return Number(raw(b,field))-Number(raw(a,field))||a.code.localeCompare(b.code)}),a=sides[0],b=sides[1];
+ $('detail').classList.remove('area-detail');$('area-card').hidden=true;$('pair-card').hidden=false;$('detail').classList.remove('collapsed');$('detail').setAttribute('aria-label','Neighbour pair details');$('detail-close').setAttribute('aria-label','Close pair details');
+ var html='<div class="eyebrow">Pair in focus · big gap</div><h2>'+esc(nm(a)+' and '+nm(b))+'</h2><p class="hint">'+esc(auth(a)+(auth(a)===auth(b)?'':' / '+auth(b)))+' · neighbouring areas · '+a.code+' / '+b.code+'</p>'+contextNotations(a,true)+contextNotations(b,true)+'<div class="pair-noise">Big gap: well above the level expected from estimate noise</div><div class="pair-hle">';
+ sides.forEach(function(x,i){var h=num(raw(x,field));html+='<div><span class="hint">'+chip(hleChip(h))+(i?'Lower HLE':'Higher HLE')+'</span><div class="big-value">'+fmt(h)+'</div><span class="hint">years</span></div>'});html+='</div><p class="pair-gap">'+gapText(Math.abs(raw(a,field)-raw(b,field)))+' <small>years apart</small></p><table class="pair-table"><thead><tr><th>Measure</th><th>Higher HLE</th><th>Lower HLE</th></tr></thead><tbody>';
+ function row(k,active){return '<tr'+(active?' class="active-row"':'')+'><td>'+esc((active?'Active measure: ':'')+meta(k).label)+'</td><td>'+esc(unitValue(a,k))+'</td><td>'+esc(unitValue(b,k))+'</td></tr>'}
+ if(state.metric!=='hle_average')html+=row(activeField(),true);contextualKeys().forEach(function(k){html+=row(k,false)});html+='</tbody></table><p class="note">The area with lower HLE is poorer on a measure when its figure sits on the darker side of the map scale. Linked with, not caused by.</p><div class="pair-return"><button data-open-area="'+a.code+'">Open '+esc(nm(a))+'</button><button data-open-area="'+b.code+'">Open '+esc(nm(b))+'</button></div>';$('pair-card').innerHTML=html;$('pair-card').querySelectorAll('[data-open-area]').forEach(function(btn){btn.onclick=function(){select(btn.dataset.openArea);$('detail').scrollTop=0;$('detail').focus()}});
+}
+function showPair(p,opener,fromChart){if((!$('gaps-layer').checked&&!fromChart)||!p.big_gap)return;state.pair=p;state.pairReturn={code:state.pinned,other:opener.dataset.code};state.pinned=null;state.detailOpen=true;closeAreaTooltip();closeDrawer();update();$('detail').scrollTop=0;$('detail').focus()}
+function closeDetail(){var back=state.pairReturn;$('detail').classList.add('collapsed');if(state.pair){state.pair=null;state.pinned=null;state.pairReturn=null;$('area-picker').value='';state.detailOpen=false;update();$('area-picker').focus()}else{state.detailOpen=false;$('detail').classList.add('collapsed');$('area-picker').focus()}syncPanels()}
+function select(code){if(!byCode.has(code))return;state.pair=null;state.pairReturn=null;state.pinned=code;state.detailOpen=true;$('controls').classList.add('collapsed');$('controls-toggle').setAttribute('aria-expanded','false');closeDrawer();$('area-picker').value=code;update();var c=center(byCode.get(code));if(c&&!map.getBounds().contains(c))map.panTo(c);$('status').textContent='Selected '+nm(byCode.get(code))}
+function groupBoundsForMetric() {
+  var values = areas.map(function (a) { return num(val(a)); }).filter(function (v) { return v !== null; });
+  var min = state.metric === 'hle_average' ? 50 : Math.min.apply(null, values);
+  var max = state.metric === 'hle_average' ? 80 : Math.max.apply(null, values);
+  if (!Number.isFinite(min) || !Number.isFinite(max) || min === max) { min = 0; max = 1; }
+  return { min: min, max: max, width: (max - min) / 20 };
+}
+
+function histogramBinFor(value, bounds) {
+  var v = num(value);
+  if (v === null) return -1;
+  return Math.max(0, Math.min(19, Math.floor((v - bounds.min) / (bounds.max - bounds.min) * 20)));
+}
+
+// Band indexing follows the five actual map bands. HLE uses its fixed cutoffs;
+// every other measure uses the five global quantiles already calculated by legend().
+function legendBandFor(value) {
+  var v = num(value);
+  if (v === null) return -1;
+  if (state.metric === 'hle_average') return v < 55 ? 0 : v < 60 ? 1 : v < 65 ? 2 : v < 70 ? 3 : 4;
+  var band = quantiles.findIndex(function (q) { return v <= q; });
+  return band < 0 ? 4 : band;
+}
+
+function groupSelectionCodes() {
+  var bins = state.histogramBins || new Set();
+  var bands = state.legendBands || new Set();
+  if (!bins.size && !bands.size) return new Set();
+  var bounds = groupBoundsForMetric(), codes = new Set();
+  // visibleAreas() applies both coverage and local-authority filters. Invalid values
+  // cannot match either selector and are intentionally omitted from the outline.
+  visibleAreas().forEach(function (a) {
+    var v = num(val(a));
+    if (v === null) return;
+    if (bins.has(histogramBinFor(v, bounds)) || bands.has(legendBandFor(v))) codes.add(a.code);
+  });
+  return codes;
+}
+
+function selectedGroupCountText() {
+  var n = groupSelectionCodes().size;
+  if (!(state.histogramBins && state.histogramBins.size) && !(state.legendBands && state.legendBands.size)) return 'No range selected';
+  return n + (n === 1 ? ' area in this range' : ' areas in this range');
+}
+
+function clearGroupSelection() {
+  if (!state.histogramBins) state.histogramBins = new Set();
+  if (!state.legendBands) state.legendBands = new Set();
+  state.histogramBins.clear();
+  state.legendBands.clear();
+  drawGroupHighlight();
+  drawChartSelectionState();
+  updateGroupCount();
+  drawLegendSelectionState();
+}
+
+function drawGroupHighlight() {
+  if (!groupLayer || !map) return;
+  groupLayer.clearLayers();
+  var codes = groupSelectionCodes();
+  codes.forEach(function (code) {
+    var feature = featureByCode.get(code);
+    if (!feature) return;
+    // Add dark casing first, then magenta. Neither layer intercepts map clicks.
+    L.geoJSON(feature, { pane: 'groupPane', interactive: false, style: {
+      color: '#0b1c24', weight: 5, opacity: 1, fill: false, fillOpacity: 0, lineCap: 'round', lineJoin: 'round'
+    }}).addTo(groupLayer);
+    L.geoJSON(feature, { pane: 'groupPane', interactive: false, style: {
+      color: '#ff2d95', weight: 2.6, opacity: 1, fill: false, fillOpacity: 0, lineCap: 'round', lineJoin: 'round'
+    }}).addTo(groupLayer);
+  });
+}
+
+function updateGroupCount() {
+  var node = $('group-selection-count');
+  if (node) {node.textContent = selectedGroupCountText();node.hidden=!state.histogramBins.size&&!state.legendBands.size;}
+}
+
+function drawLegendSelectionState() {
+  var root = $('swatches');
+  if (!root) return;
+  Array.from(root.querySelectorAll('[data-band]')).forEach(function (button) {
+    var index = Number(button.dataset.band), on = (state.legendBands || new Set()).has(index);
+    button.setAttribute('aria-pressed', String(on));
+    button.classList.toggle('group-band-selected', on);
+  });
+  var labels = $('bandlabels');
+  if (labels) Array.from(labels.querySelectorAll('[data-band]')).forEach(function (button) {
+    var on = (state.legendBands || new Set()).has(Number(button.dataset.band));
+    button.setAttribute('aria-pressed', String(on));
+  });
+}
+
+function drawChartSelectionState() {
+  var svg = $('chart');
+  if (!svg) return;
+  Array.from(svg.querySelectorAll('[data-bin]')).forEach(function (target) {
+    var on = (state.histogramBins || new Set()).has(Number(target.dataset.bin));
+    target.setAttribute('aria-pressed', String(on));
+    target.classList.toggle('histogram-bin-selected', on);
+    var bar = svg.querySelector('[data-bin-bar="' + target.dataset.bin + '"]');
+    if (bar) {
+      bar.setAttribute('stroke', on ? '#ff2d95' : 'none');
+      bar.setAttribute('stroke-width', on ? '2' : '0');
+    }
+  });
+}
+
+function toggleHistogramBin(index) {
+  if (!state.histogramBins) state.histogramBins = new Set();
+  if (state.histogramBins.has(index)) state.histogramBins.delete(index);
+  else state.histogramBins.add(index);
+  drawGroupHighlight();
+  drawChartSelectionState();
+  updateGroupCount();
+}
+
+function addHistogramRange(start, end) {
+  if (!state.histogramBins) state.histogramBins = new Set();
+  var lo = Math.min(start, end), hi = Math.max(start, end);
+  for (var i = lo; i <= hi; i++) state.histogramBins.add(i);
+  drawGroupHighlight();
+  drawChartSelectionState();
+  updateGroupCount();
+}
+
+function toggleLegendBand(index) {
+  if (!state.legendBands) state.legendBands = new Set();
+  if (state.legendBands.has(index)) state.legendBands.delete(index);
+  else state.legendBands.add(index);
+  drawGroupHighlight();
+  drawChartSelectionState();
+  updateGroupCount();
+  drawLegendSelectionState();
+}
+
+// Replace the old drawChart() with this version. The 20 bins stay equal-width,
+// while their colour and the vertical guides show the separate five-band legend.
+function drawChart() {
+  var rows = visibleAreas();
+  var xs = rows.map(function (a) { return num(val(a)); }).filter(function (v) { return v !== null; });
+  var bounds = groupBoundsForMetric(), min = bounds.min, max = bounds.max;
+  var bins = Array(20).fill(0), svg = $('chart'), ns = 'http://www.w3.org/2000/svg';
+  xs.forEach(function (v) { bins[histogramBinFor(v, bounds)]++; });
+  var oldNameTip=$('chart-wrap').querySelector('.chart-name-tooltip');if(oldNameTip)oldNameTip.remove();
+  svg.replaceChildren();
+  var chartWidth=Math.max(260,svg.clientWidth);svg.setAttribute('viewBox', '0 0 '+chartWidth+' 245');svg.style.height='245px';
+  svg.setAttribute('role', 'group');
+  svg.setAttribute('aria-label', 'Distribution histogram. Use Tab to reach each bar; Enter or Space toggles a range.');
+  var plot = { left: 42, right: chartWidth-18, top: 39, bottom: 151, width: chartWidth-60, height: 112 };
+  var peak = Math.max(1, ...bins);
+
+  // Horizontal count guides and labels.
+  [0, Math.ceil(peak / 2), peak].forEach(function (v) {
+    var y = plot.bottom - plot.height * v / peak, line = document.createElementNS(ns, 'line'), lab = document.createElementNS(ns, 'text');
+    line.setAttribute('x1', plot.left); line.setAttribute('x2', plot.right); line.setAttribute('y1', y); line.setAttribute('y2', y);
+    line.setAttribute('stroke', '#ffffff30'); line.setAttribute('pointer-events', 'none');
+    lab.setAttribute('x', plot.left - 7); lab.setAttribute('y', y + 4); lab.setAttribute('text-anchor', 'end'); lab.setAttribute('fill', '#b2c2c7'); lab.setAttribute('font-size', '12'); lab.setAttribute('pointer-events', 'none'); lab.textContent = v;
+    svg.append(line, lab);
+  });
+
+  // Band guides are positioned at the data-value cutoffs, over the equal-width bins.
+  var thresholds = state.metric === 'hle_average' ? [55, 60, 65, 70] : quantiles;
+  thresholds.forEach(function (cut) {
+    if (num(cut) === null || cut <= min || cut >= max) return;
+    var x = plot.left + (cut - min) / (max - min) * plot.width, line = document.createElementNS(ns, 'line');
+    line.setAttribute('x1', x); line.setAttribute('x2', x); line.setAttribute('y1', plot.top - 2); line.setAttribute('y2', plot.bottom);
+    line.setAttribute('class','band-guide');line.setAttribute('stroke', '#f3f4eb80'); line.setAttribute('stroke-width', '1'); line.setAttribute('stroke-dasharray', '2 3'); line.setAttribute('pointer-events', 'none');
+    svg.append(line);
+  });
+
+  var step = plot.width / 20;
+  bins.forEach(function (count, i) {
+    var x = plot.left + i * step, lo = min + (max - min) * i / 20, hi = min + (max - min) * (i + 1) / 20;
+    var bar = document.createElementNS(ns, 'rect');
+    var height = plot.height * count / peak, mid = (lo + hi) / 2;
+    bar.setAttribute('x', x + 1); bar.setAttribute('y', plot.bottom - height); bar.setAttribute('width', step - 2); bar.setAttribute('height', Math.max(height, 1));
+    bar.setAttribute('fill', colorAt(mid)); bar.setAttribute('class', 'bar'); bar.setAttribute('data-bin-bar', i); bar.setAttribute('pointer-events', 'none');
+    svg.append(bar);
+
+    // Full plot-height transparent hit target: short and empty bars remain usable.
+    var target = document.createElementNS(ns, 'rect');
+    target.setAttribute('x', x); target.setAttribute('y', plot.top); target.setAttribute('width', step); target.setAttribute('height', plot.height);
+    target.setAttribute('fill', 'transparent'); target.setAttribute('class', 'histogram-hit'); target.setAttribute('data-bin', i);
+    target.setAttribute('role', 'button'); target.setAttribute('tabindex', '0'); target.setAttribute('aria-pressed', String((state.histogramBins || new Set()).has(i)));
+    var exact = Number(lo.toPrecision(15)) + (i===19?' to ':' to under ') + Number(hi.toPrecision(15)) + ': ' + count + ' areas';
+    target.setAttribute('aria-label', exact + '. ' + (meta(activeField()).unit || 'value') + '.');
+    var title = document.createElementNS(ns, 'title'); title.textContent = exact + ' ' + (meta(activeField()).unit || ''); target.append(title);
+    svg.append(target);
+  });
+
+  Array.from(svg.querySelectorAll('.band-guide')).forEach(function(line){svg.append(line)});
+  // X-axis tick values.
+  [0, .25, .5, .75, 1].forEach(function (t) {
+    var x = plot.left + plot.width * t, label = document.createElementNS(ns, 'text');
+    label.setAttribute('x', x); label.setAttribute('y', '169'); label.setAttribute('text-anchor', t === 0 ? 'start' : t === 1 ? 'end' : 'middle');
+    label.setAttribute('fill', '#b2c2c7'); label.setAttribute('font-size', '12'); label.setAttribute('pointer-events', 'none'); label.textContent = fmt(min + (max - min) * t, 1); svg.append(label);
+  });
+
+  // Pinned-area marker label: clamp and truncate its visible text, preserve the full
+  // name in <title> and aria-label so hover and keyboard focus expose it completely.
+  if (state.pinned) {
+    var pinned = byCode.get(state.pinned), pinnedValue = pinned && num(val(pinned));
+    if (pinnedValue !== null && pinnedValue >= min && pinnedValue <= max) {
+      var px = plot.left + (pinnedValue - min) / (max - min) * plot.width, marker = document.createElementNS(ns, 'line');
+      marker.setAttribute('x1', px); marker.setAttribute('x2', px); marker.setAttribute('y1', plot.top - 8); marker.setAttribute('y2', plot.bottom);
+      var casing=marker.cloneNode();casing.setAttribute('stroke','#0b1c24');casing.setAttribute('stroke-width','5');casing.setAttribute('class','selected-value-casing');svg.append(casing);marker.setAttribute('class','selected-value-marker');marker.dataset.value=pinnedValue;marker.dataset.selectedBin=histogramBinFor(pinnedValue,bounds);marker.setAttribute('stroke', '#fff'); marker.setAttribute('stroke-width', '2'); marker.setAttribute('pointer-events', 'none'); svg.append(marker);
+      var label = document.createElementNS(ns, 'text'), full = nm(pinned)+': '+formatValue(pinnedValue,activeField()), rightSide = px > plot.left + plot.width * .62;
+      label.setAttribute('x', plot.left + 2); label.setAttribute('y', plot.top - 10);
+      label.setAttribute('text-anchor', 'start'); label.setAttribute('fill', '#fff'); label.setAttribute('font-size', '12'); label.setAttribute('tabindex', '0');
+      label.setAttribute('aria-label', full); label.setAttribute('role', 'img');
+      var shortName = full.length > 34 ? full.slice(0, 31) + '…' : full; label.textContent = shortName;
+      var fullTitle = document.createElementNS(ns, 'title'); fullTitle.textContent = full; label.append(fullTitle); svg.append(label);
+      label.onfocus=label.onmouseenter=function(){var holder=$('chart-wrap');holder.style.position='relative';var tip=holder.querySelector('.chart-name-tooltip');if(!tip){tip=document.createElement('div');tip.className='chart-name-tooltip';tip.id='chart-selected-name-tooltip';tip.setAttribute('role','tooltip');holder.append(tip)}tip.textContent=full;label.setAttribute('aria-describedby',tip.id)};label.onblur=label.onmouseleave=function(){var tip=$('chart-wrap').querySelector('.chart-name-tooltip');if(tip)tip.remove();label.removeAttribute('aria-describedby')};
+    }
+  }
+
+  // Axis titles. Keep the y title outside the plot and the x title below tick labels.
+  var yTitle = document.createElementNS(ns, 'text');
+  yTitle.setAttribute('x', '12'); yTitle.setAttribute('y', '96'); yTitle.setAttribute('text-anchor', 'middle');
+  yTitle.setAttribute('transform', 'rotate(-90 12 96)'); yTitle.setAttribute('fill', '#b2c2c7'); yTitle.setAttribute('font-size', '12'); yTitle.textContent = 'Number of areas'; svg.append(yTitle);
+  var xTitle = document.createElementNS(ns, 'text');
+  xTitle.setAttribute('x', plot.left+plot.width/2); xTitle.setAttribute('y', '197'); xTitle.setAttribute('text-anchor', 'middle'); xTitle.setAttribute('fill', '#b2c2c7'); xTitle.setAttribute('font-size', '12');
+  xTitle.textContent = (meta(activeField()).label || 'Measure') + ' · ' + (meta(activeField()).unit || 'unit'); svg.append(xTitle);var titleText=xTitle.textContent;xTitle.textContent='';var words=titleText.split(' '),current='',row=0;words.forEach(function(word){if((current+' '+word).length>Math.floor(plot.width/7)&&current){var span=document.createElementNS(ns,'tspan');span.setAttribute('x',plot.left+plot.width/2);span.setAttribute('dy',row?'15':'0');span.textContent=current;xTitle.append(span);row++;current=word}else current+=(current?' ':'')+word});var span=document.createElementNS(ns,'tspan');span.setAttribute('x',plot.left+plot.width/2);span.setAttribute('dy',row?'15':'0');span.textContent=current;xTitle.append(span);
+
+  var width = bounds.width, unit = meta(activeField()).unit || 'units';
+  var widthUnit = /%|percent/i.test(unit) ? 'percentage points' : unit;
+  var precision = 2;
+  $('drawer-subtitle').textContent = rows.length + ' included areas · ' + xs.length + ' of '+rows.length+' areas have a value · area estimates, not people';
+  $('drawer-note').textContent = (meta(activeField()).period || '') + ' · Each bar covers ' + fmt(width, precision) + ' ' + widthUnit + '. Hover or focus a bar for its exact range and count. Uncertainty ranges are in area details.';
+  if(state.pinned&&num(val(byCode.get(state.pinned)))===null)$('drawer-note').textContent+=' '+nm(byCode.get(state.pinned))+': not available.';
+  updateGroupCount();
+  installHistogramEvents(svg);
+  drawChartSelectionState();
+}
+
+// Install delegated listeners once per newly rendered SVG. drawChart() recreates
+// its SVG children, so marking the SVG avoids stacking duplicate listeners.
+function installHistogramEvents(svg) {
+  if (svg.dataset.groupEvents === 'ready') return;
+  svg.dataset.groupEvents = 'ready';
+  var dragStart = null, dragEnd = null, dragged = false, suppressClick = false;
+  function binTarget(node) { return node && node.closest ? node.closest('[data-bin]') : null; }
+  function eventBin(event) {
+    var node = document.elementFromPoint(event.clientX, event.clientY), hit = binTarget(node);
+    return hit ? Number(hit.dataset.bin) : null;
+  }
+  svg.addEventListener('click', function (event) {
+    if (suppressClick) { suppressClick = false; event.preventDefault(); return; }
+    var hit = binTarget(event.target); if (!hit) return;
+    // Keyboard activation is handled by keydown below; native pointer click toggles here.
+    toggleHistogramBin(Number(hit.dataset.bin));
+  });
+  svg.addEventListener('keydown', function (event) {
+    var hit = binTarget(event.target); if (!hit || (event.key !== 'Enter' && event.key !== ' ')) return;
+    event.preventDefault(); toggleHistogramBin(Number(hit.dataset.bin));
+  });
+  svg.addEventListener('pointerdown', function (event) {
+    var hit = binTarget(event.target); if (!hit || event.button !== 0) return;
+    dragStart = Number(hit.dataset.bin); dragEnd = dragStart; dragged = false; suppressClick=false;
+    try { svg.setPointerCapture(event.pointerId); } catch (_) {}
+  });
+  svg.addEventListener('pointermove', function (event) {
+    if (dragStart === null) return;
+    var next = eventBin(event); if (next === null) return;
+    if (next !== dragStart) dragged = true;
+    dragEnd = next;
+  });
+  svg.addEventListener('pointerup', function (event) {
+    if (dragStart === null) return;
+    if (dragged && dragEnd !== null) addHistogramRange(dragStart, dragEnd); else toggleHistogramBin(dragStart); suppressClick=true;try{svg.releasePointerCapture(event.pointerId)}catch(_){}
+    dragStart = null; dragEnd = null;
+  });
+  svg.addEventListener('pointercancel', function () { dragStart = null; dragEnd = null; dragged = false; });
+}
+
+// Legend integration: replace the existing span creation inside legend() with
+// buttons, for both the colour swatches and the band labels. This keeps map band
+// clicks independent from histogram-bin clicks and makes them keyboard accessible.
+function makeLegendBandButtons(colorsNow, labels) {
+  var swatches = $('swatches'), bandlabels = $('bandlabels');
+  swatches.replaceChildren(); bandlabels.replaceChildren();
+  colorsNow.forEach(function (colour, index) {
+    var swatch = document.createElement('button');
+    swatch.type = 'button'; swatch.dataset.band = index; swatch.className = 'legend-band-swatch';
+    swatch.style.background = colour; swatch.setAttribute('aria-label', 'Toggle map legend band ' + (index + 1) + ': ' + labels[index]);
+    swatch.setAttribute('aria-pressed', String((state.legendBands || new Set()).has(index)));
+    swatch.onclick = function () { toggleLegendBand(index); };
+    swatches.append(swatch);
+    var label = document.createElement('button');
+    label.type = 'button'; label.dataset.band = index; label.className = 'legend-band-label'; label.textContent = labels[index];
+    label.setAttribute('aria-label', 'Toggle map legend band ' + (index + 1) + ': ' + labels[index]);
+    label.setAttribute('aria-pressed', String((state.legendBands || new Set()).has(index)));
+    label.onclick = function () { toggleLegendBand(index); };
+    bandlabels.append(label);
+  });
+  drawLegendSelectionState();
+}
+
+
+function tableRows(){return visibleAreas().slice().sort(function(a,b){var k=state.sort,aa=k==='area_name'?nm(a):k==='local_authority'?auth(a):raw(a,k),bb=k==='area_name'?nm(b):k==='local_authority'?auth(b):raw(b,k);return String(aa).localeCompare(String(bb),undefined,{numeric:true})*state.direction})}
+function drawTable(){var keys=Object.keys(metrics),head=$('table-head'),body=$('table-body');head.replaceChildren();var tr=document.createElement('tr');[['area_name','Area'],['local_authority','Local authority']].concat(keys.map(function(k){return[k,meta(k).label]})).forEach(function(x){var th=document.createElement('th'),b=document.createElement('button');b.textContent=x[1];b.className=state.sort===x[0]?'sort-on':'';b.onclick=function(){state.direction=state.sort===x[0]?-state.direction:1;state.sort=x[0];drawTable()};th.append(b);tr.append(th)});head.append(tr);body.replaceChildren();tableRows().forEach(function(a){var tr=document.createElement('tr');[nm(a),auth(a)].concat(keys.map(function(k){return fmt(raw(a,k),3)})).forEach(function(v){var td=document.createElement('td');td.textContent=v;tr.append(td)});body.append(tr)});$('drawer-subtitle').textContent=body.children.length+' rows · current coverage and authority filters · sort by column heading.';var rows=visibleAreas(),partial=[],complete=0;keys.forEach(function(k){var n=rows.filter(function(a){return num(raw(a,k))!==null}).length;if(n===rows.length)complete++;else partial.push(meta(k).label+': '+n+' of '+rows.length+' areas have a value')});$('drawer-note').textContent=rows.length?complete+' measures have values for all '+rows.length+' shown areas.'+(partial.length?' '+partial.join('; ')+'.':''):'No areas in the current filter.'}
+function exportCsv(){var keys=Object.keys(metrics),rows=[['area_code','area_name','local_authority'].concat(keys)];tableRows().forEach(function(a){rows.push([a.code,nm(a),auth(a)].concat(keys.map(function(k){return raw(a,k)??''})))});var csv=rows.map(function(r){return r.map(function(v){return'"'+String(v??'').replaceAll('"','""')+'"'}).join(',')}).join('\r\n'),url=URL.createObjectURL(new Blob([csv],{type:'text/csv'})),a=document.createElement('a');a.href=url;a.download='birmingham-hle-shown-areas.csv';a.click();URL.revokeObjectURL(url)}
+var VIEW_ITEMS=[['neighbours','Neighbours of the selected area','The selected area against its neighbours on HLE.','Neighbours'],['profile','Area profile','Where the selected area sits on every measure.'],['scatter','HLE against another measure','A scatter of all areas.'],['distribution','Distribution','How the active measure is spread across areas.'],['authority','Local authorities ranked','Authorities compared on the active measure.'],['table','All area data','The full table, with CSV export.']];
+var CARD_VIEW_ICONS={"neighbours": "<path d=\"M3 12h18\"/><circle cx=\"6\" cy=\"12\" r=\"1.8\"/><circle cx=\"12\" cy=\"12\" r=\"2.6\"/><circle cx=\"18\" cy=\"12\" r=\"1.8\"/><path d=\"M12 5v3M12 16v3\"/>", "profile": "<path d=\"M4 6h10M4 12h14M4 18h7\"/><circle cx=\"17\" cy=\"6\" r=\"1.6\"/><circle cx=\"20\" cy=\"12\" r=\"1.6\"/><circle cx=\"14\" cy=\"18\" r=\"1.6\"/>", "scatter": "<path d=\"M4 4v16h16\"/><circle cx=\"8\" cy=\"15\" r=\"1.2\"/><circle cx=\"11\" cy=\"12\" r=\"1.2\"/><circle cx=\"14\" cy=\"13\" r=\"1.2\"/><circle cx=\"17\" cy=\"8\" r=\"1.2\"/><circle cx=\"19\" cy=\"6\" r=\"1.2\"/>", "distribution": "<path d=\"M4 20V13h3v7M9 20V6h3v14M14 20V9h3v11M19 20v-4\"/>", "authority": "<path d=\"M4 6h16M4 12h11M4 18h6\"/>", "table": "<rect x=\"4\" y=\"5\" width=\"16\" height=\"14\" rx=\"2\"/><path d=\"M4 10h16M4 15h16M10 5v14\"/>"};
+function buildCardViews(){var root=$('card-views');if(root.children.length)return;[['About this area',VIEW_ITEMS.slice(0,2)],['Compare across all areas',VIEW_ITEMS.slice(2)]].forEach(function(group){var section=document.createElement('section');section.className='card-view-group';var label=document.createElement('p');label.className='card-view-label';label.textContent=group[0];section.append(label);var grid=document.createElement('div');grid.className='card-view-grid';group[1].forEach(function(v){var b=document.createElement('button');b.className='card-view-tile';b.dataset.cardView=v[0];b.title=v[1];b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+CARD_VIEW_ICONS[v[0]]+'</svg><span>'+esc(v[3]||v[1])+'</span>';b.setAttribute('aria-pressed','false');b.onclick=function(){if(state.drawer===v[0])closeDrawer();else openDrawer(v[0])};grid.append(b)});section.append(grid);root.append(section)})}
+function syncCardViews(){document.querySelectorAll('[data-card-view]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.cardView===state.drawer))})}
+function frontPanel(card){$('detail').style.zIndex=card?'535':'530';$('drawer').style.zIndex=card?'530':'535'}
+$('detail').addEventListener('pointerdown',function(){frontPanel(true)});
+$('drawer').addEventListener('pointerdown',function(){frontPanel(false)});
+var scatterField=null,scatterMapField=null;
+function measureKeys(){return Object.keys(metrics)}
+function isHle(k){return meta(k).family==='hle'}
+function contextualKeys(){return measureKeys().filter(function(k){return !isHle(k)})}
+function hleKey(){return hleFields[state.sex]}
+function setActiveMeasure(k){var previous=activeField();closeAreaTooltip();if(isHle(k)){state.metric='hle_average';state.sex=meta(k).sex||'avg'}else{state.metric=k;state.sex='avg'}$('metric-select').value=state.metric;['average','male','female'].forEach(function(s){$('sex-'+s).setAttribute('aria-pressed',String((s==='average'?'avg':s)===state.sex))});if(previous!==activeField())clearGroupSelection();update()}
+function formatValue(v,k,difference){v=num(v);if(v===null)return 'not available';var m=meta(k),kind=m.format,dp=m.display_decimals===undefined?1:m.display_decimals;if(kind==='currency')return '£'+fmt(v,dp);if(kind==='percentage')return fmt(v,dp)+(difference?' percentage points':'%');if(kind==='rate')return fmt(v,dp)+' per 1,000';return fmt(v,dp)+' '+(m.unit||'')}
+function gapText(v){var x=num(v);return x===null?'not available':(Math.floor(Math.abs(x)*10+0.5+1e-8)/10).toLocaleString(undefined,{minimumFractionDigits:1,maximumFractionDigits:1})}
+function rankValue(v,k){var xs=areas.map(function(a){return num(raw(a,k))}).filter(function(x){return x!==null});return{rank:v===null?null:1+xs.filter(function(x){return meta(k).poor_end==='low'?x>v:x<v}).length,n:xs.length}}
+function measureQuantiles(k){var xs=areas.map(function(a){return num(raw(a,k))}).filter(function(x){return x!==null});return [.2,.4,.6,.8].map(function(p){return quantile(xs,p)})}
+function measureColor(v,k){if(num(v)===null)return '#263b44';var m=meta(k),pal=m.band_colors;if(isHle(k)){var i=v<55?0:v<60?1:v<65?2:v<70?3:4;return pal[i]}var qs=measureQuantiles(k),i=qs.findIndex(function(q){return v<=q});return pal[i<0?4:i]}
+function valuePosition(v,k){if(v===null)return null;var xs=areas.map(function(a){return num(raw(a,k))}).filter(function(x){return x!==null});return xs.filter(function(x){return x<v}).length/(xs.length-1||1)*100}
+function outcomeGradient(k){return 'linear-gradient(to right,'+meta(k).band_colors.join(',')+')'}
+function activateMark(el,fn){el.onclick=fn;el.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();fn()}}}
+function openDrawer(mode){
+ if((mode==='neighbours'||mode==='profile')&&!state.pinned)return;
+ var fromCard=$('detail').contains(document.activeElement),wasOpen=!!state.drawer;
+ state.drawer=mode;
+ // Keep the existing card DOM, body scroll and pair-card state intact.
+ if(state.pinned&&!state.pair){state.detailOpen=true;if($('detail').classList.contains('collapsed'))detail()}
+ $('controls').classList.add('collapsed');$('controls-toggle').setAttribute('aria-expanded','false');
+ frontPanel(false);$('drawer').classList.remove('collapsed');$('charts-open').setAttribute('aria-expanded','true');
+ // Establish the final width before plotting width-dependent chart markers.
+ $('drawer').dataset.mode=mode;syncPanels();renderDrawer();syncCardViews();syncPanels();$('drawer').scrollTop=0;
+ if(!fromCard&&!wasOpen)$('drawer').focus({preventScroll:true});scrollSelectedNeighbour();
+}
+function renderDrawer(){
+ var mode=state.drawer;if(!mode)return;if((mode==='profile'||mode==='neighbours')&&!state.pinned){state.drawer=mode='menu'}
+ var focus=document.activeElement,focusCode=focus&&focus.dataset&&focus.dataset.chartCode,focusMetric=focus&&focus.dataset&&focus.dataset.metric;
+ $('drawer').classList.remove('smoking-view');$('drawer').dataset.mode=mode;$('drawer-title').textContent=mode==='menu'?'Charts and Data':VIEW_ITEMS.find(function(x){return x[0]===mode})[1];$('drawer-back').hidden=mode==='menu';$('drawer-subtitle').textContent='';$('drawer-note').textContent='';$('chart-wrap').hidden=mode!=='distribution';$('table-wrap').hidden=mode!=='table';$('authority-wrap').hidden=mode!=='authority';$('view-content').hidden=['distribution','table','authority'].includes(mode);$('view-content').replaceChildren();$('export-csv').hidden=mode!=='table';
+ if(mode==='menu')drawMenu();if(mode==='neighbours')drawNeighbours();if(mode==='profile')drawProfile();if(mode==='scatter')drawScatter();if(mode==='distribution')drawChart();if(mode==='table')drawTable();if(mode==='authority')drawAuthority();
+ syncCardViews();scrollSelectedNeighbour();
+ if(focusCode){var mark=$('drawer').querySelector('[data-chart-code="'+focusCode+'"]');if(mark)mark.focus({preventScroll:true})}if(focusMetric){var row=$('drawer').querySelector('[data-metric="'+focusMetric+'"]');if(row)row.focus({preventScroll:true})}
+}
+function drawMenu(){VIEW_ITEMS.forEach(function(v,i){var b=document.createElement('button');b.className='view-menu-item';b.dataset.view=v[0];var disabled=i<2&&!state.pinned;b.disabled=disabled;b.innerHTML='<strong>'+esc(v[1])+'</strong><span>'+esc(disabled?'Click an area on the map first':v[2])+'</span>';b.onclick=function(){openDrawer(v[0])};$('view-content').append(b)})}
+function scrollSelectedNeighbour(){if(state.drawer==='neighbours')requestAnimationFrame(function(){var row=$('view-content').querySelector('[data-chart-code="'+state.pinned+'"]');if(row)row.scrollIntoView({block:'nearest'})})}
+function drawNeighbours(){var selected=byCode.get(state.pinned),k=hleKey(),own=num(raw(selected,k)),rows=[{area:selected,pair:null}];pairs.filter(function(p){return p.area_code_a===selected.code||p.area_code_b===selected.code}).forEach(function(p){rows.push({area:byCode.get(p.area_code_a===selected.code?p.area_code_b:p.area_code_a),pair:p})});rows.sort(function(a,b){return raw(b.area,k)-raw(a.area,k)||a.area.code.localeCompare(b.area.code)});var vals=rows.map(function(x){return num(raw(x.area,k))}).filter(function(v){return v!==null}),lo=Math.min(...vals),hi=Math.max(...vals);$('drawer-subtitle').textContent=meta(k).label+' · years · '+vals.length+' of '+rows.length+' areas have a value';
+ var axis=document.createElement('p');axis.className='hint';axis.textContent=fmt(lo)+'–'+fmt(hi)+' years · lowest to highest HLE';$('view-content').append(axis);
+ rows.forEach(function(x){var a=x.area,v=num(raw(a,k)),gap=v===null||own===null?null:Math.abs(v-own),isSelected=a.code===selected.code,outside=!inScope(a),text=nm(a)+': '+formatValue(v,k)+(isSelected?' · selected area':' · '+gapText(gap)+' years '+(v>=own?'higher':'lower'))+(outside?' · outside the current filter':'')+(x.pair&&x.pair.big_gap?' · Big gap':'');var row=document.createElement('button');row.className='chart-row neighbour-dot-row'+(outside?' outside':'');row.dataset.chartCode=a.code;row.dataset.hle=v;row.dataset.gap=gapText(gap);row.dataset.bigGap=String(!!(x.pair&&x.pair.big_gap));row.setAttribute('aria-label',text);row.title=text;row.innerHTML='<span>'+esc(nm(a))+(isSelected?' · selected area':'')+(x.pair&&x.pair.big_gap?'<span class="big-gap-badge">Big gap</span>':'')+'</span><span class="dot-track"><i class="chart-dot '+(isSelected?'selected-dot':'')+'" style="left:'+((v-lo)/(hi-lo||1)*100)+'%;background:'+hleChip(v)+'"></i></span><span>'+esc(isSelected?formatValue(v,k):gapText(gap)+' years '+(v>=own?'higher':'lower'))+'</span>';row.onclick=function(){if(isSelected)return;if(x.pair.big_gap){showPair(x.pair,{dataset:{code:a.code}},true)}else select(a.code)};$('view-content').append(row)});
+ var ticks=document.createElement('div');ticks.className='neighbour-axis';ticks.setAttribute('aria-label','HLE axis in years');ticks.innerHTML='<span>HLE · years</span><span class="neighbour-ticks"></span><span></span>';var step=(hi-lo)/4;for(var i=0;i<=4;i++){var tick=document.createElement('span');tick.style.left=(i*25)+'%';tick.textContent=fmt(lo+i*step,1);ticks.querySelector('.neighbour-ticks').append(tick)}$('view-content').append(ticks);
+ $('drawer-note').textContent=(rows.length-1)+' neighbours. Gaps are descriptive differences between adjacent areas, not explanations.';
+}
+function drawProfile(){var a=byCode.get(state.pinned);$('drawer-subtitle').textContent=nm(a)+' · positions among all areas in the data';measureKeys().forEach(function(k){var v=num(raw(a,k)),rr=rankValue(v,k),locals=areas.filter(function(z){return auth(z)===auth(a)}).map(function(z){return num(raw(z,k))}).filter(function(v){return v!==null}),med=median(locals),position=valuePosition(v,k),mp=valuePosition(med,k),row=document.createElement('button');row.className='chart-row profile-row'+(k===activeField()?' current-measure':'');row.dataset.metric=k;row.dataset.rank=rr.rank===null?'':rr.rank;row.dataset.n=rr.n;row.dataset.position=position===null?'':position;row.setAttribute('aria-label',meta(k).label+': '+formatValue(v,k)+(v===null?'':' · Rank '+rr.rank+' of '+rr.n)+' · local-authority median '+formatValue(med,k));row.title=row.getAttribute('aria-label');row.innerHTML='<span>'+esc(meta(k).label)+'<small>'+esc(formatValue(v,k))+'</small></span><span><span class="profile-endpoints"><span>Lowest</span><span>Highest</span></span><span class="profile-track" style="background:'+outcomeGradient(k)+'">'+(v===null?'':'<i class="profile-marker" style="left:'+position+'%"></i>')+(mp===null?'':'<i class="profile-median" title="Local-authority median: '+esc(formatValue(med,k))+'" style="left:'+mp+'%"></i>')+'</span><small>'+(v===null?'not available':'Rank '+rr.rank+' of '+rr.n)+' · '+rr.n+' of '+areas.length+' areas have a value</small></span>';row.onclick=function(){setActiveMeasure(k)};$('view-content').append(row)});$('drawer-note').textContent="Positions compare this area with all areas in the data, by value, using each measure's own definition. Linked with, not caused by."}
+function pearson(x,y){if(x.length<2)return null;var mx=x.reduce(function(s,v){return s+v},0)/x.length,my=y.reduce(function(s,v){return s+v},0)/y.length,xx=0,yy=0,xy=0;x.forEach(function(v,i){var a=v-mx,b=y[i]-my;xx+=a*a;yy+=b*b;xy+=a*b});return xx&&yy?xy/Math.sqrt(xx*yy):null}
+function averageRanks(xs){var order=xs.map(function(v,i){return{v:v,i:i}}).sort(function(a,b){return a.v-b.v}),rank=Array(xs.length);for(var i=0;i<order.length;){var j=i+1;while(j<order.length&&order[j].v===order[i].v)j++;for(var z=i;z<j;z++)rank[order[z].i]=(i+1+j)/2;i=j}return rank}
+function drawScatter(){
+ var active=activeField(),defaultField=!isHle(active)?active:contextualKeys()[0];if(!scatterField||scatterMapField!==active){scatterField=defaultField;scatterMapField=active}var k=scatterField,h=hleKey(),m=meta(k),root=$('view-content'),label=document.createElement('label');label.className='field';label.innerHTML='<span>Compare HLE with</span><select id="scatter-measure"></select>';root.append(label);var dropdown=$('scatter-measure');contextualKeys().forEach(function(key){var o=document.createElement('option');o.value=key;o.textContent=meta(key).label;dropdown.append(o)});dropdown.value=k;dropdown.onchange=function(){scatterField=this.value;renderDrawer();$('scatter-measure').focus()};
+ var rows=areas.filter(function(a){return num(raw(a,k))!==null&&num(raw(a,h))!==null}).sort(function(a,b){return raw(a,k)-raw(b,k)||a.code.localeCompare(b.code)}),included=rows.filter(inScope),xs=included.map(function(a){return raw(a,k)}),ys=included.map(function(a){return raw(a,h)}),pr=pearson(xs,ys),rho=pearson(averageRanks(xs),averageRanks(ys)),allx=rows.map(function(a){return raw(a,k)}),ally=rows.map(function(a){return raw(a,h)}),xmin=Math.min(...allx),xmax=Math.max(...allx),ymin=Math.min(...ally),ymax=Math.max(...ally);
+ var width=Math.max(260,$('drawer').clientWidth-22),height=260,left=61,right=width-16,top=20,bottom=232,plotWidth=right-left,plotHeight=bottom-top;function xp(v){var f=(v-xmin)/(xmax-xmin||1);return left+f*plotWidth}function yp(v){return bottom-(v-ymin)/(ymax-ymin||1)*plotHeight}
+ var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.id='scatter-chart';svg.classList.add('scatter-chart');svg.setAttribute('viewBox','0 0 '+width+' '+height);svg.setAttribute('role','group');svg.setAttribute('aria-label',meta(h).label+' against '+m.label+'. Dots are areas, sorted by ascending value on the x axis.');root.append(svg);
+ function node(name,attrs,text){var e=document.createElementNS('http://www.w3.org/2000/svg',name);Object.keys(attrs).forEach(function(k){e.setAttribute(k,attrs[k])});if(text!==undefined)e.textContent=text;svg.append(e);return e}
+ for(var i=0;i<5;i++){var t=i/4,xv=xmin+(xmax-xmin)*t,yv=ymin+(ymax-ymin)*t;node('line',{x1:left,y1:yp(yv),x2:right,y2:yp(yv),stroke:'#ffffff25'});node('text',{x:xp(xv),y:bottom+20,fill:'#b2c2c7','font-size':12,'text-anchor':i===0?'start':i===4?'end':'middle'},fmt(xv,m.format==='currency'?0:1));node('text',{x:left-8,y:yp(yv)+4,fill:'#b2c2c7','font-size':12,'text-anchor':'end'},fmt(yv,1))}
+ node('text',{x:15,y:(top+bottom)/2,transform:'rotate(-90 15 '+((top+bottom)/2)+')',fill:'#b2c2c7','font-size':12,'text-anchor':'middle'},meta(h).label+' · '+meta(h).unit);
+ if(included.length>1){var mx=xs.reduce(function(s,v){return s+v},0)/xs.length,my=ys.reduce(function(s,v){return s+v},0)/ys.length,den=xs.reduce(function(s,v){return s+(v-mx)*(v-mx)},0),slope=den?xs.reduce(function(s,v,i){return s+(v-mx)*(ys[i]-my)},0)/den:0,intercept=my-slope*mx,il=Math.min(...xs),ih=Math.max(...xs);node('line',{x1:xp(il),y1:yp(intercept+slope*il),x2:xp(ih),y2:yp(intercept+slope*ih),stroke:'#b2c2c7','stroke-width':1.5,'class':'regression-line'})}
+ var qs=measureQuantiles(k),colorsNow=m.band_colors;function xcolor(v){var i=qs.findIndex(function(q){return v<=q});return colorsNow[i<0?4:i]}
+ var tip=document.createElement('p');tip.className='hint scatter-tip';tip.id='scatter-tooltip';tip.setAttribute('role','status');root.append(tip);
+ rows.forEach(function(a){var x=raw(a,k),y=raw(a,h),outside=!inScope(a),opacity=outside?.12:state.fill,cx=xp(x),cy=yp(y),desc=nm(a)+' · '+auth(a)+' · '+m.label+': '+formatValue(x,k)+' · '+meta(h).label+': '+formatValue(y,h)+(outside?' · outside the current filter':'');
+ if($('student-layer').checked&&raw(a,'student_dominated'))node('circle',{cx:cx,cy:cy,r:6,fill:'none',stroke:'#0f7f8a','stroke-width':1.6,opacity:outside?.2:1,'class':'scatter-student','pointer-events':'none'});if($('visitor-layer').checked&&raw(a,'visitor_hub'))node('circle',{cx:cx,cy:cy,r:8,fill:'none',stroke:'#3a2f8f','stroke-width':1.6,'stroke-dasharray':'7 4',opacity:outside?.2:1,'class':'scatter-visitor','pointer-events':'none'});
+ if(a.code===state.pinned){node('circle',{cx:cx,cy:cy,r:6,fill:'none',stroke:'#0b1c24','stroke-width':5,'pointer-events':'none'});node('circle',{cx:cx,cy:cy,r:6,fill:'none',stroke:'#fff','stroke-width':1.3,'pointer-events':'none'})}
+ var dot=node('circle',{cx:cx,cy:cy,r:3.5,fill:xcolor(x),'fill-opacity':opacity,tabindex:0,role:'button','data-chart-code':a.code,'aria-label':desc,'class':'scatter-dot'}),title=document.createElementNS(svg.namespaceURI,'title');title.textContent=desc;dot.append(title);dot.onmouseenter=dot.onfocus=function(){tip.textContent=desc};activateMark(dot,function(){select(a.code)})});
+ var axis=document.createElement('p');axis.className='hint';axis.textContent=m.label+' · '+m.unit+' · Lower values on the left, higher values on the right';root.append(axis);$('drawer-subtitle').textContent=included.length+' of '+visibleAreas().length+' areas have values for both axes; '+(rows.length-included.length)+' valid areas outside the filter are dimmed.';
+ svg.dataset.n=included.length;svg.dataset.pearson=pr===null?'':pr;svg.dataset.spearman=rho===null?'':rho;svg.dataset.measure=k;svg.dataset.hle=h;
+ var phrase=rho===null||Math.abs(rho)<.2?'no clear linear pattern':rho<0?'Areas where the measure is higher tend to have lower HLE':'Areas where the measure is higher tend to have higher HLE';$('drawer-note').textContent=included.length+' areas used · Pearson r: '+fmt(pr,3)+' · Spearman rho: '+fmt(rho,3)+'. '+phrase+'. Linked with, not caused by. Each dot is an area, not a person.';
+}
+var authorityMode='active';
+function drawAuthority(){var root=$('authority-wrap');root.replaceChildren();var modes=document.createElement('div');modes.className='authority-modes';modes.setAttribute('role','group');modes.setAttribute('aria-label','Authority comparison mode');[['active','Active measure'],['smoking','Adult smoking']].forEach(function(x){var b=document.createElement('button');b.textContent=x[1];b.dataset.authorityMode=x[0];b.setAttribute('aria-pressed',String(authorityMode===x[0]));b.onclick=function(){authorityMode=x[0];renderDrawer();$('authority-wrap').querySelector('[data-authority-mode="'+authorityMode+'"]').focus({preventScroll:true})};modes.append(b)});root.append(modes);if(authorityMode==='smoking'){drawSmoking(root);return}var k=activeField(),m=meta(k),all=areas.map(function(a){return num(raw(a,k))}).filter(function(v){return v!==null}),lo=Math.min(...all),hi=Math.max(...all),names=Array.from(new Set(areas.map(auth))),rows=names.map(function(n){var vs=areas.filter(function(a){return auth(a)===n}).map(function(a){return num(raw(a,k))}).filter(function(v){return v!==null});return{name:n,vals:vs,median:median(vs),min:vs.length?Math.min(...vs):null,max:vs.length?Math.max(...vs):null}}).sort(function(a,b){if(a.median===null||b.median===null)return a.median===b.median?a.name.localeCompare(b.name):a.median===null?1:-1;return b.median-a.median||a.name.localeCompare(b.name)});
+ var reset=document.createElement('button');reset.id='show-all-chart-authorities';reset.textContent='Show all authorities';reset.onclick=function(){state.authorities=new Set(names);document.querySelectorAll('#authorities input').forEach(function(i){i.checked=true});authorityCount();update()};root.append(reset);var axis=document.createElement('p');axis.className='hint';axis.textContent=m.label+' · '+m.unit+' · '+formatValue(lo,k)+' to '+formatValue(hi,k)+' · highest median at top';root.append(axis);
+ rows.forEach(function(x){var row=document.createElement('button'),outside=!state.authorities.has(x.name);row.className='chart-row authority-row'+(outside?' outside':'');row.dataset.authority=x.name;row.dataset.median=x.median===null?'':x.median;row.dataset.min=x.min===null?'':x.min;row.dataset.max=x.max===null?'':x.max;row.dataset.count=x.vals.length;var desc=x.name+': median '+formatValue(x.median,k)+', lowest '+formatValue(x.min,k)+', highest '+formatValue(x.max,k)+', '+x.vals.length+(x.vals.length===1?' area':' areas')+(outside?' · outside the current filter':'');row.setAttribute('aria-label',desc);row.title=desc;row.innerHTML='<span>'+esc(x.name)+'<small>'+x.vals.length+(x.vals.length===1?' area':' areas')+(x.vals.length<3?' · '+(x.vals.length?'few areas':'not available'):'')+'</small></span><span class="dot-track">'+(x.median===null?'not available':'<span class="authority-range" style="left:'+((x.min-lo)/(hi-lo||1)*100)+'%;width:'+((x.max-x.min)/(hi-lo||1)*100)+'%"></span><i class="chart-dot" style="left:'+((x.median-lo)/(hi-lo||1)*100)+'%;background:'+measureColor(x.median,k)+'"></i>')+'</span><span>'+esc(formatValue(x.median,k))+'</span>';row.onclick=function(){state.authorities=new Set([x.name]);document.querySelectorAll('#authorities input').forEach(function(i){i.checked=i.value===x.name});authorityCount();update()};root.append(row)});$('drawer-subtitle').textContent=state.authorities.size+' of '+names.length+' authorities selected · '+visibleAreas().filter(function(a){return num(val(a))!==null}).length+' of '+visibleAreas().length+' areas have a value';$('drawer-note').textContent='Dot = median of the areas in the authority. Line = lowest to highest area. These are area distributions, not population-weighted figures.'}
+
+function drawSmoking(root){
+ $('drawer').classList.add('smoking-view');
+ var s=D.authority_context.smoking,h=hleKey(),names=Object.values(s.authority_index),rows=Object.values(s.authorities).filter(function(x){return num(x.value)!==null}).sort(function(a,b){return b.value-a.value||a.code.localeCompare(b.code)}),lo=Math.floor(Math.min(...rows.map(function(x){return x.lower_95===null?x.value:x.lower_95}),s.england.value)),hi=Math.ceil(Math.max(...rows.map(function(x){return x.upper_95===null?x.value:x.upper_95}),s.england.value)),pos=function(v){return (v-lo)/(hi-lo||1)*100};
+ $('drawer-subtitle').textContent='2022–24 pooled · Authority survey, not neighbourhoods · Linked with, not caused by.';
+ var reset=document.createElement('button');reset.id='show-all-chart-authorities';reset.textContent='Show all authorities';reset.onclick=function(){state.authorities=new Set(names);document.querySelectorAll('#authorities input').forEach(function(i){i.checked=true});authorityCount();update()};root.querySelector('.authority-modes').append(reset);
+ var axis=document.createElement('p');axis.className='hint smoking-key';axis.textContent='England '+fmt(s.england.value,1)+'% · dot = estimate · line = 95% range · '+meta(h).short_label+' = area median';root.append(axis);var overlap=document.createElement('p');overlap.className='smoking-overlap';overlap.textContent='Many of the 95% ranges overlap, so the order of authorities with close figures is not secure.';root.append(overlap);
+ var chart=document.createElement('div');chart.className='smoking-chart';root.append(chart);
+ rows.forEach(function(x){var med=median(areas.filter(function(a){return auth(a)===s.authority_index[x.code]}).map(function(a){return num(raw(a,h))}).filter(function(v){return v!==null})),outside=!state.authorities.has(s.authority_index[x.code]),row=document.createElement('button');row.className='chart-row smoking-row'+(outside?' outside':'');row.dataset.authority=x.name;row.dataset.authorityCode=x.code;row.dataset.value=x.value;row.dataset.lower=x.lower_95;row.dataset.upper=x.upper_95;row.dataset.hleMedian=med;var desc=x.name+': Adult smoking '+fmt(x.value,1)+'%, 95% range '+fmt(x.lower_95,1)+'% to '+fmt(x.upper_95,1)+'%, median '+meta(h).label+' '+fmt(med,1)+' years'+(outside?' · outside the current filter':'');row.setAttribute('aria-label',desc);row.title=desc;row.innerHTML='<span>'+esc(x.name)+'</span><span class="dot-track">'+(x.lower_95===null||x.upper_95===null?'':'<span class="authority-range" style="left:'+pos(x.lower_95)+'%;width:'+(pos(x.upper_95)-pos(x.lower_95))+'%"></span>')+'<i class="chart-dot smoking-dot" style="left:'+pos(x.value)+'%"></i></span><span class="smoking-summary"><b>'+fmt(x.value,1)+'%</b> · '+esc(meta(h).short_label)+' '+fmt(med,1)+'</span>';row.onclick=function(){state.authorities=new Set([s.authority_index[x.code]]);document.querySelectorAll('#authorities input').forEach(function(i){i.checked=i.value===s.authority_index[x.code]});authorityCount();update()};chart.append(row)});
+ var ref=document.createElement('span');ref.className='england-reference';ref.dataset.value=s.england.value;ref.setAttribute('aria-label','England '+fmt(s.england.value,1)+'%');var track=chart.querySelector('.dot-track'),box=chart.getBoundingClientRect(),tb=track.getBoundingClientRect();ref.style.left=(tb.left-box.left+tb.width*pos(s.england.value)/100)+'px';chart.append(ref);
+ var unknown=document.createElement('details');unknown.id='smoking-unmatched';var unmatched=Object.entries(s.unmatched).sort(function(a,b){return a[1].localeCompare(b[1])});unknown.innerHTML='<summary>'+unmatched.length+' authorities with no authority-level figure</summary><p class="hint">This source reports counties and unitary authorities. These '+unmatched.length+' are district councils inside counties, and a county figure would not describe them.</p><ul>'+unmatched.map(function(x){return '<li data-authority-code="'+esc(x[0])+'">'+esc(x[1])+'</li>'}).join('')+'</ul>';root.append(unknown);
+ var missing=Object.values(s.authorities).filter(function(x){return num(x.value)===null});missing.forEach(function(x){var p=document.createElement('p');p.className='hint';p.textContent=x.name+': not available'+(x.value_note?' · '+x.value_note:'');root.append(p)});
+ $('drawer-note').textContent=rows.length+' of '+names.length+' dashboard authorities have a value. Smoking estimates describe authorities; HLE medians describe the areas in each authority and are not population-weighted. No correlation is calculated.';
+}
+
+function update(){if(!areasLayer)return;legend();areasLayer.setStyle(selectedStyle);drawFlags();drawPairs();drawLabels();requestSelection();drawGroupHighlight();updateGroupCount();summary();if((state.pinned||state.pair)&&state.detailOpen)detail();if(state.drawer)renderDrawer();syncPanels()}
+var selectionCanvas,selectionFrame=0,selectionStarted=0,selectionLift=0,selectionLastCode=null,selectionContext='',selectionAnimating=false,selectionAnimationCount=0,selectionMaxLift=0,selectionDepth=0,selectionHold=220,selectionDuration=520,selectionWallStep=1,selectionPoints=null,selectionBox=null,areaTooltip=null,touchTooltip=false;
+function selectionFallback(){return matchMedia('(pointer:coarse)').matches||matchMedia('(prefers-reduced-motion:reduce)').matches}
+function selectionPath(ctx,geometry,lift,append){
+ if(!append)ctx.beginPath();
+ selectionPoints.forEach(function(poly){poly.forEach(function(ring){ring.forEach(function(p,i){i?ctx.lineTo(p.x,p.y-lift):ctx.moveTo(p.x,p.y-lift)});ctx.closePath()})});
+}
+function wallColor(c,brightness){if(typeof c!=='string'||!/^#[0-9a-f]{6}$/i.test(c))return '#263b44';return 'rgb('+[1,3,5].map(function(i){return Math.round(parseInt(c.slice(i,i+2),16)*brightness)}).join(',')+')'}
+function drawSelection(now,previewMs){
+ selectionFrame=0;if(!selectionCanvas||!map)return;
+ var ratio=devicePixelRatio||1,size=map.getSize();
+ if(selectionCanvas.width!==Math.round(size.x*ratio)||selectionCanvas.height!==Math.round(size.y*ratio)){selectionCanvas.width=Math.round(size.x*ratio);selectionCanvas.height=Math.round(size.y*ratio);selectionCanvas.style.width=size.x+'px';selectionCanvas.style.height=size.y+'px'}
+ var ctx=selectionCanvas.getContext('2d');ctx.setTransform(ratio,0,0,ratio,0,0);ctx.clearRect(0,0,size.x,size.y);
+ var f=featureByCode.get(state.pinned),a=byCode.get(state.pinned);
+ if(!f||!a){selectionLastCode=null;selectionAnimating=false;selectionLift=0;return}
+ var fallback=selectionFallback(),time=typeof now==='number'?now:performance.now(),centre=map.getCenter();
+ var context=[map.getZoom(),centre.lat,centre.lng,size.x,size.y,state.metric,state.sex].join('|');
+ if(selectionLastCode!==state.pinned){selectionLastCode=state.pinned;selectionStarted=time;selectionAnimating=!fallback;selectionAnimationCount++}
+ else if(context!==selectionContext||fallback)selectionAnimating=false;
+ selectionContext=context;
+ // Project once per draw and reuse the points for the stacked wall copies.
+ var polygons=f.geometry.type==='Polygon'?[f.geometry.coordinates]:f.geometry.coordinates;
+ var minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;
+ selectionPoints=polygons.map(function(poly){return poly.map(function(ring){return ring.map(function(coord){var p=map.latLngToContainerPoint([coord[1],coord[0]]);minX=Math.min(minX,p.x);maxX=Math.max(maxX,p.x);minY=Math.min(minY,p.y);maxY=Math.max(maxY,p.y);return p})})});
+ selectionBox={x:minX,y:minY,width:maxX-minX,height:maxY-minY};
+ selectionMaxLift=Math.max(4,Math.min(16,.055*Math.min(selectionBox.width,selectionBox.height)));
+ selectionDepth=Math.max(2,Math.min(6,selectionMaxLift*.375));
+ var elapsed=typeof previewMs==='number'?Math.max(0,previewMs):selectionAnimating?Math.max(0,time-selectionStarted):selectionDuration;
+ if(fallback)selectionLift=0;
+ else if(elapsed>=selectionDuration){selectionLift=selectionMaxLift;selectionAnimating=false}
+ else if(elapsed<selectionHold){var x=elapsed/selectionHold;selectionLift=-selectionDepth*(1-Math.pow(1-x,3))}
+ else{var u=(elapsed-selectionHold)/300,e=1+2.2*Math.pow(u-1,3)+1.2*Math.pow(u-1,2);selectionLift=-selectionDepth+(selectionMaxLift+selectionDepth)*e}
+ var style=selectedStyle(f),fill=style.fillColor,plain=typeof fill==='string'&&/^#[0-9a-f]{6}$/i.test(fill),faceOpacity=inScope(a)?plain?1:state.fill:.12;
+ if(fallback){
+  // Preserve the existing reduced-motion/coarse-pointer outline exactly.
+  selectionPath(ctx,f.geometry,0);ctx.lineJoin='round';ctx.strokeStyle='#fff';ctx.lineWidth=5.5;ctx.stroke();ctx.strokeStyle='#0b1c24';ctx.lineWidth=2.2;ctx.stroke();selectionCanvas.dataset.mode='flat';selectionCanvas.dataset.outerWidth='5.5';selectionCanvas.dataset.innerWidth='2.2';
+ }else{
+  var lift=selectionLift,pressed=lift<-.01;
+  if(lift>.01){
+   ctx.save();ctx.beginPath();ctx.rect(0,0,size.x,size.y);selectionPath(ctx,f.geometry,lift,true);ctx.clip('evenodd');
+   selectionPath(ctx,f.geometry,0);ctx.shadowColor='rgba(0,0,0,.48)';ctx.shadowBlur=10+lift*2.2;ctx.shadowOffsetX=lift*.35;ctx.shadowOffsetY=lift*.9;ctx.fillStyle='#0b1c24';ctx.fill('evenodd');
+   ctx.shadowColor='transparent';ctx.shadowBlur=0;ctx.shadowOffsetX=0;ctx.shadowOffsetY=0;
+   for(var i=selectionWallStep;i<Math.ceil(lift)+selectionWallStep;i+=selectionWallStep){var offset=Math.min(i,lift);selectionPath(ctx,f.geometry,offset);ctx.fillStyle=wallColor(fill,.42+.16*offset/Math.max(lift,1));ctx.fill('evenodd')}
+   ctx.restore();
+  }
+  if(pressed){ctx.save();selectionPath(ctx,f.geometry,0);ctx.clip('evenodd');ctx.fillStyle=wallColor(fill,.32);ctx.fillRect(0,0,size.x,size.y);ctx.shadowColor='rgba(0,0,0,.6)';ctx.shadowBlur=6;ctx.shadowOffsetY=2}
+  selectionPath(ctx,f.geometry,lift);ctx.globalAlpha=faceOpacity;ctx.fillStyle=fill;ctx.fill('evenodd');ctx.globalAlpha=1;ctx.shadowColor='transparent';ctx.shadowBlur=0;ctx.shadowOffsetY=0;
+  selectionPath(ctx,f.geometry,lift);ctx.lineJoin='round';ctx.strokeStyle='rgba(11,28,36,.7)';ctx.lineWidth=1;ctx.stroke();if(pressed)ctx.restore();
+  selectionCanvas.dataset.mode=pressed?'pressed':'raised';selectionCanvas.dataset.outerWidth='1';selectionCanvas.dataset.innerWidth='0';
+ }
+ selectionCanvas.dataset.lift=selectionLift.toFixed(3);selectionCanvas.dataset.maxLift=selectionMaxLift.toFixed(3);selectionCanvas.dataset.depth=selectionDepth.toFixed(3);selectionCanvas.dataset.fillOpacity=faceOpacity;selectionCanvas.dataset.duration=String(selectionDuration);selectionCanvas.dataset.hold=String(selectionHold);
+ if(typeof previewMs!=='number'&&!fallback&&selectionAnimating&&elapsed<selectionDuration)selectionFrame=requestAnimationFrame(drawSelection);
+}
+function requestSelection(){if(!selectionFrame)selectionFrame=requestAnimationFrame(drawSelection)}
+function initSelection(){selectionCanvas=document.createElement('canvas');selectionCanvas.id='selection-canvas';selectionCanvas.setAttribute('aria-hidden','true');$('map').append(selectionCanvas);var tooltipPane=map.createPane('areaTooltipPane',$('app'));tooltipPane.style.zIndex='650';tooltipPane.style.pointerEvents='none';function positionTooltipPane(){L.DomUtil.setPosition(tooltipPane,map._getMapPanePos())}map.on('move zoomend',positionTooltipPane);positionTooltipPane();map.on('move zoomend',constrainAreaTooltip);map.on('move zoom resize zoomend moveend',requestSelection);function refreshSelectionMode(){areasLayer.setStyle(selectedStyle);requestSelection()}matchMedia('(prefers-reduced-motion:reduce)').addEventListener('change',refreshSelectionMode);matchMedia('(pointer:coarse)').addEventListener('change',refreshSelectionMode);window.addEventListener('resize',refreshSelectionMode)}
+function tooltipContent(a){var field=hleFields[state.sex],h=num(raw(a,field)),m=meta(state.metric),v=num(val(a)),chip=color(v),chipStyle=typeof chip==='string'?'background:'+chip:'background:repeating-linear-gradient(45deg,#657a83 0 2px,#233944 2px 4px)';var html='<strong>'+esc(nm(a))+'</strong><div>'+esc(auth(a))+'</div>';if(state.metric!=='hle_average')html+='<div>'+esc(state.sex==='avg'?'HLE average':state.sex==='male'?'Male HLE':'Female HLE')+': '+fmt(h,2)+(h===null?'':' years')+'</div>';html+='<div><span class="tooltip-chip" style="'+chipStyle+'"></span>'+esc(state.metric==='hle_average'?(state.sex==='avg'?'HLE average':state.sex==='male'?'Male HLE':'Female HLE'):m.label)+': '+fmt(v,2)+(v===null?'':' '+esc(m.unit||'years'))+'</div>';if(!inScope(a))html+='<div class="tooltip-outside">outside the current filter</div>';return html}
+function touchInput(){return matchMedia('(pointer:coarse)').matches||navigator.maxTouchPoints>0}
+function constrainAreaTooltip(){if(!areaTooltip)return;var el=areaTooltip.getElement();if(!el)return;var r=el.getBoundingClientRect(),bounds=$('map-stage').getBoundingClientRect(),pos=L.DomUtil.getPosition(el),dx=r.left<bounds.left+8?bounds.left+8-r.left:r.right>bounds.right-8?bounds.right-8-r.right:0,dy=r.top<bounds.top+8?bounds.top+8-r.top:r.bottom>bounds.bottom-8?bounds.bottom-8-r.bottom:0;if(dx||dy)L.DomUtil.setPosition(el,L.point(pos.x+dx,pos.y+dy))}
+function showAreaTooltip(a,latlng,persist){if(areaTooltip)closeAreaTooltip();touchTooltip=!!persist;areaTooltip=L.tooltip({className:'area-tooltip',pane:'areaTooltipPane',direction:'auto',opacity:1,offset:[8,-8],interactive:false}).setLatLng(latlng).setContent(tooltipContent(a)).addTo(map);constrainAreaTooltip()}
+document.addEventListener('pointerdown',function(e){if(e.pointerType==='touch'&&touchTooltip)closeAreaTooltip()});
+function closeAreaTooltip(){if(areaTooltip){var node=areaTooltip.getElement();map.removeLayer(areaTooltip);if(node)node.remove();areaTooltip=null}touchTooltip=false}
+
+function init(){if(!window.L||!D.geometry){$('status').textContent='Map library or geometry data is unavailable.';return}makeMissingPattern();buildMetrics();buildAuthorities();fillPicker();initMap();setBase('osm',true);update();tileFilters();
+$('search').oninput=fillPicker;$('area-picker').onchange=function(){if(this.value)select(this.value)};$('metric-select').onchange=function(){var previous=activeField();closeAreaTooltip();state.metric=this.value;state.sex='avg';if(previous!==activeField())clearGroupSelection();['average','male','female'].forEach(function(s){$('sex-'+s).setAttribute('aria-pressed',String(s==='average'))});update()};['average','male','female'].forEach(function(s){$('sex-'+s).onclick=function(){var previous=activeField();closeAreaTooltip();state.metric='hle_average';state.sex=s==='average'?'avg':s;if(previous!==activeField())clearGroupSelection();$('metric-select').value='hle_average';['average','male','female'].forEach(function(t){$('sex-'+t).setAttribute('aria-pressed',String(t===s))});update()}});$('coverage').onchange=function(){state.coverage=this.value;update()};$('opacity').oninput=function(){state.fill=Number(this.value)/100;$('opacity-label').textContent=this.value+'%';update()};$('brightness').oninput=tileFilters;$('saturation').oninput=tileFilters;$('basemap').onchange=function(){setBase(this.value)};$('labels').onchange=function(){if(tiles)tiles.setUrl(tileUrl())};$('map-labels').onchange=drawLabels;$('boundaries').onchange=update;['student-layer','visitor-layer','imputed-layer'].forEach(function(id){$(id).onchange=update});$('gaps-layer').onchange=function(){if(!this.checked&&state.pair)closeDetail();update()};$('select-all-authorities').onclick=function(){state.authorities=new Set(Array.from(document.querySelectorAll('#authorities input')).map(function(i){return i.value}));document.querySelectorAll('#authorities input').forEach(function(i){i.checked=true});authorityCount();update()};$('clear-authorities').onclick=function(){state.authorities.clear();document.querySelectorAll('#authorities input').forEach(function(i){i.checked=false});authorityCount();update()};$('controls-toggle').onclick=function(){var hidden=$('controls').classList.toggle('collapsed');if(!hidden){state.detailOpen=false;$('detail').classList.add('collapsed');closeDrawer()}this.setAttribute('aria-expanded',String(!hidden))};$('controls-close').onclick=function(){$('controls').classList.add('collapsed');$('controls-toggle').setAttribute('aria-expanded','false');$('controls-toggle').focus()};$('detail-close').onclick=closeDetail;$('charts-open').onclick=function(){openDrawer('menu')};$('drawer-back').onclick=function(){openDrawer('menu')};$('drawer-close').onclick=closeDrawer;$('export-csv').onclick=exportCsv;$('fit').onclick=function(){map.fitBounds(baseBounds.pad(BOUNDS_PADDING))};$('zin').onclick=function(){map.zoomIn()};$('zout').onclick=function(){map.zoomOut()};$('map-only').onclick=function(){var on=this.getAttribute('aria-pressed')!=='true';this.setAttribute('aria-pressed',String(on));document.body.classList.toggle('map-clean',on);['.bottom-actions'].forEach(function(s){document.querySelector(s).classList.toggle('collapsed',on)});$('controls').classList.add('collapsed');state.detailOpen=false;$('detail').classList.add('collapsed');closeDrawer()};$('about-open').onclick=function(){$('about').showModal()};$('about-close').onclick=function(){$('about').close()}}
+function closeDrawer(){var wasOpen=!!state.drawer,fromCard=$('detail').contains(document.activeElement);$('drawer').classList.add('collapsed');state.drawer='';$('charts-open').setAttribute('aria-expanded','false');syncCardViews();syncPanels();if(wasOpen&&!fromCard)$('charts-open').focus({preventScroll:true})}
+var legendExpanded=false,layoutFrame=0,layoutBusy=false;
+function syncPanels(){
+ if(innerWidth<1000||layoutBusy)return;layoutBusy=true;
+ var stage=$('map-stage'),height=stage.clientHeight,margin=18,top=16,column=$('left-column'),drawer=$('drawer'),actions=document.querySelector('.actions-top'),zoom=document.querySelector('.zoom'),bottom=document.querySelector('.bottom-actions'),footer=document.querySelector('.attribution').getBoundingClientRect().height;
+ column.style.width='300px';
+ actions.style.width=Math.min(410,Math.max(96,innerWidth-column.clientWidth-2*margin-12))+'px';
+ bottom.style.bottom=Math.max(8,60-footer)+'px';
+ var button=$('charts-open').getBoundingClientRect(),buttonBottom=height-button.top;
+ var zBottom=Math.max(8,110-footer,height-button.top+12);zoom.style.right=margin+'px';zoom.style.left='auto';zoom.style.top='auto';zoom.style.bottom=zBottom+'px';
+
+ var windowWidth=Math.min(510,innerWidth-32),windowLeft=(innerWidth-windowWidth)/2,overButton=windowLeft+windowWidth>button.left&&windowLeft<button.right;var sheetBottom=overButton?buttonBottom+8:8,minimumTop=actions.getBoundingClientRect().bottom+12;
+ drawer.style.setProperty('--menu-right',margin+'px');drawer.style.setProperty('--window-bottom',sheetBottom+'px');drawer.style.setProperty('--menu-bottom',(height-button.top+8)+'px');drawer.style.setProperty('--panel-available',Math.max(70,height-(state.drawer==='menu'?height-button.top+8:sheetBottom)-minimumTop)+'px');
+ ['controls','detail'].forEach(function(id){var e=$(id);e.style.top=minimumTop+'px';e.style.bottom='auto';e.style.maxHeight=Math.max(70,button.top-minimumTop-12)+'px'});
+ var visiblePanel=['controls','detail','drawer'].map(function(id){return $(id)}).find(function(e){return !e.classList.contains('collapsed')});
+ var columnBottom=height-16;
+ column.style.height=Math.max(64,columnBottom-top)+'px';
+ // Measure the full legend first, then compact before allowing column scrolling.
+ var details=$('legend-details'),period=$('legend-period'),legend=document.querySelector('.legend');document.body.classList.remove('compact-legend');details.open=true;legend.insertBefore(period,$('swatches'));
+ var needCompact=document.querySelector('.top-left').scrollHeight+legend.scrollHeight+24>column.clientHeight;
+ document.body.classList.toggle('compact-legend',needCompact);
+ if(needCompact){details.insertBefore(period,details.querySelector('summary').nextSibling);details.open=legendExpanded}else details.open=true;
+ if(visiblePanel&&(visiblePanel.id!=='drawer'||state.drawer==='menu')){zoom.style.right=(margin+visiblePanel.getBoundingClientRect().width+12)+'px'}
+
+ placeDrawer();layoutBusy=false;requestLabels();
+}
+function placeDrawer(){
+ if(!state.drawer||state.drawer==='menu')return;
+ var drawer=$('drawer'),column=$('left-column'),card=$('detail');
+ // Read every rectangle before writing either style. Hidden panels use page margins.
+ var page=$('map-stage').getBoundingClientRect(),left=column.getBoundingClientRect(),right=card.getBoundingClientRect();
+ var ref=drawer.querySelector('.england-reference'),track=ref&&ref.parentNode.querySelector('.dot-track');
+ var referencePosition=ref&&ref.dataset.trackPosition;
+ if(ref&&track&&referencePosition===undefined){var tb=track.getBoundingClientRect();referencePosition=(ref.getBoundingClientRect().left-tb.left)/tb.width}
+
+ var start=left.width&&getComputedStyle(column).display!=='none'?left.right-page.left:18;
+ var end=right.width&&!card.classList.contains('collapsed')?right.left-page.left:page.width-18;
+ var width=Math.max(360,Math.min(510,end-start-32));
+ var x=Math.max(16,Math.min(page.width-width-16,(start+end-width)/2));
+ drawer.style.setProperty('--view-left',x+'px');drawer.style.setProperty('--view-width',width+'px');
+ // The existing smoking renderer places its England line in pixels. Preserve
+ // its fractional position on the actual track when the window width changes.
+ if(ref&&track){ref.dataset.trackPosition=referencePosition;requestAnimationFrame(function(){
+  if(!ref.isConnected)return;
+  var chartRect=ref.parentNode.getBoundingClientRect(),trackRect=track.getBoundingClientRect();
+  ref.style.left=(trackRect.left-chartRect.left+trackRect.width*Number(referencePosition))+'px';
+ })}
+
+}
+function scheduleLayout(){if(!layoutFrame)layoutFrame=requestAnimationFrame(function(){layoutFrame=0;syncPanels();if(map){map.invalidateSize({pan:false})}})}
+$('legend-details').addEventListener('click',function(e){if(e.target.tagName==='SUMMARY'){legendExpanded=!$('legend-details').open;requestAnimationFrame(syncPanels)}});
+new ResizeObserver(scheduleLayout).observe(document.querySelector('.attribution'));
+new ResizeObserver(scheduleLayout).observe($('map-stage'));
+var panelObserver=new ResizeObserver(scheduleLayout);panelObserver.observe($('detail'));panelObserver.observe($('left-column'));panelObserver.observe($('controls')); 
+
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&state.drawer){e.preventDefault();closeDrawer();return}if(e.key==='Escape'&&!$('detail').classList.contains('collapsed')){e.preventDefault();closeDetail()}});document.addEventListener('click',function(e){if(state.drawer==='menu'&&!$('drawer').contains(e.target)&&!$('charts-open').contains(e.target))closeDrawer();requestAnimationFrame(syncPanels)});document.addEventListener('toggle',function(){requestAnimationFrame(syncPanels)},true);window.addEventListener('resize',function(){requestAnimationFrame(syncPanels)});
+function loadProviderSettings(){init();syncPanels()}
+function startDesktop(){if(innerWidth>=1000&&!map&&!desktopStarting){desktopStarting=true;loadProviderSettings()}}var desktopStarting=false;startDesktop();window.addEventListener('resize',startDesktop);if(new URLSearchParams(location.search).get('debug')==='1')window.conceptB3Debug={get map(){return map},get state(){return{metric:state.metric,sex:state.sex,coverage:state.coverage,selectedAuthorities:Array.from(state.authorities),pinned:state.pinned}},get minZoom(){return MIN_ZOOM},maxZoom:MAX_ZOOM,get startZoom(){return START_ZOOM},get bounds(){return baseBounds},get featureLayer(){return areasLayer},get flagLayer(){return flagLayer},get groupLayer(){return groupLayer},get groupCodes(){return Array.from(groupSelectionCodes())},get selection(){return {lift:selectionLift,fallback:selectionFallback(),duration:selectionDuration,depth:selectionDepth,hold:selectionHold,maxLift:selectionMaxLift,box:selectionBox,started:selectionStarted,animations:selectionAnimationCount,animating:selectionAnimating,wallStep:selectionWallStep}},selectionAt:function(ms){cancelAnimationFrame(selectionFrame);selectionFrame=0;drawSelection(performance.now(),Math.max(0,Number(ms)||0));return selectionLift},get tooltip(){return areaTooltip},get palette(){return mapPalette()},get quantiles(){return quantiles},get histogramBins(){return Array.from(state.histogramBins)},get legendBands(){return Array.from(state.legendBands)}};
+})();
+</script></body></html>
