@@ -1,10 +1,10 @@
 layout: home
-description: A second look at Birmingham Healthy Life: revisiting the Unit 2 analysis through an ethical lens and rebuilding the project for Unit 3.
-footer: Built by Tidy Web for the Code Institute Diploma in Data Analytics with AI, Unit 3. Data from ONS and other public sources under the Open Government Licence. [Sources and ethics](story/sources-and-ethics.html).
+description: The Ethics of a Birmingham Healthy Life: an ethical review of my Unit 2 Birmingham Healthy Life analysis.
+footer: The Ethics of a Birmingham Healthy Life · Built by Tidy Web for the Code Institute Diploma in Data Analytics with AI, Unit 3. Data from ONS and other public sources under the Open Government Licence. [Sources and ethics](story/sources-and-ethics.html).
 ---
-# Birmingham Healthy Life
+# The Ethics of a Birmingham Healthy Life
 
-This is a second look at Birmingham Healthy Life: my Unit 2 project revisited through an ethical lens and rebuilt for Unit 3.
+The Ethics of a Birmingham Healthy Life is my Unit 3 project: an ethical review of my Unit 2 Birmingham Healthy Life analysis.
 
 ::: stats nb04#3f21d022
 660 | neighbourhoods across Birmingham and the areas around it
@@ -22,7 +22,7 @@ This is a second look at Birmingham Healthy Life: my Unit 2 project revisited th
 
 <div class="intro" markdown="1">
 
-Unit 3 is a second look at my Unit 2 Birmingham Healthy Life analysis through an ethical lens. This opening section records my position and the 27-question screen I applied; the original chapters follow below as carried-over material. Start with [S1: Why a second look](story/s1-why-a-second-look.html), or visit [the original Unit 2 project site](https://tidyweb.github.io/Birmingham-Healthy-Life/). The six notebooks are available here as read-only pages.
+The Ethics of a Birmingham Healthy Life is my Unit 3 review of the Unit 2 Birmingham Healthy Life analysis through an ethical lens. This opening section records my position and the 27-question screen I applied; the original chapters follow below as carried-over material. Start with [S1: Why a second look](story/s1-why-a-second-look.html), or visit [the original Unit 2 project site](https://tidyweb.github.io/Birmingham-Healthy-Life/). The six notebooks are available here as read-only pages.
 
 </div>
 

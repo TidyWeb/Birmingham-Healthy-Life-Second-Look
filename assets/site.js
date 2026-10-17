@@ -1,4 +1,4 @@
-// Birmingham Healthy Life: small page behaviours. The site works without this file.
+// The Ethics of a Birmingham Healthy Life: small page behaviours. The site works without this file.
 
 // The contents menu on narrow screens
 (function () {

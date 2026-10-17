@@ -1,4 +1,4 @@
-"""Build the Birmingham Healthy Life site.
+"""Build The Ethics of a Birmingham Healthy Life site.
 
 Reads the story text in content/*.md and the executed notebooks, and writes plain HTML
 pages that GitHub Pages serves as they are. Run it from anywhere:
@@ -380,7 +380,7 @@ def sidebar(chapters: list[dict], active: str, root: str) -> str:
     return f"""
 <header class="sidebar" id="top">
   <a class="sidebar-logo" href="https://github.com/TidyWeb" title="Tidy Web on GitHub"><img src="{root}assets/img/tidyweb-logo.png" width="120" height="120" alt="Tidy Web on GitHub"></a>
-  <a class="site-name" href="{root}index.html">Birmingham Healthy Life<small>Years in good health, area by area</small></a>
+  <a class="site-name" href="{root}index.html">The Ethics of a Birmingham Healthy Life<small>Years in good health, area by area</small></a>
   <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Contents</button>
   <nav class="nav" id="site-nav" aria-label="Site contents">
     {story}
@@ -402,7 +402,7 @@ def page(title: str, body: str, active: str, root: str, chapters: list[dict], de
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{html.escape(title)} · Birmingham Healthy Life</title>
+<title>{html.escape(title)} · The Ethics of a Birmingham Healthy Life</title>
 <meta name="description" content="{html.escape(description)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -481,7 +481,7 @@ def build_home(chapters: list[dict]) -> None:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Birmingham Healthy Life</title>
+<title>The Ethics of a Birmingham Healthy Life</title>
 <meta name="description" content="{html.escape(meta.get('description', ''))}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -1,8 +1,8 @@
-# Birmingham Healthy Life: A Second Look
+# The Ethics of a Birmingham Healthy Life
 
-This repository contains the static Unit 3 project site. It tells the story of my ethical revision of the Unit 2 analysis, including the methods, results, limitations and lifecycle. The analysis code, notebooks and data are in the [Unit 3 analysis repository](https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment), whose README is the submission front door.
+This repository contains the static site for **The Ethics of a Birmingham Healthy Life**, my Unit 3 ethical review of the Unit 2 analysis. It tells the story of the methods, results, limitations and lifecycle. The analysis code, notebooks and data are in the [Unit 3 analysis repository](https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment), whose README is the submission front door.
 
-The deployed site is [Birmingham Healthy Life: A Second Look](https://tidyweb.github.io/Birmingham-Healthy-Life-Second-Look/). The original [Unit 2 site](https://tidyweb.github.io/Birmingham-Healthy-Life/) remains available.
+The deployed site is [The Ethics of a Birmingham Healthy Life](https://tidyweb.github.io/Birmingham-Healthy-Life-Second-Look/). The original [Unit 2 site](https://tidyweb.github.io/Birmingham-Healthy-Life/) remains available.
 
 ## Sources and generated pages
 

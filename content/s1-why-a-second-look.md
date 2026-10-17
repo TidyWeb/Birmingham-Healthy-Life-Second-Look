@@ -2,11 +2,11 @@ num: S1
 part: second-look
 slug: s1-why-a-second-look
 title: Why a second look
-summary: The position behind revisiting Birmingham Healthy Life through an ethical lens.
+summary: The position behind revisiting my Unit 2 Birmingham Healthy Life analysis through an ethical lens.
 standfirst: I want the claims to be as strong as the evidence: no stronger, and no weaker.
 ---
 ::: keypoints
-This is my Unit 3 rebuild of Birmingham Healthy Life, seen through an ethical lens. I want to describe what the evidence supports without hiding uncomfortable findings or claiming more than it can show.
+The Ethics of a Birmingham Healthy Life is my Unit 3 project. I revisit my Unit 2 Birmingham Healthy Life analysis through an ethical lens, describing what the evidence supports without hiding uncomfortable findings or claiming more than it can show.
 :::
 
 ## What this is
