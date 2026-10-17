@@ -24,7 +24,7 @@ One big-gap pair on its own could be a quirk of two estimates. But a patch where
 
 ::: figure hotspots/01_hotspot_overview wide nb06#9c4f9cfc
 alt: Map of the study area in light grey with five coloured patches marking the hotspots, numbered one to five.
-caption: The five hotspots across the study area, numbered as in the list above.
+caption: The highlighted patches group repeated gaps between area-level HLE estimates. They show spatial association, not cause.
 :::
 
 ^ nb06#b39282ac | Council boundaries among hotspot, big-gap and ordinary pairs.
@@ -48,7 +48,7 @@ When I looked at each hotspot up close, I found something more local. Castle Bro
 
 ::: figure hotspots/hotspot_1_flat_map nb06#50a9bf7b
 alt: Map of the Chelmsley Wood and Castle Bromwich hotspot, areas coloured by HLE band, with red lines along the big-gap boundaries.
-caption: Hotspot 1, Chelmsley Wood and Castle Bromwich. The red lines mark the boundaries where HLE drops sharply.
+caption: Hotspot 1, Chelmsley Wood and Castle Bromwich. The map compares HLE estimates across area boundaries and shows spatial association, not cause.
 :::
 
 I'm building a 3D view of these five places. Height will show the drop from one area to the next, and you'll be able to switch between the actual drop and the one the model expected.

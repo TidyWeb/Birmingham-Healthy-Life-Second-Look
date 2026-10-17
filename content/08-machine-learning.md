@@ -74,7 +74,7 @@ A residual is an area's actual HLE minus what the model predicted for it, and th
 
 ::: figure ml/06_residual_map wide nb05#d63444a3
 alt: Map of residuals, with areas doing better than predicted in one colour and worse in another.
-caption: Where the model gets it wrong. Areas doing better than their measures predict, and areas doing worse.
+caption: Each area is shown by how its measured HLE differs from the model estimate. The map shows spatial association, not cause.
 :::
 
 ^ nb05#e9d393a4 | Moran's I for HLE and for the residuals.
