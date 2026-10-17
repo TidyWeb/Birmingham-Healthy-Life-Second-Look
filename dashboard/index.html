@@ -777,11 +777,64 @@ svg.leaflet-image-layer.leaflet-interactive path {
   body > .mobile-notice {
     box-sizing: border-box; position: fixed; inset: 0; z-index: 2147483647;
     display: grid !important; place-items: center; margin: 0; padding: 2rem;
-    background: #f2f0e8; color: #102a36;
+    background: #e9e9e2; color: #20271f;
     font: 600 1.25rem/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     text-align: center;
   }
 }
+</style>
+<style id="field-notes-theme">
+/* Hackathon Field Notes: quiet paper surfaces around the data map. */
+:root {
+  color-scheme: light;
+  --bg: #e9e9e2;
+  --panel: #f5f6f0;
+  --line: #ccd2c6;
+  --ink: #20271f;
+  --muted: #596154;
+  --accent: #36557e;
+}
+html, body, #app { background: var(--bg); color: var(--ink); }
+h1, h2, h3 { color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: -.01em; }
+h1 { font-size: 1.55rem; line-height: 1.2; }
+h2 { font-size: 1.3rem; line-height: 1.25; }
+h3 { font-size: 1.08rem; line-height: 1.3; }
+.eyebrow { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: .08em; }
+.panel { color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 10px; box-shadow: none; backdrop-filter: none; }
+button, select, input[type="search"] { color: var(--ink); background: #f5f6f0; border: 1px solid var(--line); border-radius: 6px; }
+button:hover, select:hover { color: var(--ink); background: #dde2d6; }
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+button[aria-pressed="true"] { color: #fff; background: var(--accent); border-color: var(--accent); }
+input[type="checkbox"], input[type="range"] { accent-color: var(--accent); }
+#map, .leaflet-container { background: var(--bg); }
+.brand p, .muted, .hint, .field > span:first-child { color: var(--muted); }
+.group, .metric-compare, .plot-track, .dot-track, .data-row { border-color: var(--line); }
+.attribution { color: var(--ink); background: var(--panel); border-top: 1px solid var(--line); }
+.attribution a, .attribution #corner-note { color: var(--accent); }
+.corner-note, dialog { color: var(--ink); background: #f5f6f0; border: 1px solid var(--line); border-radius: 10px; box-shadow: none; }
+dialog::backdrop { background: rgba(32, 39, 31, .32); }
+dialog p { color: var(--muted); }
+.tag, .big-gap-badge { color: var(--ink); background: #dde2d6; border: 1px solid var(--line); border-radius: 5px; }
+.leaflet-tooltip.area-tooltip, .chart-name-tooltip { color: var(--ink); background: #f5f6f0; border: 1px solid var(--line); border-radius: 8px; box-shadow: none; }
+.tooltip-outside { color: var(--muted); }
+.area-label { color: #20271f; -webkit-text-stroke-color: rgba(245, 246, 240, .96); text-shadow: 0 0 1.5px rgba(245, 246, 240, .96); }
+.data-row { border-bottom-color: var(--line); }
+.plot-track, .dot-track { border-bottom-color: var(--line); }
+.whisker, .authority-range { background: #8b9487; }
+.pinned-chip { box-shadow: none; border-color: #f5f6f0; outline-color: #20271f; }
+.selected-dot { outline-color: #f5f6f0; box-shadow: 0 0 0 2px var(--accent); }
+.profile-marker, #position-marker, #hle-position-marker { background: var(--accent); box-shadow: 0 0 0 1px #f5f6f0; }
+.profile-median { background: #20271f; opacity: .65; }
+.pair-noise, .pair-hle > div, .pair-table .active-row, .current-measure, .view-menu-item:disabled { color: var(--ink); background: #dde2d6; }
+#biggest-neighbour-gap { color: var(--ink); background: #f5f6f0; border-color: var(--line); box-shadow: none; }
+#biggest-neighbour-gap > span { color: var(--muted); }
+.card-view-tile, .card-view-tile:hover { color: var(--ink); background: #f5f6f0; border-color: var(--line); border-radius: 8px; box-shadow: none; transform: none; }
+.card-view-tile[aria-pressed="true"], #card-views .card[aria-pressed="true"] { color: #fff; background: var(--accent); border-color: var(--accent); }
+#card-views .card-view-tile:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.legend-band-swatch[aria-pressed="true"], .legend-band-label[aria-pressed="true"] { outline: 3px solid var(--accent); outline-offset: -2px; }
+#chart .histogram-hit:focus { stroke: var(--accent); }
+#desktop-notice { color: var(--ink); background: var(--bg); }
+#back-to-story { color: var(--accent) !important; background: #f5f6f0 !important; border-color: var(--line) !important; box-shadow: none !important; }
 </style>
 </head>
 <body>
@@ -1431,5 +1484,5 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&state.drawe
 function loadProviderSettings(){init();syncPanels()}
 function startDesktop(){if(innerWidth>=1000&&!map&&!desktopStarting){desktopStarting=true;loadProviderSettings()}}var desktopStarting=false;startDesktop();window.addEventListener('resize',startDesktop);if(new URLSearchParams(location.search).get('debug')==='1')window.conceptB3Debug={get map(){return map},get state(){return{metric:state.metric,sex:state.sex,coverage:state.coverage,selectedAuthorities:Array.from(state.authorities),pinned:state.pinned}},get minZoom(){return MIN_ZOOM},maxZoom:MAX_ZOOM,get startZoom(){return START_ZOOM},get bounds(){return baseBounds},get featureLayer(){return areasLayer},get flagLayer(){return flagLayer},get groupLayer(){return groupLayer},get groupCodes(){return Array.from(groupSelectionCodes())},get selection(){return {lift:selectionLift,fallback:selectionFallback(),duration:selectionDuration,depth:selectionDepth,hold:selectionHold,maxLift:selectionMaxLift,box:selectionBox,started:selectionStarted,animations:selectionAnimationCount,animating:selectionAnimating,wallStep:selectionWallStep}},selectionAt:function(ms){cancelAnimationFrame(selectionFrame);selectionFrame=0;drawSelection(performance.now(),Math.max(0,Number(ms)||0));return selectionLift},get tooltip(){return areaTooltip},get palette(){return mapPalette()},get quantiles(){return quantiles},get histogramBins(){return Array.from(state.histogramBins)},get legendBands(){return Array.from(state.legendBands)}};
 })();
-</script><a href="../story/my-dashboard.html" id="back-to-story" onclick="if(document.referrer&&document.referrer.indexOf(location.origin)===0&&history.length>1){history.back();return false;}" style="position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:2000;background:#172b35f2;color:#f3f4eb;font:600 14px/1 system-ui,-apple-system,Segoe UI,sans-serif;padding:10px 14px;border-radius:8px;border:1px solid #ffffff25;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.25)">Back</a>
+</script><a href="../story/my-dashboard.html" id="back-to-story" onclick="if(document.referrer&&document.referrer.indexOf(location.origin)===0&&history.length>1){history.back();return false;}" style="position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:2000;background:#f5f6f0;color:#36557e;font:600 14px/1 system-ui,-apple-system,Segoe UI,sans-serif;padding:10px 14px;border-radius:8px;border:1px solid #ccd2c6;text-decoration:none;box-shadow:none">Back</a>
 </body></html>

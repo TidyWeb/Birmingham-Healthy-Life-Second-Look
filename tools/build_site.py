@@ -508,6 +508,24 @@ LEXER = PythonLexer()
 MAX_LINKED_FILE = 15 * 1024 * 1024   # files a notebook links to are copied in up to this size
 
 
+FIELD_NOTES_PROFILE_LINK = '<link rel="stylesheet" href="../field-notes-profile.css">'
+
+
+def apply_profile_report_theme(path: Path) -> None:
+    """Keep the linked YData report in the project's editorial palette."""
+    text = path.read_text(encoding="utf-8")
+    if "field-notes-profile.css" in text:
+        return
+    if text.count("</head>") == 1:
+        text = text.replace("</head>", FIELD_NOTES_PROFILE_LINK + "\n</head>", 1)
+    else:
+        body = re.search(r"<body\b", text, re.IGNORECASE)
+        if not body or text.lower().count("<body") != 1:
+            raise ValueError(f"Could not locate a unique head/body boundary in {path}")
+        text = text[:body.start()] + FIELD_NOTES_PROFILE_LINK + "\n" + text[body.start():]
+    path.write_text(text, encoding="utf-8")
+
+
 def rewrite_local_links(text: str, folder: str, root: str) -> str:
     """Links from a notebook to local files (such as a YData report) are copied into the site.
 
@@ -526,6 +544,8 @@ def rewrite_local_links(text: str, folder: str, root: str) -> str:
             dest = SITE / "assets" / "files" / path.name
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(path, dest)
+            if path.name == "hle---msoa-rows.html":
+                apply_profile_report_theme(dest)
             return f"[{label}]({root}assets/files/{quote(path.name)})"
         print(f"  unlinked in {folder}: {target}")
         return label
@@ -620,7 +640,7 @@ DASHBOARD_MOBILE_STYLE = """<style>
   body > .mobile-notice {
     box-sizing: border-box; position: fixed; inset: 0; z-index: 2147483647;
     display: grid !important; place-items: center; margin: 0; padding: 2rem;
-    background: #f2f0e8; color: #102a36;
+    background: #e9e9e2; color: #20271f;
     font: 600 1.25rem/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     text-align: center;
   }
@@ -631,9 +651,9 @@ BACK_LINK = (
     '<a href="../story/my-dashboard.html" id="back-to-story" '
     # Go back to the exact page the reader came from; if they arrived directly, go to the dashboard chapter
     'onclick="if(document.referrer&&document.referrer.indexOf(location.origin)===0&&history.length>1){history.back();return false;}" '
-    'style="position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:2000;background:#172b35f2;color:#f3f4eb;'
+    'style="position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:2000;background:#f5f6f0;color:#36557e;'
     'font:600 14px/1 system-ui,-apple-system,Segoe UI,sans-serif;padding:10px 14px;border-radius:8px;border:1px solid #ffffff25;'
-    'text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.25)">Back</a>'
+    'text-decoration:none;box-shadow:none">Back</a>'
 )
 
 
