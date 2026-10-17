@@ -1,0 +1,38 @@
+name: Question this work
+description: Ask Phil about a source, analysis choice, result or explanation.
+title: "Question about: "
+labels: [question]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This work is Phil's. Questions are welcome. If an error is shown, Phil will correct it and log the change. Please do not include personal information.
+  - type: input
+    id: page-or-area
+    attributes:
+      label: Which page or area are you asking about?
+      placeholder: S13, Notebook 07, a named MSOA, or the dashboard
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: What are you questioning?
+      description: Describe the source, method, result or wording you want checked.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Your evidence or reasoning (optional)
+      description: Add a source, calculation or explanation if you have one.
+    validations:
+      required: false
+  - type: input
+    id: reply
+    attributes:
+      label: How would you like a reply?
+      description: Replies will be on this issue only.
+      placeholder: Reply on this issue
+    validations:
+      required: false
