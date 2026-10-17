@@ -143,7 +143,7 @@ def save_lamp_board(records: list[dict[str, str]]) -> Path:
         ax.text(0.28, y, f"{checkpoint} · {short_name}", fontsize=10.2, weight="bold", va="center")
         ax.plot([0.28, 9.55], [y - 0.39, y - 0.39], color=RULE, linewidth=0.8)
         for index, row in enumerate(grouped[checkpoint]):
-            x = 4.05 + index * 0.78
+            x = 4.65 + index * 0.78
             concern = row["lamp"] == "concern"
             edge = ORANGE if concern else NO_FLAG
             face = ORANGE if concern else PAPER
@@ -171,11 +171,12 @@ def save_lamp_board(records: list[dict[str, str]]) -> Path:
 def save_stage_grid(records: list[dict[str, str]]) -> Path:
     concerns = [record for record in records if record["lamp"] == "concern"]
     stage_ids = list(STAGE_NAMES)
-    fig, ax = plt.subplots(figsize=(5.4, 4.5), dpi=96)
+    fig, ax = plt.subplots(figsize=(11.2, 5.8), dpi=96)
     fig.patch.set_facecolor(PAPER)
     ax.set_facecolor(PAPER)
     ax.set_xlim(-0.8, len(concerns) + 1.65)
     ax.set_ylim(-0.85, len(stage_ids) - 0.35)
+    ax.set_aspect("equal", adjustable="box")
     ax.invert_yaxis()
     ax.set_axisbelow(True)
     ax.set_xticks(range(len(concerns)))

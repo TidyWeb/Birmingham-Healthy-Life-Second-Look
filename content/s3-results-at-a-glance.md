@@ -20,7 +20,7 @@ My first pass raised 17 concerns and 10 no-flags. All four legal-trigger questio
 ## Three findings to carry forward
 
 1. **In Unit 2 I framed ethics mainly as privacy.** The screen suggests privacy is the part my project largely gets right: all four legal triggers had no flag. The wider concerns are about group harm, false certainty and accountability to the people described.
-2. **The biggest risk I identified is how readers interpret the outputs.** Named places ranked by healthy years, alongside crime, takeaways and ethnicity, can be read as verdicts on communities. The data supports none of those readings.
+2. **The main risk is presentation claiming more than the evidence.** Firm rankings where the estimates overlap, and measures shown side by side that could be taken as causes. The fix is accuracy, not softening: show uncertainty where it matters and keep to association, not cause.
 3. **I found two good Unit 2 decisions that are claimed but not tested.** The model leaves ethnicity and deprivation out of its features, but I have not checked proxy overlap or whether model errors differ between communities. Until I test them, these are intentions rather than evidence.
 
 ## Every lamp, by checkpoint
@@ -32,7 +32,7 @@ caption: The 27 answers grouped under checkpoints A–F. Filled orange markers a
 
 ::: image second-look/stage-grid.svg
 alt: The rows are stages S1 to S7 and the columns are the 17 concern questions. Markers show Q25 at S1; Q10 at S2; Q7, Q8, Q11 and Q23 at S3; Q14 at S4; Q2, Q7, Q11 and Q15 at S5; Q14 at S6; and Q1, Q3, Q4, Q14, Q17, Q18, Q20, Q21, Q22 and Q23 at S7. The row totals are 1, 1, 4, 1, 4, 1 and 10.
-caption: Each marker connects a concern to the Unit 3 stage where it needs attention. The totals at the right count the links in that row.
+caption: Each marker connects a concern to the Unit 2 project stage where it needs attention. The totals at the right count the links in that row.
 :::
 
 ## Text alternative: all 27 answers
@@ -69,4 +69,4 @@ The table repeats the screen summary so the question numbers, answers and stage 
 | Q26 | F · Responsibility and law | EU AI Act high-risk use? | ⚪ no flag | cleared |
 | Q27 | F · Responsibility and law | Used in a different population or country? | ⚪ no flag | cleared |
 
-Coming next, the stage-by-stage walk-through follows in Phase 3.
+Coming next: a stage-by-stage walk-through of the Unit 2 project.
