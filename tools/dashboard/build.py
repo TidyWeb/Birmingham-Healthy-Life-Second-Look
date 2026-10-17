@@ -23,6 +23,7 @@ SITE_ROOT = HERE.parents[1]
 PROJECT_ROOT = HERE.parents[2] / "Code-Institute-DA-with-AI-Unit-3-Assessment"
 DATA_FILE = HERE / "web-data.json"
 INDEX_FILE = HERE / "index.html"
+SITE_DASHBOARD_FILE = SITE_ROOT / "dashboard/index.html"
 TEMPLATE_FILE = HERE / "template.html"
 QUESTION_URL = "https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml"
 
@@ -565,11 +566,12 @@ def write_page(payload_text: str) -> bool:
     if template.count(marker) != 1:
         raise ValueError("Expected one dashboard attribution footer marker")
     question_link = (
-        f'<span><a href="{QUESTION_URL}" target="_blank" '
+        f'<span><a class="question-work" href="{QUESTION_URL}" target="_blank" '
         'rel="noopener noreferrer">Question this work</a></span>'
     )
     template = template.replace(marker, marker + question_link, 1)
     INDEX_FILE.write_text(template, encoding="utf-8")
+    SITE_DASHBOARD_FILE.write_text(template, encoding="utf-8")
     return True
 
 

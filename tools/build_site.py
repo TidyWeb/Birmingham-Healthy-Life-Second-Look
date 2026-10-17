@@ -419,7 +419,7 @@ def page(title: str, body: str, active: str, root: str, chapters: list[dict], de
 {body}
 </main>
 </div>
-<footer class="home-foot"><p><a href="{QUESTION_URL}">Question this work</a></p></footer>
+<footer class="home-foot"><p><a class="question-work" href="{QUESTION_URL}">Question this work</a></p></footer>
 <script src="{root}assets/site.js"></script>
 </body>
 </html>
@@ -496,7 +496,7 @@ def build_home(chapters: list[dict]) -> None:
   <div class="hero-card">{render_story(hero, root)}</div>
 </header>
 <main class="home-contents" id="contents">{contents}</main>
-<footer class="home-foot"><a class="logo" href="https://github.com/TidyWeb" title="Tidy Web on GitHub"><img src="assets/img/tidyweb-logo.png" width="36" height="36" alt="Tidy Web on GitHub"></a>{md(meta.get('footer', ''))}<p><a href="{QUESTION_URL}">Question this work</a></p></footer>
+<footer class="home-foot"><a class="logo" href="https://github.com/TidyWeb" title="Tidy Web on GitHub"><img src="assets/img/tidyweb-logo.png" width="36" height="36" alt="Tidy Web on GitHub"></a>{md(meta.get('footer', ''))}<p><a class="question-work" href="{QUESTION_URL}">Question this work</a></p></footer>
 </body>
 </html>
 """

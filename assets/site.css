@@ -258,6 +258,7 @@ th { font-weight: 700; border-bottom: 2px solid var(--ink); }
 .toc a:hover strong { color: var(--teal); text-decoration: underline; text-underline-offset: .18em; }
 .home-foot { background: var(--paper-deep); color: var(--ink-muted); border-top: 1px solid var(--rule); font-family: var(--sans); font-size: .85rem; padding: 1.6rem clamp(1rem, 5vw, 3rem); }
 .home-foot a { color: var(--ink); }
+.home-foot .question-work { color: var(--teal); font-weight: 600; text-decoration: underline; }
 .home-foot { display: flex; align-items: center; gap: .9rem; }
 .home-foot .logo { flex: none; line-height: 0; }
 .home-foot img { border-radius: 8px; }

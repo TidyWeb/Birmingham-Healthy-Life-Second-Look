@@ -6,7 +6,7 @@ summary: Rank intervals and confidence bands show which areas can be called amon
 standfirst: I tested whether the areas with the lowest published estimates stay at the bottom when their uncertainty is carried through the ranking.
 ---
 ::: keypoints
-I simulated the uncertainty in each area's HLE estimate and ranked the areas again in every run. The result shows how often a published low estimate remains among the lowest.
+Every area's figure is an estimate with a margin of error. I re-ran the ranking 10,000 times within those margins to see which areas stayed near the bottom. 35 of the 66 lowest-ranked areas were in the lowest tenth in at least 95% of simulations; the other 31 moved in and out, so the evidence does not support describing them as consistently among the lowest.
 :::
 
 ## The question
