@@ -21,6 +21,7 @@ I used the published area means and standard errors derived from their 95% inter
 ## What I found
 
 ^ nb08#61b0ac31 | Confidence bands for the bottom and top tenths.
+^ nb08#26b1fe2a | The intervals for the published-lowest areas and all areas.
 The bands are based on the simulated chance that each area falls in an extreme tenth. “Confidently” means at least 95%; the other bands separate likely, possible and unlikely membership.
 
 | Confidence band | Bottom tenth | Top tenth |
@@ -30,7 +31,6 @@ The bands are based on the simulated chance that each area falls in an extreme t
 | Possibly | 27 | 38 |
 | Not | 565 | 558 |
 
-^ nb08#26b1fe2a | The intervals for the published-lowest areas and all areas.
 ::: figure uncertainty/rank_intervals_lowest_100 wide nb08#26b1fe2a
 alt: Rank intervals for the areas near the lowest published HLE estimates.
 caption: The intervals show how far each area's simulated rank can move; close or overlapping ranges do not support a firm ordering.

@@ -13,7 +13,7 @@ I joined detailed Census measures with healthy life expectancy and other area da
 
 ^ nb03#6fb444a5 | Each source was joined to the same set of study areas.
 ^ nb07#5a0ce1ca | Notebook 07's six broad ethnic-composition groups.
-I joined the outcome and candidate measures by area code, checked that the sources matched, and explored how the measures varied together. The detailed Census fields stayed in the working analysis because later notebooks use them; the public-facing views use six broad ethnic groups: White British, Other White, Asian, Black, Mixed and Other.
+I joined the outcome and candidate measures by area code, checked that the sources matched, and explored how the measures varied together. The joined table retains all 19 detailed Census ethnicity-share columns because later notebooks use them; the public-facing views use six broad ethnic groups: White British, Other White, Asian, Black, Mixed and Other.
 
 ::: figure wide/04_scatter_grid_by_theme wide nb03#4a130c2f
 alt: Scatter plots comparing area-level healthy life expectancy with selected measures.
