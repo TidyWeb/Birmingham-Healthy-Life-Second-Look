@@ -64,6 +64,7 @@ NOTEBOOKS = [
     ("06", "Hotspots", "F — Hotspots", "06_Hotspots.ipynb"),
     ("07", "Proxy and fairness audit", "G — Proxy and Fairness Audit", "07_Proxy_and_Fairness_Audit.ipynb"),
     ("08", "Uncertainty and ranking", "H — Uncertainty and Ranking", "08_Uncertainty_and_Ranking.ipynb"),
+    ("09", "What aggregation hides", "I — Aggregation", "09_Aggregation.ipynb"),
 ]
 
 # Short keys for the saved figure folders
@@ -74,6 +75,7 @@ FIGURE_FOLDERS = {
     "hotspots": "Hotspots",
     "uncertainty": "Uncertainty",
     "fairness": "Fairness",
+    "aggregation": "Aggregation",
 }
 
 CODE_FOLD_LINES = 6     # code cells longer than this start folded
