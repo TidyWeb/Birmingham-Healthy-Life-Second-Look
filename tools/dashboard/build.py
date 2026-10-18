@@ -562,6 +562,14 @@ def write_page(payload_text: str) -> bool:
         if placeholder not in template:
             raise ValueError(f"Template is missing required placeholder {placeholder}")
         template = template.replace(placeholder, content)
+    question_button_marker = "__QUESTION_BUTTON__"
+    if template.count(question_button_marker) != 1:
+        raise ValueError("Expected one dashboard question button placeholder")
+    question_button = (
+        f'<a class="question-btn" href="{QUESTION_URL}" target="_blank" '
+        'rel="noopener noreferrer">Question this work</a>'
+    )
+    template = template.replace(question_button_marker, question_button, 1)
     marker = "<span>Exploratory area comparisons</span>"
     if template.count(marker) != 1:
         raise ValueError("Expected one dashboard attribution footer marker")

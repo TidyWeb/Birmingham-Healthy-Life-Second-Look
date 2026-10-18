@@ -120,6 +120,12 @@ body:not(.map-clean) #subtitle{display:block}
   --muted: #596154;
   --accent: #36557e;
 }
+/* QA round: make the six-groups explanation stand out in the map key */
+.bottom-actions .question-btn { display: inline-flex; align-items: center; padding: 0 16px; background: #5E755D; color: #fff; border: 1px solid #5E755D; border-radius: 8px; font: inherit; font-weight: 600; text-decoration: none; }
+.bottom-actions .question-btn:hover { background: #4b5f4a; border-color: #4b5f4a; }
+.bottom-actions .question-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+#hle-rank { color: #5E755D; border-left: 3px solid #5E755D; padding: 4px 0 4px 8px; margin: 8px 0 6px; font-size: 13px; line-height: 1.35; }
+#measure-note .six-groups { display: block; margin-top: 6px; color: var(--accent); border-left: 3px solid var(--accent); padding: 4px 0 4px 8px; font-size: 13px; line-height: 1.35; }
 html, body, #app { background: var(--bg); color: var(--ink); }
 h1, h2, h3 { color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: -.01em; }
 h1 { font-size: 1.55rem; line-height: 1.2; }
@@ -176,7 +182,7 @@ dialog p { color: var(--muted); }
 <div class="group"><h3>Flags and comparisons</h3><label class="check"><input id="student-layer" type="checkbox">Outline student-dominated areas</label><label class="check"><input id="visitor-layer" type="checkbox">Outline visitor hubs</label><label class="check"><input id="imputed-layer" type="checkbox">Mark imputed HLE estimates</label><label class="check"><input id="gaps-layer" type="checkbox">Outline the 95 big-gap pairs</label><label class="check"><input id="boundaries" type="checkbox" checked>Show area boundaries</label><p class="hint">The 95 pairs were selected as the most extreme. Their pattern applies to those pairs only, not to all neighbours.</p></div>
 <p class="hint group">No clusters or model residuals are available.</p></aside>
 
-<div class="zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button></div><div class="bottom-actions"><button id="charts-open" aria-controls="drawer" aria-expanded="false">Charts and Data</button></div>
+<div class="zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button></div><div class="bottom-actions"><button id="charts-open" aria-controls="drawer" aria-expanded="false">Charts and Data</button>__QUESTION_BUTTON__</div>
 <aside id="detail" class="panel collapsed" aria-label="Selected area details" tabindex="-1">
 <button class="close" id="detail-close" aria-label="Close area details">×</button>
 <div id="area-card"><div id="area-card-scroll"><div class="eyebrow">Area in focus</div><h2 id="detail-name"></h2><p id="detail-location" class="hint"></p><div id="context-notations"></div>
@@ -202,7 +208,7 @@ var bigByArea=new Map();bigPairs.forEach(function(p){[p.area_code_a,p.area_code_
 var byCode=new Map(areas.map(function(a){return[a.code,a]})),featureByCode=new Map(features.map(function(f){return[f.properties&&f.properties.area_code,f]}));
 var hleFields={avg:'hle_average',male:'hle_male',female:'hle_female'},colors=['#46327e','#365c8d','#21918c','#5ec962','#d7e75b'],seq=['#fff7bc','#fec44f','#fe9929','#ec7014','#cc4c02'];
 var state={metric:'p_bottom_10_percent',sex:'avg',coverage:'all',authorities:new Set(),pinned:null,detailOpen:false,pair:null,pairReturn:null,sort:'area_name',direction:1,drawer:'',fill:.60,histogramBins:new Set(),legendBands:new Set()};
-var MAX_ZOOM=19,MIN_ZOOM=5,START_ZOOM=null,BOUNDS_PADDING=.10,MAX_BOUNDS_PADDING=.10;
+var MAX_ZOOM=19,MIN_ZOOM=5,START_ZOOM=null,BOUNDS_PADDING=.10,MAX_BOUNDS_PADDING=1.5;
 const STUDY_BOUNDS=L.geoJSON(D.geometry).getBounds(),MAX_PAN_BOUNDS=STUDY_BOUNDS.pad(MAX_BOUNDS_PADDING),START_VIEW_BOUNDS=STUDY_BOUNDS.pad(BOUNDS_PADDING);
 var groupLayer;
 var map,areasLayer,gapLayer,flagLayer,labelLayer,tiles,quantiles=[],baseBounds=null,missingPattern=null;
@@ -229,7 +235,7 @@ function legend(){
  makeLegendBandButtons(colorsNow,labels);document.querySelector('.legend').classList.toggle('quantile',!is);Array.from($('bandlabels').children).forEach(function(x,i){x.style.setProperty('--band-color',colorsNow[i])});
  $('legend-title').textContent=(is?'HLE '+(state.sex==='avg'?'average':state.sex):m.label)+(m.unit?' · '+m.unit:'');
  $('legend-period').textContent=(m.period||'Period not supplied')+(is?(state.sex==='avg'?' · project-derived mean':' · ONS sex-specific estimate'):probability?' · probability bands':' · five quantile bands');
- var note=m.note||(state.metric==='employed_residents_16plus_pct'?'includes full-time students':state.metric==='asb_rows_per_1000_residents'?'rates can be distorted by visitor footfall':'');if(ethnicity)note+=(note?' ':'')+'Ethnicity is shown as six broad groups, because the purpose was to compare broad cultural differences; very small groups add nothing to that and are not shown separately.';$('measure-note').textContent=note;$('measure-note').hidden=!note;
+ var note=m.note||(state.metric==='employed_residents_16plus_pct'?'includes full-time students':state.metric==='asb_rows_per_1000_residents'?'rates can be distorted by visitor footfall':'');var sixGroups=ethnicity?'Ethnicity is shown as six broad groups, because the purpose was to compare broad cultural differences; very small groups add nothing to that and are not shown separately.':'';var noteEl=$('measure-note');noteEl.textContent=note;if(sixGroups){var sg=document.createElement('span');sg.className='six-groups';sg.textContent=sixGroups;noteEl.append(sg)}noteEl.hidden=!(note||sixGroups);
  $('outcome-rule').textContent=ethnicity?'Lighter shades show lower area shares. Darker shades show higher area shares.':probability?'Darker shades show a higher chance of being in the lowest tenth.':'Darker shades show poorer outcomes. Lighter shades show better outcomes.';
  $('subtitle').textContent=(is?'HLE '+(state.sex==='avg'?'average':state.sex):m.label)+' · '+(m.period||'period not supplied')+' · MSOA 2021'
 }

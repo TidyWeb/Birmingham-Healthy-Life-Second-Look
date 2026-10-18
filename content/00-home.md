@@ -12,7 +12,7 @@ The Ethics of a Birmingham Healthy Life is my Unit 3 project: an ethical review 
 15.85 | years between two neighbours that share a boundary
 :::
 
-<div class="btn-row"><a class="btn btn-lime" href="story/s1-why-a-second-look.html">Read S1: Why a second look</a><a class="btn btn-ghost" href="https://tidyweb.github.io/Birmingham-Healthy-Life/">Original Unit 2 project</a><a class="btn btn-ghost" href="dashboard/">Open the dashboard</a><a class="btn btn-ghost" href="notebooks/01-source-exploration.html">Read the notebooks</a></div>
+<div class="btn-row"><a class="btn btn-lime" href="story/s1-why-a-second-look.html">The story</a><a class="btn btn-ghost" href="https://tidyweb.github.io/Birmingham-Healthy-Life/">Original Unit 2 project</a><a class="btn btn-ghost" href="dashboard/">Open the dashboard</a><a class="btn btn-ghost" href="notebooks/01-source-exploration.html">Read the notebooks</a></div>
 
 <p class="credit">Map: healthy life expectancy, 2019 to 2023, from my dashboard. Darker means fewer years in good health.</p>
 
