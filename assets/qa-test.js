@@ -27,7 +27,7 @@
       ask: 'Is it clear how you could challenge or correct something you think is wrong?'
     },
     {
-      do: 'Find the Back button and use it to return to the home page.\n**Click The story.**\nIn the list of chapters on the left, find “How certain are the rankings?” (S11) and click it.\nRead only the “In short” box at the top. You don’t need to read the rest.',
+      do: 'Find the Back button and use it to return to the home page.\n**Click \u2018The story\u2019.**\nIn the list of chapters on the left, find “How certain are the rankings?” (S11) and click it.\nRead only the “In short” box at the top. You don’t need to read the rest.',
       ask: 'From that summary, is it clear that some areas are definitely among the lowest, while others can’t be placed for certain?'
     }
   ];
