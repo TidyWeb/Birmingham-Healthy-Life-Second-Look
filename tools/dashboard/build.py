@@ -570,16 +570,30 @@ def write_page(payload_text: str) -> bool:
         'rel="noopener noreferrer">Question this work</a>'
     )
     template = template.replace(question_button_marker, question_button, 1)
+    qa_script_marker = "__QA_TEST_SCRIPT__"
+    if template.count(qa_script_marker) != 1:
+        raise ValueError("Expected one QA test script placeholder")
+    template_for_tools = template.replace(
+        qa_script_marker,
+        '<script src="../../assets/qa-test.js" defer></script>',
+        1,
+    )
+    template_for_site = template.replace(
+        qa_script_marker,
+        '<script src="../assets/qa-test.js" defer></script>',
+        1,
+    )
     marker = "<span>Exploratory area comparisons</span>"
-    if template.count(marker) != 1:
+    if template_for_tools.count(marker) != 1:
         raise ValueError("Expected one dashboard attribution footer marker")
     question_link = (
         f'<span><a class="question-work" href="{QUESTION_URL}" target="_blank" '
         'rel="noopener noreferrer">Question this work</a></span>'
     )
-    template = template.replace(marker, marker + question_link, 1)
-    INDEX_FILE.write_text(template, encoding="utf-8")
-    SITE_DASHBOARD_FILE.write_text(template, encoding="utf-8")
+    template_for_tools = template_for_tools.replace(marker, marker + question_link, 1)
+    template_for_site = template_for_site.replace(marker, marker + question_link, 1)
+    INDEX_FILE.write_text(template_for_tools, encoding="utf-8")
+    SITE_DASHBOARD_FILE.write_text(template_for_site, encoding="utf-8")
     return True
 
 

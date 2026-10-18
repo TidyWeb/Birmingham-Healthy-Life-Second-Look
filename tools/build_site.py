@@ -409,6 +409,7 @@ def page(title: str, body: str, active: str, root: str, chapters: list[dict], de
 <link rel="stylesheet" href="{FONTS}">
 <link rel="icon" type="image/png" href="{root}assets/img/favicon.png">
 <link rel="stylesheet" href="{root}assets/site.css?v={asset_version()}">
+<script src="{root}assets/qa-test.js" defer></script>
 </head>
 <body>
 <div class="mobile-notice" role="alert">This website was not designed to be viewed on a mobile phone. Use a desktop or laptop.</div>
@@ -488,6 +489,7 @@ def build_home(chapters: list[dict]) -> None:
 <link rel="stylesheet" href="{FONTS}">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
 <link rel="stylesheet" href="assets/site.css?v={asset_version()}">
+<script src="assets/qa-test.js" defer></script>
 </head>
 <body>
 <div class="mobile-notice" role="alert">This website was not designed to be viewed on a mobile phone. Use a desktop or laptop.</div>
@@ -611,6 +613,9 @@ def build_notebook(num: str, title: str, folder: str, file: str, chapters: list[
         if cell["cell_type"] != "code":
             continue
         code = highlight(source, LEXER, FORMATTER) if source.strip() else ""
+        # Quotes are text inside <pre>, not attribute delimiters. Keep the
+        # stable, readable source form emitted by earlier Pygments versions.
+        code = code.replace("&quot;", '"').replace("&#39;", "'").replace("&#x27;", "'")
         line_count = source.count("\n") + 1
         if not code:
             code_html = ""
