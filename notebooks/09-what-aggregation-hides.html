@@ -18,7 +18,7 @@
 <div class="shell">
 
 <header class="sidebar" id="top">
-  <a class="sidebar-logo" href="https://github.com/TidyWeb" title="Tidy Web on GitHub" target="_blank" rel="noopener noreferrer"><img src="../assets/img/tidyweb-logo.png" width="120" height="120" alt="Tidy Web on GitHub"></a>
+  <a class="sidebar-logo" href="https://github.com/TidyWeb" title="Tidy Web on GitHub" rel="noopener noreferrer"><img src="../assets/img/tidyweb-logo.png" width="120" height="120" alt="Tidy Web on GitHub"></a>
   <a class="site-name" href="../index.html">The Ethics of a Birmingham Healthy Life<small>Years in good health, area by area</small></a>
   <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Contents</button>
   <nav class="nav" id="site-nav" aria-label="Site contents">
@@ -28,7 +28,7 @@
   </nav>
 </header>
 <main class="content" id="main">
-<article class="page notebook"><header class="chapter-head"><p class="chapter-num">Notebook 09, a read-only record</p></header><p class="nb-meta"><span>Rendered from the executed notebook. Nothing here runs in your browser.</span><a href="https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment/blob/main/notebooks/I%20%E2%80%94%20Aggregation/09_Aggregation.ipynb" target="_blank" rel="noopener noreferrer">See it on GitHub</a></p><section class="nb-cell nb-md" id="cell-nb09-intro"><h1>Notebook 09 — What Aggregation Hides</h1>
+<article class="page notebook"><header class="chapter-head"><p class="chapter-num">Notebook 09, a read-only record</p></header><p class="nb-meta"><span>Rendered from the executed notebook. Nothing here runs in your browser.</span><a href="https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment/blob/main/notebooks/I%20%E2%80%94%20Aggregation/09_Aggregation.ipynb" rel="noopener noreferrer">See it on GitHub</a></p><section class="nb-cell nb-md" id="cell-nb09-intro"><h1>Notebook 09 — What Aggregation Hides</h1>
 <p>I ask how much variation in 2024 LSOA fuel-poverty percentages lies within MSOAs and how much lies between their means. I also flag an MSOA when its internal LSOA range exceeds the range of the means for that MSOA and its Notebook 04 neighbours. These are descriptive area-level summaries, not household- or person-level results.</p></section><section class="nb-cell nb-md" id="cell-nb09-setup"><h2>Setting up</h2>
 <p>I use the 2024 LSOA fuel-poverty file, the saved LSOA-to-MSOA lookup, Notebook 04's neighbour pairs and the 2021 MSOA boundaries. I reuse the existing Aggregation output folder and overwrite only this notebook's named result files; I check each saved file by reading it back.</p></section><section class="nb-cell nb-code" id="cell-nb09-setup-code"><details><summary>Show code (88 lines)</summary><pre class="hl"><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span>
@@ -622,7 +622,7 @@ Mixed by the like-for-like range rule: 255 of 660 (38.6%).
 <p>These summaries compare LSOA-level percentages and MSOA means, not households or people. The variance decomposition gives each LSOA equal weight, and the MSOA means used in the between-area component are weighted by each area's LSOA count. Neither is a household-weighted fuel-poverty rate. The mixed flag depends on the saved geography, Notebook 04's neighbour definition and a strict range-versus-range rule; it is descriptive, not a significance test. A hatched MSOA does not say every LSOA inside it has the same experience. I use the results to make the effects of aggregation visible, not to label communities or guide decisions about individuals.</p></section></article>
 </main>
 </div>
-<footer class="home-foot"><p><a class="question-work" href="https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml" target="_blank" rel="noopener noreferrer">Question this work</a></p></footer>
+<footer class="home-foot"><p><a class="question-work" href="https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml" rel="noopener noreferrer">Question this work</a></p></footer>
 <script src="../assets/site.js"></script>
 </body>
 </html>

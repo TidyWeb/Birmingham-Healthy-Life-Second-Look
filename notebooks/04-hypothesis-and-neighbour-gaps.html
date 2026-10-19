@@ -18,7 +18,7 @@
 <div class="shell">
 
 <header class="sidebar" id="top">
-  <a class="sidebar-logo" href="https://github.com/TidyWeb" title="Tidy Web on GitHub" target="_blank" rel="noopener noreferrer"><img src="../assets/img/tidyweb-logo.png" width="120" height="120" alt="Tidy Web on GitHub"></a>
+  <a class="sidebar-logo" href="https://github.com/TidyWeb" title="Tidy Web on GitHub" rel="noopener noreferrer"><img src="../assets/img/tidyweb-logo.png" width="120" height="120" alt="Tidy Web on GitHub"></a>
   <a class="site-name" href="../index.html">The Ethics of a Birmingham Healthy Life<small>Years in good health, area by area</small></a>
   <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Contents</button>
   <nav class="nav" id="site-nav" aria-label="Site contents">
@@ -28,7 +28,7 @@
   </nav>
 </header>
 <main class="content" id="main">
-<article class="page notebook"><header class="chapter-head"><p class="chapter-num">Notebook 04, a read-only record</p></header><p class="nb-meta"><span>Rendered from the executed notebook. Nothing here runs in your browser.</span><a href="https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment/blob/main/notebooks/D%20%E2%80%94%20Hypothesis%20and%20Neighbour%20Gaps/04_Hypothesis_and_Neighbour_Gaps.ipynb" target="_blank" rel="noopener noreferrer">See it on GitHub</a></p><section class="nb-cell nb-md" id="cell-16261279"><h1>Notebook 04 — Hypothesis and Neighbour Gaps</h1>
+<article class="page notebook"><header class="chapter-head"><p class="chapter-num">Notebook 04, a read-only record</p></header><p class="nb-meta"><span>Rendered from the executed notebook. Nothing here runs in your browser.</span><a href="https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment/blob/main/notebooks/D%20%E2%80%94%20Hypothesis%20and%20Neighbour%20Gaps/04_Hypothesis_and_Neighbour_Gaps.ipynb" rel="noopener noreferrer">See it on GitHub</a></p><section class="nb-cell nb-md" id="cell-16261279"><h1>Notebook 04 — Hypothesis and Neighbour Gaps</h1>
 <p>Notebook 01 showed me something I couldn't let go of. Areas that share a boundary can differ in healthy life expectancy by 14 to 16 years. But every HLE figure is an estimate with a margin of error, and two estimates can look far apart just by chance. So before I build anything on these gaps, I need to know they're real.</p>
 <p>That's the question here. Are neighbouring areas really different, or could estimate noise alone produce gaps like these? I write it down as a hypothesis, test it on every neighbour pair, and then pick out the biggest gaps with a rule I fix before I look.</p>
 <p>I use my average of male and female HLE throughout, and check the two sexes once near the end.</p></section><section class="nb-cell nb-md" id="cell-5f85fd75"><h2>1. Setting up</h2>
@@ -475,7 +475,7 @@ Output folder: data/cleaned/Neighbours
 <span class="n">save_figure</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="s2">"02_z_distribution.png"</span><span class="p">)</span>
 </pre></details><div class="nb-out"><figure class="plate"><div class="sheet"><img src="../assets/nb/04-0990cbb9-0.webp" width="1085" height="557" alt="Output of a code cell in Notebook 04" loading="lazy"></div></figure></div></section><section class="nb-cell nb-md" id="cell-961cfc0f"><h2>6. Do neighbours resemble each other?</h2>
 <p>This is a different question. The test above asks whether neighbours differ. This one asks whether, across the whole map, areas tend to look like their neighbours: high next to high, low next to low.</p>
-<p>Moran's I measures spatial autocorrelation: whether neighbouring areas tend to have similar HLE values. Positive values indicate that neighbours tend to be alike; negative values indicate that they tend to differ; values near zero indicate little overall spatial pattern. To see how unusual the observed pattern is under random rearrangement, I shuffle HLE values among areas 999 times and compare the Moran's I from each shuffled map with the observed value. I calculated Moran's I in NumPy, using the <a href="https://github.com/pysal/esda/blob/main/esda/moran.py" target="_blank" rel="noopener noreferrer">global Moran's I implementation in PySAL's ESDA (Exploratory Spatial Data Analysis) package</a> as a reference. ESDA is not a project dependency.</p></section><section class="nb-cell nb-code" id="cell-b5a0920c"><details><summary>Show code (50 lines)</summary><pre class="hl"><span class="n">n_areas</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">area_table</span><span class="p">)</span>
+<p>Moran's I measures spatial autocorrelation: whether neighbouring areas tend to have similar HLE values. Positive values indicate that neighbours tend to be alike; negative values indicate that they tend to differ; values near zero indicate little overall spatial pattern. To see how unusual the observed pattern is under random rearrangement, I shuffle HLE values among areas 999 times and compare the Moran's I from each shuffled map with the observed value. I calculated Moran's I in NumPy, using the <a href="https://github.com/pysal/esda/blob/main/esda/moran.py" rel="noopener noreferrer">global Moran's I implementation in PySAL's ESDA (Exploratory Spatial Data Analysis) package</a> as a reference. ESDA is not a project dependency.</p></section><section class="nb-cell nb-code" id="cell-b5a0920c"><details><summary>Show code (50 lines)</summary><pre class="hl"><span class="n">n_areas</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">area_table</span><span class="p">)</span>
 
 <span class="c1"># Symmetric 0/1 matrix: entry (i, j) is 1 when areas i and j are neighbours.</span>
 <span class="n">adjacency</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_areas</span><span class="p">,</span><span class="n">n_areas</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
@@ -905,7 +905,7 @@ Output folder: data/cleaned/Neighbours
 <p>My interval for the average is probably a bit narrow, which makes z a bit big. Pairs that share an area aren't independent, which is why I simulate errors per area and don't give each pair its own p-value. Picking the extremes overstates the typical gap. And all of this is about areas, not people, and about what the estimates show, not why.</p></section></article>
 </main>
 </div>
-<footer class="home-foot"><p><a class="question-work" href="https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml" target="_blank" rel="noopener noreferrer">Question this work</a></p></footer>
+<footer class="home-foot"><p><a class="question-work" href="https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml" rel="noopener noreferrer">Question this work</a></p></footer>
 <script src="../assets/site.js"></script>
 </body>
 </html>

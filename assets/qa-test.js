@@ -23,11 +23,11 @@
       ask: 'Is it clear why the site uses six broad ethnicity groups instead of more detailed ones?'
     },
     {
-      do: 'Find the “Question this work” button and click it. (It opens GitHub; you don’t need to sign in or send anything.)',
+      do: 'Find the “Question this work” button and click it. It opens GitHub in this tab, so you’ll leave the test page. Use your browser’s Back button to return; the QA panel and your answers should still be there. GitHub may ask you to sign in. Don’t sign in or submit anything.',
       ask: 'Is it clear how you could challenge or correct something you think is wrong?'
     },
     {
-      do: 'Find the Back button and use it to return to the home page.\n**Click \u2018The story\u2019.**\nIn the list of chapters on the left, find “How certain are the rankings?” (S11) and click it.\nRead only the “In short” box at the top. You don’t need to read the rest.',
+      do: 'Use your browser’s Back button again to return to the home page.\n**Click \u2018The story\u2019.**\nIn the list of chapters on the left, find “How certain are the rankings?” (S11) and click it.\nRead only the “In short” box at the top. You don’t need to read the rest.',
       ask: 'From that summary, is it clear that some areas are definitely among the lowest, while others can’t be placed for certain?'
     }
   ];

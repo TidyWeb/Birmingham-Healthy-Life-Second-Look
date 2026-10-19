@@ -566,7 +566,7 @@ def write_page(payload_text: str) -> bool:
     if template.count(question_button_marker) != 1:
         raise ValueError("Expected one dashboard question button placeholder")
     question_button = (
-        f'<a class="question-btn" href="{QUESTION_URL}" target="_blank" '
+        f'<a class="question-btn" href="{QUESTION_URL}" '
         'rel="noopener noreferrer">Question this work</a>'
     )
     template = template.replace(question_button_marker, question_button, 1)
@@ -587,7 +587,7 @@ def write_page(payload_text: str) -> bool:
     if template_for_tools.count(marker) != 1:
         raise ValueError("Expected one dashboard attribution footer marker")
     question_link = (
-        f'<span><a class="question-work" href="{QUESTION_URL}" target="_blank" '
+        f'<span><a class="question-work" href="{QUESTION_URL}" '
         'rel="noopener noreferrer">Question this work</a></span>'
     )
     template_for_tools = template_for_tools.replace(marker, marker + question_link, 1)
