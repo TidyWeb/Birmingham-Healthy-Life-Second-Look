@@ -5,8 +5,10 @@ title: Stage 2: Preparing and aggregating
 summary: How I brought different data onto comparable area units, and what aggregation leaves hidden.
 standfirst: I had to make different sources comparable before I could join them. Aggregation makes the analysis workable, but it does not show every difference within an area.
 ---
+I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
+
 ::: keypoints
-I converted source tables, counts and grid values into comparable measures for the same areas. The screen's concern is that area averages can hide thin groups and within-area differences.
+I converted source tables, counts and grid values into comparable measures for the same areas. Signal Box’s concern is that area averages can hide thin groups and within-area differences.
 :::
 
 ## What I did in Unit 2
@@ -19,9 +21,9 @@ alt: A correlation grid showing overlap among the measures used to describe the 
 caption: Several measures move together across areas. The overlap is a reason to choose representatives carefully, not evidence that one measure causes another.
 :::
 
-## What the screen asked
+## What Signal Box asked {#what-the-screen-asked}
 
-**Q10 — Are groups missing or thin? Concern.** The screen found that detailed ethnic groups can be very small and that MSOA averages hide variation inside an area. It also recorded six student-dominated areas and six visitor hubs as unusual cases; I kept them and marked the limits of how some measures describe them.
+**Q10 — Are groups missing or thin? Concern.** Signal Box found that detailed ethnic groups can be very small and that MSOA averages hide variation inside an area. It also recorded six student-dominated areas and six visitor hubs as unusual cases; I kept them and marked the limits of how some measures describe them.
 
 **Cleared — Q5, information about identifiable people? No flag.** The published outputs are area aggregates. Police incidents are rolled up to rates and are not published at point level.
 
@@ -29,7 +31,7 @@ caption: Several measures move together across areas. The overlap is a reason to
 
 ::: image second-look/stage-2-lamps.svg
 alt: Numbered lamps for the questions assigned to Stage 2; orange filled markers show the concern and hollow grey markers show cleared questions.
-caption: The numbered lamps preserve the screen result for this stage.
+caption: The numbered lamps preserve Signal Box result for this stage.
 :::
 
 ## What I found

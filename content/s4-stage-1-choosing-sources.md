@@ -5,8 +5,10 @@ title: Stage 1: Choosing sources
 summary: The data choices behind the healthy-life analysis, and the limits that travel with them.
 standfirst: I chose published measures that seemed plausibly connected to healthy life expectancy. Those links are questions about association, not causes.
 ---
+I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
+
 ::: keypoints
-I chose area-level sources that could help me examine differences in healthy life expectancy. The screen found that some inputs are modelled estimates I cannot reproduce, so I now record their limits and revision risks plainly.
+I chose area-level sources that could help me examine differences in healthy life expectancy. Signal Box found that some inputs are modelled estimates I cannot reproduce, so I now record their limits and revision risks plainly.
 :::
 
 ## What I did in Unit 2
@@ -19,15 +21,15 @@ alt: Two histograms showing male and female healthy life expectancy estimates ac
 caption: Healthy life expectancy was the outcome I set out to describe. The distributions show why the analysis compares areas rather than treating the region as one uniform place.
 :::
 
-## What the screen asked
+## What Signal Box asked {#what-the-screen-asked}
 
-**Q25 — Does the work depend on a supplier's model or data I cannot inspect? Concern.** The screen identified ONS healthy-life estimates, ONS small-area income, DESNZ fuel-poverty estimates and Defra pollution maps as modelled inputs. They cannot be reproduced from the published output alone and may be revised.
+**Q25 — Does the work depend on a supplier's model or data I cannot inspect? Concern.** Signal Box identified ONS healthy-life estimates, ONS small-area income, DESNZ fuel-poverty estimates and Defra pollution maps as modelled inputs. They cannot be reproduced from the published output alone and may be revised.
 
 **Cleared — Q9, origin, accuracy or permission unknown? No flag.** The register already records source pages, periods, geographies, file hashes and licence notes. The issue was to make known limits visible, not to imply that the sources had unknown origins.
 
 ::: image second-look/stage-1-lamps.svg
 alt: Numbered lamps for the questions assigned to Stage 1; the filled orange lamp marks a concern and the hollow grey lamp marks a cleared question.
-caption: Filled orange lamps mark concerns; hollow grey lamps mark no flags. The numbers identify the screen questions.
+caption: Filled orange lamps mark concerns; hollow grey lamps mark no flags. The numbers identify Signal Box questions.
 :::
 
 ## What I found

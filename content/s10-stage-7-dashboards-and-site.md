@@ -5,8 +5,10 @@ title: Stage 7: Dashboards and site
 summary: The public presentation, its limits, and the work still needed around use and challenge.
 standfirst: I made an area-level story, maps and dashboards. I need to be as clear about their limits as I am about their findings.
 ---
+I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
+
 ::: keypoints
-I published named area results through a story site and dashboards. The screen found risks in certainty, purpose, challenge and evaluation; the answer is to state the limits and make the claims match the evidence.
+I published named area results through a story site and dashboards. Signal Box found risks in certainty, purpose, challenge and evaluation; the answer is to state the limits and make the claims match the evidence.
 :::
 
 ## What I did in Unit 2
@@ -18,13 +20,13 @@ alt: The original dashboard showing a selected area and its healthy life expecta
 caption: The dashboard presents named area estimates and comparisons. The number shown is an estimate, not a precise ranking of residents.
 :::
 
-## What the screen asked {#screen-findings}
+## What Signal Box asked {#screen-findings}
 
 **Q1 — Could the work shape a decision that matters to someone? Concern.** No individual decision is made, but named maps are public and can inform how professionals and others compare places.
 
 **Q3 — Is the purpose vague or likely to grow? Concern.** The project question is clear, but Unit 2 did not state excluded uses.
 
-**Q4 — Does the work mainly benefit me while others bear a cost? Concern.** The screen recorded that I gain assessment and portfolio evidence while the project names places without involving local readers. The accuracy response is to show uncertainty and avoid claims beyond the data.
+**Q4 — Does the work mainly benefit me while others bear a cost? Concern.** Signal Box recorded that I gain assessment and portfolio evidence while the project names places without involving local readers. The accuracy response is to show uncertainty and avoid claims beyond the data.
 
 **Q14 — Could an output be treated as proof rather than a prompt? Concern.** Exact values and ranks can appear firmer than the estimate intervals allow.
 
@@ -32,7 +34,7 @@ caption: The dashboard presents named area estimates and comparisons. The number
 
 **Q18 — Were affected people left out of design and testing? Concern.** No residents, community groups or local professionals tested the dashboards.
 
-**Q20 — Could a failure lead to harm? Concern.** The screen found no physical risk. Its accuracy concern is that a map could overstate what area estimates show.
+**Q20 — Could a failure lead to harm? Concern.** Signal Box found no physical risk. Its accuracy concern is that a map could overstate what area estimates show.
 
 **Q21 — Was the work tested only by its creator? Concern.** I checked the dashboards myself, not with real users.
 
@@ -49,7 +51,7 @@ caption: Orange filled lamps mark concerns and hollow grey lamps mark no flags.
 
 ## What I found
 
-The screen found a clear gap between publishing a dashboard and having evidence that people can interpret, question or correct it. I have not treated a creator-only check as user testing.
+Signal Box found a clear gap between publishing a dashboard and having evidence that people can interpret, question or correct it. I have not treated a creator-only check as user testing.
 
 ## What changes {#recorded-responses}
 

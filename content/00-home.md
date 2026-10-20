@@ -22,7 +22,7 @@ The Ethics of a Birmingham Healthy Life is my Unit 3 project: an ethical review 
 
 <div class="intro" markdown="1">
 
-The Ethics of a Birmingham Healthy Life is my Unit 3 review of the Unit 2 Birmingham Healthy Life analysis through an ethical lens. This opening section records my position and the 27-question screen I applied; the original chapters follow below as carried-over material. Start with [S1: Why a second look](story/s1-why-a-second-look.html), or visit [the original Unit 2 project site](https://tidyweb.github.io/Birmingham-Healthy-Life/). The six notebooks are available here as read-only pages.
+I built [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) as an independent companion to the Code Institute LMS lesson for fellow students, then created [Signal Box: the AI ethics check](https://tidyweb.github.io/ethical-considerations-in-ai/#screening-tool) within it. I applied Signal Box to my Unit 2 Birmingham Healthy Life project; Unit 3 is that ethical rework and a practical test of whether Signal Box works. Start with [Why a second look](story/s1-why-a-second-look.html), or visit [the original Unit 2 project site](https://tidyweb.github.io/Birmingham-Healthy-Life/). The six notebooks are available here as read-only pages.
 
 </div>
 

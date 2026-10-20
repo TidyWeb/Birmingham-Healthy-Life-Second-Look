@@ -11,7 +11,9 @@ The Ethics of a Birmingham Healthy Life is my Unit 3 project. I revisit my Unit 
 
 ## What this is
 
-Birmingham Healthy Life began as my Unit 2 project. In Unit 3 I am revisiting that work, examining the choices behind it and rebuilding how I explain the findings. The original chapters remain available as the project I am looking at again.
+Birmingham Healthy Life began as my Unit 2 project. In Unit 3 I am revisiting that work, examining the choices behind it and rebuilding how I explain the findings. The original chapters are on [the live Unit 2 site](https://tidyweb.github.io/Birmingham-Healthy-Life/).
+
+I built [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) as an independent companion to the Code Institute LMS lesson for fellow students, then created [Signal Box: the AI ethics check](https://tidyweb.github.io/ethical-considerations-in-ai/#screening-tool) within it. I applied Signal Box to my Unit 2 Birmingham Healthy Life project; Unit 3 is that ethical rework and a practical test of whether Signal Box works. The guide is my own study material, not official Code Institute material; [The method](s2-the-method.html) explains how I applied Signal Box.
 
 ::: callout
 “The aim is the truth about healthy life expectancy, told plainly. Ethical care means not causing avoidable harm and not claiming more than the evidence shows. It does not mean avoiding uncomfortable findings.”
@@ -41,4 +43,6 @@ The measures are candidates for association with healthy life expectancy. They a
 
 ## What changes from Unit 2
 
-My Unit 2 ethics account concentrated on privacy. The screen in this second look found that privacy was the part the project largely handled well: all four legal-trigger questions had no flag. It also surfaced questions about interpretation, certainty, possible proxy effects in the model, and accountability to people described by the results. Unit 3 widens the ethical frame to include those issues.
+My Unit 2 ethics account concentrated on privacy. Signal Box found that privacy was the part the project largely handled well: none of its four legal-trigger questions raised a flag. It also surfaced questions about interpretation, certainty, what area averages hide, possible proxy effects in the model, and accountability to people described by the results. Unit 3 widens the ethical frame to include those issues.
+
+An outside reader tested the work too. After I shared the Unit 2 site, an NHS performance analyst raised two points: that an area's average can hide a lot of variation inside it, and that small numbers in some areas might explain where my model went wrong. I checked both against the data rather than argue with them. The second didn't hold. Healthy life expectancy isn't a survey, and its margins of error are too narrow to produce the big gaps or the model's misses. The first did, and I now state it as a limit. S11 and S16 look at both questions more closely.

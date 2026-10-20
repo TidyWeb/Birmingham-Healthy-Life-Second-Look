@@ -5,6 +5,8 @@ title: Lifecycle
 summary: How I build, check, update, review and eventually retire this analysis.
 standfirst: The results depend on source data and choices that can change. This is how I keep track of that work.
 ---
+I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
+
 ::: keypoints
 I keep the notebooks, source register, site build and checks together. When a source changes, I re-run the parts that depend on it and review the published result.
 :::

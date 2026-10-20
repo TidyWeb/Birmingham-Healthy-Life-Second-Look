@@ -3,13 +3,15 @@ part: second-look
 slug: s3-results-at-a-glance
 title: Results at a glance
 summary: The first-pass results and the concerns the Unit 3 work needs to address.
-standfirst: The screen raised concerns about interpretation, certainty and accountability, while all four legal triggers had no flag.
+standfirst: Signal Box raised concerns about interpretation, certainty and accountability, while all four legal triggers had no flag.
 ---
+I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
+
 ::: keypoints
 My first pass raised 17 concerns and 10 no-flags. All four legal-trigger questions had no flag. These are issues for me to investigate, not findings of harm.
 :::
 
-The 27-question screen is my own work, separate from Unit 2; Unit 3 is the first real data project to which I have applied it ([where it comes from](s2-the-method.html#where-the-screen-comes-from)).
+Signal Box is my own work, separate from Unit 2; Unit 3 is the first real data project to which I have applied it ([where it comes from](s2-the-method.html#where-the-screen-comes-from)).
 
 ## The count
 
@@ -21,7 +23,7 @@ The 27-question screen is my own work, separate from Unit 2; Unit 3 is the first
 
 ## Three findings to carry forward
 
-1. **In Unit 2 I framed ethics mainly as privacy.** The screen suggests privacy is the part my project largely gets right: all four legal triggers had no flag. The wider concerns are about group harm, false certainty and accountability to the people described.
+1. **In Unit 2 I framed ethics mainly as privacy.** Signal Box suggests privacy is the part my project largely gets right: all four legal triggers had no flag. The wider concerns are about group harm, false certainty and accountability to the people described.
 2. **The main risk is presentation claiming more than the evidence.** Firm rankings where the estimates overlap, and measures shown side by side that could be taken as causes. The fix is accuracy, not softening: show uncertainty where it matters and keep to association, not cause.
 3. **I found two good Unit 2 decisions that are claimed but not tested.** The model leaves ethnicity and deprivation out of its features, but I have not checked proxy overlap or whether model errors differ between communities. Until I test them, these are intentions rather than evidence.
 
@@ -39,7 +41,7 @@ caption: Each marker connects a concern to the Unit 2 project stage where it nee
 
 ## Text alternative: all 27 answers
 
-The table repeats the screen summary so the question numbers, answers and stage links can be read without the figures. The standalone [screen summary](../assets/img/second-look/screen-summary.md) is also available.
+The table repeats the Signal Box summary so the question numbers, answers and stage links can be read without the figures. The standalone [Signal Box summary](../assets/img/second-look/screen-summary.md) is also available.
 
 | Question | Checkpoint | Short question | Lamp | Stages |
 |---:|---|---|---|---|

@@ -5,6 +5,8 @@ title: Stage 4: The hypothesis test
 summary: Neighbour gaps tested against estimate noise, then rankings checked against uncertainty.
 standfirst: A difference can be real without giving every area a firm rank. I need to show both parts accurately.
 ---
+I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
+
 ::: keypoints
 I tested whether the neighbour gaps were larger than estimate noise. I then tested whether the published-lowest areas stayed in the bottom tenth when uncertainty was simulated.
 :::
@@ -19,9 +21,9 @@ alt: The distribution of observed neighbour gaps compared with gaps simulated un
 caption: Observed differences extend well beyond the noise-only gaps. The test asks whether differences are larger than estimate noise, not what caused them.
 :::
 
-## What the screen asked
+## What Signal Box asked {#what-the-screen-asked}
 
-**Q14 — Could an output be treated as proof rather than a prompt? Concern.** A single value or exact rank looks more certain than an estimate with a margin of error. The screen found that mid-table ranks could be unstable and that maps of model residuals could imply more than the model establishes.
+**Q14 — Could an output be treated as proof rather than a prompt? Concern.** A single value or exact rank looks more certain than an estimate with a margin of error. Signal Box found that mid-table ranks could be unstable and that maps of model residuals could imply more than the model establishes.
 
 ::: image second-look/stage-4-lamps.svg
 alt: One numbered orange lamp for the Stage 4 concern, question 14.

@@ -5,8 +5,10 @@ title: Stage 6: Hotspots
 summary: Repeated neighbour gaps, the hotspot map, and the limits of model residuals.
 standfirst: The map can show where measured differences cluster. It cannot say what caused them.
 ---
+I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
+
 ::: keypoints
-I grouped repeated large gaps between neighbouring areas into hotspot patches. The screen's concern is that residual and hotspot maps can look like proof, so I describe estimates and spatial association plainly.
+I grouped repeated large gaps between neighbouring areas into hotspot patches. Signal Box’s concern is that residual and hotspot maps can look like proof, so I describe estimates and spatial association plainly.
 :::
 
 ## What I did in Unit 2
@@ -19,9 +21,9 @@ alt: A map showing the five largest patches of repeated neighbour gaps.
 caption: The patches locate repeated area-level HLE differences. They show spatial association, not cause.
 :::
 
-## What the screen asked
+## What Signal Box asked {#what-the-screen-asked}
 
-**Q14 — Could an output be treated as proof rather than a prompt? Concern.** The screen found that a residual map could read as an “underperforming” place, even though a residual is only the difference between observed HLE and the model's estimate.
+**Q14 — Could an output be treated as proof rather than a prompt? Concern.** Signal Box found that a residual map could read as an “underperforming” place, even though a residual is only the difference between observed HLE and the model's estimate.
 
 ::: image second-look/stage-6-lamps.svg
 alt: One numbered orange lamp for the Stage 6 concern, question 14.
