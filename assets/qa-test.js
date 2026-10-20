@@ -171,7 +171,7 @@
 
   function introScreen() {
     return '<h2>Welcome to the QA test</h2>' +
-      '<p>I’m testing the site, not you. It takes about 10 minutes. Don’t include your address or any health details.</p>' +
+      '<p>I’m testing the site, not you. It takes about 5 minutes. Don’t include your address or any health details.</p>' +
       '<p class="qa-ask">Are you technical or non-technical?</p>' +
       lightButtons('tester', [['Technical'], ['Non-technical']], state.tester) +
       '<div class="qa-do" style="margin-top:18px"><b>Do this</b>On the left is the project’s home card.\nClick Open the dashboard.</div>' +
