@@ -7,6 +7,7 @@ pages that GitHub Pages serves as they are. Run it from anywhere:
 
 Every run clears and rewrites story/, notebooks/, assets/figures/ and assets/nb/,
 so nothing stale is left behind. assets/img/ (screenshots) and dashboard/ are left alone.
+With --no-clean it rewrites the same files in place and deletes nothing.
 
 Story text uses ordinary Markdown plus a few block markers:
 
@@ -17,6 +18,8 @@ Story text uses ordinary Markdown plus a few block markers:
     ::: image file [wide]    a screenshot from assets/img; lines "alt:" and "caption:"
     ::: callout              one plain sentence that matters
     ::: tableau              the Tableau embed with its screenshot
+    ::: signalbox mode [args]  a read-only Signal Box board (see tools/signal_box.py);
+                             an optional "caption:" line replaces the default caption
     :::                      closes a block
 
     ^ nb04#cellid | note     a margin note for the paragraph that follows it
@@ -34,11 +37,15 @@ import shutil
 from pathlib import Path
 from urllib.parse import urlsplit
 
+import argparse
+
 import markdown
 from PIL import Image
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import PythonLexer
+
+import signal_box  # tools/signal_box.py
 
 # Where things are
 SITE = Path(__file__).resolve().parent.parent
@@ -81,6 +88,8 @@ FIGURE_FOLDERS = {
 CODE_FOLD_LINES = 6     # code cells longer than this start folded
 WEBP_QUALITY = 84
 MAX_FIGURE_WIDTH = 1800
+
+SIGNAL_BOX: dict = {}  # filled by main() from tools/signal_box.py before the pages are built
 
 FONTS = ("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700"
          "&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap")
@@ -301,6 +310,12 @@ def render_block(kind: str, args: list[str], lines: list[str], root: str) -> str
                 f'alt="{html.escape(fields.get("alt", ""))}" loading="lazy"></div>'
                 f'<figcaption>{caption}{src_html}</figcaption></figure>')
 
+    if kind == "signalbox":
+        if not args:
+            raise ValueError("A signalbox block needs a mode, such as 'full' or 'stage S7'")
+        caption = inline(fields["caption"]) if fields.get("caption") else None
+        return signal_box.figure(SIGNAL_BOX, args[0], args[1:], caption)
+
     if kind == "tableau":
         shot = "assets/img/tableau-dashboard.webp"
         embed = TABLEAU_URL + "?:showVizHome=no&:embed=true"
@@ -398,6 +413,12 @@ def asset_version() -> str:
 
 
 def page(title: str, body: str, active: str, root: str, chapters: list[dict], description: str = "") -> str:
+    uses_signal_box = 'class="plate wide sbx"' in body or 'class="plate sbx' in body
+    signal_box_style = (f'<link rel="stylesheet" href="{root}assets/signal-box/signal-box.css?v={signal_box.asset_version()}">\n'
+                        if uses_signal_box else "")
+    signal_box_scripts = (f'<script src="{root}assets/signal-box/signal-box-data.js?v={signal_box.asset_version()}"></script>\n'
+                          f'<script src="{root}assets/signal-box/signal-box.js?v={signal_box.asset_version()}"></script>\n'
+                          if uses_signal_box else "")
     document = f"""<!doctype html>
 <html lang="en-GB">
 <head>
@@ -410,7 +431,7 @@ def page(title: str, body: str, active: str, root: str, chapters: list[dict], de
 <link rel="stylesheet" href="{FONTS}">
 <link rel="icon" type="image/png" href="{root}assets/img/favicon.png">
 <link rel="stylesheet" href="{root}assets/site.css?v={asset_version()}">
-<script src="{root}assets/qa-test.js" defer></script>
+{signal_box_style}<script src="{root}assets/qa-test.js" defer></script>
 </head>
 <body>
 <div class="mobile-notice" role="alert">This website was not designed to be viewed on a mobile phone. Use a desktop or laptop.</div>
@@ -423,7 +444,7 @@ def page(title: str, body: str, active: str, root: str, chapters: list[dict], de
 </div>
 <footer class="home-foot"><p><a class="question-work" href="{QUESTION_URL}">Question this work</a></p></footer>
 <script src="{root}assets/site.js"></script>
-</body>
+{signal_box_scripts}</body>
 </html>
 """
     return external_links_in_new_tab(document)
@@ -695,8 +716,14 @@ def clean() -> None:
 
 
 def main() -> None:
-    clean()
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--no-clean", action="store_true",
+                        help="rewrite the generated files in place without deleting the generated folders first")
+    args = parser.parse_args()
+    if not args.no_clean:
+        clean()
     chapters = load_chapters()
+    SIGNAL_BOX.update(signal_box.write_data(PROJECT, chapters))
     build_chapters(chapters)
     build_home(chapters)
     for num, title, folder, file in NOTEBOOKS:

@@ -1,0 +1,176 @@
+{
+ "_about": "Signal Box questions, copied once from the Ethical Considerations in AI guide (https://tidyweb.github.io/ethical-considerations-in-ai/#screening-tool) on 20 October 2026. A fixed record for this project; it is not updated from the guide.",
+ "groups": [
+  {
+   "id": "A",
+   "name": "Purpose and benefit",
+   "qs": [
+    {
+     "n": 1,
+     "q": "Will it make or shape a decision that matters to someone's life: work, money, care, safety, liberty?",
+     "legal": false
+    },
+    {
+     "n": 2,
+     "q": "Could a simpler non-AI process do the job?",
+     "legal": false
+    },
+    {
+     "n": 3,
+     "q": "Is the purpose vague, or likely to grow beyond what was agreed?",
+     "legal": false
+    },
+    {
+     "n": 4,
+     "q": "Does most of the benefit go to the organisation while the cost falls on others?",
+     "legal": false
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "name": "Data",
+   "qs": [
+    {
+     "n": 5,
+     "q": "Does it collect or use information about identifiable people?",
+     "legal": true
+    },
+    {
+     "n": 6,
+     "q": "Is that information used automatically to evaluate or predict something about someone (profiling)?",
+     "legal": true
+    },
+    {
+     "n": 7,
+     "q": "Does it use sensitive data (health, ethnicity, biometrics, religion, sexuality) or a stand-in for it, like a postcode?",
+     "legal": false
+    },
+    {
+     "n": 8,
+     "q": "Could people be re-identified by combining fields, even with names removed?",
+     "legal": false
+    },
+    {
+     "n": 9,
+     "q": "Is any data's origin, accuracy or permission to use unknown?",
+     "legal": false
+    },
+    {
+     "n": 10,
+     "q": "Are some groups missing or thin in the data?",
+     "legal": false
+    },
+    {
+     "n": 11,
+     "q": "Is the system learning from past human decisions, such as who was hired before?",
+     "legal": false
+    }
+   ]
+  },
+  {
+   "id": "C",
+   "name": "Decisions and oversight",
+   "qs": [
+    {
+     "n": 12,
+     "q": "Is a consequential decision made without meaningful human involvement (solely automated)?",
+     "legal": true
+    },
+    {
+     "n": 13,
+     "q": "Would a human reviewer lack the time, information or authority to overrule it?",
+     "legal": false
+    },
+    {
+     "n": 14,
+     "q": "Is the output likely to be treated as proof rather than a prompt (automation bias)?",
+     "legal": false
+    }
+   ]
+  },
+  {
+   "id": "D",
+   "name": "People affected",
+   "qs": [
+    {
+     "n": 15,
+     "q": "Could errors fall more heavily on some groups than others?",
+     "legal": false
+    },
+    {
+     "n": 16,
+     "q": "Could people be affected without knowing AI was involved?",
+     "legal": false
+    },
+    {
+     "n": 17,
+     "q": "Would an affected person be unable to understand, correct or challenge the result?",
+     "legal": false
+    },
+    {
+     "n": 18,
+     "q": "Were the people affected left out of design and testing?",
+     "legal": false
+    },
+    {
+     "n": 19,
+     "q": "Does it change anyone's job, pace of work or level of monitoring?",
+     "legal": false
+    }
+   ]
+  },
+  {
+   "id": "E",
+   "name": "Safety and robustness",
+   "qs": [
+    {
+     "n": 20,
+     "q": "Could a failure cause physical or psychological harm?",
+     "legal": false
+    },
+    {
+     "n": 21,
+     "q": "Has it only been tested in a demo or lab, not the real setting?",
+     "legal": false
+    },
+    {
+     "n": 22,
+     "q": "Is there no tested way to pause it, override it or switch to a manual fallback?",
+     "legal": false
+    },
+    {
+     "n": 23,
+     "q": "Could it be attacked, misused or used outside its intended purpose?",
+     "legal": false
+    }
+   ]
+  },
+  {
+   "id": "F",
+   "name": "Responsibility and law",
+   "qs": [
+    {
+     "n": 24,
+     "q": "Is there no named person who owns it, monitors it and can stop it?",
+     "legal": false
+    },
+    {
+     "n": 25,
+     "q": "Does it depend on a supplier's model, data or updates you can't inspect?",
+     "legal": false
+    },
+    {
+     "n": 26,
+     "q": "Does the EU AI Act class its intended use as high-risk?",
+     "legal": true
+    },
+    {
+     "n": 27,
+     "q": "Will it be used in a different country, population or language from the one it was built for?",
+     "legal": false
+    }
+   ]
+  }
+ ]
+}
