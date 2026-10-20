@@ -7,7 +7,7 @@
   var SUBJECT = 'QA test report: The Ethics of a Birmingham Healthy Life';
   var TASKS = [
     {
-      do: 'Find the Active measure box in the top left corner.\n**Select HLE average.**\nYou can zoom and drag the map until you see an area you know.',
+      do: '**At the top right, click Detailed view.**\nFind the Active measure box in the top left corner.\n**Select HLE average.**\nYou can zoom and drag the map until you see an area you know.',
       ask: 'Find an area you know on the map and click it. Is it clear how many years of good health people there can expect?'
     },
     {
@@ -239,10 +239,12 @@
 
   function alignDashboard(panel) {
     var legend = document.querySelector('section.legend');
-    if (!legend) {
+    // In the Plain view the Detailed legend is hidden and measures as zero, so dock below the view buttons instead.
+    if (!legend || !legend.getClientRects().length) {
+      panel.style.transform = 'none';
       panel.style.left = 'auto';
       panel.style.right = '44px';
-      panel.style.top = '20px';
+      panel.style.top = '84px';
       panel.style.bottom = 'auto';
       return;
     }
@@ -265,7 +267,7 @@
     } else {
       panel.style.left = 'auto';
       panel.style.right = '44px';
-      panel.style.top = '20px';
+      panel.style.top = isDashboard ? '84px' : '20px';
       panel.style.bottom = 'auto';
     }
   }
