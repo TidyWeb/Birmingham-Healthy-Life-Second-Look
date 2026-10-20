@@ -58,6 +58,7 @@ PROJECT = Path(os.environ.get(
 NOTEBOOK_DIR = PROJECT / "notebooks"
 CLEANED = PROJECT / "data" / "cleaned"
 GITHUB_REPO = "https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment"
+UNIT2_SITE = "https://tidyweb.github.io/Birmingham-Healthy-Life/"
 TABLEAU_URL = "https://public.tableau.com/views/BirminghamHLEFinal/Dashboard1"
 QUESTION_URL = "https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml"
 
@@ -391,6 +392,7 @@ def sidebar(chapters: list[dict], active: str, root: str) -> str:
         if any(c["part"] == part for c in chapters)
     )
     tools = (item("dashboard/", "", "My dashboard", True)
+             + f'<li><a href="{UNIT2_SITE}"><span class="n"></span><span>The original project (Unit 2): Birmingham Healthy Life</span></a></li>'
              + '<li><span class="soon"><span class="n"></span><span>3D hotspots, in progress</span></span></li>')
     nbs = "".join(item(NB_PAGES[num], num, title) for num, title, _, _ in NOTEBOOKS)
     return f"""
