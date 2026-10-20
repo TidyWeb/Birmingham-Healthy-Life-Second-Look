@@ -31,7 +31,11 @@ caption: The six checkpoints lead to an owner decision. The number below each le
 
 ## How to read the lamps
 
-The screen asks one thing of each question: **a yes is a concern**. An orange lamp marks a yes. A grey, hollow lamp means no concern was raised. It does not mean “safe”. A ⚖ mark identifies a legal-trigger question to check against the relevant law; all four legal-trigger questions in this screen had no flag.
+Signal Box asks one thing of each question: **a yes is a concern**. An orange lamp marks a yes, a concern to investigate. A yellow lamp means investigated and recorded; it does not mean the concern has disappeared. A grey, hollow lamp means no concern was raised. It does not mean “safe”. A ⚖ mark identifies a legal-trigger question to check against the relevant law; all four legal-trigger questions in this application had no flag.
+
+Before I turn a lamp yellow, I use the say-it-out-loud test: I must be able to say what could go wrong, who it would happen to, what deals with it, and who is responsible. If I cannot say that in a sentence or two, the lamp stays orange.
+
+Applying Signal Box exposed weaknesses in my own tool: the pop-up did not explain how to clear an orange lamp, the guidance repeated itself, and there was no test for what earned yellow. I fixed those on 19 October 2026; [What changed](what-changed.html#re-testing-the-yellows-out-loud) records what happened when I applied the sharper test to my own answers.
 
 The six checkpoints organise the questions. The stage links identify where each concern meets the project lifecycle: choosing sources, preparing and aggregating, the joined table, hypothesis testing, machine learning, hotspots, or the dashboards and site.
 

@@ -13,13 +13,13 @@ Questions are welcome. Readers can raise an issue about a page or result. I revi
 
 ## How to ask
 
-Use the [Question this work form on GitHub](https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml). Tell me which page or area you mean and what you are questioning. Evidence or reasoning is useful but optional. Please keep the conversation on the issue; do not include personal information. GitHub asks you to sign in with a free account before you can open a question.
+Use the [Question this work form on GitHub](https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml). Tell me which page or area you mean and what you are questioning. Evidence or reasoning is useful but optional. Please keep the conversation on the issue; do not include personal information. This form needs a free GitHub account. That's a limit of this route.
 
 This is my work. Questions are welcome, and I make and log corrections when an error is shown. Readers can question it; they do not edit the analysis or site.
 
 ## What happens next
 
-I read the question and check it against the source, notebook or wording involved. If I confirm an error, I correct it and add a dated entry below. If the evidence does not show an error, I explain what I checked and why I have left the result as it is. A question does not automatically mean the published result is wrong.
+I reply within 10 working days. I read the question and check it against the source, notebook or wording involved. If I confirm an error, I correct it and add a dated entry below. If the evidence does not show an error, I explain what I checked and why I have left the result as it is. A question does not automatically mean the published result is wrong.
 
 ## Correction log
 

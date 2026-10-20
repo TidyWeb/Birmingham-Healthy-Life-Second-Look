@@ -45,6 +45,8 @@ This work is not for:
 - claims about the health of ethnic groups;
 - generalising the results to other places.
 
+Before I reuse this work for any new purpose, I run Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide again; [The method](s2-the-method.html) explains how I apply it. The data and site are public, so I cannot prevent others’ reuse or misuse; I can only refuse those uses in my own work and make the limits plain.
+
 Legal permission to reuse data is not the same as appropriate use. A licence tells me how source material may be reused; I remain responsible for describing it accurately, explaining its limits and correcting errors.
 
 ## Licences and attribution

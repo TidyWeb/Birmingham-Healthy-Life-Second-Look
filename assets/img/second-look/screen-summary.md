@@ -1,4 +1,6 @@
-# Ethics screen summary
+# Signal Box summary
+
+Signal Box is part of Phil’s independent [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](../../../story/s2-the-method.html) explains how he applied it.
 
 A yes is a concern to investigate, not a finding of harm. A no-flag means no concern was raised; it does not mean safe.
 

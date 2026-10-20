@@ -2,13 +2,13 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="152.954182pt" height="86.976pt" viewBox="0 0 152.954182 86.976" xmlns="http://www.w3.org/2000/svg" version="1.1">
- <title>Ethics screen lamps for Stage 1</title>
+ <title>Signal Box lamps for Stage 1</title>
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:title>Ethics screen lamps for Stage 1</dc:title>
-    <dc:date>2026-10-17T23:50:22.303076</dc:date>
+    <dc:title>Signal Box lamps for Stage 1</dc:title>
+    <dc:date>2026-10-19T20:16:45.194861</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -42,7 +42,7 @@ C 27.550898 34.232148 25.673891 38.763643 25.673891 43.488
 C 25.673891 48.212357 27.550898 52.743852 30.891523 56.084477 
 C 34.232148 59.425102 38.763643 61.302109 43.488 61.302109 
 z
-" clip-path="url(#pfd48f867e8)" style="fill: #eceee8; stroke: #7a878c; stroke-width: 1.8; stroke-linejoin: miter"/>
+" clip-path="url(#p4d6baf700e)" style="fill: #eceee8; stroke: #7a878c; stroke-width: 1.8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 109.466182 61.302109 
@@ -55,7 +55,7 @@ C 93.52908 34.232148 91.652073 38.763643 91.652073 43.488
 C 91.652073 48.212357 93.52908 52.743852 96.869704 56.084477 
 C 100.210329 59.425102 104.741825 61.302109 109.466182 61.302109 
 z
-" clip-path="url(#pfd48f867e8)" style="fill: #b94f13; stroke: #b94f13; stroke-width: 1.8; stroke-linejoin: miter"/>
+" clip-path="url(#p4d6baf700e)" style="fill: #b94f13; stroke: #b94f13; stroke-width: 1.8; stroke-linejoin: miter"/>
    </g>
    <g id="text_1">
     <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #18262e" x="43.488" y="45.696008" transform="rotate(-0 43.488 45.696008)">9</text>
@@ -66,7 +66,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pfd48f867e8">
+  <clipPath id="p4d6baf700e">
    <rect x="7.2" y="7.2" width="138.554182" height="72.576"/>
   </clipPath>
  </defs>

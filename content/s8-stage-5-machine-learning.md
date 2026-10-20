@@ -14,6 +14,8 @@ I used clustering and a plain regression to describe how the selected measures l
 ## What I did in Unit 2
 
 ^ nb05#5f9797c5 | Clustering and linear regression use area-level measures.
+Most of my findings come from plain statistics: the joined table, correlations and the neighbour-gap test. I use the models to ask how much seven measures explain together in councils the model has not seen.
+
 I grouped areas using the selected measures without HLE, then compared those groups with HLE. I also fitted a plain linear regression and tested it by holding out whole local authorities, so each prediction came from a model that had not trained on that council.
 
 ::: figure ml/05_linear_coefficients nb05#6cc77907

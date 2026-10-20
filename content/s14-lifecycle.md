@@ -18,7 +18,7 @@ I keep the notebooks, source register, site build and checks together. When a so
 | Implementation | I prepare the data and analysis in notebooks 01–09, then build the explanatory pages and dashboard. | I own the work. Git commits, the notebooks, `build_site.py` and the project board record the changes. |
 | Maintenance | I check that the site builds from the saved files and that its links still work. | I run `build_site.py` and `check_links.py`; the command output and commits are the record. |
 | Updates | I check each source page, note the period and release, then re-run the notebooks that use changed data. | I maintain the source register and this calendar; the notebooks and project board show the work completed. |
-| Evaluation | I review the conclusions against the updated outputs, uncertainty and stated limits, then plan independent user testing with 2–3 people, including at least one non-technical reader and ideally someone local. | I review notebooks 04–09, the ethics screen, dashboard and link-check results. I record questions and corrections on the project board and in the correction log. Completing and recording the planned testing would close Q18 and Q21. |
+| Evaluation | I review the conclusions against the updated outputs, uncertainty and stated limits, then review user testing now under way with three Birmingham readers. | I review notebooks 04–09, the Signal Box, dashboard and link-check results. I record questions and corrections on the project board and in the correction log. I will re-judge Q4, Q18 and Q21 when the testing is recorded. |
 | Retirement | When a newer HLE release supersedes the 2019–23 estimates, I archive this version and put a banner on the site pointing readers to the newer data. | I make the retirement decision and record it in Git and on the project board. |
 
 ## Update calendar
@@ -47,6 +47,8 @@ If only local area names change, I review the labels and rebuild the dashboard a
 ## Questions and corrections {#correction-route}
 
 Readers can question a page using [Question this work](https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml). I review the question and evidence. If it shows an error, I correct the data, analysis or explanation that caused it and enter the date, page, change and reason in the correction log. If it does not show an error, I explain the evidence and leave the result as it is. Readers can question the work; I make and record corrections.
+
+Correction route tested; takedown is written down but untested. I tested the correction route with a test question that was raised and resolved.
 
 ## Retirement {#retirement}
 

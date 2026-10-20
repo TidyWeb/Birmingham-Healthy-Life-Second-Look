@@ -1,10 +1,11 @@
-"""Build figures and a text summary from the Unit 2 ethics screen CSV."""
+"""Build figures and a text summary from the Unit 2 Signal Box CSV."""
 
 from __future__ import annotations
 
 import csv
 import math
 import os
+import re
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -109,7 +110,7 @@ def load_records(path: Path = SCREEN_CSV) -> list[dict[str, str]]:
 
 
 def load_after_records(path: Path = AFTER_SCREEN_CSV) -> list[dict[str, str]]:
-    """Read the Unit 3 re-screen and verify the before/after status counts."""
+    """Read the Unit 3 Signal Box re-test and verify the before/after status counts."""
     expected_fields = FIELDS + ["after_status", "evidence_url"]
     with path.open(encoding="utf-8-sig", newline="") as stream:
         reader = csv.DictReader(stream)
@@ -140,9 +141,9 @@ def load_after_records(path: Path = AFTER_SCREEN_CSV) -> list[dict[str, str]]:
     }
     assert len(records) == 27
     assert counts == {
-        "investigated_and_recorded": 15,
+        "investigated_and_recorded": 14,
         "no_flag": 10,
-        "open": 2,
+        "open": 3,
     }, f"Unexpected Unit 3 status counts: {counts}"
     assert all(
         record["after_status"] == "no_flag"
@@ -150,11 +151,11 @@ def load_after_records(path: Path = AFTER_SCREEN_CSV) -> list[dict[str, str]]:
     ), "The ten Unit 2 no-flag questions must remain no-flag"
     assert {
         record["q"] for record in records if record["after_status"] == "open"
-    } == {18, 21}, "Only the two user-testing questions remain open"
+    } == {4, 18, 21}, "Q4, Q18 and Q21 await recorded user testing"
     assert all(
         any(
             reason in record["evidence"].lower()
-            for reason in ("open because", "open by decision")
+            for reason in ("open because", "open by decision", "open until")
         )
         for record in records if record["after_status"] == "open"
     ), "Every open result needs its reason in the evidence column"
@@ -163,7 +164,9 @@ def load_after_records(path: Path = AFTER_SCREEN_CSV) -> list[dict[str, str]]:
 
 def write_screen_summary(records: list[dict[str, str]]) -> Path:
     lines = [
-        "# Ethics screen summary",
+        "# Signal Box summary",
+        "",
+        "Signal Box is part of Phil’s independent [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](../../../story/s2-the-method.html) explains how he applied it.",
         "",
         "A yes is a concern to investigate, not a finding of harm. A no-flag means no concern was raised; it does not mean safe.",
         "",
@@ -234,7 +237,7 @@ def save_lamp_board(records: list[dict[str, str]]) -> Path:
 
     path = OUT / "lamp-board.svg"
     fig.savefig(path, format="svg", bbox_inches="tight", facecolor=PAPER,
-                metadata={"Title": "Ethics screen lamps by checkpoint"})
+                metadata={"Title": "Signal Box lamps by checkpoint"})
     plt.close(fig)
     return path
 
@@ -319,10 +322,10 @@ def save_lamp_board_after(records: list[dict[str, str]]) -> Path:
     fig, ax = plt.subplots(figsize=(7, 6.5), dpi=96)
     fig.patch.set_facecolor(PAPER)
     ax.set_facecolor(PAPER)
-    _draw_after_board(ax, records, "Unit 3 re-screen by checkpoint")
+    _draw_after_board(ax, records, "Unit 3 Signal Box re-test by checkpoint")
     path = OUT / "lamp-board-after.svg"
     fig.savefig(path, format="svg", bbox_inches="tight", facecolor=PAPER,
-                metadata={"Title": "Unit 3 ethics re-screen by checkpoint"})
+                metadata={"Title": "Unit 3 Signal Box re-test by checkpoint"})
     plt.close(fig)
     return path
 
@@ -339,7 +342,7 @@ def save_lamp_board_before_after(
     fig.subplots_adjust(left=.015, right=.985, top=.99, bottom=.01, wspace=.015)
     path = OUT / "lamp-board-before-after.svg"
     fig.savefig(path, format="svg", bbox_inches="tight", facecolor=PAPER,
-                metadata={"Title": "Unit 2 and Unit 3 ethics screen boards"})
+                metadata={"Title": "Unit 2 and Unit 3 Signal Box boards"})
     plt.close(fig)
     return path
 
@@ -468,7 +471,7 @@ def save_stage_lamp_strips(records: list[dict[str, str]]) -> list[Path]:
         fig.subplots_adjust(left=0.06, right=0.94, top=0.92, bottom=0.08)
         path = OUT / f"stage-{stage[1:]}-lamps.svg"
         fig.savefig(path, format="svg", bbox_inches="tight", facecolor=PAPER,
-                    metadata={"Title": f"Ethics screen lamps for Stage {stage[1:]}"})
+                    metadata={"Title": f"Signal Box lamps for Stage {stage[1:]}"})
         plt.close(fig)
         outputs.append(path)
     return outputs
@@ -515,7 +518,7 @@ def save_checkpoint_flow(records: list[dict[str, str]]) -> Path:
 
     path = OUT / "checkpoint-flow.svg"
     fig.savefig(path, format="svg", bbox_inches="tight", facecolor=PAPER,
-                metadata={"Title": "Ethics screen checkpoint flow"})
+                metadata={"Title": "Signal Box checkpoint flow"})
     plt.close(fig)
     return path
 
@@ -539,11 +542,21 @@ def main() -> None:
         for status in ("investigated_and_recorded", "open", "no_flag")
     }
     print(
-        "Unit 3 re-screen: "
+        "Unit 3 Signal Box re-test: "
         f"{after_counts['investigated_and_recorded']} investigated and recorded, "
         f"{after_counts['open']} open, {after_counts['no_flag']} no-flags."
     )
     for path in outputs:
+        if path.suffix == ".svg":
+            # Matplotlib emits trailing spaces in new triangle paths. Keep the
+            # rest of the SVG formatting stable while normalising those paths.
+            svg = path.read_text(encoding="utf-8")
+            svg = re.sub(
+                r'<path d="M [^\n]+\nL [^\n]+\nL [^\n]+\nz\n',
+                lambda match: "\n".join(line.rstrip() for line in match[0].splitlines()) + "\n",
+                svg,
+            )
+            path.write_text(svg, encoding="utf-8")
         print(f"Wrote {path.relative_to(SITE)}")
 
 

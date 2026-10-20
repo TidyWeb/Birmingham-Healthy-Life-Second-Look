@@ -13,7 +13,7 @@ The model does not use ethnicity or deprivation directly, but its measures overl
 
 ## Proxy overlap {#proxy-overlap}
 
-I predicted the area-level ethnic-composition measures and household deprivation from the seven model features, holding out whole local authorities in cross-validation. **The model doesn't use ethnicity or deprivation directly, but its measures overlap with them this much.** I report the overlap as a finding and remove no feature.
+I predicted the area-level ethnic-composition measures and household deprivation from the seven model features, holding out whole local authorities in cross-validation. **The model doesn't use ethnicity or deprivation directly, but its measures overlap with them this much.** I report the overlap as a finding and remove no feature. I keep the features because they are the measures this project studies.
 
 ^ nb07#8d87af50 | Cross-validated R² for the six ethnic groups and deprivation.
 | Area-level target | Seven-feature R² | Mean-only baseline R² |
@@ -60,6 +60,8 @@ caption: Bias changes direction across deprivation thirds, while absolute error 
 :::
 
 ## Crime sensitivity {#crime-sensitivity}
+
+I keep recorded crime because it is one of the measures this project studies. I exclude six city centres where the figures reflect visitors rather than residents, and I label the measure as recorded crime, not crime.
 
 I refitted the grouped cross-validation after removing recorded crime, keeping the same areas, folds, scaling and seed.
 
