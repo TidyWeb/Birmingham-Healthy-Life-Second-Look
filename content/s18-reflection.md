@@ -36,4 +36,4 @@ AI sped up planning, notebook code, checking and first drafts. It also made mist
 
 ## What I would do next
 
-User testing is under way with three Birmingham readers; I still need to record what they understood and what confused them. I need to rewrite this draft in my own words, then hand-edit and audit the final language. After that I can review the complete site, make the final site commit and push it, and check the published pages again. Until those steps are done, I should not present the project as fully finished.
+User testing is complete: on 20 October 2026, three testers rated every task green on the Detailed view and story pages. I need to rewrite this draft in my own words, then hand-edit and audit the final language. After that I can review the complete site, make the final site commit and push it, and check the published pages again. Until those steps are done, I should not present the project as fully finished.

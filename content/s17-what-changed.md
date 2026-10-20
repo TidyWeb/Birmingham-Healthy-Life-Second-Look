@@ -154,8 +154,8 @@ These three stay open by decision. I looked at each one and decided to go ahead 
 - **Q18 — Affected people left out of design and testing.** The study covers 660 areas and several million people. There's no practical way to involve them all, and publishing area-level statistics doesn't need their permission.
 - **Q21 — Tested only in a demo.** This is a course project, built to be assessed, not for anyone to rely on, so it won't be tested in real use.
 
-User testing with three Birmingham readers adds evidence, but it doesn't close these three. If testing reveals a new problem, I will record it and decide what to change.
+User testing added evidence (all green; see below), but it doesn't close these three. If a reader reports a new problem, I will record it and decide what to change.
 
 ## User testing
 
-User testing is under way with three Birmingham readers. On 17 October 2026, I reviewed the dashboard and site myself. That review led to fixes for the dashboard search bug; the HLE, rank and band labels; the six-groups note in the active-measure panel; the visibility of the “Question this work” link; and the plain-English wording in S11. I record the results as part of the evaluation stage in [Lifecycle](https://tidyweb.github.io/Birmingham-Healthy-Life-Second-Look/story/lifecycle.html).
+On 20 October 2026, three testers ran the QA test on the live site and rated every task green: 18 out of 18. The test was built before the Plain view existed, so it covers the Detailed view (the full technical dashboard) and the story pages. The anonymised results are in the [assessment repository](https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment/tree/main/data/testing). Before that, on 17 October 2026, I reviewed the dashboard and site myself. That review led to fixes for the dashboard search bug; the HLE, rank and band labels; the six-groups note in the active-measure panel; the visibility of the “Question this work” link; and the plain-English wording in S11. I record the results as part of the evaluation stage in [Lifecycle](https://tidyweb.github.io/Birmingham-Healthy-Life-Second-Look/story/lifecycle.html).
