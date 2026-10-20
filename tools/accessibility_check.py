@@ -147,11 +147,15 @@ async def run(site: Path, base_url: str) -> str:
             audit = await page.evaluate("""() => ({
               title: document.title.trim(),
               lang: document.documentElement.getAttribute('lang'),
-              h1Count: document.querySelectorAll('h1').length,
+              // Count only headings that are shown: the dashboard holds one heading per view and hides the other.
+              h1Count: [...document.querySelectorAll('h1')].filter(h => h.getClientRects().length > 0).length,
               images: Array.from(document.images).map(img => ({src: img.getAttribute('src') || '', alt: img.getAttribute('alt')}))
             })""")
-            missing_alt = [image["src"] for image in audit["images"]
-                           if not isinstance(image["alt"], str) or not image["alt"].strip()]
+            # A missing alt is a fault. An empty alt (alt="") marks a decorative image that screen readers
+            # should skip, such as a map tile, so it is counted separately rather than reported as missing.
+            missing_alt = [image["src"] for image in audit["images"] if not isinstance(image["alt"], str)]
+            decorative = [image["src"] for image in audit["images"]
+                          if isinstance(image["alt"], str) and not image["alt"].strip()]
             if missing_alt:
                 issues.append(f"Missing/empty alt in {path.relative_to(site)}: {', '.join(missing_alt)}")
             if not audit["title"]:
@@ -164,7 +168,7 @@ async def run(site: Path, base_url: str) -> str:
                 "path": path.relative_to(site).as_posix(),
                 "title": audit["title"], "lang": audit["lang"],
                 "h1": audit["h1Count"], "images": len(audit["images"]),
-                "missing_alt": missing_alt,
+                "missing_alt": missing_alt, "decorative": len(decorative),
             })
         await page.close()
 
@@ -190,12 +194,12 @@ async def run(site: Path, base_url: str) -> str:
         "Desktop check at 1440 × 1000 using Playwright with the installed Chrome browser. The check covers the home page, every generated story and notebook page, and the dashboard. It checks image alt text, page title, one h1, `lang=\"en-GB\"`, sampled keyboard order and visible focus, plus selected colour-token pairs from `assets/site.css`.", "",
         f"Pages checked: {len(page_rows)}. Browser checks: {'PASS' if not issues else 'REVIEW REQUIRED'}.", "",
         "## Page checks", "",
-        "| Page | Title | lang | h1 count | Images | Missing or empty alt |",
-        "|---|---|---|---:|---:|---|",
+        "| Page | Title | lang | h1 count | Images | Decorative (empty alt) | Missing alt |",
+        "|---|---|---|---:|---:|---:|---|",
     ]
     for row in page_rows:
         missing = ", ".join(row["missing_alt"]) or "None"
-        report.append(f"| `{row['path']}` | {'Present' if row['title'] else 'Missing'} | `{row['lang']}` | {row['h1']} | {row['images']} | {missing} |")
+        report.append(f"| `{row['path']}` | {'Present' if row['title'] else 'Missing'} | `{row['lang']}` | {row['h1']} | {row['images']} | {row['decorative']} | {missing} |")
     report.extend(["", "## Keyboard sample", "", "| Page | First Tab | Navigation reached | Main control/link reached | Focus visible | Sampled sequence |", "|---|---|---|---|---|---|"])
     for result in keyboard:
         visible_sequence = result["sequence"]
