@@ -11,6 +11,8 @@ import csv
 import json
 import math
 import re
+import argparse
+import ast
 from pathlib import Path
 from typing import Any
 
@@ -26,6 +28,7 @@ INDEX_FILE = HERE / "index.html"
 SITE_DASHBOARD_FILE = SITE_ROOT / "dashboard/index.html"
 TEMPLATE_FILE = HERE / "template.html"
 QUESTION_URL = "https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml"
+PREVIEW_FILE = SITE_ROOT / "dashboard/preview-plain-view.html"
 
 WIDE_CSV = PROJECT_ROOT / "data/cleaned/Wide/msoa_wide_660.csv"
 WIDE_DICTIONARY = PROJECT_ROOT / "data/cleaned/Wide/data_dictionary.csv"
@@ -542,9 +545,9 @@ def inline_css_assets(css: str) -> str:
     return re.sub(r"/\*# sourceMappingURL=.*?\*/", "", css, flags=re.DOTALL)
 
 
-def write_page(payload_text: str) -> bool:
+def render_page(payload_text: str, qa_script_path: str, plain_assets: str = "", require_plain_hook: bool = False) -> str | None:
     if not TEMPLATE_FILE.is_file():
-        return False
+        return None
     js_path = HERE / "vendor/leaflet.js"
     css_path = HERE / "vendor/leaflet.css"
     if not js_path.is_file() or not css_path.is_file():
@@ -573,32 +576,130 @@ def write_page(payload_text: str) -> bool:
     qa_script_marker = "__QA_TEST_SCRIPT__"
     if template.count(qa_script_marker) != 1:
         raise ValueError("Expected one QA test script placeholder")
-    template_for_tools = template.replace(
+    template = template.replace(
         qa_script_marker,
-        '<script src="../../assets/qa-test.js" defer></script>',
-        1,
-    )
-    template_for_site = template.replace(
-        qa_script_marker,
-        '<script src="../assets/qa-test.js" defer></script>',
+        qa_script_path,
         1,
     )
     marker = "<span>Exploratory area comparisons</span>"
-    if template_for_tools.count(marker) != 1:
+    if template.count(marker) != 1:
         raise ValueError("Expected one dashboard attribution footer marker")
     question_link = (
         f'<span><a class="question-work" href="{QUESTION_URL}" target="_blank" '
         'rel="noopener noreferrer">Question this work</a></span>'
     )
-    template_for_tools = template_for_tools.replace(marker, marker + question_link, 1)
-    template_for_site = template_for_site.replace(marker, marker + question_link, 1)
+    template = template.replace(marker, marker + question_link, 1)
+    plain_hook = "__PLAIN_VIEW_ASSETS__"
+    if plain_hook in template:
+        if template.count(plain_hook) != 1:
+            raise ValueError("Expected one plain-view assets placeholder")
+        hook_at = template.index(plain_hook)
+        after_hook = hook_at + len(plain_hook)
+        if not plain_assets and template[after_hook:after_hook + 1] == "\n":
+            template = template[:hook_at] + template[after_hook + 1:]
+        else:
+            template = template.replace(plain_hook, plain_assets, 1)
+    elif require_plain_hook:
+        raise ValueError("Template is missing plain-view assets placeholder")
+    return template
+
+
+def write_page(payload_text: str) -> bool:
+    plain_assets = plain_view_assets()
+    template_for_tools = render_page(
+        payload_text, '<script src="../../assets/qa-test.js" defer></script>', plain_assets, require_plain_hook=True
+    )
+    template_for_site = render_page(
+        payload_text, '<script src="../assets/qa-test.js" defer></script>', plain_assets, require_plain_hook=True
+    )
+    if template_for_tools is None or template_for_site is None:
+        return False
     INDEX_FILE.write_text(template_for_tools, encoding="utf-8")
     SITE_DASHBOARD_FILE.write_text(template_for_site, encoding="utf-8")
     return True
 
 
-def main() -> None:
+def plain_view_assets() -> str:
+    css_path = HERE / "plain_view.css"
+    js_path = HERE / "plain_view.js"
+    if not css_path.is_file() or not js_path.is_file():
+        raise FileNotFoundError("Expected tools/dashboard/plain_view.css and plain_view.js")
+    css = css_path.read_text(encoding="utf-8")
+    js = js_path.read_text(encoding="utf-8")
+    css_literal = json.dumps(css, ensure_ascii=False)
+    return (
+        "(function(){var plainStyle=document.createElement('style');"
+        f"plainStyle.textContent={css_literal};document.head.appendChild(plainStyle);}})();\n"
+        f"{js}"
+    )
+
+
+def add_site_dashboard_shell(page: str) -> str:
+    """Apply the current site-only Back link and mobile notice to a page string."""
+    site_source = (SITE_ROOT / "tools/build_site.py").read_text(encoding="utf-8")
+    site_tree = ast.parse(site_source)
+    shell_names = {"MOBILE_NOTICE", "DASHBOARD_MOBILE_STYLE", "BACK_LINK"}
+    shell_values: dict[str, str] = {}
+    for node in site_tree.body:
+        if not isinstance(node, ast.Assign):
+            continue
+        for target in node.targets:
+            if isinstance(target, ast.Name) and target.id in shell_names:
+                shell_values[target.id] = ast.literal_eval(node.value)
+    if set(shell_values) != shell_names:
+        raise ValueError("Could not read the dashboard shell constants without running the site builder")
+    mobile_notice = shell_values["MOBILE_NOTICE"]
+    mobile_style = shell_values["DASHBOARD_MOBILE_STYLE"]
+    back_link = shell_values["BACK_LINK"]
+    page = re.sub(r'<a [^>]*id="back-to-story"[^>]*>.*?</a>\n?', "", page, flags=re.S)
+    if 'class="mobile-notice"' not in page:
+        if page.count("</head>") != 1 or len(re.findall(r"<body\b", page, flags=re.I)) != 1:
+            raise ValueError("Preview page must contain one head and one body before adding site shell")
+        page = page.replace("</head>", mobile_style + "\n</head>", 1)
+        page = re.sub(r'(<body\b[^>]*>)', r'\1\n' + mobile_notice, page, count=1, flags=re.I)
+    if page.count('class="mobile-notice"') != 1 or page.count("</body>") != 1:
+        raise ValueError("Preview page site shell is incomplete or duplicated")
+    return page.replace("</body>", back_link + "\n</body>", 1)
+
+
+def build_plain_preview() -> None:
     payload, original_geometry_bytes, rounded_geometry_bytes = data_payload()
+    from plain_data import build_plain_data
+
+    payload["plain"] = build_plain_data(payload)
+    serialized = json.dumps(payload, separators=(",", ":"), ensure_ascii=False, allow_nan=False)
+    page = render_page(
+        serialized,
+        '<script src="../assets/qa-test.js" defer></script>',
+        plain_view_assets(),
+        require_plain_hook=True,
+    )
+    if page is None:
+        raise FileNotFoundError(f"Dashboard template not found: {TEMPLATE_FILE}")
+    page = add_site_dashboard_shell(page)
+    PREVIEW_FILE.write_text(page, encoding="utf-8")
+    figures = payload["plain"]["figures"]
+    print(f"Wrote preview only: {PREVIEW_FILE} ({PREVIEW_FILE.stat().st_size:,} bytes)")
+    print(f"Source geometry: {original_geometry_bytes:,} bytes; rounded FeatureCollection: {rounded_geometry_bytes:,} bytes")
+    print("Computed plain-view figure report:")
+    print(json.dumps(figures, ensure_ascii=False, indent=2, allow_nan=False))
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--preview-plain-view", action="store_true",
+        help="write only dashboard/preview-plain-view.html with computed Plain view data",
+    )
+    args = parser.parse_args()
+    if args.preview_plain_view:
+        build_plain_preview()
+        return
+    payload, original_geometry_bytes, rounded_geometry_bytes = data_payload()
+    from plain_data import build_plain_data
+
+    # The dashboard opens in the Plain view (approved by Phil, 20 October 2026); the Detailed view is one click away.
+    payload["plain"] = build_plain_data(payload)
     serialized = json.dumps(payload, separators=(",", ":"), ensure_ascii=False, allow_nan=False)
     DATA_FILE.write_text(serialized + "\n", encoding="utf-8")
     page_built = write_page(serialized)
