@@ -366,6 +366,7 @@ def sidebar(chapters: list[dict], active: str, root: str) -> str:
             ("A second look (Unit 3)", "second-look"),
             ("The original project (Unit 2)", "original"),
         )
+        if any(c["part"] == part for c in chapters)
     )
     tools = (item("dashboard/", "", "My dashboard", True)
              + '<li><span class="soon"><span class="n"></span><span>3D hotspots, in progress</span></span></li>')
@@ -468,6 +469,7 @@ def build_home(chapters: list[dict]) -> None:
             ("A second look (Unit 3)", "second-look"),
             ("The original project (Unit 2)", "original"),
         )
+        if any(c["part"] == part for c in chapters)
     )
     contents = render_story(rest, root).replace("<!-- toc -->", toc).replace("<p>&lt;!-- toc --&gt;</p>", toc)
     html_body = f"""<!doctype html>

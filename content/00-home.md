@@ -1,6 +1,6 @@
 layout: home
 description: The Ethics of a Birmingham Healthy Life: an ethical review of my Unit 2 Birmingham Healthy Life analysis.
-footer: The Ethics of a Birmingham Healthy Life · Built by Tidy Web for the Code Institute Diploma in Data Analytics with AI, Unit 3. Data from ONS and other public sources under the Open Government Licence. [Sources and ethics](story/sources-and-ethics.html).
+footer: The Ethics of a Birmingham Healthy Life · Built by Tidy Web for the Code Institute Diploma in Data Analytics with AI, Unit 3. Data from ONS and other public sources under the Open Government Licence. [Sources and ethics](https://tidyweb.github.io/Birmingham-Healthy-Life/story/sources-and-ethics.html).
 ---
 # The Ethics of a Birmingham Healthy Life
 
