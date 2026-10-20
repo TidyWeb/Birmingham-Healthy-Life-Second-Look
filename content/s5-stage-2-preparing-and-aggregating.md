@@ -29,9 +29,7 @@ caption: Several measures move together across areas. The overlap is a reason to
 
 **Cleared — Q6, profiling individuals? No flag.** Both models estimate area values, not personal outcomes.
 
-::: image second-look/stage-2-lamps.svg
-alt: Numbered lamps for the questions assigned to Stage 2; orange filled markers show the concern and hollow grey markers show cleared questions.
-caption: The numbered lamps preserve Signal Box result for this stage.
+::: signalbox stage S2
 :::
 
 ## What I found

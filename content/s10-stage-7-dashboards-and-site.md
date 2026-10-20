@@ -44,9 +44,7 @@ caption: The dashboard presents named area estimates and comparisons. The number
 
 **Cleared questions.** Q12: no consequential decisions are automated. Q13: there is no reviewer workflow. Q16: AI use is disclosed. Q19: the project does not change jobs or monitoring. Q24: I am named as owner, although a review cadence is not recorded. Q26: the UK project is not deployed in the EU or in a listed high-risk area. Q27: the work is for Birmingham and should not be generalised to other places. These are no flags, not a claim that every part of the project is safe.
 
-::: image second-look/stage-7-lamps.svg
-alt: Numbered lamps showing the ten concern questions and seven cleared questions assigned to Stage 7.
-caption: Orange filled lamps mark concerns and hollow grey lamps mark no flags.
+::: signalbox stage S7
 :::
 
 ## What I found

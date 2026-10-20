@@ -29,14 +29,10 @@ Signal Box is my own work, separate from Unit 2; Unit 3 is the first real data p
 
 ## Every lamp, by checkpoint
 
-::: image second-look/lamp-board.svg
-alt: A groups Q1 to Q4, all concerns. B groups Q5 and Q6 as no-flags with legal-trigger marks, Q7 and Q8 as concerns, Q9 as a no-flag, and Q10 and Q11 as concerns. C groups Q12 as a legal-trigger no-flag, Q13 as a no-flag, and Q14 as a concern. D groups Q15 as a concern, Q16 as a no-flag, Q17 and Q18 as concerns, and Q19 as a no-flag. E groups Q20 to Q23, all concerns. F groups Q24 as a no-flag, Q25 as a concern, Q26 as a legal-trigger no-flag, and Q27 as a no-flag. Filled orange markers are concerns; hollow grey markers are no-flags.
-caption: The 27 answers grouped under checkpoints A–F. Filled orange markers are concerns; hollow grey markers mean no concern was raised. The ⚖ marks identify Q5, Q6, Q12 and Q26.
+::: signalbox checkpoints
 :::
 
-::: image second-look/stage-grid.svg
-alt: The rows are stages Stage 1 to Stage 7 and the columns are the 17 concern questions. Markers show Q25 at Stage 1; Q10 at Stage 2; Q7, Q8, Q11 and Q23 at Stage 3; Q14 at Stage 4; Q2, Q7, Q11 and Q15 at Stage 5; Q14 at Stage 6; and Q1, Q3, Q4, Q14, Q17, Q18, Q20, Q21, Q22 and Q23 at Stage 7. The row totals are 1, 1, 4, 1, 4, 1 and 10.
-caption: Each marker connects a concern to the Unit 2 project stage where it needs attention. The totals at the right count the links in that row.
+::: signalbox stages
 :::
 
 ## Text alternative: all 27 answers

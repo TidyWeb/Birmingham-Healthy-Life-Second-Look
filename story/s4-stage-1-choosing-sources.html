@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
 <link rel="icon" type="image/png" href="../assets/img/favicon.png">
 <link rel="stylesheet" href="../assets/site.css?v=14e511dc">
+<link rel="stylesheet" href="../assets/signal-box/signal-box.css?v=6e160584">
 <script src="../assets/qa-test.js" defer></script>
 </head>
 <body>
@@ -37,7 +38,7 @@
 <h2 id="what-the-screen-asked">What Signal Box asked</h2>
 <p><strong>Q25 — Does the work depend on a supplier's model or data I cannot inspect? Concern.</strong> Signal Box identified ONS healthy-life estimates, ONS small-area income, DESNZ fuel-poverty estimates and Defra pollution maps as modelled inputs. They cannot be reproduced from the published output alone and may be revised.</p>
 <p><strong>Cleared — Q9, origin, accuracy or permission unknown? No flag.</strong> The register already records source pages, periods, geographies, file hashes and licence notes. The issue was to make known limits visible, not to imply that the sources had unknown origins.</p>
-<figure class="plate diagram"><div class="sheet"><img src="../assets/img/second-look/stage-1-lamps.svg" width="153" height="87" alt="Numbered lamps for the questions assigned to Stage 1; the filled orange lamp marks a concern and the hollow grey lamp marks a cleared question." loading="lazy"></div><figcaption>Filled orange lamps mark concerns; hollow grey lamps mark no flags. The numbers identify Signal Box questions.</figcaption></figure>
+<figure class="plate sbx sbm-fig"><div class="sheet"><div class="sbm" data-mode="stage" role="group" aria-label="Stage 1: Choosing sources Signal Box questions" data-stage="S1"></div></div><figcaption>Stage 1: Choosing sources: 1 Unit 2 concern and 1 no-flag question. Each row also shows the result after the Unit 3 re-test.</figcaption></figure>
 <h2>What I found</h2>
 <p>The source register now distinguishes modelled inputs from other sources and gives every source a plain-language limit and a revision-risk note. The modelled values remain estimates; the new notes make that status visible instead of suggesting they can be recreated exactly.</p>
 <h2 id="modelled-inputs">What changes</h2>
@@ -46,5 +47,7 @@
 </div>
 <footer class="home-foot"><p><a class="question-work" href="https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml" target="_blank" rel="noopener noreferrer">Question this work</a></p></footer>
 <script src="../assets/site.js"></script>
+<script src="../assets/signal-box/signal-box-data.js?v=6e160584"></script>
+<script src="../assets/signal-box/signal-box.js?v=6e160584"></script>
 </body>
 </html>

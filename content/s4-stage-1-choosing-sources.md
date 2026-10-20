@@ -27,9 +27,7 @@ caption: Healthy life expectancy was the outcome I set out to describe. The dist
 
 **Cleared — Q9, origin, accuracy or permission unknown? No flag.** The register already records source pages, periods, geographies, file hashes and licence notes. The issue was to make known limits visible, not to imply that the sources had unknown origins.
 
-::: image second-look/stage-1-lamps.svg
-alt: Numbered lamps for the questions assigned to Stage 1; the filled orange lamp marks a concern and the hollow grey lamp marks a cleared question.
-caption: Filled orange lamps mark concerns; hollow grey lamps mark no flags. The numbers identify Signal Box questions.
+::: signalbox stage S1
 :::
 
 ## What I found

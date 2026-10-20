@@ -25,9 +25,7 @@ caption: Observed differences extend well beyond the noise-only gaps. The test a
 
 **Q14 — Could an output be treated as proof rather than a prompt? Concern.** A single value or exact rank looks more certain than an estimate with a margin of error. Signal Box found that mid-table ranks could be unstable and that maps of model residuals could imply more than the model establishes.
 
-::: image second-look/stage-4-lamps.svg
-alt: One numbered orange lamp for the Stage 4 concern, question 14.
-caption: The lamp identifies the question about outputs being treated as proof.
+::: signalbox stage S4
 :::
 
 ## What I found

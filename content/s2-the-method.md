@@ -3,10 +3,10 @@ part: second-look
 slug: s2-the-method
 title: The method
 summary: How I applied Signal Box to an area-level analysis project.
-standfirst: I applied Signal Box from my own Ethical Considerations in AI guide to the published project.
+standfirst: I applied Signal Box, the AI ethics check I built for my own Ethical Considerations in AI guide.
 ---
 ::: keypoints
-I applied [Signal Box: the AI ethics check](https://tidyweb.github.io/ethical-considerations-in-ai/#screening-tool) from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide to the published analysis and what readers might do with it. A yes is a concern to investigate; a grey lamp means no concern was raised, not that the project is safe.
+I applied Signal Box to the published Unit 2 analysis and to what readers might do with it. A yes is a concern to investigate. A grey lamp means no concern was raised at that question; it doesn’t mean the project is safe to go ahead. Every concern needs a path to resolution: the orange lamp turns yellow only once the concern has been investigated, recorded, and either dealt with or given a safe way forward.
 :::
 
 ## Where Signal Box comes from {#where-the-screen-comes-from}
@@ -15,9 +15,7 @@ I built [Ethical Considerations in AI](https://tidyweb.github.io/ethical-conside
 
 I wanted a practical checklist that turns ethical principles into specific questions. Signal Box was not part of Unit 2; Unit 3 is my application of it to that project and a practical test of the tool. The report records the evidence and action for each answer, then links concerns to the Unit 3 stages where they need attention.
 
-::: image second-look/checkpoint-flow.svg
-alt: Six checkpoints run from A through F. The concern counts beneath them are 4, 4, 1, 3, 4 and 1. The flow ends with an owner decision: proceed, narrow, redesign or stop.
-caption: The six checkpoints lead to an owner decision. The number below each letter is the concern count recorded in Signal Box.
+::: signalbox full
 :::
 
 ## The six checkpoints
@@ -31,7 +29,7 @@ caption: The six checkpoints lead to an owner decision. The number below each le
 
 ## How to read the lamps
 
-Signal Box asks one thing of each question: **a yes is a concern**. An orange lamp marks a yes, a concern to investigate. A yellow lamp means investigated and recorded; it does not mean the concern has disappeared. A grey, hollow lamp means no concern was raised. It does not mean “safe”. A ⚖ mark identifies a legal-trigger question to check against the relevant law; all four legal-trigger questions in this application had no flag.
+Signal Box asks one thing of each question: **a yes is a concern**. An orange lamp marks a yes, a concern to investigate. A yellow lamp means investigated and recorded; it does not mean the concern has disappeared. A grey lamp means no concern was raised. It does not mean “safe”. A “legal trigger” label (⚖ on the smaller boards) marks a question to check against the relevant law; all four legal-trigger questions in this application had no flag.
 
 Before I turn a lamp yellow, I use the say-it-out-loud test: I must be able to say what could go wrong, who it would happen to, what deals with it, and who is responsible. If I cannot say that in a sentence or two, the lamp stays orange.
 

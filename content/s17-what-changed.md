@@ -8,12 +8,10 @@ standfirst: I checked each original Signal Box result against the evidence now o
 I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
 
 ::: keypoints
-I checked all 27 questions again against the Unit 3 site: 14 are investigated and recorded, 3 remain open (Q4, Q18 and Q21), and 10 remain no-flags.
+I checked all 27 questions again against the Unit 3 site: 14 are investigated and recorded, 3 remain open by decision (Q4, Q18 and Q21), and 10 remain no-flags.
 :::
 
-::: image second-look/lamp-board-before-after.svg wide
-alt: Two Signal Box boards show Unit 2 and Unit 3. Unit 2 has 17 filled orange circles for concerns and 10 hollow grey circles for no-flags. Unit 3 has 14 yellow diamonds for investigated and recorded concerns, three orange triangles for open concerns Q4, Q18 and Q21, and 10 hollow grey circles for no-flags. Each marker contains its question number; shapes and the legend identify status without relying on colour alone.
-caption: The first board shows my application of Signal Box to Unit 2: 17 concerns and 10 no-flags. The second shows the Unit 3 re-test: 14 investigated and recorded, 3 open (Q4, Q18 and Q21), and 10 no-flags. A recorded response does not mean a concern has disappeared; the three open concerns await recorded user testing.
+::: signalbox before-after wide
 :::
 
 ## The Signal Box re-test {#the-re-screen}
@@ -25,7 +23,7 @@ I kept each original Unit 2 lamp beside the Unit 3 status. “Investigated and r
 | Q1 — Shapes a decision that matters to someone's life? | 🟠 Concern | Investigated and recorded | I state the descriptive purpose and limit uses. | [S10](stage-7-dashboards-and-site.html#recorded-responses) |
 | Q2 — Could a simpler non-AI process do it? | 🟠 Concern | Investigated and recorded | I explain why the two models are included. | [Machine learning](https://tidyweb.github.io/Birmingham-Healthy-Life/story/machine-learning.html) |
 | Q3 — Purpose vague, or likely to grow? | 🟠 Concern | Investigated and recorded | I list the uses this work is not for. | [S13](law-and-governance.html#excluded-uses) |
-| Q4 — Benefit to me, cost to others? | 🟠 Concern | Open | Open until user testing with three Birmingham readers is recorded | [S10](stage-7-dashboards-and-site.html#recorded-responses) |
+| Q4 — Benefit to me, cost to others? | 🟠 Concern | Open by decision | I accept the stigma cost as the price of getting to the truth, and keep it down. | [S10](stage-7-dashboards-and-site.html#recorded-responses) |
 | Q5 — Information about identifiable people? | ⚪ No flag | No flag | The published outputs remain area summaries. | [S13](law-and-governance.html#area-data) |
 | Q6 — Profiling individuals? | ⚪ No flag | No flag | The models still describe area patterns. | [S13](law-and-governance.html#automated-decisions) |
 | Q7 — Sensitive data, or a stand-in for it? | 🟠 Concern | Investigated and recorded | Notebook 07 tests proxy overlap. | [S12](proxies-fairness-and-crime.html#proxy-overlap) |
@@ -39,10 +37,10 @@ I kept each original Unit 2 lamp beside the Unit 3 status. “Investigated and r
 | Q15 — Errors fall more on some groups? | 🟠 Concern | Investigated and recorded | Notebook 07 compares errors across area groups. | [S12](proxies-fairness-and-crime.html#error-parity) |
 | Q16 — Affected without knowing AI was involved? | ⚪ No flag | No flag | AI use remains disclosed. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
 | Q17 — Can't understand, correct or challenge the result? | 🟠 Concern | Investigated and recorded | I provide a question form and correction route. | [S10](stage-7-dashboards-and-site.html#recorded-responses) |
-| Q18 — Affected people left out of design and testing? | 🟠 Concern | Open | Open until user testing with three Birmingham readers is recorded. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
+| Q18 — Affected people left out of design and testing? | 🟠 Concern | Open by decision | There's no practical way to involve everyone the study covers. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
 | Q19 — Changes jobs, pace or monitoring? | ⚪ No flag | No flag | The project does not change jobs or monitoring. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
 | Q20 — Could failure cause physical or psychological harm? | 🟠 Concern | Investigated and recorded | I state the risk of overreading maps and give caveats. | [S10](stage-7-dashboards-and-site.html#recorded-responses) |
-| Q21 — Tested only in a demo, not real use? | 🟠 Concern | Open | Open until user testing with three Birmingham readers is recorded. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
+| Q21 — Tested only in a demo, not real use? | 🟠 Concern | Open by decision | It's a course project, not built for real use. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
 | Q22 — No tested way to pause, override or fall back? | 🟠 Concern | Investigated and recorded | I record correction and retirement steps. | [S14](lifecycle.html#correction-route) |
 | Q23 — Could it be misused or used out of purpose? | 🟠 Concern | Investigated and recorded | I state excluded uses and keep findings descriptive. | [S13](law-and-governance.html#excluded-uses) |
 | Q24 — No named owner, monitor or stop authority? | ⚪ No flag | No flag | I am named as owner. | [S13](law-and-governance.html#accountability) |
@@ -77,6 +75,8 @@ Before I tick investigated and recorded, I must be able to say what could go wro
 "I gain assessment and portfolio evidence. People in the areas ranked lowest could bear stigma. I reduce that by showing uncertainty, describing areas not people, and refusing claims the evidence can't carry. Making a real inequality visible is also a benefit to them. But nobody from those areas has had a say in the work."
 
 **Verdict: Re-judge after user testing.** Q4 stays orange until user testing with three Birmingham readers is recorded; I will then re-judge it. They are three Birmingham readers, not representatives of the affected communities.
+
+**Update, 20 October 2026: open by decision.** I've decided Q4 stays orange and I go ahead anyway; [Why three lamps stay orange](s2-the-method.html#sbx) on The method gives my reasons.
 
 ### Q7. Sensitive data, or a stand-in for it?
 
@@ -148,12 +148,14 @@ Applying the sharper test moved Q4 back to orange. I record that as a finding of
 
 ## Still open {#still-open}
 
-- **Q4 — Benefit to me, cost to others.** I gain assessment and portfolio evidence while people in named areas could bear stigma. This stays orange until testing with three Birmingham readers is recorded.
-- **Q18 — Affected people left out of design and testing.** I will re-judge this when the three Birmingham readers’ testing and any changes are recorded.
-- **Q21 — Tested only in a demo.** I will re-judge this when testing in use by those readers is recorded.
+These three stay open by decision. I looked at each one and decided to go ahead anyway.
 
-These are open findings, not promises that user testing will clear them. If testing reveals a new problem, I will record that and decide what to change before closing an item.
+- **Q4 — Benefit to me, cost to others.** I gain assessment and portfolio evidence while people in named areas could bear stigma. I accept that as the cost of trying to get to the truth about these differences, and I keep it down with broad labels, honest uncertainty and a policy on naming places.
+- **Q18 — Affected people left out of design and testing.** The study covers 660 areas and several million people. There's no practical way to involve them all, and publishing area-level statistics doesn't need their permission.
+- **Q21 — Tested only in a demo.** This is a course project, built to be assessed, not for anyone to rely on, so it won't be tested in real use.
+
+User testing with three Birmingham readers adds evidence, but it doesn't close these three. If testing reveals a new problem, I will record it and decide what to change.
 
 ## User testing
 
-User testing is under way with three Birmingham readers. On 17 October 2026, I reviewed the dashboard and site myself. That review led to fixes for the dashboard search bug; the HLE, rank and band labels; the six-groups note in the active-measure panel; the visibility of the “Question this work” link; and the plain-English wording in S11. I will re-judge Q4, Q18 and Q21 when testing is recorded as part of the evaluation stage in [Lifecycle](https://tidyweb.github.io/Birmingham-Healthy-Life-Second-Look/story/lifecycle.html).
+User testing is under way with three Birmingham readers. On 17 October 2026, I reviewed the dashboard and site myself. That review led to fixes for the dashboard search bug; the HLE, rank and band labels; the six-groups note in the active-measure panel; the visibility of the “Question this work” link; and the plain-English wording in S11. I record the results as part of the evaluation stage in [Lifecycle](https://tidyweb.github.io/Birmingham-Healthy-Life-Second-Look/story/lifecycle.html).

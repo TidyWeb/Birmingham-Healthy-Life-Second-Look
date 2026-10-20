@@ -33,9 +33,7 @@ caption: Each point represents an area. These patterns show association across a
 
 **Q23 — Could the work be used outside its purpose? Concern.** Placing health, crime, ethnicity and food-environment measures side by side can make association look like explanation. The accuracy response is to state the limits and keep causal claims out.
 
-::: image second-look/stage-3-lamps.svg
-alt: Numbered lamps for the four concern questions assigned to Stage 3.
-caption: Each filled orange lamp carries its Signal Box question number.
+::: signalbox stage S3
 :::
 
 ## What I found

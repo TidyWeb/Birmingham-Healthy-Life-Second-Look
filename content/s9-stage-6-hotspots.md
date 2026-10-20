@@ -25,9 +25,7 @@ caption: The patches locate repeated area-level HLE differences. They show spati
 
 **Q14 — Could an output be treated as proof rather than a prompt? Concern.** Signal Box found that a residual map could read as an “underperforming” place, even though a residual is only the difference between observed HLE and the model's estimate.
 
-::: image second-look/stage-6-lamps.svg
-alt: One numbered orange lamp for the Stage 6 concern, question 14.
-caption: The lamp identifies the question about treating a map as proof.
+::: signalbox stage S6
 :::
 
 ## What I found

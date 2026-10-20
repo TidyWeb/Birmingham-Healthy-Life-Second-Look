@@ -33,9 +33,7 @@ caption: The model weights describe association while the other measures are hel
 
 **Q15 — Do errors fall more on some groups? Concern.** Unit 2 reported overall residual autocorrelation but did not compare errors across ethnic-composition or deprivation groups.
 
-::: image second-look/stage-5-lamps.svg
-alt: Numbered lamps for the Stage 5 concern questions.
-caption: The filled lamps mark the four questions assigned to the model stage.
+::: signalbox stage S5
 :::
 
 ## What I found
