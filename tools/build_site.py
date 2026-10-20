@@ -652,7 +652,7 @@ DASHBOARD_MOBILE_STYLE = """<style>
 </style>"""
 
 BACK_LINK = (
-    '<a href="../story/my-dashboard.html" id="back-to-story" '
+    '<a href="../story/stage-7-dashboards-and-site.html" id="back-to-story" '
     # Go back to the exact page the reader came from; if they arrived directly, go to the dashboard chapter
     'onclick="if(document.referrer&&document.referrer.indexOf(location.origin)===0&&history.length>1){history.back();return false;}" '
     'style="position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:2000;background:#f5f6f0;color:#36557e;'
