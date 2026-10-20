@@ -6,7 +6,7 @@ summary: The position behind revisiting my Unit 2 Birmingham Healthy Life analys
 standfirst: I want the claims to be as strong as the evidence: no stronger, and no weaker.
 ---
 ::: keypoints
-The Ethics of a Birmingham Healthy Life is my Unit 3 project. I revisit my Unit 2 Birmingham Healthy Life analysis through an ethical lens, describing what the evidence supports without hiding uncomfortable findings or claiming more than it can show.
+The Ethics of a Birmingham Healthy Life is my Unit 3 project for the Code Institute Diploma in Data Analytics with AI. I am revisiting my Unit 2 Birmingham Healthy Life analysis, but coming to it through an ethics-first lens, describing what the evidence supports without in any way hiding uncomfortable findings, or claiming more than the data can show.
 :::
 
 ## What this is
@@ -16,14 +16,14 @@ Birmingham Healthy Life began as my Unit 2 project. In Unit 3 I am revisiting th
 I built [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) as an independent companion to the Code Institute LMS lesson for fellow students, then created [Signal Box: the AI ethics check](https://tidyweb.github.io/ethical-considerations-in-ai/#screening-tool) within it. I applied Signal Box to my Unit 2 Birmingham Healthy Life project; Unit 3 is that ethical rework and a practical test of whether Signal Box works. The guide is my own study material, not official Code Institute material; [The method](s2-the-method.html) explains how I applied Signal Box.
 
 ::: callout
-“The aim is the truth about healthy life expectancy, told plainly. Ethical care means not causing avoidable harm and not claiming more than the evidence shows. It does not mean avoiding uncomfortable findings.”
+“The aim is to see the truth about healthy life expectancy, told plainly. Ethical care means not causing avoidable harm and not claiming more than the evidence shows. It does not mean avoiding uncomfortable findings.”
 :::
 
 ## Respect without avoiding the question
 
-Respecting people and trying to avoid harm matter. That is different from becoming so worried about the possibility of offence that I stop saying what the evidence shows. Trying to please everyone can leave the account too vague to be useful.
+Respecting people and trying to avoid harm matter. That is different from becoming so worried about the possibility of offence that I stop saying what the evidence shows. Trying to please everyone all the time would leave the account too vague to be useful. I am not seeking approval. I am seeking the truth.
 
-The message and the way each reader receives it are not the same thing. I cannot control every interpretation. I am responsible for the claim I make and how strongly I make it.
+The message and the way each reader receives it are not the same thing. I cannot control every interpretation. I am however responsible for every claim I make, and how strongly I make it.
 
 ## An accuracy test
 
@@ -33,9 +33,11 @@ The figures are estimates, with margins of error. That is a reason to show uncer
 
 ## Why rank and name places
 
-The investigation is about healthy life expectancy, so I rank areas by healthy life expectancy. I name areas so people who know Birmingham and its surroundings can recognise them and relate the results to places they know.
+The investigation is about healthy life expectancy, so I rank areas by healthy life expectancy. I name areas using familiar local names so people who know Birmingham and its surroundings can recognise them and relate the results to places they know.
 
 The datasets were chosen through judgement. I began with measures that seemed plausibly connected to healthy life expectancy, based on intuition and life experience. I left out measures with no plausible route to the question, then plotted the selected data against healthy life expectancy to see what related and what stood out. Those choices and the reasons for keeping or dropping a dataset should be visible rather than left implicit.
+
+That approach has a weakness I should name. Keeping a measure because it lined up with healthy life expectancy is choosing on the outcome, so some of the strength of those links is built in by the choosing. The same goes for the hotspots, which I picked because their gaps were extreme.
 
 ## Association, not cause; areas, not people
 
