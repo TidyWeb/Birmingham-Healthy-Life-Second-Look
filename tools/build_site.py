@@ -32,6 +32,7 @@ import os
 import re
 import shutil
 from pathlib import Path
+from urllib.parse import urlsplit
 
 import markdown
 from PIL import Image
@@ -85,8 +86,11 @@ FONTS = ("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wg
          "&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap")
 
 
-def external_links_in_current_tab(document: str) -> str:
-    """Keep web links in the current tab and retain safe external rel tokens."""
+def external_links_in_new_tab(document: str) -> str:
+    """Add safe new-tab attributes to external links in generated pages."""
+    own_host = "tidyweb.github.io"
+    own_path = "/Birmingham-Healthy-Life-Second-Look"
+
     def update_anchor(match: re.Match[str]) -> str:
         tag = match.group(0)
         href_match = re.search(
@@ -99,12 +103,13 @@ def external_links_in_current_tab(document: str) -> str:
         href = next(value for value in href_match.groups() if value is not None)
         if not href.lower().startswith(("http://", "https://")):
             return tag
-        tag = re.sub(
-            r"""\s+\btarget\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)""",
-            "",
-            tag,
-            flags=re.IGNORECASE,
-        )
+        parsed = urlsplit(href)
+        own_path_match = parsed.path.rstrip("/")
+        if ((parsed.hostname or "").lower() == own_host
+                and (own_path_match == own_path or own_path_match.startswith(own_path + "/"))):
+            return tag
+        if re.search(r"\btarget\s*=", tag, flags=re.IGNORECASE):
+            return tag
 
         rel_match = re.search(
             r"""\srel\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))""",
@@ -118,8 +123,10 @@ def external_links_in_current_tab(document: str) -> str:
                 if token not in rel_tokens:
                     rel_tokens.append(token)
             replacement = ' rel="' + " ".join(rel_tokens) + '"'
-            return tag[:rel_match.start()] + replacement + tag[rel_match.end():]
-        insertion = ' rel="noopener noreferrer"'
+            tag = tag[:rel_match.start()] + replacement + tag[rel_match.end():]
+            insertion = ' target="_blank"'
+        else:
+            insertion = ' target="_blank" rel="noopener noreferrer"'
         if tag.endswith("/>"):
             return tag[:-2] + insertion + tag[-2:]
         return tag[:-1] + insertion + '>'
@@ -419,7 +426,7 @@ def page(title: str, body: str, active: str, root: str, chapters: list[dict], de
 </body>
 </html>
 """
-    return external_links_in_current_tab(document)
+    return external_links_in_new_tab(document)
 
 
 def pager(chapters: list[dict], index: int, root: str) -> str:
@@ -497,7 +504,7 @@ def build_home(chapters: list[dict]) -> None:
 </body>
 </html>
 """
-    (SITE / "index.html").write_text(external_links_in_current_tab(html_body), encoding="utf-8")
+    (SITE / "index.html").write_text(external_links_in_new_tab(html_body), encoding="utf-8")
 
 
 # ---------- Notebook pages ----------
