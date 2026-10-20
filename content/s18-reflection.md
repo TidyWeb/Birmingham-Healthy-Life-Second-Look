@@ -4,15 +4,15 @@ part: second-look
 slug: reflection
 title: Reflection
 summary: What I missed, what the audits found, and what I learned while rebuilding the project.
-standfirst: This is a first-person draft for Phil to rewrite before publication.
+standfirst: What I have learned from this ethics first look at my Birmingham Healthy Life project, and how this ethical audit has changed my understanding, and improved the work.
 ---
 ::: keypoints
-I started by thinking about ethics mainly as privacy. The re-screen and the audits made me look at uncertainty, proxy overlap, model error, aggregation and accountability as well.
+I started Unit 2 - Birmingham Healthy Life by thinking about ethics mainly from the standpoint of privacy. Clearly, dealing with health data involves protecting personal information, but it also involves ensuring that the data is used responsibly and ethically. The re-screen and the audits I ran here made me look at uncertainty, proxy overlap, model error, stigmatisation, aggregation and accountability as well.
 :::
 
 ## What I missed in Unit 2
 
-In Unit 2 I treated ethics mainly as a privacy question. The 27-question screen did not find a legal-trigger concern, but it found other issues I had not written down: false certainty, possible proxy effects in the model, how area patterns might be read as claims about people, and how someone could question the work. Privacy was one part of the review, not the whole of it.
+In Unit 2 I treated ethics mainly as a privacy question. The 27-question screen I built did not find a legal-trigger concern, but it found other issues I had not written down: false certainty, possible proxy effects in the model, how area patterns might be read as claims about people, and how someone could question the work. Privacy was just one part of the review, not the whole of it.
 
 The audits gave me results I needed to state plainly. The seven model features predicted area-level household deprivation with an R² of 0.898, and their overlap with the six broad ethnicity shares varied. The error audit found a direction difference across deprivation thirds: in the least-deprived third the model ran low by about 0.31 years, while in the most-deprived third it ran high by about 0.46 years; both bootstrap intervals excluded zero. That is a result about area-level predictions, not a description of any resident.
 
@@ -28,7 +28,7 @@ An earlier draft also got the screen count wrong: it said 16 concerns and 11 no-
 
 ## The position I reached
 
-The stance came from argument, not from applying a sentence I had been handed. I went back and forth over respect, the risk of causing offence, and the risk of hiding an uncomfortable result. I came back to accuracy: the claim should be as strong as the evidence, no stronger and no weaker. I cannot control every reader's interpretation. I am responsible for what I claim and how firmly I claim it.
+My stance came from argument, not from applying a sentence I had been handed. I went back and forth over respect, the risk of causing offence, and the risk of hiding an uncomfortable result. I came back to accuracy: the claim should be as strong as the evidence, no stronger and no weaker. I cannot control every reader's interpretation. I am responsible for what I claim and how firmly I claim it.
 
 ## Working with AI
 
@@ -36,4 +36,4 @@ AI sped up planning, notebook code, checking and first drafts. It also made mist
 
 ## What I would do next
 
-I still need to run the planned user-testing sessions and record what readers understood and what confused them. I need to add the uncertainty view to the Tableau workbook, rewrite this draft in my own words, then hand-edit and audit the final language. After that I can review the complete site, make the final site commit and push it, and check the published pages again. Until those steps are done, I should not present the project as fully finished.
+User testing is under way with three Birmingham readers; I still need to record what they understood and what confused them. I need to rewrite this draft in my own words, then hand-edit and audit the final language. After that I can review the complete site, make the final site commit and push it, and check the published pages again. Until those steps are done, I should not present the project as fully finished.
