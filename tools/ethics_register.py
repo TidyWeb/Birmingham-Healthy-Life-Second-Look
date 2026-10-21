@@ -1,4 +1,9 @@
-"""Build figures and a text summary from the Unit 2 Signal Box CSV."""
+"""Build figures and a text summary from the Unit 2 Signal Box CSV.
+
+The SVG figures this script draws were replaced on the site on 20 October 2026 by the live
+Signal Box boards (tools/signal_box.py). They are kept in assets/img/second-look/ as a record;
+see the README there. The text summary, screen-summary.md, is still linked from the site.
+"""
 
 from __future__ import annotations
 
