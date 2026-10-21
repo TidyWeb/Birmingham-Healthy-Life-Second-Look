@@ -13,6 +13,9 @@
 
 #plain-view-mount { display: block; pointer-events: none; }
 #plain-view-topbar { pointer-events: auto; }
+/* In the Detailed view, its own buttons (Explore & layers, Sources & method, Map only) sit one row
+   below the Plain/Detailed switch, so the switch never covers them and stays in the same place in both views. */
+body:not(.plain-view-active) .actions-top { top: 74px; }
 body:not(.plain-view-active) #plain-question-box,
 body:not(.plain-view-active) #plain-map-tools,
 body:not(.plain-view-active) #plain-area-popup { display: none !important; }
