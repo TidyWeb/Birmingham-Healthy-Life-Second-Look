@@ -11,6 +11,8 @@ AI made me faster at almost every stage, from finding the data to pushing the wo
 
 I used AI throughout this project, in different ways at different stages, and I want to be open about how. What follows is a general picture rather than a log of every conversation, but it's an honest one.
 
+I chose the questions and sources, made the methodological decisions, reran the analysis, checked numbers against the saved outputs and corrected errors. I am responsible for the final claims and wording.
+
 The project started in Unit 2, and it started with a search. I used Google Gemini, and in particular a specialist data Gem I built for the job, to help me find and weigh up datasets. I wanted something that mattered in the Midlands, that was recent, and that I was free to use. It was a long process before we landed on the ONS healthy life expectancy figures for small areas, which were recent and published under an open licence. From there I used Claude for conceptual conversations: what could this data tell me, what other datasets could add context and richness to what I saw in the HLE data, and how might I use them?
 
 The structure of the analysis was mine. I went out and found the other datasets, and I designed the schema: healthy life expectancy at MSOA level as the master data frame, with supplementary datasets brought in because they might tell us more about the differences the healthy life expectancy figures were showing. I didn't want the full width and breadth of those datasets, so I picked out the key elements, reduced each one down, and joined them all to the master table. That was Unit 2, and it's the foundation this project stands on.
