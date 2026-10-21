@@ -27,7 +27,6 @@ QUESTIONS = Path(__file__).resolve().parent / "signal_box_questions.json"
 DATA_JS = SITE / "assets" / "signal-box" / "signal-box-data.js"
 OWN_STORY = "https://tidyweb.github.io/Birmingham-Healthy-Life-Second-Look/story/"
 GUIDE_URL = "https://tidyweb.github.io/ethical-considerations-in-ai/#screening-tool"
-UNIT2_LABELS = {"https://tidyweb.github.io/Birmingham-Healthy-Life/story/machine-learning.html": "Unit 2: Machine learning"}
 STAGE_FILES = {
     "S1": "s4-stage-1-choosing-sources.html",
     "S2": "stage-2-preparing-and-aggregating.html",
@@ -82,7 +81,7 @@ def build_data(project: Path, chapters: list[dict]) -> dict:
                     raise ValueError(f"Q{q['n']} links to a page that doesn't exist: {href}")
                 where = {"href": href, "label": titles[href.split("#")[0]], "ext": False}
             elif url:
-                where = {"href": url, "label": UNIT2_LABELS[url], "ext": True}
+                raise ValueError(f"Q{q['n']} links outside this site: {url}")
             stages = [s for s in r["stages"].split(";") if re.fullmatch(r"S[1-7]", s)]
             if not stages:
                 stages = [s for s, ns in STAGE_CLEAR_QUESTIONS.items() if q["n"] in ns]

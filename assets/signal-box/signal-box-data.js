@@ -41,9 +41,9 @@ window.SBX_DATA = {
      ],
      "action": "Record why ML is there (it estimates how much of the pattern the measures explain) and that it informs nothing about individuals.",
      "where": {
-      "href": "https://tidyweb.github.io/Birmingham-Healthy-Life/story/machine-learning.html",
-      "label": "Unit 2: Machine learning",
-      "ext": true
+      "href": "stage-5-machine-learning.html",
+      "label": "Stage 5: Machine learning",
+      "ext": false
      }
     },
     {
