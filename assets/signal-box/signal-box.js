@@ -4,7 +4,7 @@
   var D = window.SBX_DATA, root = document.getElementById('sbx');
   if (!root) return;
   var active = D.groups[0].id, sel = null;
-  var WORD = {o:'Yes: concern still open', y:'Yes: investigated and recorded', g:'No: no concern raised'};
+  var WORD = {o:'Yes: concern settled by executive decision', y:'Yes: investigated and recorded', g:'No: no concern raised'};
   function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function lamp(q, tag){
     var label = 'Question ' + q.n + ': ' + WORD[q.lamp];
@@ -18,7 +18,7 @@
     D.groups.forEach(function(g){ g.qs.forEach(function(q){ tot[q.lamp]++; }); });
     var held = tot.o;
     var html = '<p class="sbx-title">Signal Box: my answers for this project</p>' +
-      '<div class="sbx-sum" role="group" aria-label="Lamp totals"><span><i class="sbx-sw o"></i>Orange, concern still open <strong>' + tot.o + '</strong></span>' +
+      '<div class="sbx-sum" role="group" aria-label="Lamp totals"><span><i class="sbx-sw o"></i>Orange, settled by executive decision <strong>' + tot.o + '</strong></span>' +
       '<span><i class="sbx-sw y"></i>Yellow, investigated and recorded <strong>' + tot.y + '</strong></span>' +
       '<span><i class="sbx-sw g"></i>Grey, no concern raised <strong>' + tot.g + '</strong></span></div>' +
       '<p class="sbx-start">Start: the published project</p><div class="sbx-track">' +
@@ -30,7 +30,7 @@
           (h ? '<div class="sbx-held">Held: ' + h + ' open</div>' : '') + '</div>';
       }).join('') + '</div>' +
       '<div class="sbx-end' + (held ? ' held' : '') + '"><b>End: I decide, as the project owner: proceed, narrow, redesign or stop.</b><span>' +
-      (D.decision ? '<strong>My decision: proceed.</strong> ' + held + ' lamp' + (held > 1 ? 's' : '') + ' stay orange on purpose.' : held + ' orange lamps still open') + '</span></div>' +
+      (D.decision ? '<strong>My decision: proceed.</strong> ' + held + ' lamp' + (held > 1 ? 's' : '') + ' stay orange on purpose.' : held + ' orange lamps not yet settled') + '</span></div>' +
       (D.decision ? '<div class="sbx-why"><h4>Why three lamps stay orange</h4><p>' + esc(D.decision.intro) + '</p><ul>' +
         D.decision.items.map(function(it){ return '<li><button type="button" class="sbx-lamp o" data-q="' + it.n + '" data-g="' + it.g + '" aria-label="Question ' + it.n + ', show what I recorded">' + it.n + '</button><div><b>' + esc(it.title) + '</b> ' + esc(it.text) + '</div></li>'; }).join('') +
         '</ul></div>' : '') +
@@ -84,7 +84,7 @@
   });
 
   var WORD = { o: "concern", y: "investigated and recorded", g: "no concern raised" };
-  var AFTER = { o: "concern still open by decision", y: "investigated and recorded", g: "no concern raised" };
+  var AFTER = { o: "concern settled by executive decision", y: "investigated and recorded", g: "no concern raised" };
 
   function esc(value) {
     return String(value).replace(/[&<>"']/g, function (character) {
@@ -123,7 +123,7 @@
     var items = [];
     if (kind === "pair" || kind === "both") {
       items.push("<span>Left: the Unit 2 screen. Right: after the Unit 3 re-test.</span>");
-      items.push('<span><i class="sbx-sw o"></i>Orange: concern in Unit 2; still open after the re-test</span>');
+      items.push('<span><i class="sbx-sw o"></i>Orange: concern in Unit 2; settled by executive decision after the re-test</span>');
       items.push('<span><i class="sbx-sw y"></i>Yellow: investigated and recorded</span>');
       items.push('<span><i class="sbx-sw g"></i>Grey: no concern raised</span>');
     } else {
@@ -162,7 +162,7 @@
     element.innerHTML = '<div class="sbm-ba"><section><h4>Unit 2 screen</h4>' +
       '<p class="sbm-tot">' + before.o + ' concerns · ' + before.g + ' with no concern raised</p>' + board("before") +
       '</section><section><h4>After the Unit 3 re-test</h4><p class="sbm-tot">' +
-      after.y + ' investigated and recorded · ' + after.o + ' open by decision · ' + after.g +
+      after.y + ' investigated and recorded · ' + after.o + ' settled by executive decision · ' + after.g +
       ' with no concern raised</p>' + board("after") + '</section></div>' + key("both") + methodLink();
   }
 

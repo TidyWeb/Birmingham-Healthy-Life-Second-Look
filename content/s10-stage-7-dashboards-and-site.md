@@ -24,7 +24,7 @@ caption: The dashboard presents named area estimates and comparisons. The number
 
 **Q3 — Is the purpose vague or likely to grow? Concern.** The project question is clear, but Unit 2 did not state excluded uses.
 
-**Q4 — Does the work mainly benefit me while others bear a cost? Concern.** Signal Box recorded that I gain assessment and portfolio evidence while the project names places without involving local readers. The accuracy response is to show uncertainty and avoid claims beyond the data. I've since decided to leave Q4 open; see [Why three lamps stay orange](s2-the-method.html#sbx) on The method.
+**Q4 — Does the work mainly benefit me while others bear a cost? Concern.** Signal Box recorded that I gain assessment and portfolio evidence while the project names places without involving local readers. The accuracy response is to show uncertainty and avoid claims beyond the data. I've since settled Q4 by executive decision; see [Why three lamps stay orange](s2-the-method.html#sbx) on The method.
 
 **Q14 — Could an output be treated as proof rather than a prompt? Concern.** Exact values and ranks can appear firmer than the estimate intervals allow.
 

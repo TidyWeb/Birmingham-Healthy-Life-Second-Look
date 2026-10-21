@@ -40,7 +40,7 @@ METHOD_HREF = "s2-the-method.html#sbx"
 
 # Phil's decision on the lamps that stay orange (20 October 2026).
 DECISION = {
-    "intro": "I've published with three concerns still open. I looked at each one and decided to go ahead anyway; this is why.",
+    "intro": "I've published with three concerns settled by executive decision. I looked at each one and decided to go ahead anyway; this is why.",
     "items": [
         {"n": 4, "title": "Q4. The benefit is mine; any cost falls on others.",
          "text": "If anyone pays a cost it's the people living in the areas with the fewest years in good health, through stigma. I accept that as the cost of trying to get to the truth about these differences, and I've kept it down with broad labels, honest uncertainty and a policy on naming places."},
@@ -158,7 +158,7 @@ def figure(data: dict, mode: str, args: list[str], caption: str | None = None) -
     elif mode == "before-after":
         label = "Signal Box results before and after the Unit 3 re-test"
         default = (f"The Unit 2 screen raised {before['o']} concerns; {before['g']} had no concern raised. After the Unit 3 "
-                   f"re-test, {after['y']} were investigated and recorded, {after['o']} remain open by decision, and "
+                   f"re-test, {after['y']} were investigated and recorded, {after['o']} are settled by executive decision, and "
                    f"{after['g']} had no concern raised.")
     elif mode == "stage":
         stage = args[0]
@@ -168,7 +168,7 @@ def figure(data: dict, mode: str, args: list[str], caption: str | None = None) -
         label = f"{title} Signal Box questions"
         c = _counts([q for q in flat if stage in q["stages"]], "before")
         default = (f"{title}: {_n(c['o'], 'Unit 2 concern', 'Unit 2 concerns')} and "
-                   f"{_n(c['g'], 'no-flag question', 'no-flag questions')}. Each row also shows the result after the Unit 3 re-test.")
+                   f"{_n(c['g'], 'question with no concern raised', 'questions with no concern raised')}. Each row also shows the result after the Unit 3 re-test.")
     else:
         raise ValueError(f"Unknown Signal Box board: {mode}")
 

@@ -79,7 +79,7 @@ window.SBX_DATA = {
      ],
      "evidence": [
       "The benefit goes mainly to me (assessment, portfolio). Any cost falls on residents of low-HLE areas through stigma, and they had no say.",
-      "Open by decision: I accept this cost as the price of describing the differences honestly. Banding, certainty labels and a naming policy keep it down."
+      "Settled by executive decision: I accept this cost as the price of describing the differences honestly. Banding, certainty labels and a naming policy keep it down."
      ],
      "action": "A cui bono / cui damno card on the site, and harm-reducing presentation (banding, certainty, naming policy).",
      "where": {
@@ -394,7 +394,7 @@ window.SBX_DATA = {
       "S7"
      ],
      "evidence": [
-      "Open by decision. The study covers 660 areas and several million people. There is no practical way to involve them, and publishing area-level statistics does not need their consent.",
+      "Settled by executive decision. The study covers 660 areas and several million people. There is no practical way to involve them, and publishing area-level statistics does not need their consent.",
       "User testing with three Birmingham readers adds evidence, but it does not close this concern."
      ],
      "action": "User testing with at least one non-technical local reader; record what changed. Name the limit honestly.",
@@ -463,7 +463,7 @@ window.SBX_DATA = {
       "S7"
      ],
      "evidence": [
-      "Open by decision. This is a course project built for assessment, not for real use, so it will not be tested in real use.",
+      "Settled by executive decision. This is a course project built for assessment, not for real use, so it will not be tested in real use.",
       "User testing with three Birmingham readers checks that the site can be understood; that is not real use."
      ],
      "action": "User testing (also handbook evidence for LO2.2).",
@@ -610,7 +610,7 @@ window.SBX_DATA = {
   }
  ],
  "decision": {
-  "intro": "I've published with three concerns still open. I looked at each one and decided to go ahead anyway; this is why.",
+  "intro": "I've published with three concerns settled by executive decision. I looked at each one and decided to go ahead anyway; this is why.",
   "items": [
    {
     "n": 4,

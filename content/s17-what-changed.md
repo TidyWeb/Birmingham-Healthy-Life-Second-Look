@@ -6,7 +6,7 @@ summary: How the Unit 2 concerns were checked again with Signal Box against the 
 standfirst: I checked each original Signal Box result against the evidence now on the site.
 ---
 ::: keypoints
-I checked all 27 questions again against the Unit 3 site: 14 are investigated and recorded, 3 remain open by decision (Q4, Q18 and Q21), and 10 remain with no concern raised.
+I checked all 27 questions again against the Unit 3 site: 14 are investigated and recorded, 3 are settled by executive decision (Q4, Q18 and Q21), and 10 remain with no concern raised.
 :::
 
 ::: signalbox before-after wide
@@ -21,7 +21,7 @@ I kept each original Unit 2 lamp beside the Unit 3 status. “Investigated and r
 | Q1 — Shapes a decision that matters to someone's life? | 🟠 Concern | Investigated and recorded | I state the descriptive purpose and limit uses. | [S10](stage-7-dashboards-and-site.html#recorded-responses) |
 | Q2 — Could a simpler non-AI process do it? | 🟠 Concern | Investigated and recorded | I explain why the two models are included. | [Stage 5: Machine learning](stage-5-machine-learning.html) |
 | Q3 — Purpose vague, or likely to grow? | 🟠 Concern | Investigated and recorded | I list the uses this work is not for. | [S13](law-and-governance.html#excluded-uses) |
-| Q4 — Benefit to me, cost to others? | 🟠 Concern | Open by decision | I accept the stigma cost as the price of getting to the truth, and keep it down. | [S10](stage-7-dashboards-and-site.html#recorded-responses) |
+| Q4 — Benefit to me, cost to others? | 🟠 Concern | Settled by executive decision | I accept the stigma cost as the price of getting to the truth, and keep it down. | [S10](stage-7-dashboards-and-site.html#recorded-responses) |
 | Q5 — Information about identifiable people? | ⚪ No concern raised | No concern raised | The published outputs remain area summaries. | [S13](law-and-governance.html#area-data) |
 | Q6 — Profiling individuals? | ⚪ No concern raised | No concern raised | The models still describe area patterns. | [S13](law-and-governance.html#automated-decisions) |
 | Q7 — Sensitive data, or a stand-in for it? | 🟠 Concern | Investigated and recorded | Notebook 07 tests proxy overlap. | [S12](proxies-fairness-and-crime.html#proxy-overlap) |
@@ -35,10 +35,10 @@ I kept each original Unit 2 lamp beside the Unit 3 status. “Investigated and r
 | Q15 — Errors fall more on some groups? | 🟠 Concern | Investigated and recorded | Notebook 07 compares errors across area groups. | [S12](proxies-fairness-and-crime.html#error-parity) |
 | Q16 — Affected without knowing AI was involved? | ⚪ No concern raised | No concern raised | AI use remains disclosed. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
 | Q17 — Can't understand, correct or challenge the result? | 🟠 Concern | Investigated and recorded | I provide a question form and correction route. | [S10](stage-7-dashboards-and-site.html#recorded-responses) |
-| Q18 — Affected people left out of design and testing? | 🟠 Concern | Open by decision | There's no practical way to involve everyone the study covers. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
+| Q18 — Affected people left out of design and testing? | 🟠 Concern | Settled by executive decision | There's no practical way to involve everyone the study covers. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
 | Q19 — Changes jobs, pace or monitoring? | ⚪ No concern raised | No concern raised | The project does not change jobs or monitoring. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
 | Q20 — Could failure cause physical or psychological harm? | 🟠 Concern | Investigated and recorded | I state the risk of overreading maps and give caveats. | [S10](stage-7-dashboards-and-site.html#recorded-responses) |
-| Q21 — Tested only in a demo, not real use? | 🟠 Concern | Open by decision | It's a course project, not built for real use. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
+| Q21 — Tested only in a demo, not real use? | 🟠 Concern | Settled by executive decision | It's a course project, not built for real use. | [S10](stage-7-dashboards-and-site.html#screen-findings) |
 | Q22 — No tested way to pause, override or fall back? | 🟠 Concern | Investigated and recorded | I record correction and retirement steps. | [S14](lifecycle.html#correction-route) |
 | Q23 — Could it be misused or used out of purpose? | 🟠 Concern | Investigated and recorded | I state excluded uses and keep findings descriptive. | [S13](law-and-governance.html#excluded-uses) |
 | Q24 — No named owner, monitor or stop authority? | ⚪ No concern raised | No concern raised | I am named as owner. | [S13](law-and-governance.html#accountability) |
@@ -74,7 +74,7 @@ Before I tick investigated and recorded, I must be able to say what could go wro
 
 **Verdict: Re-judge after user testing.** Q4 stays orange until user testing with three Birmingham readers is recorded; I will then re-judge it. They are three Birmingham readers, not representatives of the affected communities.
 
-**Update, 20 October 2026: open by decision.** I've decided Q4 stays orange and I go ahead anyway; [Why three lamps stay orange](s2-the-method.html#sbx) on The method gives my reasons.
+**Update, 20 October 2026: settled by executive decision.** I've decided Q4 stays orange and I go ahead anyway; [Why three lamps stay orange](s2-the-method.html#sbx) on The method gives my reasons.
 
 ### Q7. Sensitive data, or a stand-in for it?
 
@@ -144,9 +144,9 @@ Before I tick investigated and recorded, I must be able to say what could go wro
 
 Applying the sharper test moved Q4 back to orange. I record that as a finding of testing Signal Box on my own work.
 
-## Still open {#still-open}
+## Settled by executive decision {#still-open}
 
-These three stay open by decision. I looked at each one and decided to go ahead anyway.
+These three are settled by executive decision. I looked at each one and decided to go ahead anyway.
 
 - **Q4 — Benefit to me, cost to others.** I gain assessment and portfolio evidence while people in named areas could bear stigma. I accept that as the cost of trying to get to the truth about these differences, and I keep it down with broad labels, honest uncertainty and a policy on naming places.
 - **Q18 — Affected people left out of design and testing.** The study covers 660 areas and several million people. There's no practical way to involve them all, and publishing area-level statistics doesn't need their permission.

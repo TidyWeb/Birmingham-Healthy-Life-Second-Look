@@ -160,7 +160,7 @@ def load_after_records(path: Path = AFTER_SCREEN_CSV) -> list[dict[str, str]]:
     assert all(
         any(
             reason in record["evidence"].lower()
-            for reason in ("open because", "open by decision", "open until")
+            for reason in ("open because", "open by decision", "open until", "settled by executive decision")
         )
         for record in records if record["after_status"] == "open"
     ), "Every open result needs its reason in the evidence column"
