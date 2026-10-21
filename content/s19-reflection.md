@@ -2,8 +2,8 @@ num: S19
 part: second-look
 slug: reflection
 title: Reflection
-summary: What went wrong, what I had to decide, and what applying my own ethics tool to my own work taught me.
-standfirst: What went wrong, what I had to decide, and what applying my own ethics tool to my own work taught me.
+summary: Approaching the same project from a different angle. What was different? How did the questions change? What did I have to decide? How could I go about addressing these ethical considerations? And what applying my own ethics tool to my own work has taught me.
+standfirst: Approaching the same project from a different angle. What was different? How did the questions change? What did I have to decide? How could I go about addressing these ethical considerations? And what applying my own ethics tool to my own work has taught me.
 ---
 ::: keypoints
 In Unit 2 I thought ethics in data meant privacy in relation to individuals, and some of that protection came from fitting my different granularity datasets together. My Signal Box tool made clear to me there were harms I wasn’t looking for, stigma above all. I’ve decided that risk is bearable because I describe and don’t judge, and I’m honest that the benefit is mainly mine. The data didn’t change; what changed is how carefully I say things, and who I’m saying them to.
