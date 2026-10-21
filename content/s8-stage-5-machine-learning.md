@@ -5,8 +5,6 @@ title: Stage 5: Machine learning
 summary: Why I used a simple model, what its features overlap with, and where its errors point.
 standfirst: The model estimates how much the selected measures account for the area pattern. It does not make decisions about people.
 ---
-I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
-
 ::: keypoints
 I used clustering and a plain regression to describe how the selected measures line up with healthy life expectancy. Notebook 07 then tested proxy overlap and error direction; the findings stay visible and the features stay in the model.
 :::
@@ -43,4 +41,4 @@ By absolute error, accuracy is similar across deprivation thirds: MAE is 1.31–
 
 ## What changes
 
-I keep the seven features and report their proxy overlap as a finding. Crime stays because it tracks local conditions and income and says something about local culture; recorded crime also depends on policing, reporting and footfall, so visitor hubs remain excluded from the model. The crime test shows the conclusions barely change without it. The full tables and ethnic-composition comparison appear in the next investigation.
+I keep the seven features and report their proxy overlap as a finding. Crime stays because it tracks local conditions and income; recorded crime also depends on policing, reporting and footfall, so visitor hubs remain excluded from the model. The crime test shows the conclusions barely change without it. The full tables and the ethnic-composition comparison are in [Proxies, fairness and crime](proxies-fairness-and-crime.html).

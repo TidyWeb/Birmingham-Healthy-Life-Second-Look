@@ -5,8 +5,6 @@ title: Stage 6: Hotspots
 summary: Repeated neighbour gaps, the hotspot map, and the limits of model residuals.
 standfirst: The map can show where measured differences cluster. It cannot say what caused them.
 ---
-I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
-
 ::: keypoints
 I grouped repeated large gaps between neighbouring areas into hotspot patches. Signal Box’s concern is that residual and hotspot maps can look like proof, so I describe estimates and spatial association plainly.
 :::

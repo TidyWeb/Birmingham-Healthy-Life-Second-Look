@@ -5,8 +5,6 @@ title: Stage 3: The joined table
 summary: The combined area-level data, the six-group public view, and the proxy and crime checks.
 standfirst: I joined health, Census, crime and other area measures so I could compare their patterns. The comparisons describe association, not cause.
 ---
-I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
-
 ::: keypoints
 I joined detailed Census measures with healthy life expectancy and other area data. The proxy test found overlap with ethnic composition and deprivation; I report that finding and keep the measures.
 :::

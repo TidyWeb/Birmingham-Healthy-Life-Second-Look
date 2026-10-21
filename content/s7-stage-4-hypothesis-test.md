@@ -5,8 +5,6 @@ title: Stage 4: The hypothesis test
 summary: Neighbour gaps tested against estimate noise, then rankings checked against uncertainty.
 standfirst: A difference can be real without giving every area a firm rank. I need to show both parts accurately.
 ---
-I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
-
 ::: keypoints
 I tested whether the neighbour gaps were larger than estimate noise. I then tested whether the published-lowest areas stayed in the bottom tenth when uncertainty was simulated.
 :::

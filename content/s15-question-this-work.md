@@ -5,8 +5,6 @@ title: Question this work
 summary: How to raise a question about the data, analysis or explanation, and how I handle corrections.
 standfirst: The work is mine. You can ask me to explain or check a choice; if I find an error, I correct and record it.
 ---
-I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
-
 ::: keypoints
 Questions are welcome. Readers can raise an issue about a page or result. I review the evidence, make any correction, and log what changed and why.
 :::

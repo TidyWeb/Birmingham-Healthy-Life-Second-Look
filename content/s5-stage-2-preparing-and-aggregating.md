@@ -5,8 +5,6 @@ title: Stage 2: Preparing and aggregating
 summary: How I brought different data onto comparable area units, and what aggregation leaves hidden.
 standfirst: I had to make different sources comparable before I could join them. Aggregation makes the analysis workable, but it does not show every difference within an area.
 ---
-I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
-
 ::: keypoints
 I converted source tables, counts and grid values into comparable measures for the same areas. Signal Box’s concern is that area averages can hide thin groups and within-area differences.
 :::
@@ -25,16 +23,16 @@ caption: Several measures move together across areas. The overlap is a reason to
 
 **Q10 — Are groups missing or thin? Concern.** Signal Box found that detailed ethnic groups can be very small and that MSOA averages hide variation inside an area. It also recorded six student-dominated areas and six visitor hubs as unusual cases; I kept them and marked the limits of how some measures describe them.
 
-**Cleared — Q5, information about identifiable people? No flag.** The published outputs are area aggregates. Police incidents are rolled up to rates and are not published at point level.
+**Grey — Q5, information about identifiable people? No concern raised.** The published outputs are area aggregates. Police incidents are rolled up to rates and are not published at point level.
 
-**Cleared — Q6, profiling individuals? No flag.** Both models estimate area values, not personal outcomes.
+**Grey — Q6, profiling individuals? No concern raised.** Both models estimate area values, not personal outcomes.
 
 ::: signalbox stage S2
 :::
 
 ## What I found
 
-The preparation kept the flagged areas in the analysis and kept the unit of analysis at area level. A check of variation inside each area has not been run here; that question is covered later in this second look.
+The preparation kept the flagged areas in the analysis and kept the unit of analysis at area level. Notebook 09 measures the variation inside each area; see [What aggregation hides](what-aggregation-hides.html).
 
 ## What changes
 

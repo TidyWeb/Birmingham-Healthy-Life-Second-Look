@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
 <link rel="icon" type="image/png" href="../assets/img/favicon.png">
 <link rel="stylesheet" href="../assets/site.css?v=14e511dc">
-<link rel="stylesheet" href="../assets/signal-box/signal-box.css?v=6e160584">
+<link rel="stylesheet" href="../assets/signal-box/signal-box.css?v=f7b835e5">
 <script src="../assets/qa-test.js" defer></script>
 </head>
 <body>
@@ -29,15 +29,14 @@
   </nav>
 </header>
 <main class="content" id="main">
-<article class="page"><header class="chapter-head"><p class="chapter-num">Chapter S4</p><h1>Stage 1: Choosing sources</h1><p class="standfirst">I chose published measures that seemed plausibly connected to healthy life expectancy. Those links are questions about association, not causes.</p></header><p>I used Signal Box from my own <a href="https://tidyweb.github.io/ethical-considerations-in-ai/" target="_blank" rel="noopener noreferrer">Ethical Considerations in AI</a> guide; <a href="s2-the-method.html">The method</a> explains its origin and how I applied it.</p>
-<section class="keypoints" aria-label="Key points"><h2>In short</h2><p>I chose area-level sources that could help me examine differences in healthy life expectancy. Signal Box found that some inputs are modelled estimates I cannot reproduce, so I now record their limits and revision risks plainly.</p></section>
+<article class="page"><header class="chapter-head"><p class="chapter-num">Chapter S4</p><h1>Stage 1: Choosing sources</h1><p class="standfirst">I chose published measures that seemed plausibly connected to healthy life expectancy. Those links are questions about association, not causes.</p></header><section class="keypoints" aria-label="Key points"><h2>In short</h2><p>I chose area-level sources that could help me examine differences in healthy life expectancy. Signal Box found that some inputs are modelled estimates I cannot reproduce, so I now record their limits and revision risks plainly.</p></section>
 <h2>What I did in Unit 2</h2>
 <aside class="note"><a href="../notebooks/02-data-preparation.html#cell-e934d6fb">Notebook 02</a>The source table records each dataset's period and catch.</aside>
 <p>I started with healthy life expectancy, then chose Census, income, environmental, crime and food-environment measures that seemed plausibly related to it. I recorded their periods, geographies, roles and licence notes. These were choices to investigate, not claims that any measure caused health differences.</p>
 <figure class="plate wide"><div class="sheet"><img src="../assets/figures/wide-01_hle_histograms.webp" width="1800" height="483" alt="Two histograms showing male and female healthy life expectancy estimates across the study areas." loading="lazy"></div><figcaption>Healthy life expectancy was the outcome I set out to describe. The distributions show why the analysis compares areas rather than treating the region as one uniform place. <span class="src">From <a href="../notebooks/03-joined-table-and-exploration.html#cell-31cbe73a">Notebook 03</a>.</span></figcaption></figure>
 <h2 id="what-the-screen-asked">What Signal Box asked</h2>
 <p><strong>Q25 — Does the work depend on a supplier's model or data I cannot inspect? Concern.</strong> Signal Box identified ONS healthy-life estimates, ONS small-area income, DESNZ fuel-poverty estimates and Defra pollution maps as modelled inputs. They cannot be reproduced from the published output alone and may be revised.</p>
-<p><strong>Cleared — Q9, origin, accuracy or permission unknown? No flag.</strong> The register already records source pages, periods, geographies, file hashes and licence notes. The issue was to make known limits visible, not to imply that the sources had unknown origins.</p>
+<p><strong>Grey — Q9, origin, accuracy or permission unknown? No concern raised.</strong> The register already records source pages, periods, geographies, file hashes and licence notes. The issue was to make known limits visible, not to imply that the sources had unknown origins.</p>
 <figure class="plate sbx sbm-fig"><div class="sheet"><div class="sbm" data-mode="stage" role="group" aria-label="Stage 1: Choosing sources Signal Box questions" data-stage="S1"></div></div><figcaption>Stage 1: Choosing sources: 1 Unit 2 concern and 1 no-flag question. Each row also shows the result after the Unit 3 re-test.</figcaption></figure>
 <h2>What I found</h2>
 <p>The source register now distinguishes modelled inputs from other sources and gives every source a plain-language limit and a revision-risk note. The modelled values remain estimates; the new notes make that status visible instead of suggesting they can be recreated exactly.</p>
@@ -47,7 +46,7 @@
 </div>
 <footer class="home-foot"><p><a class="question-work" href="https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml" target="_blank" rel="noopener noreferrer">Question this work</a></p></footer>
 <script src="../assets/site.js"></script>
-<script src="../assets/signal-box/signal-box-data.js?v=6e160584"></script>
-<script src="../assets/signal-box/signal-box.js?v=6e160584"></script>
+<script src="../assets/signal-box/signal-box-data.js?v=f7b835e5"></script>
+<script src="../assets/signal-box/signal-box.js?v=f7b835e5"></script>
 </body>
 </html>

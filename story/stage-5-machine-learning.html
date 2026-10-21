@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
 <link rel="icon" type="image/png" href="../assets/img/favicon.png">
 <link rel="stylesheet" href="../assets/site.css?v=14e511dc">
-<link rel="stylesheet" href="../assets/signal-box/signal-box.css?v=6e160584">
+<link rel="stylesheet" href="../assets/signal-box/signal-box.css?v=f7b835e5">
 <script src="../assets/qa-test.js" defer></script>
 </head>
 <body>
@@ -29,8 +29,7 @@
   </nav>
 </header>
 <main class="content" id="main">
-<article class="page"><header class="chapter-head"><p class="chapter-num">Chapter S8</p><h1>Stage 5: Machine learning</h1><p class="standfirst">The model estimates how much the selected measures account for the area pattern. It does not make decisions about people.</p></header><p>I used Signal Box from my own <a href="https://tidyweb.github.io/ethical-considerations-in-ai/" target="_blank" rel="noopener noreferrer">Ethical Considerations in AI</a> guide; <a href="s2-the-method.html">The method</a> explains its origin and how I applied it.</p>
-<section class="keypoints" aria-label="Key points"><h2>In short</h2><p>I used clustering and a plain regression to describe how the selected measures line up with healthy life expectancy. Notebook 07 then tested proxy overlap and error direction; the findings stay visible and the features stay in the model.</p></section>
+<article class="page"><header class="chapter-head"><p class="chapter-num">Chapter S8</p><h1>Stage 5: Machine learning</h1><p class="standfirst">The model estimates how much the selected measures account for the area pattern. It does not make decisions about people.</p></header><section class="keypoints" aria-label="Key points"><h2>In short</h2><p>I used clustering and a plain regression to describe how the selected measures line up with healthy life expectancy. Notebook 07 then tested proxy overlap and error direction; the findings stay visible and the features stay in the model.</p></section>
 <h2>What I did in Unit 2</h2>
 <aside class="note"><a href="../notebooks/05-machine-learning.html#cell-5f9797c5">Notebook 05</a>Clustering and linear regression use area-level measures.</aside>
 <p>Most of my findings come from plain statistics: the joined table, correlations and the neighbour-gap test. I use the models to ask how much seven measures explain together in councils the model has not seen.</p>
@@ -46,12 +45,12 @@
 <aside class="note"><a href="../notebooks/07-proxy-and-fairness-audit.html#cell-4c2239b1">Notebook 07</a>Bias and absolute error by deprivation third.</aside>
 <p>By absolute error, accuracy is similar across deprivation thirds: MAE is 1.31–1.34 years, with overlapping intervals. Direction is different: the model under-predicts HLE in the least deprived third by 0.31 years and over-predicts it in the most deprived third by 0.46 years, so it understates the real gap. That underclaim is an accuracy failure under my stated position.</p>
 <h2>What changes</h2>
-<p>I keep the seven features and report their proxy overlap as a finding. Crime stays because it tracks local conditions and income and says something about local culture; recorded crime also depends on policing, reporting and footfall, so visitor hubs remain excluded from the model. The crime test shows the conclusions barely change without it. The full tables and ethnic-composition comparison appear in the next investigation.</p><nav class="pager" aria-label="Chapters"><a class="prev" href="../story/stage-4-hypothesis-test.html"><small>Previous</small><strong>S7. Stage 4: The hypothesis test</strong></a><a class="next" href="../story/stage-6-hotspots.html"><small>Next</small><strong>S9. Stage 6: Hotspots</strong></a></nav></article>
+<p>I keep the seven features and report their proxy overlap as a finding. Crime stays because it tracks local conditions and income; recorded crime also depends on policing, reporting and footfall, so visitor hubs remain excluded from the model. The crime test shows the conclusions barely change without it. The full tables and the ethnic-composition comparison are in <a href="proxies-fairness-and-crime.html">Proxies, fairness and crime</a>.</p><nav class="pager" aria-label="Chapters"><a class="prev" href="../story/stage-4-hypothesis-test.html"><small>Previous</small><strong>S7. Stage 4: The hypothesis test</strong></a><a class="next" href="../story/stage-6-hotspots.html"><small>Next</small><strong>S9. Stage 6: Hotspots</strong></a></nav></article>
 </main>
 </div>
 <footer class="home-foot"><p><a class="question-work" href="https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml" target="_blank" rel="noopener noreferrer">Question this work</a></p></footer>
 <script src="../assets/site.js"></script>
-<script src="../assets/signal-box/signal-box-data.js?v=6e160584"></script>
-<script src="../assets/signal-box/signal-box.js?v=6e160584"></script>
+<script src="../assets/signal-box/signal-box-data.js?v=f7b835e5"></script>
+<script src="../assets/signal-box/signal-box.js?v=f7b835e5"></script>
 </body>
 </html>

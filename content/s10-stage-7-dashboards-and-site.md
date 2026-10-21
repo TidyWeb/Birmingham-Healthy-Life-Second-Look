@@ -5,8 +5,6 @@ title: Stage 7: Dashboards and site
 summary: The public presentation, its limits, and the work still needed around use and challenge.
 standfirst: I made an area-level story, maps and dashboards. I need to be as clear about their limits as I am about their findings.
 ---
-I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
-
 ::: keypoints
 I published named area results through a story site and dashboards. Signal Box found risks in certainty, purpose, challenge and evaluation; the answer is to state the limits and make the claims match the evidence.
 :::
@@ -26,7 +24,7 @@ caption: The dashboard presents named area estimates and comparisons. The number
 
 **Q3 — Is the purpose vague or likely to grow? Concern.** The project question is clear, but Unit 2 did not state excluded uses.
 
-**Q4 — Does the work mainly benefit me while others bear a cost? Concern.** Signal Box recorded that I gain assessment and portfolio evidence while the project names places without involving local readers. The accuracy response is to show uncertainty and avoid claims beyond the data.
+**Q4 — Does the work mainly benefit me while others bear a cost? Concern.** Signal Box recorded that I gain assessment and portfolio evidence while the project names places without involving local readers. The accuracy response is to show uncertainty and avoid claims beyond the data. I've since decided to leave Q4 open; see [Why three lamps stay orange](s2-the-method.html#sbx) on The method.
 
 **Q14 — Could an output be treated as proof rather than a prompt? Concern.** Exact values and ranks can appear firmer than the estimate intervals allow.
 
@@ -42,7 +40,7 @@ caption: The dashboard presents named area estimates and comparisons. The number
 
 **Q23 — Could the work be used outside its purpose? Concern.** Public combinations of health, crime, ethnicity and food-environment measures need explicit purpose limits and caveats so association is not presented as explanation.
 
-**Cleared questions.** Q12: no consequential decisions are automated. Q13: there is no reviewer workflow. Q16: AI use is disclosed. Q19: the project does not change jobs or monitoring. Q24: I am named as owner, although a review cadence is not recorded. Q26: the UK project is not deployed in the EU or in a listed high-risk area. Q27: the work is for Birmingham and should not be generalised to other places. These are no flags, not a claim that every part of the project is safe.
+**Questions with no concern raised.** Q12: no consequential decisions are automated. Q13: there is no reviewer workflow. Q16: AI use is disclosed. Q19: the project does not change jobs or monitoring. Q24: I am named as owner, although a review cadence is not recorded. Q26: the UK project is not deployed in the EU or in a listed high-risk area. Q27: the work is for Birmingham and should not be generalised to other places. None of them raised a concern, but that isn't a claim that every part of the project is safe.
 
 ::: signalbox stage S7
 :::
@@ -53,4 +51,4 @@ Signal Box found a clear gap between publishing a dashboard and having evidence 
 
 ## What changes {#recorded-responses}
 
-The site now states the use limits and carries uncertainty and association caveats. A public question route, user testing, and the correction and retirement policy are covered later in this second look.
+The site now states the use limits and carries uncertainty and association caveats. The public question route is on [Question this work](question-this-work.html). User testing was done on 20 October 2026, and every task was rated green ([What changed](what-changed.html#user-testing)). Corrections and retirement are in [Lifecycle](lifecycle.html).

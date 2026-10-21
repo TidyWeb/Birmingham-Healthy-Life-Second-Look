@@ -5,8 +5,6 @@ title: Proxies, fairness and crime
 summary: What the model's features overlap with, how its errors differ, and whether crime changes accuracy.
 standfirst: I tested the seven-feature model instead of treating its original exclusions as proof that proxy effects were absent.
 ---
-I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
-
 ::: keypoints
 The model does not use ethnicity or deprivation directly, but its measures overlap with them. Its absolute error is similar across deprivation groups while its bias points in opposite directions at the two ends.
 :::

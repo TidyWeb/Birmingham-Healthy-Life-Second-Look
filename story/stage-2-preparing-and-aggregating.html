@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
 <link rel="icon" type="image/png" href="../assets/img/favicon.png">
 <link rel="stylesheet" href="../assets/site.css?v=14e511dc">
-<link rel="stylesheet" href="../assets/signal-box/signal-box.css?v=6e160584">
+<link rel="stylesheet" href="../assets/signal-box/signal-box.css?v=f7b835e5">
 <script src="../assets/qa-test.js" defer></script>
 </head>
 <body>
@@ -29,26 +29,25 @@
   </nav>
 </header>
 <main class="content" id="main">
-<article class="page"><header class="chapter-head"><p class="chapter-num">Chapter S5</p><h1>Stage 2: Preparing and aggregating</h1><p class="standfirst">I had to make different sources comparable before I could join them. Aggregation makes the analysis workable, but it does not show every difference within an area.</p></header><p>I used Signal Box from my own <a href="https://tidyweb.github.io/ethical-considerations-in-ai/" target="_blank" rel="noopener noreferrer">Ethical Considerations in AI</a> guide; <a href="s2-the-method.html">The method</a> explains its origin and how I applied it.</p>
-<section class="keypoints" aria-label="Key points"><h2>In short</h2><p>I converted source tables, counts and grid values into comparable measures for the same areas. Signal Box’s concern is that area averages can hide thin groups and within-area differences.</p></section>
+<article class="page"><header class="chapter-head"><p class="chapter-num">Chapter S5</p><h1>Stage 2: Preparing and aggregating</h1><p class="standfirst">I had to make different sources comparable before I could join them. Aggregation makes the analysis workable, but it does not show every difference within an area.</p></header><section class="keypoints" aria-label="Key points"><h2>In short</h2><p>I converted source tables, counts and grid values into comparable measures for the same areas. Signal Box’s concern is that area averages can hide thin groups and within-area differences.</p></section>
 <h2>What I did in Unit 2</h2>
 <aside class="note"><a href="../notebooks/02-data-preparation.html#cell-0ea58e59">Notebook 02</a>The prepared data cover the same 660 study areas.</aside>
 <p>I selected the study areas, checked fields and missing values, then saved compact tables and read them back. I summed fuel-poor household counts from smaller areas before calculating rates, weighted pollution grid cells by how much of each cell fell inside an area, and divided recorded crime counts by resident population. I kept the source files unchanged and flagged unusual areas rather than deleting them.</p>
 <figure class="plate wide"><div class="sheet"><img src="../assets/figures/wide-05_core_overlap.webp" width="1800" height="1471" alt="A correlation grid showing overlap among the measures used to describe the same areas." loading="lazy"></div><figcaption>Several measures move together across areas. The overlap is a reason to choose representatives carefully, not evidence that one measure causes another. <span class="src">From <a href="../notebooks/03-joined-table-and-exploration.html#cell-62df90ff">Notebook 03</a>.</span></figcaption></figure>
 <h2 id="what-the-screen-asked">What Signal Box asked</h2>
 <p><strong>Q10 — Are groups missing or thin? Concern.</strong> Signal Box found that detailed ethnic groups can be very small and that MSOA averages hide variation inside an area. It also recorded six student-dominated areas and six visitor hubs as unusual cases; I kept them and marked the limits of how some measures describe them.</p>
-<p><strong>Cleared — Q5, information about identifiable people? No flag.</strong> The published outputs are area aggregates. Police incidents are rolled up to rates and are not published at point level.</p>
-<p><strong>Cleared — Q6, profiling individuals? No flag.</strong> Both models estimate area values, not personal outcomes.</p>
+<p><strong>Grey — Q5, information about identifiable people? No concern raised.</strong> The published outputs are area aggregates. Police incidents are rolled up to rates and are not published at point level.</p>
+<p><strong>Grey — Q6, profiling individuals? No concern raised.</strong> Both models estimate area values, not personal outcomes.</p>
 <figure class="plate sbx sbm-fig"><div class="sheet"><div class="sbm" data-mode="stage" role="group" aria-label="Stage 2: Preparing and aggregating Signal Box questions" data-stage="S2"></div></div><figcaption>Stage 2: Preparing and aggregating: 1 Unit 2 concern and 2 no-flag questions. Each row also shows the result after the Unit 3 re-test.</figcaption></figure>
 <h2>What I found</h2>
-<p>The preparation kept the flagged areas in the analysis and kept the unit of analysis at area level. A check of variation inside each area has not been run here; that question is covered later in this second look.</p>
+<p>The preparation kept the flagged areas in the analysis and kept the unit of analysis at area level. Notebook 09 measures the variation inside each area; see <a href="what-aggregation-hides.html">What aggregation hides</a>.</p>
 <h2>What changes</h2>
 <p>I retain the area aggregates and state what they leave out. Any later small-group or within-area result must keep its own unit and limits clear; area estimates are not statements about individual residents.</p><nav class="pager" aria-label="Chapters"><a class="prev" href="../story/s4-stage-1-choosing-sources.html"><small>Previous</small><strong>S4. Stage 1: Choosing sources</strong></a><a class="next" href="../story/stage-3-joined-table.html"><small>Next</small><strong>S6. Stage 3: The joined table</strong></a></nav></article>
 </main>
 </div>
 <footer class="home-foot"><p><a class="question-work" href="https://github.com/TidyWeb/Birmingham-Healthy-Life-Second-Look/issues/new?template=question-this-work.yml" target="_blank" rel="noopener noreferrer">Question this work</a></p></footer>
 <script src="../assets/site.js"></script>
-<script src="../assets/signal-box/signal-box-data.js?v=6e160584"></script>
-<script src="../assets/signal-box/signal-box.js?v=6e160584"></script>
+<script src="../assets/signal-box/signal-box-data.js?v=f7b835e5"></script>
+<script src="../assets/signal-box/signal-box.js?v=f7b835e5"></script>
 </body>
 </html>

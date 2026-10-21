@@ -29,7 +29,7 @@ I wanted a practical checklist that turns ethical principles into specific quest
 
 ## How to read the lamps
 
-Signal Box asks one thing of each question: **a yes is a concern**. An orange lamp marks a yes, a concern to investigate. A yellow lamp means investigated and recorded; it does not mean the concern has disappeared. A grey lamp means no concern was raised. It does not mean “safe”. A “legal trigger” label (⚖ on the smaller boards) marks a question to check against the relevant law; all four legal-trigger questions in this application had no flag.
+Signal Box asks one thing of each question: **a yes is a concern**. An orange lamp marks a yes, a concern to investigate. A yellow lamp means investigated and recorded; it does not mean the concern has disappeared. A grey lamp means no concern was raised. It does not mean “safe”. A “legal trigger” label (⚖ on the smaller boards) marks a question to check against the relevant law; all four legal-trigger questions in this application had no concern raised.
 
 Before I turn a lamp yellow, I use the say-it-out-loud test: I must be able to say what could go wrong, who it would happen to, what deals with it, and who is responsible. If I cannot say that in a sentence or two, the lamp stays orange.
 
@@ -41,7 +41,7 @@ The six checkpoints organise the questions. The stage links identify where each 
 
 The questions were written for AI systems that make decisions about people. Birmingham Healthy Life is an area-level analysis with two simple machine-learning models, published for the public. I treated “the system” as the published project and what readers might do with it. That makes interpretation part of Signal Box, even though the project does not decide anything about an individual.
 
-Some questions do not fit the project. There is no consequential automated decision, no decision workflow for a reviewer to overrule, and no change to jobs or monitoring. The EU AI Act high-risk-use question was checked as a legal trigger; the report records that this UK project was not deployed in the EU and was not in a listed high-risk area. These answers are recorded as not applying or no-flag, not as proof that every part of the work is safe.
+Some questions do not fit the project. There is no consequential automated decision, no decision workflow for a reviewer to overrule, and no change to jobs or monitoring. The EU AI Act high-risk-use question was checked as a legal trigger; the report records that this UK project was not deployed in the EU and was not in a listed high-risk area. These answers are recorded as not applying, or grey, not as proof that every part of the work is safe.
 
 ## Limits
 

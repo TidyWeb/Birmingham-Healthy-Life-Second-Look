@@ -5,8 +5,6 @@ title: Stage 1: Choosing sources
 summary: The data choices behind the healthy-life analysis, and the limits that travel with them.
 standfirst: I chose published measures that seemed plausibly connected to healthy life expectancy. Those links are questions about association, not causes.
 ---
-I used Signal Box from my own [Ethical Considerations in AI](https://tidyweb.github.io/ethical-considerations-in-ai/) guide; [The method](s2-the-method.html) explains its origin and how I applied it.
-
 ::: keypoints
 I chose area-level sources that could help me examine differences in healthy life expectancy. Signal Box found that some inputs are modelled estimates I cannot reproduce, so I now record their limits and revision risks plainly.
 :::
@@ -25,7 +23,7 @@ caption: Healthy life expectancy was the outcome I set out to describe. The dist
 
 **Q25 — Does the work depend on a supplier's model or data I cannot inspect? Concern.** Signal Box identified ONS healthy-life estimates, ONS small-area income, DESNZ fuel-poverty estimates and Defra pollution maps as modelled inputs. They cannot be reproduced from the published output alone and may be revised.
 
-**Cleared — Q9, origin, accuracy or permission unknown? No flag.** The register already records source pages, periods, geographies, file hashes and licence notes. The issue was to make known limits visible, not to imply that the sources had unknown origins.
+**Grey — Q9, origin, accuracy or permission unknown? No concern raised.** The register already records source pages, periods, geographies, file hashes and licence notes. The issue was to make known limits visible, not to imply that the sources had unknown origins.
 
 ::: signalbox stage S1
 :::
