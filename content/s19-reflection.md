@@ -1,4 +1,4 @@
-num: S18
+num: S19
 part: second-look
 slug: reflection
 title: Reflection
