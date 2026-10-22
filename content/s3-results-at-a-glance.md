@@ -21,7 +21,7 @@ My first pass raised 17 concerns, and 10 questions with no concern raised. All f
 
 1. **In Unit 2 I framed ethics mainly as privacy.** Signal Box suggests privacy is the part my project largely gets right: all four legal triggers had no concern raised. The wider concerns are about group harm, false certainty and accountability to the people described.
 2. **The main risk is presentation claiming more than the evidence.** Firm rankings where the estimates overlap, and measures shown side by side that could be taken as causes. The fix is accuracy, not softening: show uncertainty where it matters and keep to association, not cause.
-3. **I found two good Unit 2 decisions that are claimed but not tested.** The model leaves ethnicity and deprivation out of its features, but I have not checked proxy overlap or whether model errors differ between communities. Until I test them, these are intentions rather than evidence. Notebook 07 has since tested both; see [Proxies, fairness and crime](proxies-fairness-and-crime.html).
+3. **I found two good Unit 2 decisions that are claimed but not tested.** The model leaves ethnicity and deprivation out of its features, but at the first screening I had not yet checked proxy overlap or whether model errors differ between communities, so these were intentions rather than evidence. Notebook 07 has since tested both; see [Proxies, fairness and crime](proxies-fairness-and-crime.html).
 
 ## Every lamp, by checkpoint
 
