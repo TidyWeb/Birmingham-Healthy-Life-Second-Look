@@ -48,6 +48,8 @@ Readers can question a page using [Question this work](https://github.com/TidyWe
 
 Correction route tested; takedown is written down but untested. I tested the correction route with a test question that was raised and resolved.
 
+To take the site offline, I would switch off GitHub Pages in the site repository's settings, which removes the public pages, then add a dated note to both READMEs saying what was taken down and why.
+
 ## Retirement {#retirement}
 
 When ONS publishes a newer HLE release that supersedes 2019–23, I will keep this version identifiable as an archive and add a banner linking to the newer data. I will not silently replace its results with a different period.
