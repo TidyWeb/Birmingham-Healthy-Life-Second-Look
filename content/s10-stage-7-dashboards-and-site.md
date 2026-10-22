@@ -2,7 +2,7 @@ num: S10
 part: second-look
 slug: stage-7-dashboards-and-site
 title: Stage 7: Dashboards and site
-summary: The public presentation, its limits, and the work still needed around use and challenge.
+summary: The public presentation, its limits, and how I opened it to two audiences and to challenge.
 standfirst: I made an area-level story, maps and dashboards. I need to be as clear about their limits as I am about their findings.
 ---
 ::: keypoints
@@ -72,4 +72,4 @@ So the dashboard now has two views. It opens in the Plain view: plain questions 
 
 ## What changes {#recorded-responses}
 
-The site now states the use limits and carries uncertainty and association caveats. The public question route is on [Question this work](question-this-work.html). User testing was done on 20 October 2026, and every task was rated green ([What changed](what-changed.html#user-testing)). Corrections and retirement are in [Lifecycle](lifecycle.html).
+The site now states the use limits and carries uncertainty and association caveats. The public question route is on [Question this work](question-this-work.html). User testing was done on 20 October 2026, and every task was rated green ([What changed](what-changed.html#user-testing)); Two views, two audiences, above, explains what the test checked. Corrections and retirement are in [Lifecycle](lifecycle.html).
