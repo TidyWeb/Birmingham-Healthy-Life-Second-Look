@@ -23,7 +23,7 @@ caption: Several measures move together across areas. The overlap is a reason to
 
 **Q10 — Are groups missing or thin? Concern.** Signal Box found that detailed ethnic groups can be very small and that MSOA averages hide variation inside an area. It also recorded six student-dominated areas and six visitor hubs as unusual cases; I kept them and marked the limits of how some measures describe them.
 
-**Grey — Q5, information about identifiable people? No concern raised.** The published outputs are area aggregates. Police incidents are rolled up to rates and are not published at point level.
+**Grey — Q5, information about identifiable people? No concern raised.** The published outputs are area aggregates. The site and dashboard show police incidents only as area rates. The raw monthly files kept in the assessment repository, so the work can be rerun, are police.uk's own public releases, whose locations police.uk has already moved to approximate points to protect privacy.
 
 **Grey — Q6, profiling individuals? No concern raised.** Both models estimate area values, not personal outcomes.
 
