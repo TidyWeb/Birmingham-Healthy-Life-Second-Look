@@ -3,13 +3,16 @@ part: second-look
 slug: s1-why-a-second-look
 title: Why a second look
 summary: The position behind revisiting my Unit 2 Birmingham Healthy Life analysis through an ethical lens.
-standfirst: I want the claims to be as strong as the evidence: no stronger, and no weaker.
+standfirst: The Code Institute Unit 3 assessment asks for a data project with ethical considerations applied first. I had already done a data project in Unit 2, so I am revisiting that work through an ethics-first lens, describing what the evidence supports without in any way hiding uncomfortable findings, or claiming more than the data can show.
+
 ---
 ::: keypoints
 The Ethics of a Birmingham Healthy Life is my Unit 3 project for the Code Institute Diploma in Data Analytics with AI. I am revisiting my Unit 2 Birmingham Healthy Life analysis, but coming to it through an ethics-first lens, describing what the evidence supports without in any way hiding uncomfortable findings, or claiming more than the data can show.
 :::
 
 ## What this is
+
+I want any claims I make in this project to be as strong as the evidence: no stronger, and no weaker. I keep in mind the principle often traced to Hippocrates, in the Hippocratic *Epidemics*: to help, or at least to do no harm.
 
 Birmingham Healthy Life began as my Unit 2 project. In Unit 3 I am revisiting that work, examining the choices behind it and rebuilding how I explain the findings. The original chapters are on [the live Unit 2 site](https://tidyweb.github.io/Birmingham-Healthy-Life/).
 
@@ -37,7 +40,9 @@ The investigation is about healthy life expectancy, so I rank areas by healthy l
 
 The datasets were chosen through judgement. I began with measures that seemed plausibly connected to healthy life expectancy, based on intuition and life experience. I left out measures with no plausible route to the question, then plotted the selected data against healthy life expectancy to see what related and what stood out. Those choices and the reasons for keeping or dropping a dataset should be visible rather than left implicit.
 
-That approach has a weakness I should name. Keeping a measure because it lined up with healthy life expectancy is choosing on the outcome, so some of the strength of those links is built in by the choosing. The same goes for the hotspots, which I picked because their gaps were extreme.
+My approach could have a weakness, and I should name it. Simply keeping a measure because it lined up with healthy life expectancy would be choosing on the outcome, so the strength of such links would be built in by the very choosing. The same might go for the hotspots.
+
+So I didn’t take those links or gaps at face value. Before reading anything into the largest neighbour gaps, I tested them against what estimate noise alone would produce; 69.8% of neighbouring pairs passed that line, far more than noise explains. I re-ran the rankings 10,000 times within their margins of error, and I say plainly that only 35 of the 66 lowest areas stay in the bottom tenth with confidence. The large differences are real. What they can’t show is cause.
 
 ## Association, not cause; areas, not people
 
@@ -47,4 +52,6 @@ The measures are candidates for association with healthy life expectancy. They a
 
 My Unit 2 ethics account concentrated on privacy. Signal Box found that privacy was the part the project largely handled well: none of its four legal-trigger questions raised a flag. It also surfaced questions about interpretation, certainty, what area averages hide, possible proxy effects in the model, and accountability to people described by the results. Unit 3 widens the ethical frame to include those issues.
 
-An outside reader tested the work too. After I shared the Unit 2 site, an NHS performance analyst raised two points: that an area's average can hide a lot of variation inside it, and that small numbers in some areas might explain where my model went wrong. I checked both against the data rather than argue with them. The second didn't hold. Healthy life expectancy isn't a survey, and its margins of error are too narrow to produce the big gaps or the model's misses. The first did, and I now state it as a limit. S11 and S16 look at both questions more closely.
+Outside readers checked the work too. Before Unit 3, a senior NHS performance analyst looked at my Unit 2 site out of interest and raised two points: that an area’s average can hide a lot of variation inside it, and that small numbers in some areas might explain where my model went wrong. I checked both against the data rather than argue with them. The second didn’t hold. Healthy life expectancy isn’t a survey, and its margins of error are too narrow to produce the big gaps or the model’s misses. The first did, and I now state it as a limit. S11 and S16 look at both questions more closely.
+
+For Unit 3, I sent four independent testers, including him, a link to a guided preview of the site, and they ran it on 20 October 2026. A panel took them through six short tasks, one at a time, and asked whether each was clear. All four rated every task green: 24 out of 24.
