@@ -14,11 +14,10 @@ The deployed site is [The Ethics of a Birmingham Healthy Life](https://tidyweb.g
 
 ## Rebuild and check
 
-Use the site and analysis clones as sibling folders, with the Unit 3 environment at `REPOS/.venv-unit3`. From the site repository root, activate that environment, then install the analysis packages and the extra Markdown dependency used by `build_site.py`:
+Clone the site and analysis repositories as sibling folders, and create the environment as described in section 10 of the [analysis repository's README](https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment#10-notebooks-and-how-to-run-them). From the site repository root, activate that environment, then add the extra Markdown dependency used by `build_site.py`:
 
 ```bash
-source ../.venv-unit3/bin/activate
-python -m pip install -r ../Code-Institute-DA-with-AI-Unit-3-Assessment/requirements.txt
+source ../Code-Institute-DA-with-AI-Unit-3-Assessment/.venv/bin/activate
 python -m pip install Markdown
 ```
 
