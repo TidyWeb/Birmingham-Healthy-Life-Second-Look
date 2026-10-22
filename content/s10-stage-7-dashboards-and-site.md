@@ -49,6 +49,18 @@ caption: The dashboard presents named area estimates and comparisons. The number
 
 Signal Box found a clear gap between publishing a dashboard and having evidence that people can interpret, question or correct it. I have not treated a creator-only check as user testing.
 
+## Two views, two audiences
+
+Unit 2's dashboard was built for someone like me: someone happy to pick a measure from a list, read a rank range and interpret a colour scale. Signal Box's questions about understanding and challenge (Q14 and Q17) made me ask who else would use it. My tutor Vasi put it simply: a senior manager with no data background should be able to ask the dashboard a plain question and get a plain answer.
+
+Given that the dashboard had to work for technical and non-technical audiences alike, I decided to build a Plain view. It carries a set of key questions, already chosen, so a non-technical reader can draw the main points out of the project without knowing how to work the map.
+
+Having built it, I set up a guided test preview. A special link switches on a panel that takes the reader through six short tasks, one at a time, and asks after each whether it was clear, with a traffic-light rating. I sent the link by WhatsApp to four people I know personally, professionals from health, science and data, ranging from non-technical to highly technical, so they could run it on a work laptop in a few minutes. Each began in the Plain view. The tasks then took them into the Detailed view and the story pages, where the harder ideas are: rank ranges, the chance of being in the lowest tenth, and why ethnicity is shown in broad groups.
+
+All four rated every task green: 24 out of 24. That included the reader who described themselves as non-technical, so even the detailed material was clear to someone without a data background.
+
+So the dashboard now has two views. It opens in the Plain view: plain questions answered in plain words, with broad labels such as "clearly among the lowest" instead of exact ranks. The Detailed view, the full technical dashboard, is one click away for readers who want the measures, the rank ranges and the model.
+
 ## What changes {#recorded-responses}
 
 The site now states the use limits and carries uncertainty and association caveats. The public question route is on [Question this work](question-this-work.html). User testing was done on 20 October 2026, and every task was rated green ([What changed](what-changed.html#user-testing)). Corrections and retirement are in [Lifecycle](lifecycle.html).
