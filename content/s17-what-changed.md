@@ -72,7 +72,7 @@ Before I tick investigated and recorded, I must be able to say what could go wro
 
 "I gain assessment and portfolio evidence. People in the areas ranked lowest could bear stigma. I reduce that by showing uncertainty, describing areas not people, and refusing claims the evidence can't carry. Making a real inequality visible is also a benefit to them. But nobody from those areas has had a say in the work."
 
-**Verdict: Re-judge after user testing.** Q4 stays orange until user testing with three Birmingham readers is recorded; I will then re-judge it. They are three Birmingham readers, not representatives of the affected communities.
+**Verdict: Re-judge after user testing.** Q4 stays orange until user testing is recorded; I will then re-judge it.
 
 **Update, 20 October 2026: settled by executive decision.** I've decided Q4 stays orange and I go ahead anyway; [Why three lamps stay orange](s2-the-method.html#sbx) on The method gives my reasons.
 
@@ -108,7 +108,7 @@ Before I tick investigated and recorded, I must be able to say what could go wro
 
 ### Q15. Errors fall more on some groups?
 
-"The model is about equally accurate everywhere, but its errors point different ways: it over-predicts healthy life in the most deprived third by 0.46 years and under-predicts the least deprived by 0.31. So model predictions understate the real gap, and the people in the most deprived areas would look better off than they are. I publish that finding, and the published HLE figures, not model predictions, describe each area. I answer for it."
+"The model is similarly accurate across the deprivation thirds, but its errors point different ways: it over-predicts healthy life in the most deprived third by 0.46 years and under-predicts the least deprived by 0.31. So model predictions understate the real gap, and the most deprived areas would look better off than they are. I publish that finding, and the published HLE figures, not model predictions, describe each area. I answer for it."
 
 **Verdict: Passes.**
 
@@ -156,4 +156,4 @@ User testing added evidence (all green; see below), but it doesn't close these t
 
 ## User testing {#user-testing}
 
-Five people ran the QA test on the live site. I ran it first, on 18 October 2026, then on 20 October four testers I know personally, from a range of backgrounds including health, science and data. Every tester rated every task green: 24 out of 24. The test was built before the Plain view existed, so it covers the Detailed view (the full technical dashboard) and the story pages. The anonymised results are in the [assessment repository](https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment/tree/main/data/testing). Before that, on 17 October 2026, I reviewed the dashboard and site myself. That review led to fixes for the dashboard search bug; the HLE, rank and band labels; the six-groups note in the active-measure panel; the visibility of the “Question this work” link; and the plain-English wording in S11. I record the results as part of the evaluation stage in [Lifecycle](https://tidyweb.github.io/Birmingham-Healthy-Life-Second-Look/story/lifecycle.html).
+Five people ran the QA test on the live site. I ran it first, on 18 October 2026, as an owner check that isn't counted in the results. Then on 20 October four independent testers I know personally, from a range of backgrounds including health, science and data, ran it. Every independent tester rated every task green: 24 out of 24. The test checked whether the site as a whole was clear and easy to find your way around: testers started in the Plain view, and the six tasks took them into the Detailed view, the "Question this work" route and the story pages. [Stage 7](stage-7-dashboards-and-site.html) explains why. The anonymised results are in the [assessment repository](https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment/tree/main/data/testing). Before that, on 17 October 2026, I reviewed the dashboard and site myself. That review led to fixes for the dashboard search bug; the HLE, rank and band labels; the six-groups note in the active-measure panel; the visibility of the “Question this work” link; and the plain-English wording in S11. I record the results as part of the evaluation stage in [Lifecycle](https://tidyweb.github.io/Birmingham-Healthy-Life-Second-Look/story/lifecycle.html).
