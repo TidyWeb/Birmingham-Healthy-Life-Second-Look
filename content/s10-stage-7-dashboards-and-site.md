@@ -55,9 +55,18 @@ Unit 2's dashboard was built for someone like me: someone happy to pick a measur
 
 Given that the dashboard had to work for technical and non-technical audiences alike, I decided to build a Plain view. It carries a set of key questions, already chosen, so a non-technical reader can draw the main points out of the project without knowing how to work the map.
 
-Having built it, I set up a guided test preview. A special link switches on a panel that takes the reader through six short tasks, one at a time, and asks after each whether it was clear, with a traffic-light rating. I sent the link by WhatsApp to four people I know personally, professionals from health, science and data, ranging from non-technical to highly technical, so they could run it on a work laptop in a few minutes. Each began in the Plain view. The tasks then took them into the Detailed view and the story pages, where the harder ideas are: rank ranges, the chance of being in the lowest tenth, and why ethnicity is shown in broad groups.
+The Plain view is self-contained: twelve fixed questions, each with a fixed answer, so there is little in it to go wrong. The bigger question was whether the site as a whole was fit for purpose. Could a reader find their way around it, and were the key points of transparency clear: how uncertain a rank is, what the map colours mean, why ethnicity is shown in broad groups, and how to challenge something they think is wrong?
+
+To find out, I set up a guided test preview. A special link switches on a panel that takes the reader through six short tasks, one at a time, and asks after each whether it was clear, with a traffic-light rating. I sent the link by WhatsApp to four people I know personally, professionals from health, science and data, ranging from non-technical to highly technical, so they could run it on a work laptop in a few minutes. Each began in the Plain view. The tasks then took them into the Detailed view, the "Question this work" route and the story pages, where the harder ideas are.
 
 All four rated every task green: 24 out of 24. That included the reader who described themselves as non-technical, so even the detailed material was clear to someone without a data background.
+
+::: image qa-test-panel.webp wide
+alt: The dashboard in the Plain view with the guided test panel open on the right, showing Task 1 of 6, its instructions, and green, amber and red rating buttons.
+caption: The guided test panel on the dashboard, at Task 1 of 6. Each task gives an instruction, asks one question and takes a traffic-light rating.
+:::
+
+You can [try the test for yourself]({root}index.html?qa-test). It runs exactly as it did for my testers, except that testing has closed, so the last screen shows your report and sends nothing.
 
 So the dashboard now has two views. It opens in the Plain view: plain questions answered in plain words, with broad labels such as "clearly among the lowest" instead of exact ranks. The Detailed view, the full technical dashboard, is one click away for readers who want the measures, the rank ranges and the model.
 
