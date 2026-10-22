@@ -3,10 +3,10 @@ part: second-look
 slug: question-this-work
 title: Question this work
 summary: How to raise a question about the data, analysis or explanation, and how I handle corrections.
-standfirst: The work is mine. You can ask me to explain or check a choice; if I find an error, I correct and record it.
+standfirst: The ethical lens revealed to me that while the work is mine, the reading of it is not.  Having some way for readers to question the work is important. So I added a way for readers to submit questions. Now, readers can ask me to explain or check a choice; if I find an error, I correct and record it.
 ---
 ::: keypoints
-Questions are welcome. Readers can raise an issue about a page or result. I review the evidence, make any correction, and log what changed and why.
+In Unit 3 I added a way to raise questions, and they're welcome. Readers can raise an issue about a page or result. I review the evidence, make any correction, and log what changed and why.
 :::
 
 ## How to ask
@@ -17,7 +17,7 @@ This is my work. Questions are welcome, and I make and log corrections when an e
 
 ## What happens next
 
-I reply within 10 working days. I read the question and check it against the source, notebook or wording involved. If I confirm an error, I correct it and add a dated entry below. If the evidence does not show an error, I explain what I checked and why I have left the result as it is. A question does not automatically mean the published result is wrong.
+I endeavour to reply within 10 working days. GitHub emails me as soon as a new question is raised, so I see it straight away. I read the question and check it against the source, notebook or wording involved. If I confirm an error, I correct it and add a dated entry below. If the evidence does not show an error, I explain what I checked and why I have left the result as it is. A question does not automatically mean the published result is wrong.
 
 ## Correction log
 
