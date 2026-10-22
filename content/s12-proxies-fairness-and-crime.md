@@ -41,7 +41,7 @@ For the ethnic-composition split, non-White share is Asian + Black + Mixed + Oth
 | Highest | -0.459 [-0.662, -0.252] | 1.309 [1.184, 1.429] | 1.620 [1.489, 1.752] |
 
 ^ nb07#4c2239b1 | The bias sign and the deprivation-third interpretation.
-Across deprivation thirds, the model is similarly accurate in size by absolute error but biased in direction: MAE is about 1.31–1.34 years and the intervals overlap. It under-predicts HLE in the least deprived third by 0.31 years and over-predicts HLE in the most deprived third by 0.46 years, so it understates the real gap. Underclaiming is an accuracy failure under my stated position.
+Across deprivation thirds, the model is similarly accurate in size by absolute error but biased in direction: MAE is about 1.31–1.34 years and the intervals overlap. It under-predicts HLE in the least deprived third by 0.31 years and over-predicts HLE in the most deprived third by 0.46 years, so it understates the real gap. Underclaiming is an accuracy failure under my stated position. The intervals come from resampling individual areas, so they don't allow for neighbouring areas being alike (spatial clustering): treat them as a rough guide rather than exact bounds.
 
 ^ nb07#4c2239b1 | Bias, MAE and RMSE by four-group non-White-share third with bootstrap intervals.
 | Four-group non-White-share third | Bias, 95% interval (years) | MAE, 95% interval (years) | RMSE, 95% interval (years) |
