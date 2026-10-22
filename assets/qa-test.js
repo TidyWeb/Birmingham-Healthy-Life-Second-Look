@@ -3,8 +3,6 @@
 
   var FLAG_KEY = 'tidyweb-bhl-qa-test';
   var STATE_KEY = 'tidyweb-bhl-qa-test-state';
-  var EMAIL = 'philipmccool@gmail.com';
-  var SUBJECT = 'QA test report: The Ethics of a Birmingham Healthy Life';
   var TASKS = [
     {
       do: '**At the top right, click Detailed view.**\nFind the Active measure box in the top left corner.\n**Select HLE average.**\nYou can zoom and drag the map until you see an area you know.',
@@ -137,15 +135,6 @@
     return output.join('\n');
   }
 
-  function reportLinks(body) {
-    return [
-      'https://mail.google.com/mail/?view=cm&fs=1&to=' + EMAIL +
-        '&su=' + encodeURIComponent(SUBJECT) + '&body=' + encodeURIComponent(body),
-      'mailto:' + EMAIL + '?subject=' + encodeURIComponent(SUBJECT) +
-        '&body=' + encodeURIComponent(body)
-    ];
-  }
-
   function head() {
     if (confirmEnd) {
       return '<div class="qa-head" id="qa-drag"><span><strong>Clear all answers?</strong>  ' +
@@ -196,21 +185,21 @@
       (index === TASK_COUNT - 1 ? 'Finish' : 'Next') + '</button></div>';
   }
 
+  // The test closed on 20 October 2026. The panel stays public as a demonstration,
+  // so the final screen shows the report but no longer sends it anywhere.
   function finalScreen() {
     var body = report();
-    var links = reportLinks(body);
-    return '<p class="qa-ask">Send your report</p>' +
+    return '<p class="qa-ask">That’s the end of the test</p>' +
       (state.tester ? '' : '<p class="qa-ask" style="font-size:15px">Are you technical or non-technical?</p>' +
         lightButtons('tester', [['Technical'], ['Non-technical']], state.tester)) +
       '<label class="qa-field" for="extra">Do you have any additional comments? (optional)</label>' +
       '<textarea id="extra">' + escapeHtml(state.extra) + '</textarea>' +
       '<label class="qa-field">Your report</label><div class="qa-summary" id="summary">' +
       escapeHtml(body) + '</div><div class="qa-send">' +
-      '<a class="qa-button qa-primary" href="' + links[0] + '" target="_blank" rel="noopener">Send with Gmail</a>' +
-      '<a class="qa-button" href="' + links[1] + '">Send with Outlook or Apple Mail</a>' +
-      '<button data-act="copy">Copy report</button>' +
-      '<p>After copying, paste it into an email to ' + EMAIL + ', or paste it into WhatsApp and send it to Phil.</p>' +
-      '</div><div class="qa-nav"><button data-act="back">Back</button><span></span></div>';
+      '<p><strong>Thank you for trying the test.</strong> While testing was open, my testers sent me a report like this one from here. ' +
+      'Testing closed on 20 October 2026, so nothing is sent.</p>' +
+      '</div><div class="qa-nav"><button data-act="back">Back</button>' +
+      '<button class="qa-primary" data-act="confirm-end">Finish and close</button></div>';
   }
 
   function placeAt(left, top) {
@@ -366,12 +355,7 @@
   function updateReport() {
     var summary = document.getElementById('summary');
     if (!summary) return;
-    var body = report();
-    var links = reportLinks(body);
-    summary.textContent = body;
-    var anchors = root.querySelectorAll('.qa-send a');
-    if (anchors[0]) anchors[0].href = links[0];
-    if (anchors[1]) anchors[1].href = links[1];
+    summary.textContent = report();
   }
 
   function valid() {
@@ -409,18 +393,6 @@
       root.remove();
       css.remove();
       window.location.assign(siteRoot.href);
-      return;
-    } else if (action === 'copy') {
-      var button = event.currentTarget;
-      if (!navigator.clipboard || !navigator.clipboard.writeText) {
-        button.textContent = 'Copy failed: select the report text instead';
-        return;
-      }
-      navigator.clipboard.writeText(report()).then(function () {
-        button.textContent = 'Copied';
-      }, function () {
-        button.textContent = 'Copy failed: select the report text instead';
-      });
       return;
     }
     save();
