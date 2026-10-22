@@ -319,8 +319,7 @@ def build_plain_data(payload: dict[str, Any]) -> dict[str, Any]:
         {
             "question": "How sure are we?",
             "answer": ("Every figure here is an estimate, much like a weather forecast. That doesn't make it unreliable. The overall picture is clear: the gap between areas is large and real. "
-                       "What can shift a little is an area's exact place in the table, which is why we use \"clearly\", \"probably\" and \"possibly\" rather than exact positions. "
-                       "If anything, the real gap may be slightly bigger than shown: the analysis tends to make the poorest areas look a little better off than they are."),
+                       "What can shift a little is an area's exact place in the table, which is why we use \"clearly\", \"probably\" and \"possibly\" rather than exact positions."),
             "action": {"type": "answer"},
         },
         {
@@ -347,12 +346,14 @@ def build_plain_data(payload: dict[str, Any]) -> dict[str, Any]:
                        f"Most of the living-conditions figures come from the {periods['census'].replace('Census 2021', '2021 Census')}. Income is for the year to March {income_year}, "
                        f"and fuel poverty, air pollution and recorded crime are for {recent_data_year}. "
                        "Some of these figures are themselves estimates made by the organisations that publish them."),
+            "link": {"text": "See the full list of sources, with where each one came from and its licence",
+                     "href": "https://github.com/TidyWeb/Code-Institute-DA-with-AI-Unit-3-Assessment/blob/main/data/source-register.csv"},
             "action": {"type": "answer"},
         },
         {
             "question": "Can I use this to judge a place or the people who live there?",
             "answer": ("No. These figures describe areas, not individuals. Each area is an average of several neighbourhoods, and in "
-                       f"{len(mixed_codes)} of them some streets are much better or worse off than the average shows. Please don't use this to judge a place or its residents. "
+                       f"{len(mixed_codes)} of them the smaller neighbourhoods inside differ a lot in fuel poverty, which the average hides. Please don't use this to judge a place or its residents. "
                        f"Before publishing, I checked this work with Signal Box, my {ethics_count}-question ethics check."),
             "action": {"type": "answer"},
         },

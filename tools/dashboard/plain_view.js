@@ -214,6 +214,15 @@
     authorityCount();
   }
 
+  // The skip link must point at something visible: the question button in the Plain view,
+  // the area list in the Detailed view (whose left column the Plain view hides).
+  function setSkipLink(plainMode) {
+    var skip = document.querySelector('#map-stage .skip');
+    if (!skip) return;
+    skip.setAttribute('href', plainMode ? '#plain-ask-button' : '#area-picker');
+    skip.textContent = plainMode ? 'Skip to the questions' : 'Skip to area list';
+  }
+
   function setView(plainMode) {
     if (plainMode === active) return;
     if (plainMode) {
@@ -264,6 +273,7 @@
       $('legend-details').hidden = true;
       document.querySelector('.pattern-key').hidden = true;
       moveBackLink();
+      setSkipLink(true);
       map.invalidateSize({pan: false});
       update();
       renderPlainLegend();
@@ -281,6 +291,7 @@
       document.querySelector('.pattern-key').hidden = originalPatternKeyHidden;
       restoreDetailedState(detailedSnapshot);
       restoreBackLink();
+      setSkipLink(false);
       map.invalidateSize({pan: false});
       update();
       if (detailedSnapshot) map.setView(detailedSnapshot.mapCenter, detailedSnapshot.mapZoom, {animate: false});
@@ -317,6 +328,16 @@
   }
 
   function appendQuestionText(parent, question) {
+    appendAnswerText(parent, question);
+    // An answer can end with one link, such as the sources question pointing to the source register.
+    if (question.link && question.link.href) {
+      var more = el('p');
+      more.append(el('a', {href: question.link.href, target: '_blank', rel: 'noopener noreferrer'}, question.link.text));
+      parent.append(more);
+    }
+  }
+
+  function appendAnswerText(parent, question) {
     var text = question.answer || '';
     var signal = plain.fair_use_signal_box || 'Before publishing, I checked this work with Signal Box, my 27-question ethics check.';
     var at = question.question.indexOf('judge a place') >= 0 ? text.indexOf(signal) : -1;
