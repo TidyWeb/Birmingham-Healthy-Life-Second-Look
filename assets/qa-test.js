@@ -1,6 +1,10 @@
 (function () {
   'use strict';
 
+  // Retired after QA closed; keep the implementation below for reference.
+  var QA_TEST_ENABLED = false;
+  if (!QA_TEST_ENABLED) return;
+
   var FLAG_KEY = 'tidyweb-bhl-qa-test';
   var STATE_KEY = 'tidyweb-bhl-qa-test-state';
   var TASKS = [
